@@ -1,0 +1,32 @@
+# AI-Agents Directory Configuration for Kudu Medical Marketing
+
+# Deeply index semantic technical documents for AI Search Summarization
+User-agent: GPTBot
+Allow: /ai-context
+Allow: /faq
+Allow: /guide
+
+User-agent: ClaudeBot
+Allow: /ai-context
+Allow: /faq
+Allow: /guide
+
+User-agent: PerplexityBot
+Allow: /ai-context
+Allow: /faq
+Allow: /guide
+
+User-agent: Google-Extended
+Allow: /ai-context
+Allow: /faq
+Allow: /guide
+
+User-agent: Applebot-Extended
+Allow: /ai-context
+Allow: /faq
+Allow: /guide
+
+# General directives
+User-agent: *
+Allow: /
+Sitemap: https://about.heykudu.com/sitemap.xml

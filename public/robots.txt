@@ -1,0 +1,8 @@
+# Robots Configuration for Kudu Medical Marketing
+
+User-agent: *
+Allow: /
+Disallow: /api/
+
+Sitemap: https://about.heykudu.com/sitemap.xml
+Host: https://about.heykudu.com
