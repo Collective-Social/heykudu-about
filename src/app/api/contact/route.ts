@@ -87,7 +87,7 @@ export async function POST(request: Request) {
     if (mailersendKey) {
       try {
         const senderEmail = process.env.MAILERSEND_SENDER_EMAIL || "no-reply@heykudu.com";
-        const recipientEmail = process.env.CONTACT_EMAIL_TARGET || "hello@heykudu.com";
+        const recipientEmail = process.env.CONTACT_EMAIL_TARGET || "no-reply@heykudu.com";
 
         const response = await fetch("https://api.mailersend.com/v1/email", {
           method: "POST",
