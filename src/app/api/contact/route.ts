@@ -82,19 +82,31 @@ export async function POST(request: Request) {
       }
     }
 
-    // Optional: Send via Resend Email API if configured
-    const resendKey = process.env.RESEND_API_KEY;
-    if (resendKey) {
+    // Optional: Send via Mailersend Email API if configured
+    const mailersendKey = process.env.MAILERSEND_API_KEY || "mlsn.8e771211589e46ea68a91efa0c4643a1439405ef8a8e740bfb3db7c56de79452";
+    if (mailersendKey) {
       try {
-        await fetch("https://api.resend.com/emails", {
+        const senderEmail = process.env.MAILERSEND_SENDER_EMAIL || "no-reply@heykudu.com";
+        const recipientEmail = process.env.CONTACT_EMAIL_TARGET || "hello@heykudu.com";
+
+        const response = await fetch("https://api.mailersend.com/v1/email", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${resendKey}`,
+            "X-Requested-With": "XMLHttpRequest",
+            "Authorization": `Bearer ${mailersendKey}`,
           },
           body: JSON.stringify({
-            from: "heykudu Leads <onboarding@resend.dev>",
-            to: process.env.CONTACT_EMAIL_TARGET || "hello@heykudu.com",
+            from: {
+              email: senderEmail,
+              name: "heykudu Landing Page",
+            },
+            to: [
+              {
+                email: recipientEmail,
+                name: "heykudu Team",
+              },
+            ],
             subject: `🎉 New Institutional Lead: ${program}`,
             html: `
               <div style="font-family: sans-serif; padding: 20px; line-height: 1.5; color: #333;">
@@ -107,11 +119,18 @@ export async function POST(request: Request) {
                 </div>
               </div>
             `,
+            text: `New Clinical Program Lead\n\nMedical Program: ${program}\nContact Email: ${email}\nRequirements/Message:\n${message}`,
           }),
         });
-        console.log("[EMAIL DISPATCH] Successfully dispatched lead email via Resend.");
-      } catch (resendError) {
-        console.error("Resend integration error:", resendError);
+
+        if (response.ok) {
+          console.log("[EMAIL DISPATCH] Successfully dispatched lead email via Mailersend.");
+        } else {
+          const errorText = await response.text();
+          console.error(`[EMAIL DISPATCH ERROR] Mailersend returned status ${response.status}:`, errorText);
+        }
+      } catch (mailersendError) {
+        console.error("Mailersend integration error:", mailersendError);
       }
     }
 
