@@ -83,7 +83,7 @@ export async function POST(request: Request) {
     }
 
     // Optional: Send via Mailersend Email API if configured
-    const mailersendKey = process.env.MAILERSEND_API_KEY || "mlsn.8e771211589e46ea68a91efa0c4643a1439405ef8a8e740bfb3db7c56de79452";
+    const mailersendKey = process.env.MAILERSEND_API_KEY;
     if (mailersendKey) {
       try {
         const senderEmail = process.env.MAILERSEND_SENDER_EMAIL || "no-reply@heykudu.com";
