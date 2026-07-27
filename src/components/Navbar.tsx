@@ -12,6 +12,7 @@ export default function Navbar() {
     { name: "Home", href: "/" },
     { name: "EPA & WBA Tracking", href: "/features/epa-tracking" },
     { name: "Geo-Fence Analytics", href: "/features/geo-fence" },
+    { name: "NFC Attendance", href: "/features/nfc-attendance" },
     { name: "Clinical Guide", href: "/guide" },
     { name: "FAQ", href: "/faq" },
     { name: "Contact", href: "/contact" },

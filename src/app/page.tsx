@@ -1230,6 +1230,86 @@ export default function Home() {
           </div>
         </section>
 
+        {/* NFC Location Attendance Section */}
+        <section className="py-section-gap-mobile md:py-section-gap-desktop bg-surface-container-lowest overflow-hidden border-y border-outline-variant/10">
+          <div className="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
+              
+              {/* Copy / Action Column */}
+              <motion.div 
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="space-y-8"
+              >
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary font-label-md text-label-md">
+                  <span className="material-symbols-outlined text-[18px]">contactless</span>
+                  NEW: NFC Location Verification
+                </div>
+                
+                <h2 className="font-bold text-headline-lg-mobile md:text-headline-lg text-on-surface leading-tight" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
+                  Tap to Check In. <br />
+                  <span className="text-primary">Instant Ward Verification.</span>
+                </h2>
+                
+                <p className="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+                  Place highly durable, secure physical NFC tags or high-definition QR plaques across clinical rooms and wards. Students simply tap their phone to instantly verify physical presence and log check-ins/outs under 3 seconds.
+                </p>
+
+                <div className="grid sm:grid-cols-2 gap-6">
+                  <div className="flex gap-4">
+                    <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
+                      <span className="material-symbols-outlined">contactless</span>
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-base text-on-surface">Tap-and-Go Speed</h4>
+                      <p className="text-on-surface-variant text-xs mt-1">One tap registers instant attendance — no apps to download.</p>
+                    </div>
+                  </div>
+
+                  <div className="flex gap-4">
+                    <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
+                      <span className="material-symbols-outlined">gpp_good</span>
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-base text-on-surface">GPS &amp; Geofencing</h4>
+                      <p className="text-on-surface-variant text-xs mt-1">Dual geofence checks prevent buddy check-ins and logs fraud.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="pt-4">
+                  <Link
+                    href="/features/nfc-attendance"
+                    className="inline-flex items-center gap-2.5 px-8 py-4 bg-primary text-on-primary rounded-full font-bold text-sm hover:shadow-lg hover:opacity-95 transition-all"
+                  >
+                    <span className="material-symbols-outlined text-[18px]">contactless</span>
+                    Explore Physical Tags
+                  </Link>
+                </div>
+              </motion.div>
+
+              {/* Graphic Column */}
+              <motion.div 
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="relative flex justify-center"
+              >
+                <div className="absolute -inset-4 bg-primary/10 blur-3xl rounded-full"></div>
+                <div className="relative p-2 bg-surface border border-outline-variant/30 rounded-[40px] shadow-2xl max-w-[480px] overflow-hidden group hover:scale-[1.01] transition-transform duration-500">
+                  <img 
+                    src="/images/nfc_attendance.png" 
+                    alt="HeyKudu Physical NFC Attendance Tag"
+                    className="rounded-[32px] w-full h-auto object-cover"
+                  />
+                </div>
+              </motion.div>
+
+            </div>
+          </div>
+        </section>
+
         {/* Workflow Section */}
         <section className="py-section-gap-mobile md:py-section-gap-desktop bg-surface overflow-hidden">
           <div className="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
