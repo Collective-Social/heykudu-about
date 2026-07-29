@@ -20,66 +20,79 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="fixed top-0 w-full z-50 glass-nav shadow-sm border-b border-outline-variant/10">
-      <div className="flex justify-between items-center max-w-container-max mx-auto px-margin-mobile md:px-gutter py-4">
-        {/* Logo */}
-        <Link href="/" className="flex items-center group">
-          <img
-            src="/images/logo.png"
-            alt="heykudu"
-            className="h-10 w-auto object-contain group-hover:scale-[1.01] transition-transform"
-          />
-        </Link>
+    <nav className="fixed top-0 w-full z-50 bg-[#7D00FF] shadow-md border-b border-white/10">
+      <div className="flex justify-between items-center max-w-container-max mx-auto px-margin-mobile md:px-gutter py-3">
+        
+        {/* Left Side: Logo & Desktop Links Group */}
+        <div className="flex items-center gap-8 lg:gap-10">
+          {/* Logo matching platform heykudu.com header */}
+          <Link href="/" className="flex items-center gap-2.5 group shrink-0">
+            <div className="w-8 h-8 rounded-xl bg-white/15 border border-white/25 flex items-center justify-center p-1.5 shadow-sm group-hover:scale-105 transition-transform">
+              <img
+                src="/images/logo-white.png"
+                alt="heykudu"
+                className="w-full h-full object-contain"
+              />
+            </div>
+            <span className="font-extrabold text-white text-lg tracking-tight font-sans">
+              heykudu
+            </span>
+          </Link>
 
-        {/* Desktop Links */}
-        <div className="hidden md:flex items-center gap-8">
-          {links.map((link) => {
-            const isActive = pathname === link.href;
-            return (
-              <Link
-                key={link.name}
-                href={link.href}
-                className={`font-medium transition-colors font-label-md text-label-md py-1 ${
-                  isActive
-                    ? "text-primary border-b-2 border-primary"
-                    : "text-on-surface-variant hover:text-primary"
-                }`}
-              >
-                {link.name}
-              </Link>
-            );
-          })}
+          {/* Desktop Links */}
+          <div className="hidden xl:flex items-center gap-6">
+            {links.map((link) => {
+              const isActive = pathname === link.href;
+              return (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  className={`font-semibold text-xs tracking-tight transition-all py-1.5 ${
+                    isActive
+                      ? "text-white border-b-2 border-white font-extrabold"
+                      : "text-white/80 hover:text-white"
+                  }`}
+                >
+                  {link.name}
+                </Link>
+              );
+            })}
+          </div>
         </div>
 
-        {/* Actions */}
-        <div className="hidden md:flex items-center gap-4">
+        {/* Right Side: Platform Actions matching screenshot */}
+        <div className="hidden md:flex items-center gap-2.5 shrink-0">
           <a
             href="https://heykudu.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-primary font-bold font-label-md text-label-md hover:bg-surface-container-low px-4 py-2 rounded-full transition-all"
+            className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl border border-white/30 text-white font-extrabold text-xs hover:bg-white/15 transition-all shadow-sm active:scale-95"
           >
-            Start
+            <span className="material-symbols-outlined text-[15px]">arrow_back</span>
+            Back to App
           </a>
           <Link
             href="/contact"
-            className="bg-primary text-on-primary font-bold font-label-md text-label-md px-6 py-3 rounded-full hover:shadow-lg transition-transform scale-95 active:scale-90"
+            className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl border border-white/30 text-white font-extrabold text-xs hover:bg-white/15 transition-all shadow-sm active:scale-95"
           >
-            Contact
+            <span className="material-symbols-outlined text-[15px]">person</span>
+            Profile
           </Link>
         </div>
 
         {/* Mobile menu button */}
-        <div className="md:hidden flex items-center gap-2">
-          <Link
-            href="/contact"
-            className="bg-primary-container/10 text-primary font-bold font-label-md text-[13px] px-4 py-2 rounded-full hover:shadow-sm"
+        <div className="xl:hidden flex items-center gap-2">
+          <a
+            href="https://heykudu.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1 px-3 py-1.5 rounded-xl border border-white/30 text-white font-bold text-[11px]"
           >
-            Contact
-          </Link>
+            Back to App
+          </a>
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 text-on-surface hover:text-primary transition-colors focus:outline-none"
+            className="p-1.5 text-white hover:text-white/80 transition-colors focus:outline-none"
             aria-label="Toggle Menu"
           >
             <span className="material-symbols-outlined text-[24px]">
@@ -91,7 +104,7 @@ export default function Navbar() {
 
       {/* Mobile Links Dropdown */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-surface border-b border-outline-variant/20 py-4 px-margin-mobile flex flex-col gap-4 animate-fade-in">
+        <div className="xl:hidden bg-[#6B00E6] border-b border-white/15 py-4 px-margin-mobile flex flex-col gap-3 animate-fade-in text-white">
           {links.map((link) => {
             const isActive = pathname === link.href;
             return (
@@ -99,23 +112,34 @@ export default function Navbar() {
                 key={link.name}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className={`font-semibold py-2 transition-colors ${
-                  isActive ? "text-primary" : "text-on-surface-variant hover:text-primary"
+                className={`font-semibold py-1.5 text-sm transition-colors ${
+                  isActive ? "text-white font-black underline underline-offset-4" : "text-white/80 hover:text-white"
                 }`}
               >
                 {link.name}
               </Link>
             );
           })}
-          <div className="h-[1px] bg-outline-variant/20 my-2"></div>
-          <a
-            href="https://heykudu.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-center py-3 font-bold text-primary border border-primary/25 rounded-full hover:bg-primary/5 transition-all"
-          >
-            Start
-          </a>
+          <div className="h-[1px] bg-white/15 my-1"></div>
+          <div className="flex gap-2">
+            <a
+              href="https://heykudu.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 text-center py-2 text-xs font-bold text-white border border-white/30 rounded-xl hover:bg-white/10 flex items-center justify-center gap-1"
+            >
+              <span className="material-symbols-outlined text-[14px]">arrow_back</span>
+              Back to App
+            </a>
+            <Link
+              href="/contact"
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex-1 text-center py-2 text-xs font-bold text-white border border-white/30 rounded-xl hover:bg-white/10 flex items-center justify-center gap-1"
+            >
+              <span className="material-symbols-outlined text-[14px]">person</span>
+              Profile
+            </Link>
+          </div>
         </div>
       )}
     </nav>
