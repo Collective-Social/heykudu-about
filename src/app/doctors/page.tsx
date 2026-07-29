@@ -3,14 +3,69 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function DoctorExperience() {
+  const [activeRole, setActiveRole] = useState(0);
+
   const rotationStats = [
     { label: "Check-Ins", progress: 16, current: "38 completed", target: "16%" },
     { label: "Rotation Requirements", progress: 7, current: "Incomplete", target: "7%" },
     { label: "WBAs", progress: 0, current: "0 completed", target: "0%" },
     { label: "EPA", progress: 0, current: "0 completed", target: "0%" },
+  ];
+
+  // Tailored medical roles for academic selector
+  const medicalRoles = [
+    {
+      id: "resident",
+      name: "Junior Doctor / Resident",
+      icon: "school",
+      title: "Streamline your clinical logs, zero admin friction.",
+      desc: "Stay fully focused on patient care. HeyKudu runs in your pocket on the wards, preloading every required skill, lecture, and attendance target for your current rotation block.",
+      bullets: [
+        "Preloaded clinical goals and syllabus guidelines automatically synced.",
+        "One-tap digital logs for AMC, ACGME, and university compliance.",
+        "Instant on-screen QR codes for supervisor sign-offs at the bedside."
+      ]
+    },
+    {
+      id: "registrar",
+      name: "Senior Registrar",
+      icon: "medical_services",
+      title: "Fellowship ready. Lead on-the-floor training.",
+      desc: "Balance senior clinical responsibilities with intensive training goals. HeyKudu helps you effortlessly log surgical volumes and sign off junior peers.",
+      bullets: [
+        "Advanced procedure and complex surgical log tracking with verified hours.",
+        "On-the-go supervisor tools to sign off interns on your team in 2 seconds.",
+        "Instant portfolio exports optimized for Royal Colleges and fellowship boards."
+      ]
+    },
+    {
+      id: "consultant",
+      name: "Consultant / Supervisor",
+      icon: "co_present",
+      title: "Seamless teaching. Zero login credentials required.",
+      desc: "Sign off on competency-based assessments on the fly. No more loading slow university portals or struggling with forgotten passwords in the middle of a ward round.",
+      bullets: [
+        "Supervise and sign off tasks instantly by scanning student screens.",
+        "Clinical Brain AI assists in drafting high-quality feedback notes.",
+        "Track individual student progress history over their term in real time."
+      ]
+    },
+    {
+      id: "director",
+      name: "Director of Training",
+      icon: "query_stats",
+      title: "Institutional visibility. Curriculum standards assured.",
+      desc: "Maintain complete oversight of academic progress. Our educational dashboard aggregates logs to identify learning gaps and support curriculum compliance.",
+      bullets: [
+        "Real-time analytics on competency completion across entire cohort.",
+        "Full cryptographic audit trail to satisfy medical boards and deans.",
+        "Easily update rotations and syllabus requirements with zero downtime."
+      ]
+    }
   ];
 
   // Animation variants
@@ -24,7 +79,7 @@ export default function DoctorExperience() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.15,
+        staggerChildren: 0.12,
       },
     },
   };
@@ -175,6 +230,98 @@ export default function DoctorExperience() {
               </motion.div>
 
             </div>
+          </div>
+        </section>
+
+        {/* Stateful Academic/Medical Profile Selector Section */}
+        <section className="py-24 bg-surface border-b border-outline-variant/10">
+          <div className="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
+            
+            {/* Header */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6 }}
+              className="text-center max-w-2xl mx-auto mb-16 space-y-3"
+            >
+              <span className="px-3.5 py-1.5 rounded-full bg-primary/5 text-primary text-xs font-bold uppercase tracking-wider">
+                Tailored Medical Paths
+              </span>
+              <h2 className="font-extrabold text-3xl md:text-4xl text-on-surface" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
+                Select your profile to begin.
+              </h2>
+              <p className="text-on-surface-variant font-medium text-sm">
+                Explore custom-tailored workflows and capabilities mapped directly to your level of training and administration.
+              </p>
+            </motion.div>
+
+            {/* Selector Grid matching Homepage Aesthetics */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+              {medicalRoles.map((role, idx) => (
+                <button
+                  key={role.id}
+                  onClick={() => setActiveRole(idx)}
+                  className={`p-6 rounded-2xl border transition-all flex flex-col items-center gap-3 text-center group ${
+                    activeRole === idx
+                      ? "bg-primary border-primary text-on-primary shadow-md scale-[1.01]"
+                      : "bg-surface-container-low border-outline-variant/15 text-on-surface hover:border-primary/30"
+                  }`}
+                >
+                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-transform group-hover:scale-105 ${
+                    activeRole === idx ? "bg-on-primary/15 text-white" : "bg-primary/5 text-primary"
+                  }`}>
+                    <span className="material-symbols-outlined text-[22px]">
+                      {role.icon}
+                    </span>
+                  </div>
+                  <span className="font-extrabold text-xs tracking-tight" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
+                    {role.name}
+                  </span>
+                </button>
+              ))}
+            </div>
+
+            {/* Dynamic Content Panel */}
+            <div className="bg-surface-container-low rounded-3xl border border-outline-variant/20 p-8 md:p-12 shadow-sm min-h-[300px]">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeRole}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -12 }}
+                  transition={{ duration: 0.25 }}
+                  className="grid lg:grid-cols-12 gap-12 items-center"
+                >
+                  {/* Left Column Content */}
+                  <div className="lg:col-span-7 space-y-6">
+                    <span className="text-[10px] font-black uppercase text-primary tracking-wider">
+                      Tailored Flow for {medicalRoles[activeRole].name}
+                    </span>
+                    <h3 className="font-extrabold text-2xl md:text-3xl text-on-surface leading-tight" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
+                      {medicalRoles[activeRole].title}
+                    </h3>
+                    <p className="text-on-surface-variant font-medium text-sm leading-relaxed">
+                      {medicalRoles[activeRole].desc}
+                    </p>
+                  </div>
+
+                  {/* Right Column Checklist Card */}
+                  <div className="lg:col-span-5 bg-surface border border-outline-variant/30 rounded-2xl p-6 shadow-md">
+                    <h4 className="font-black text-xs uppercase tracking-wider text-on-surface mb-4">Included Capabilities</h4>
+                    <ul className="space-y-3">
+                      {medicalRoles[activeRole].bullets.map((bullet, idx) => (
+                        <li key={idx} className="flex gap-3 items-start">
+                          <span className="material-symbols-outlined text-green-500 text-[18px] mt-0.5">check_circle</span>
+                          <span className="text-xs font-semibold text-on-surface-variant leading-relaxed">{bullet}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
           </div>
         </section>
 
@@ -366,14 +513,14 @@ export default function DoctorExperience() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.5, delay: 0 }}
-                className="bg-gradient-to-br from-purple-500/10 to-indigo-500/10 border border-purple-500/20 p-6.5 rounded-3xl hover:scale-[1.02] hover:shadow-lg transition-all duration-300 flex flex-col justify-between h-[250px] relative overflow-hidden group"
+                className="bg-white/5 border border-outline-variant/15 p-6.5 rounded-3xl hover:border-primary/40 hover:shadow-lg hover:scale-[1.01] transition-all duration-300 flex flex-col justify-between h-[250px] relative overflow-hidden group shadow-sm"
               >
-                <div className="absolute -right-4 -top-4 w-24 h-24 bg-purple-500/5 rounded-full blur-xl group-hover:scale-150 transition-transform duration-500"></div>
-                <div className="w-12 h-12 rounded-2xl bg-white/80 shadow flex items-center justify-center text-purple-600 relative z-10">
-                  <span className="material-symbols-outlined text-[26px]">vaccines</span>
+                <div className="absolute inset-0 bg-gradient-to-tr from-purple-500/5 to-indigo-500/5 opacity-80 group-hover:opacity-100 transition-opacity"></div>
+                <div className="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-600 relative z-10">
+                  <span className="material-symbols-outlined text-[22px]">vaccines</span>
                 </div>
-                <div className="space-y-2 relative z-10">
-                  <h3 className="font-extrabold text-base text-on-surface leading-snug" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
+                <div className="space-y-2 relative z-10 mt-auto">
+                  <h3 className="font-extrabold text-sm text-on-surface leading-snug" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
                     WBA (Workplace Based Assessment)
                   </h3>
                   <p className="text-on-surface-variant text-[11px] font-medium leading-relaxed">
@@ -388,14 +535,14 @@ export default function DoctorExperience() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.5, delay: 0.1 }}
-                className="bg-gradient-to-br from-blue-500/10 to-indigo-500/10 border border-blue-500/20 p-6.5 rounded-3xl hover:scale-[1.02] hover:shadow-lg transition-all duration-300 flex flex-col justify-between h-[250px] relative overflow-hidden group"
+                className="bg-white/5 border border-outline-variant/15 p-6.5 rounded-3xl hover:border-primary/40 hover:shadow-lg hover:scale-[1.01] transition-all duration-300 flex flex-col justify-between h-[250px] relative overflow-hidden group shadow-sm"
               >
-                <div className="absolute -right-4 -top-4 w-24 h-24 bg-blue-500/5 rounded-full blur-xl group-hover:scale-150 transition-transform duration-500"></div>
-                <div className="w-12 h-12 rounded-2xl bg-white/80 shadow flex items-center justify-center text-blue-600 relative z-10">
-                  <span className="material-symbols-outlined text-[26px]">shield</span>
+                <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/5 to-indigo-500/5 opacity-80 group-hover:opacity-100 transition-opacity"></div>
+                <div className="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-600 relative z-10">
+                  <span className="material-symbols-outlined text-[22px]">shield</span>
                 </div>
-                <div className="space-y-2 relative z-10">
-                  <h3 className="font-extrabold text-base text-on-surface leading-snug" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
+                <div className="space-y-2 relative z-10 mt-auto">
+                  <h3 className="font-extrabold text-sm text-on-surface leading-snug" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
                     EPA (Entrustable Professional Activity)
                   </h3>
                   <p className="text-on-surface-variant text-[11px] font-medium leading-relaxed">
@@ -410,14 +557,14 @@ export default function DoctorExperience() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="bg-gradient-to-br from-fuchsia-500/10 to-pink-500/10 border border-fuchsia-500/20 p-6.5 rounded-3xl hover:scale-[1.02] hover:shadow-lg transition-all duration-300 flex flex-col justify-between h-[250px] relative overflow-hidden group"
+                className="bg-white/5 border border-outline-variant/15 p-6.5 rounded-3xl hover:border-primary/40 hover:shadow-lg hover:scale-[1.01] transition-all duration-300 flex flex-col justify-between h-[250px] relative overflow-hidden group shadow-sm"
               >
-                <div className="absolute -right-4 -top-4 w-24 h-24 bg-fuchsia-500/5 rounded-full blur-xl group-hover:scale-150 transition-transform duration-500"></div>
-                <div className="w-12 h-12 rounded-2xl bg-white/80 shadow flex items-center justify-center text-fuchsia-600 relative z-10">
-                  <span className="material-symbols-outlined text-[26px]">auto_awesome</span>
+                <div className="absolute inset-0 bg-gradient-to-tr from-fuchsia-500/5 to-pink-500/5 opacity-80 group-hover:opacity-100 transition-opacity"></div>
+                <div className="w-10 h-10 rounded-xl bg-fuchsia-500/10 flex items-center justify-center text-fuchsia-600 relative z-10">
+                  <span className="material-symbols-outlined text-[22px]">auto_awesome</span>
                 </div>
-                <div className="space-y-2 relative z-10">
-                  <h3 className="font-extrabold text-base text-on-surface leading-snug" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
+                <div className="space-y-2 relative z-10 mt-auto">
+                  <h3 className="font-extrabold text-sm text-on-surface leading-snug" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
                     Self-Reflection Module
                   </h3>
                   <p className="text-on-surface-variant text-[11px] font-medium leading-relaxed">
@@ -426,34 +573,34 @@ export default function DoctorExperience() {
                 </div>
               </motion.div>
 
-              {/* Card 4: Clinical Brain AI with pulsed Logo animation */}
+              {/* Card 4: Clinical Brain AI (Award Winning Glow, fixed dark blob) */}
               <motion.div 
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.5, delay: 0.3 }}
-                className="bg-gradient-to-br from-emerald-500/10 to-teal-500/10 border-2 border-emerald-500/30 p-6.5 rounded-3xl hover:scale-[1.03] hover:shadow-xl hover:border-emerald-500/50 shadow-md shadow-emerald-500/5 transition-all duration-300 flex flex-col justify-between h-[250px] relative overflow-hidden group"
+                className="bg-white/5 border-2 border-emerald-500/30 p-6.5 rounded-3xl hover:scale-[1.02] hover:shadow-xl hover:border-emerald-500/50 shadow-md shadow-emerald-500/5 transition-all duration-300 flex flex-col justify-between h-[250px] relative overflow-hidden group"
               >
-                {/* Glowing neon halo rings */}
-                <div className="absolute -right-6 -top-6 w-32 h-32 bg-emerald-500/15 rounded-full blur-2xl group-hover:scale-150 transition-all duration-700"></div>
-                <div className="absolute w-24 h-24 rounded-full border border-emerald-500/10 animate-ping duration-[3000ms] -right-4 -top-4 pointer-events-none"></div>
+                {/* Clean, premium neon teal gradient background */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/5 via-teal-500/5 to-transparent"></div>
+                <div className="absolute -right-6 -top-6 w-32 h-32 bg-emerald-500/10 rounded-full blur-2xl group-hover:scale-150 transition-all duration-700"></div>
 
-                {/* Animated Logo Container */}
-                <div className="w-14 h-14 rounded-2xl bg-neutral-900 shadow-md flex items-center justify-center p-2 relative z-10 border border-emerald-500/20 group-hover:border-emerald-500/50 transition-all">
-                  <div className="absolute inset-0 bg-emerald-500/10 rounded-2xl animate-pulse"></div>
+                {/* Highly Polished Logo badge (Zero solid black blob, elegant white-glow border) */}
+                <div className="w-12 h-12 rounded-xl bg-neutral-900 border border-emerald-500/40 flex items-center justify-center p-2.5 relative z-10 shadow-[0_0_15px_rgba(16,185,129,0.2)] group-hover:shadow-[0_0_20px_rgba(16,185,129,0.4)] group-hover:border-emerald-500/80 transition-all">
+                  <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/10 to-teal-500/10 rounded-xl animate-pulse"></div>
                   <img 
-                    src="/images/logo.png" 
+                    src="/images/logo-white.png" 
                     alt="Kudu" 
                     className="w-full h-full object-contain animate-pulse z-10"
                   />
                 </div>
                 
-                <div className="space-y-1.5 relative z-10">
-                  <div className="inline-flex items-center gap-1 bg-emerald-500/20 text-emerald-700 px-2 py-0.5 rounded-full text-[9px] font-black tracking-wider uppercase animate-pulse">
+                <div className="space-y-1.5 relative z-10 mt-auto">
+                  <div className="inline-flex items-center gap-1.5 bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 px-2 py-0.5 rounded-full text-[9px] font-black tracking-wider uppercase animate-pulse">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
                     Voice Active
                   </div>
-                  <h3 className="font-extrabold text-base text-on-surface leading-snug" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
+                  <h3 className="font-extrabold text-sm text-on-surface leading-snug" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
                     Clinical Brain AI Assistant
                   </h3>
                   <p className="text-on-surface-variant text-[11px] font-medium leading-relaxed">
