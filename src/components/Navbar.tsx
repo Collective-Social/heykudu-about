@@ -60,28 +60,29 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Right Side: Platform Actions matching screenshot */}
-        <div className="hidden md:flex items-center gap-2.5 shrink-0">
+        {/* Right Side: Single "Go to App" Action Button */}
+        <div className="hidden md:flex items-center shrink-0">
           <a
             href="https://heykudu.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/40 bg-white/10 text-white font-bold text-xs hover:bg-white/20 transition-all shadow-sm active:scale-95"
+            className="flex items-center gap-2 px-5 py-2 rounded-full border border-white/40 bg-white/10 text-white font-extrabold text-xs hover:bg-white/20 transition-all shadow-sm active:scale-95"
           >
-            <span className="material-symbols-outlined text-[16px]">arrow_back</span>
-            Back to App
+            Go to App
+            <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
           </a>
-          <Link
-            href="/contact"
-            className="flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/40 bg-white/10 text-white font-bold text-xs hover:bg-white/20 transition-all shadow-sm active:scale-95"
-          >
-            <span className="material-symbols-outlined text-[16px]">person</span>
-            Profile
-          </Link>
         </div>
 
         {/* Mobile menu button */}
         <div className="md:hidden flex items-center gap-2">
+          <a
+            href="https://heykudu.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1 px-3.5 py-1.5 rounded-full border border-white/40 bg-white/10 text-white font-bold text-[11px]"
+          >
+            Go to App
+          </a>
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="p-1.5 text-white hover:text-white/80 transition-colors focus:outline-none"
@@ -113,25 +114,15 @@ export default function Navbar() {
             );
           })}
           <div className="h-[1px] bg-white/15 my-1"></div>
-          <div className="flex gap-2">
-            <a
-              href="https://heykudu.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex-1 text-center py-2 text-xs font-bold text-white border border-white/30 rounded-full hover:bg-white/10 flex items-center justify-center gap-1.5"
-            >
-              <span className="material-symbols-outlined text-[15px]">arrow_back</span>
-              Back to App
-            </a>
-            <Link
-              href="/contact"
-              onClick={() => setMobileMenuOpen(false)}
-              className="flex-1 text-center py-2 text-xs font-bold text-white border border-white/30 rounded-full hover:bg-white/10 flex items-center justify-center gap-1.5"
-            >
-              <span className="material-symbols-outlined text-[15px]">person</span>
-              Profile
-            </Link>
-          </div>
+          <a
+            href="https://heykudu.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full text-center py-2.5 text-xs font-extrabold text-white border border-white/40 bg-white/10 rounded-full hover:bg-white/20 flex items-center justify-center gap-1.5"
+          >
+            Go to App
+            <span className="material-symbols-outlined text-[15px]">arrow_forward</span>
+          </a>
         </div>
       )}
     </nav>
