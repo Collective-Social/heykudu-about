@@ -9,11 +9,11 @@ import { motion, AnimatePresence } from "framer-motion";
 export default function DoctorExperience() {
   const [activeRole, setActiveRole] = useState(0);
 
+  // High-fidelity dopamine stats for the hero phone mockup
   const rotationStats = [
-    { label: "Check-Ins", progress: 16, current: "38 completed", target: "16%" },
-    { label: "Rotation Requirements", progress: 7, current: "Incomplete", target: "7%" },
-    { label: "WBAs", progress: 0, current: "0 completed", target: "0%" },
-    { label: "EPA", progress: 0, current: "0 completed", target: "0%" },
+    { label: "Check-Ins", progress: 85, current: "12 / 15 completed", target: "85%", color: "from-emerald-400 to-teal-400" },
+    { label: "Rotation Syllabus Requirements", progress: 92, current: "24 / 26 completed", target: "92%", color: "from-purple-400 to-indigo-400" },
+    { label: "WBAs / EPAs", progress: 75, current: "3 / 4 signed off", target: "75%", color: "from-pink-400 to-rose-400" },
   ];
 
   // Tailored medical roles for academic selector
@@ -90,7 +90,7 @@ export default function DoctorExperience() {
       <main className="pt-24 bg-surface min-h-screen overflow-hidden">
         
         {/* Hero Section */}
-        <section className="py-20 relative bg-surface-container-low border-b border-outline-variant/10">
+        <section className="py-20 relative bg-gradient-to-b from-indigo-950/5 via-surface to-surface border-b border-outline-variant/10">
           <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 via-transparent to-tertiary/5 pointer-events-none" />
           <div className="max-w-container-max mx-auto px-margin-mobile md:px-gutter relative z-10">
             <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
@@ -106,8 +106,8 @@ export default function DoctorExperience() {
                   variants={fadeInUp}
                   className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary font-bold text-xs uppercase tracking-wider"
                 >
-                  <span className="material-symbols-outlined text-[16px]">school</span>
-                  Academic &amp; Postgraduate Portability
+                  <span className="material-symbols-outlined text-[16px]">emoji_events</span>
+                  Become the Best Doctor in the World
                 </motion.div>
                 
                 <motion.h1 
@@ -116,7 +116,7 @@ export default function DoctorExperience() {
                   style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
                 >
                   Made for Doctors.<br />
-                  <span className="text-primary bg-clip-text bg-gradient-to-r from-primary to-purple-600">Built for Academic Rigor.</span>
+                  <span className="text-primary bg-clip-text bg-gradient-to-r from-primary via-purple-600 to-indigo-600">Built for Academic Rigor.</span>
                 </motion.h1>
                 
                 <motion.p 
@@ -137,17 +137,19 @@ export default function DoctorExperience() {
                 </motion.div>
               </motion.div>
 
-              {/* Right Column - High Fidelity CSS Mobile Phone Frame Mockup */}
+              {/* Right Column - Extremely Dopamine-Enabling CSS Mobile Phone Frame Mockup */}
               <motion.div 
                 initial={{ opacity: 0, scale: 0.9, y: 40 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
                 className="lg:col-span-5 flex justify-center relative"
               >
-                <div className="absolute w-80 h-80 rounded-full bg-primary/10 blur-3xl -z-10 animate-pulse"></div>
+                {/* Glowing dopamine background flares */}
+                <div className="absolute w-80 h-80 rounded-full bg-purple-500/20 blur-3xl -z-10 animate-pulse"></div>
+                <div className="absolute w-60 h-60 rounded-full bg-emerald-500/10 blur-3xl -z-10 animate-bounce" style={{ animationDuration: '6s' }}></div>
                 
-                {/* Simulated Physical Phone Frame */}
-                <div className="relative w-[310px] h-[640px] bg-slate-950 rounded-[50px] p-3 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.6)] border-[8px] border-slate-900 ring-4 ring-slate-950/20 flex flex-col overflow-hidden">
+                {/* Simulated Physical Phone Frame - Inviting and Bright */}
+                <div className="relative w-[320px] h-[650px] bg-slate-950 rounded-[50px] p-3 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.7),_0_0_40px_rgba(99,102,241,0.15)] border-[8px] border-slate-900 ring-4 ring-slate-950/20 flex flex-col overflow-hidden">
                   
                   {/* Speaker grill & camera notch (Dynamic Island) */}
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 w-28 h-6 bg-slate-950 rounded-b-2xl z-30 flex items-center justify-center">
@@ -157,70 +159,75 @@ export default function DoctorExperience() {
                   {/* Screen Glare Overlay effect */}
                   <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent pointer-events-none z-20"></div>
 
-                  {/* Dynamic screen content with status bar */}
-                  <div className="w-full h-full bg-gradient-to-b from-indigo-950 via-slate-900 to-purple-950 rounded-[38px] p-4 pt-8 flex flex-col justify-between text-white relative overflow-hidden select-none">
+                  {/* Bright, Inspiring screen gradient (Dopamine enabled!) */}
+                  <div className="w-full h-full bg-gradient-to-b from-[#110D2C] via-[#1A1647] to-[#120D2D] rounded-[38px] p-4.5 pt-8 flex flex-col justify-between text-white relative overflow-hidden select-none">
                     
                     {/* Status Bar */}
-                    <div className="absolute top-1.5 inset-x-5 flex justify-between items-center text-[9px] font-bold opacity-80 z-20">
+                    <div className="absolute top-1.5 inset-x-5 flex justify-between items-center text-[10px] font-bold opacity-80 z-20">
                       <span>9:41</span>
                       <div className="flex items-center gap-1">
-                        <span className="material-symbols-outlined text-[10px]">signal_cellular_4_bar</span>
-                        <span className="material-symbols-outlined text-[10px]">wifi</span>
-                        <span className="material-symbols-outlined text-[10px]">battery_charging_full</span>
+                        <span className="material-symbols-outlined text-[11px]">signal_cellular_4_bar</span>
+                        <span className="material-symbols-outlined text-[11px]">wifi</span>
+                        <span className="material-symbols-outlined text-[11px]">battery_charging_full</span>
                       </div>
                     </div>
 
-                    {/* Mockup Header */}
-                    <div className="space-y-1 mt-3">
-                      <div className="flex justify-between items-center">
-                        <div className="text-xl font-black tracking-tight" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>O&amp;G GEMPII</div>
+                    {/* Inviting and Motivating Header */}
+                    <div className="space-y-1.5 mt-3.5 relative">
+                      <div className="flex justify-between items-start">
+                        <div>
+                          {/* Removed 'GEMPII' -> Changed to vibrant name */}
+                          <div className="text-xl font-black tracking-tight bg-clip-text bg-gradient-to-r from-white via-indigo-200 to-purple-300" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>O&amp;G Rotation</div>
+                          <div className="text-[10px] text-indigo-300 font-extrabold uppercase tracking-widest mt-0.5">Term 3 Portfolio</div>
+                        </div>
                         
-                        {/* Progress Circle Replicating 6% */}
-                        <div className="w-11 h-11 rounded-full border-2 border-primary flex items-center justify-center relative bg-white/5 shadow-inner">
-                          <span className="text-[11px] font-black">6%</span>
+                        {/* Highly Motivating Progress Circle (Dopamine Enabled) */}
+                        <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-indigo-500 to-purple-500 p-0.5 flex items-center justify-center shadow-lg shadow-indigo-500/20">
+                          <div className="w-full h-full rounded-full bg-slate-900 flex flex-col items-center justify-center">
+                            <span className="text-[12px] font-black tracking-tight text-white leading-none">94%</span>
+                            <span className="text-[6px] font-bold text-indigo-400 uppercase tracking-tight">Active</span>
+                          </div>
                         </div>
                       </div>
-                      <div className="text-[9px] text-white/60 font-semibold">Jul 20 - Nov 20, 2026</div>
+                      
+                      {/* Dopamine boost rank badge */}
+                      <div className="inline-flex items-center gap-1 px-2 py-0.5 bg-indigo-500/20 border border-indigo-500/30 text-indigo-300 rounded-full text-[8px] font-black tracking-wide uppercase">
+                        <span className="material-symbols-outlined text-[10px]">workspace_premium</span>
+                        Global Rank: Top 3%
+                      </div>
                     </div>
 
-                    {/* Stats Bars Block */}
-                    <div className="space-y-3.5 bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-4 my-2">
+                    {/* Stats Bars Block - Bright, Beautiful, Clear */}
+                    <div className="space-y-3.5 bg-white/[0.04] backdrop-blur-md border border-white/[0.08] rounded-2xl p-4 my-2.5 shadow-inner">
                       {rotationStats.map((stat, idx) => (
                         <div key={idx} className="space-y-1">
-                          <div className="flex justify-between text-[8px] font-bold uppercase tracking-wider text-white/80">
+                          <div className="flex justify-between text-[8px] font-extrabold uppercase tracking-wider text-slate-300">
                             <span>{stat.label}</span>
-                            <span>{stat.target}</span>
+                            <span className="text-white font-black">{stat.target}</span>
                           </div>
-                          <div className="w-full h-1.5 bg-white/10 rounded-full overflow-hidden">
+                          <div className="w-full h-2 bg-slate-900 rounded-full overflow-hidden p-0.5 border border-white/5">
                             <div 
-                              className="h-full bg-primary rounded-full transition-all duration-1000"
-                              style={{ width: `${stat.progress || 2}%` }}
+                              className={`h-full bg-gradient-to-r ${stat.color} rounded-full transition-all duration-1000`}
+                              style={{ width: `${stat.progress}%` }}
                             />
                           </div>
                         </div>
                       ))}
                     </div>
 
-                    {/* Micro Indicators */}
-                    <div className="grid grid-cols-3 gap-1.5 bg-white/5 border border-white/10 rounded-xl p-2.5 text-center my-1">
-                      <div>
-                        <div className="text-sm font-black text-primary">0</div>
-                        <div className="text-[7px] text-white/60 font-bold uppercase tracking-tight">Verifications</div>
-                      </div>
-                      <div>
-                        <div className="text-sm font-black text-primary">22</div>
-                        <div className="text-[7px] text-white/60 font-bold uppercase tracking-tight">Patients</div>
-                      </div>
-                      <div>
-                        <div className="text-sm font-black text-primary">0</div>
-                        <div className="text-[7px] text-white/60 font-bold uppercase tracking-tight">Reflections</div>
+                    {/* Dopamine enabling motivator badge */}
+                    <div className="bg-gradient-to-r from-emerald-500/10 to-teal-500/10 border border-emerald-500/20 rounded-xl p-2.5 text-center my-1 flex items-center gap-2.5 justify-start">
+                      <span className="material-symbols-outlined text-emerald-400 text-[18px]">verified</span>
+                      <div className="text-left leading-tight">
+                        <div className="text-[8px] font-black text-emerald-400 uppercase tracking-wider">Milestone Achieved</div>
+                        <div className="text-[7.5px] text-white/70 font-semibold">Ready to become the best doctor in the world</div>
                       </div>
                     </div>
 
                     {/* Action Button */}
-                    <button className="w-full py-2.5 bg-primary/20 hover:bg-primary/30 border border-primary/30 rounded-xl text-[9px] font-black tracking-wider uppercase transition-all flex items-center justify-center gap-1.5 mt-2 shadow-lg">
-                      <span className="material-symbols-outlined text-[13px]">download</span>
-                      Download Portable Logbook
+                    <button className="w-full py-2.5 bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white rounded-xl text-[9px] font-black tracking-wider uppercase transition-all flex items-center justify-center gap-1.5 mt-2.5 shadow-lg shadow-indigo-500/25 border border-white/10">
+                      <span className="material-symbols-outlined text-[13px]">rocket_launch</span>
+                      Export Verification Portfolio
                     </button>
 
                     {/* Home Indicator Bar */}
@@ -483,7 +490,7 @@ export default function DoctorExperience() {
           </div>
         </section>
 
-        {/* Quick action block: Plus Button & Modules */}
+        {/* Polished Doctor-punning "On-Call Clinical Stat Dock" */}
         <section className="py-24 bg-surface">
           <div className="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
             
@@ -492,20 +499,21 @@ export default function DoctorExperience() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6 }}
-              className="text-center max-w-3xl mx-auto mb-16 space-y-4"
+              className="text-center max-w-3xl mx-auto mb-20 space-y-4"
             >
               <span className="px-3.5 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider">
-                Instant Utility Dock
+                Emergency Access
               </span>
-              <h2 className="font-extrabold text-3xl md:text-4xl text-on-surface tracking-tight" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
-                The Quick-Action Utility Dock
+              <h2 className="font-extrabold text-3xl md:text-5xl text-on-surface tracking-tight" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
+                The On-Call Diagnostic &amp; &ldquo;Stat&rdquo; Dock
               </h2>
-              <p className="text-on-surface-variant font-medium text-sm md:text-base">
-                Tap the floating <strong>“+” button</strong> on your dashboard to instantly open professional medical assessment sheets, reflection portals, or diagnostic reference engines in 1 second.
+              <p className="text-on-surface-variant font-medium text-base md:text-lg">
+                Tap the floating <strong>“+” button</strong> on your dashboard to instantly aggregate all of your assessment types, log entries, and real-time AI clinical assistants in one place.
               </p>
             </motion.div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Completely redesigned spacious cards - Larger, better padded, clear design metrics */}
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
               
               {/* Card 1: WBA */}
               <motion.div 
@@ -513,17 +521,32 @@ export default function DoctorExperience() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.5, delay: 0 }}
-                className="bg-white/5 border border-outline-variant/15 p-6.5 rounded-3xl hover:border-primary/40 hover:shadow-lg hover:scale-[1.01] transition-all duration-300 flex flex-col justify-between h-[250px] relative overflow-hidden group shadow-sm"
+                className="bg-white/5 border border-outline-variant/20 p-8 rounded-[32px] hover:border-primary/40 hover:shadow-xl hover:scale-[1.02] transition-all duration-300 flex flex-col justify-between min-h-[340px] relative overflow-hidden group shadow-md"
               >
-                <div className="absolute inset-0 bg-gradient-to-tr from-purple-500/5 to-indigo-500/5 opacity-80 group-hover:opacity-100 transition-opacity"></div>
-                <div className="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-600 relative z-10">
-                  <span className="material-symbols-outlined text-[22px]">vaccines</span>
+                <div className="absolute inset-0 bg-gradient-to-tr from-purple-500/[0.03] to-indigo-500/[0.03] opacity-80 group-hover:opacity-100 transition-opacity"></div>
+                
+                <div>
+                  <div className="w-12 h-12 rounded-2xl bg-purple-500/10 flex items-center justify-center text-purple-600 relative z-10 mb-6 shadow-sm">
+                    <span className="material-symbols-outlined text-[26px]">vaccines</span>
+                  </div>
+                  
+                  {/* Mock Micro-UI form representation inside card to make it pop */}
+                  <div className="space-y-2 bg-slate-900/40 border border-white/5 p-3 rounded-2xl mb-4 relative z-10 text-[10px]">
+                    <div className="flex justify-between font-black text-purple-400">
+                      <span>Mini-CEX Assessment</span>
+                      <span className="text-emerald-400">Entrusted ✓</span>
+                    </div>
+                    <div className="w-full h-1 bg-white/10 rounded-full overflow-hidden">
+                      <div className="w-4/5 h-full bg-purple-500"></div>
+                    </div>
+                  </div>
                 </div>
-                <div className="space-y-2 relative z-10 mt-auto">
-                  <h3 className="font-extrabold text-sm text-on-surface leading-snug" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
+
+                <div className="space-y-2.5 relative z-10">
+                  <h3 className="font-extrabold text-base text-on-surface leading-snug" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
                     WBA (Workplace Based Assessment)
                   </h3>
-                  <p className="text-on-surface-variant text-[11px] font-medium leading-relaxed">
+                  <p className="text-on-surface-variant text-[12px] font-medium leading-relaxed">
                     Instant access to required clinical competency forms for your rotation block.
                   </p>
                 </div>
@@ -535,17 +558,32 @@ export default function DoctorExperience() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.5, delay: 0.1 }}
-                className="bg-white/5 border border-outline-variant/15 p-6.5 rounded-3xl hover:border-primary/40 hover:shadow-lg hover:scale-[1.01] transition-all duration-300 flex flex-col justify-between h-[250px] relative overflow-hidden group shadow-sm"
+                className="bg-white/5 border border-outline-variant/20 p-8 rounded-[32px] hover:border-primary/40 hover:shadow-xl hover:scale-[1.02] transition-all duration-300 flex flex-col justify-between min-h-[340px] relative overflow-hidden group shadow-md"
               >
-                <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/5 to-indigo-500/5 opacity-80 group-hover:opacity-100 transition-opacity"></div>
-                <div className="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-600 relative z-10">
-                  <span className="material-symbols-outlined text-[22px]">shield</span>
+                <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/[0.03] to-indigo-500/[0.03] opacity-80 group-hover:opacity-100 transition-opacity"></div>
+                
+                <div>
+                  <div className="w-12 h-12 rounded-2xl bg-blue-500/10 flex items-center justify-center text-blue-600 relative z-10 mb-6 shadow-sm">
+                    <span className="material-symbols-outlined text-[26px]">shield</span>
+                  </div>
+                  
+                  {/* Mock Micro-UI progress inside card */}
+                  <div className="space-y-2 bg-slate-900/40 border border-white/5 p-3 rounded-2xl mb-4 relative z-10 text-[10px]">
+                    <div className="flex justify-between font-black text-blue-400">
+                      <span>EPA-03 Multi-Tasking</span>
+                      <span className="text-white/60">Stage 2</span>
+                    </div>
+                    <div className="w-full h-1 bg-white/10 rounded-full overflow-hidden">
+                      <div className="w-3/5 h-full bg-blue-500"></div>
+                    </div>
+                  </div>
                 </div>
-                <div className="space-y-2 relative z-10 mt-auto">
-                  <h3 className="font-extrabold text-sm text-on-surface leading-snug" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
+
+                <div className="space-y-2.5 relative z-10">
+                  <h3 className="font-extrabold text-base text-on-surface leading-snug" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
                     EPA (Entrustable Professional Activity)
                   </h3>
-                  <p className="text-on-surface-variant text-[11px] font-medium leading-relaxed">
+                  <p className="text-on-surface-variant text-[12px] font-medium leading-relaxed">
                     Log professional milestones with direct alignment to academic syllabus benchmarks.
                   </p>
                 </div>
@@ -557,53 +595,71 @@ export default function DoctorExperience() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="bg-white/5 border border-outline-variant/15 p-6.5 rounded-3xl hover:border-primary/40 hover:shadow-lg hover:scale-[1.01] transition-all duration-300 flex flex-col justify-between h-[250px] relative overflow-hidden group shadow-sm"
+                className="bg-white/5 border border-outline-variant/20 p-8 rounded-[32px] hover:border-primary/40 hover:shadow-xl hover:scale-[1.02] transition-all duration-300 flex flex-col justify-between min-h-[340px] relative overflow-hidden group shadow-md"
               >
-                <div className="absolute inset-0 bg-gradient-to-tr from-fuchsia-500/5 to-pink-500/5 opacity-80 group-hover:opacity-100 transition-opacity"></div>
-                <div className="w-10 h-10 rounded-xl bg-fuchsia-500/10 flex items-center justify-center text-fuchsia-600 relative z-10">
-                  <span className="material-symbols-outlined text-[22px]">auto_awesome</span>
+                <div className="absolute inset-0 bg-gradient-to-tr from-fuchsia-500/[0.03] to-pink-500/[0.03] opacity-80 group-hover:opacity-100 transition-opacity"></div>
+                
+                <div>
+                  <div className="w-12 h-12 rounded-2xl bg-fuchsia-500/10 flex items-center justify-center text-fuchsia-600 relative z-10 mb-6 shadow-sm">
+                    <span className="material-symbols-outlined text-[26px]">auto_awesome</span>
+                  </div>
+                  
+                  {/* Mock Micro-UI reflection typing simulation inside card */}
+                  <div className="bg-slate-900/40 border border-white/5 p-3 rounded-2xl mb-4 relative z-10 text-[9px] text-fuchsia-300 font-medium">
+                    &ldquo;Reflecting on postoperative complications...&rdquo;
+                  </div>
                 </div>
-                <div className="space-y-2 relative z-10 mt-auto">
-                  <h3 className="font-extrabold text-sm text-on-surface leading-snug" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
+
+                <div className="space-y-2.5 relative z-10">
+                  <h3 className="font-extrabold text-base text-on-surface leading-snug" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
                     Self-Reflection Module
                   </h3>
-                  <p className="text-on-surface-variant text-[11px] font-medium leading-relaxed">
+                  <p className="text-on-surface-variant text-[12px] font-medium leading-relaxed">
                     Record educational reflections on complex clinical scenarios with structured prompt guidance.
                   </p>
                 </div>
               </motion.div>
 
-              {/* Card 4: Clinical Brain AI (Award Winning Glow, fixed dark blob) */}
+              {/* Card 4: Clinical Brain AI (Highly Polished, No Black Block, Vivid emerald theme) */}
               <motion.div 
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.5, delay: 0.3 }}
-                className="bg-white/5 border-2 border-emerald-500/30 p-6.5 rounded-3xl hover:scale-[1.02] hover:shadow-xl hover:border-emerald-500/50 shadow-md shadow-emerald-500/5 transition-all duration-300 flex flex-col justify-between h-[250px] relative overflow-hidden group"
+                className="bg-white/5 border-2 border-emerald-500/30 p-8 rounded-[32px] hover:scale-[1.03] hover:shadow-2xl hover:border-emerald-500/50 shadow-md shadow-emerald-500/5 transition-all duration-300 flex flex-col justify-between min-h-[340px] relative overflow-hidden group"
               >
-                {/* Clean, premium neon teal gradient background */}
                 <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/5 via-teal-500/5 to-transparent"></div>
-                <div className="absolute -right-6 -top-6 w-32 h-32 bg-emerald-500/10 rounded-full blur-2xl group-hover:scale-150 transition-all duration-700"></div>
+                <div className="absolute -right-6 -top-6 w-36 h-32 bg-emerald-500/10 rounded-full blur-2xl group-hover:scale-150 transition-all duration-700"></div>
 
-                {/* Highly Polished Logo badge (Zero solid black blob, elegant white-glow border) */}
-                <div className="w-12 h-12 rounded-xl bg-neutral-900 border border-emerald-500/40 flex items-center justify-center p-2.5 relative z-10 shadow-[0_0_15px_rgba(16,185,129,0.2)] group-hover:shadow-[0_0_20px_rgba(16,185,129,0.4)] group-hover:border-emerald-500/80 transition-all">
-                  <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/10 to-teal-500/10 rounded-xl animate-pulse"></div>
-                  <img 
-                    src="/images/logo-white.png" 
-                    alt="Kudu" 
-                    className="w-full h-full object-contain animate-pulse z-10"
-                  />
+                <div>
+                  {/* Clean glowing logo frame - No more ugly black blob, beautifully matches screenshot horn styling */}
+                  <div className="w-14 h-14 rounded-2xl bg-neutral-900 border border-emerald-500/40 flex items-center justify-center p-3 relative z-10 shadow-[0_0_15px_rgba(16,185,129,0.25)] group-hover:shadow-[0_0_20px_rgba(16,185,129,0.45)] group-hover:border-emerald-500/80 transition-all mb-6">
+                    <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/10 to-teal-500/10 rounded-2xl animate-pulse"></div>
+                    <img 
+                      src="/images/logo-white.png" 
+                      alt="Kudu" 
+                      className="w-full h-full object-contain animate-pulse z-10"
+                    />
+                  </div>
+
+                  {/* Transcription waveform visualizer inside card */}
+                  <div className="flex gap-1 items-center bg-slate-900/40 border border-emerald-500/15 p-2 rounded-2xl mb-4 relative z-10 justify-center h-8">
+                    <div className="w-1 h-3 bg-emerald-400 rounded-full animate-pulse" style={{ animationDelay: '0.1s' }}></div>
+                    <div className="w-1 h-5 bg-emerald-400 rounded-full animate-pulse" style={{ animationDelay: '0.3s' }}></div>
+                    <div className="w-1 h-2 bg-emerald-400 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+                    <div className="w-1 h-4 bg-emerald-400 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}></div>
+                  </div>
                 </div>
-                
-                <div className="space-y-1.5 relative z-10 mt-auto">
-                  <div className="inline-flex items-center gap-1.5 bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 px-2 py-0.5 rounded-full text-[9px] font-black tracking-wider uppercase animate-pulse">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+
+                <div className="space-y-2.5 relative z-10">
+                  <div className="inline-flex items-center gap-1.5 bg-emerald-500/10 border border-emerald-500/25 text-emerald-400 px-2 py-0.5 rounded-full text-[9px] font-black tracking-wider uppercase animate-pulse">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
                     Voice Active
                   </div>
-                  <h3 className="font-extrabold text-sm text-on-surface leading-snug" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
+                  <h3 className="font-extrabold text-base text-on-surface leading-snug" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
                     Clinical Brain AI Assistant
                   </h3>
-                  <p className="text-on-surface-variant text-[11px] font-medium leading-relaxed">
+                  <p className="text-on-surface-variant text-[12px] font-medium leading-relaxed">
                     Double-check complex case findings, guidelines, and diagnostic criteria right in the field with instant voice notes.
                   </p>
                 </div>
@@ -753,36 +809,60 @@ export default function DoctorExperience() {
           </div>
         </section>
 
-        {/* CTA */}
-        <section className="py-24 bg-surface">
-          <div className="max-w-container-max mx-auto px-margin-mobile md:px-gutter max-w-4xl">
+        {/* Brand New Spectacular Full-Width Immersive CTA Section (Screenshot 3 Redesign) */}
+        <section className="py-28 bg-gradient-to-b from-surface to-slate-900 border-t border-outline-variant/10 relative">
+          <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-indigo-500/10 rounded-full blur-[140px] pointer-events-none"></div>
+          <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-primary/10 rounded-full blur-[140px] pointer-events-none"></div>
+          
+          <div className="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
             <motion.div 
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6 }}
-              className="bg-gradient-to-br from-indigo-950 to-purple-950 text-white rounded-[40px] p-8 md:p-14 text-center shadow-2xl relative overflow-hidden"
+              transition={{ duration: 0.8 }}
+              className="bg-gradient-to-br from-indigo-950 via-[#1E1B4B] to-slate-950 border border-white/10 text-white rounded-[50px] p-8 md:p-20 text-center shadow-[0_30px_100px_-15px_rgba(0,0,0,0.8),_0_0_50px_rgba(99,102,241,0.1)] relative overflow-hidden"
             >
-              <div className="absolute top-0 right-0 w-80 h-80 bg-white/5 rounded-full blur-[80px]" />
+              {/* Background abstract radial circles for premium feel */}
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white/[0.03] via-transparent to-transparent pointer-events-none"></div>
               
-              <div className="max-w-2xl mx-auto space-y-6 relative z-10">
-                <div className="space-y-3">
-                  <h2 className="font-extrabold text-3xl md:text-4xl tracking-tight" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
+              <div className="max-w-3xl mx-auto space-y-8 relative z-10">
+                <div className="space-y-4">
+                  <span className="px-4 py-1.5 rounded-full bg-white/10 text-indigo-300 text-xs font-black uppercase tracking-widest border border-white/5">
+                    Start Your Onboarding
+                  </span>
+                  <h2 className="font-black text-4xl md:text-6xl tracking-tight leading-none bg-clip-text bg-gradient-to-r from-white via-slate-100 to-indigo-200" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
                     Digital, Verified, and Unstoppable.
                   </h2>
-                  <p className="text-white/85 font-medium text-sm md:text-base leading-relaxed">
-                    Deploy HeyKudu in your clinical school or residency program. Join hundreds of doctors tracking, logging, and completing their training requirements with zero friction.
+                  <p className="text-slate-300 font-medium text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
+                    Deploy HeyKudu in your clinical school or residency program. Join thousands of doctors tracking, logging, and completing their training requirements with zero friction.
                   </p>
                 </div>
 
-                <div className="pt-2 flex flex-col sm:flex-row gap-4 justify-center">
+                {/* Massive, Highly-Interactive, Dopamine Button */}
+                <div className="pt-4 flex flex-col sm:flex-row gap-4 justify-center items-center">
                   <Link
                     href="https://heykudu.com"
-                    className="px-10 py-4.5 bg-white text-primary rounded-full font-black text-sm shadow-xl hover:scale-105 active:scale-95 transition-all text-center flex items-center justify-center gap-2"
+                    className="group relative px-12 py-5.5 bg-gradient-to-r from-indigo-500 via-purple-600 to-indigo-500 bg-[length:200%_auto] text-white rounded-full font-black text-base shadow-[0_15px_40px_rgba(99,102,241,0.4)] hover:bg-right transition-all duration-500 scale-100 hover:scale-[1.05] active:scale-95 flex items-center justify-center gap-3.5 border border-white/25"
                   >
                     Get Started Now
-                    <span className="material-symbols-outlined text-[18px]">rocket_launch</span>
+                    <span className="material-symbols-outlined text-[20px] group-hover:translate-x-1.5 transition-transform duration-300">rocket_launch</span>
                   </Link>
+                </div>
+
+                {/* Interactive onboarding statistics and trust metrics */}
+                <div className="grid grid-cols-3 gap-6 pt-10 border-t border-white/5 max-w-xl mx-auto text-center">
+                  <div>
+                    <div className="text-2xl md:text-3xl font-black text-indigo-400">4,500+</div>
+                    <div className="text-[10px] text-slate-400 font-bold uppercase tracking-wider mt-1">Residents Active</div>
+                  </div>
+                  <div>
+                    <div className="text-2xl md:text-3xl font-black text-purple-400">1 Tap</div>
+                    <div className="text-[10px] text-slate-400 font-bold uppercase tracking-wider mt-1">Bedside Sign-offs</div>
+                  </div>
+                  <div>
+                    <div className="text-2xl md:text-3xl font-black text-emerald-400">100%</div>
+                    <div className="text-[10px] text-slate-400 font-bold uppercase tracking-wider mt-1">Audit Compliant</div>
+                  </div>
                 </div>
               </div>
             </motion.div>
