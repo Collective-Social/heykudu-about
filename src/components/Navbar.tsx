@@ -40,7 +40,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Links */}
-          <div className="hidden xl:flex items-center gap-6">
+          <div className="hidden lg:flex items-center gap-6">
             {links.map((link) => {
               const isActive = pathname === link.href;
               return (
@@ -66,30 +66,22 @@ export default function Navbar() {
             href="https://heykudu.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl border border-white/30 text-white font-extrabold text-xs hover:bg-white/15 transition-all shadow-sm active:scale-95"
+            className="flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/40 bg-white/10 text-white font-bold text-xs hover:bg-white/20 transition-all shadow-sm active:scale-95"
           >
-            <span className="material-symbols-outlined text-[15px]">arrow_back</span>
+            <span className="material-symbols-outlined text-[16px]">arrow_back</span>
             Back to App
           </a>
           <Link
             href="/contact"
-            className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl border border-white/30 text-white font-extrabold text-xs hover:bg-white/15 transition-all shadow-sm active:scale-95"
+            className="flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/40 bg-white/10 text-white font-bold text-xs hover:bg-white/20 transition-all shadow-sm active:scale-95"
           >
-            <span className="material-symbols-outlined text-[15px]">person</span>
+            <span className="material-symbols-outlined text-[16px]">person</span>
             Profile
           </Link>
         </div>
 
         {/* Mobile menu button */}
-        <div className="xl:hidden flex items-center gap-2">
-          <a
-            href="https://heykudu.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1 px-3 py-1.5 rounded-xl border border-white/30 text-white font-bold text-[11px]"
-          >
-            Back to App
-          </a>
+        <div className="md:hidden flex items-center gap-2">
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="p-1.5 text-white hover:text-white/80 transition-colors focus:outline-none"
@@ -104,7 +96,7 @@ export default function Navbar() {
 
       {/* Mobile Links Dropdown */}
       {mobileMenuOpen && (
-        <div className="xl:hidden bg-[#6B00E6] border-b border-white/15 py-4 px-margin-mobile flex flex-col gap-3 animate-fade-in text-white">
+        <div className="lg:hidden bg-[#6B00E6] border-b border-white/15 py-4 px-margin-mobile flex flex-col gap-3 animate-fade-in text-white">
           {links.map((link) => {
             const isActive = pathname === link.href;
             return (
@@ -126,17 +118,17 @@ export default function Navbar() {
               href="https://heykudu.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 text-center py-2 text-xs font-bold text-white border border-white/30 rounded-xl hover:bg-white/10 flex items-center justify-center gap-1"
+              className="flex-1 text-center py-2 text-xs font-bold text-white border border-white/30 rounded-full hover:bg-white/10 flex items-center justify-center gap-1.5"
             >
-              <span className="material-symbols-outlined text-[14px]">arrow_back</span>
+              <span className="material-symbols-outlined text-[15px]">arrow_back</span>
               Back to App
             </a>
             <Link
               href="/contact"
               onClick={() => setMobileMenuOpen(false)}
-              className="flex-1 text-center py-2 text-xs font-bold text-white border border-white/30 rounded-xl hover:bg-white/10 flex items-center justify-center gap-1"
+              className="flex-1 text-center py-2 text-xs font-bold text-white border border-white/30 rounded-full hover:bg-white/10 flex items-center justify-center gap-1.5"
             >
-              <span className="material-symbols-outlined text-[14px]">person</span>
+              <span className="material-symbols-outlined text-[15px]">person</span>
               Profile
             </Link>
           </div>
