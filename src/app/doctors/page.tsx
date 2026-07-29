@@ -3,69 +3,14 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Link from "next/link";
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 export default function DoctorExperience() {
-  const [activeRole, setActiveRole] = useState(0);
-
   // High-fidelity dopamine stats for the hero phone mockup
   const rotationStats = [
     { label: "Check-Ins", progress: 85, current: "12 / 15 completed", target: "85%", color: "from-emerald-400 to-teal-400" },
     { label: "Rotation Syllabus Requirements", progress: 92, current: "24 / 26 completed", target: "92%", color: "from-purple-400 to-indigo-400" },
     { label: "WBAs / EPAs", progress: 75, current: "3 / 4 signed off", target: "75%", color: "from-pink-400 to-rose-400" },
-  ];
-
-  // Tailored medical roles for academic selector
-  const medicalRoles = [
-    {
-      id: "resident",
-      name: "Junior Doctor / Resident",
-      icon: "school",
-      title: "Streamline your clinical logs, zero admin friction.",
-      desc: "Stay fully focused on patient care. HeyKudu runs in your pocket on the wards, preloading every required skill, lecture, and attendance target for your current rotation block.",
-      bullets: [
-        "Preloaded clinical goals and syllabus guidelines automatically synced.",
-        "One-tap digital logs for AMC, ACGME, and university compliance.",
-        "Instant on-screen QR codes for supervisor sign-offs at the bedside."
-      ]
-    },
-    {
-      id: "registrar",
-      name: "Senior Registrar",
-      icon: "medical_services",
-      title: "Fellowship ready. Lead on-the-floor training.",
-      desc: "Balance senior clinical responsibilities with intensive training goals. HeyKudu helps you effortlessly log surgical volumes and sign off junior peers.",
-      bullets: [
-        "Advanced procedure and complex surgical log tracking with verified hours.",
-        "On-the-go supervisor tools to sign off interns on your team in 2 seconds.",
-        "Instant portfolio exports optimized for Royal Colleges and fellowship boards."
-      ]
-    },
-    {
-      id: "consultant",
-      name: "Consultant / Supervisor",
-      icon: "co_present",
-      title: "Seamless teaching. Zero login credentials required.",
-      desc: "Sign off on competency-based assessments on the fly. No more loading slow university portals or struggling with forgotten passwords in the middle of a ward round.",
-      bullets: [
-        "Supervise and sign off tasks instantly by scanning student screens.",
-        "Clinical Brain AI assists in drafting high-quality feedback notes.",
-        "Track individual student progress history over their term in real time."
-      ]
-    },
-    {
-      id: "director",
-      name: "Director of Training",
-      icon: "query_stats",
-      title: "Institutional visibility. Curriculum standards assured.",
-      desc: "Maintain complete oversight of academic progress. Our educational dashboard aggregates logs to identify learning gaps and support curriculum compliance.",
-      bullets: [
-        "Real-time analytics on competency completion across entire cohort.",
-        "Full cryptographic audit trail to satisfy medical boards and deans.",
-        "Easily update rotations and syllabus requirements with zero downtime."
-      ]
-    }
   ];
 
   // Animation variants
@@ -240,97 +185,7 @@ export default function DoctorExperience() {
           </div>
         </section>
 
-        {/* Stateful Academic/Medical Profile Selector Section */}
-        <section className="py-24 bg-surface border-b border-outline-variant/10">
-          <div className="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
-            
-            {/* Header */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6 }}
-              className="text-center max-w-2xl mx-auto mb-16 space-y-3"
-            >
-              <span className="px-3.5 py-1.5 rounded-full bg-primary/5 text-primary text-xs font-bold uppercase tracking-wider">
-                Tailored Medical Paths
-              </span>
-              <h2 className="font-extrabold text-3xl md:text-4xl text-on-surface" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
-                Select your profile to begin.
-              </h2>
-              <p className="text-on-surface-variant font-medium text-sm">
-                Explore custom-tailored workflows and capabilities mapped directly to your level of training and administration.
-              </p>
-            </motion.div>
 
-            {/* Selector Grid matching Homepage Aesthetics */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-              {medicalRoles.map((role, idx) => (
-                <button
-                  key={role.id}
-                  onClick={() => setActiveRole(idx)}
-                  className={`p-6 rounded-2xl border transition-all flex flex-col items-center gap-3 text-center group ${
-                    activeRole === idx
-                      ? "bg-primary border-primary text-on-primary shadow-md scale-[1.01]"
-                      : "bg-surface-container-low border-outline-variant/15 text-on-surface hover:border-primary/30"
-                  }`}
-                >
-                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-transform group-hover:scale-105 ${
-                    activeRole === idx ? "bg-on-primary/15 text-white" : "bg-primary/5 text-primary"
-                  }`}>
-                    <span className="material-symbols-outlined text-[22px]">
-                      {role.icon}
-                    </span>
-                  </div>
-                  <span className="font-extrabold text-xs tracking-tight" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
-                    {role.name}
-                  </span>
-                </button>
-              ))}
-            </div>
-
-            {/* Dynamic Content Panel */}
-            <div className="bg-surface-container-low rounded-3xl border border-outline-variant/20 p-8 md:p-12 shadow-sm min-h-[300px]">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeRole}
-                  initial={{ opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -12 }}
-                  transition={{ duration: 0.25 }}
-                  className="grid lg:grid-cols-12 gap-12 items-center"
-                >
-                  {/* Left Column Content */}
-                  <div className="lg:col-span-7 space-y-6">
-                    <span className="text-[10px] font-black uppercase text-primary tracking-wider">
-                      Tailored Flow for {medicalRoles[activeRole].name}
-                    </span>
-                    <h3 className="font-extrabold text-2xl md:text-3xl text-on-surface leading-tight" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
-                      {medicalRoles[activeRole].title}
-                    </h3>
-                    <p className="text-on-surface-variant font-medium text-sm leading-relaxed">
-                      {medicalRoles[activeRole].desc}
-                    </p>
-                  </div>
-
-                  {/* Right Column Checklist Card */}
-                  <div className="lg:col-span-5 bg-surface border border-outline-variant/30 rounded-2xl p-6 shadow-md">
-                    <h4 className="font-black text-xs uppercase tracking-wider text-on-surface mb-4">Included Capabilities</h4>
-                    <ul className="space-y-3">
-                      {medicalRoles[activeRole].bullets.map((bullet, idx) => (
-                        <li key={idx} className="flex gap-3 items-start">
-                          <span className="material-symbols-outlined text-green-500 text-[18px] mt-0.5">check_circle</span>
-                          <span className="text-xs font-semibold text-on-surface-variant leading-relaxed">{bullet}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </motion.div>
-              </AnimatePresence>
-            </div>
-
-          </div>
-        </section>
 
         {/* Portability and Rigor Compliance Section */}
         <section className="py-24 bg-surface relative">
@@ -491,28 +346,32 @@ export default function DoctorExperience() {
         </section>
 
         {/* Polished Doctor-punning "On-Call Clinical Stat Dock" */}
-        <section className="py-24 bg-surface">
-          <div className="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
+        <section className="py-24 bg-gradient-to-b from-slate-950 via-[#0F0C29] to-slate-950 text-white relative overflow-hidden border-y border-white/10 shadow-2xl">
+          {/* Ambient Lighting Glows */}
+          <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-indigo-500/15 rounded-full blur-[140px] pointer-events-none" />
+          <div className="absolute bottom-0 right-10 w-[400px] h-[300px] bg-purple-500/10 rounded-full blur-[120px] pointer-events-none" />
+
+          <div className="max-w-container-max mx-auto px-margin-mobile md:px-gutter relative z-10">
             
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6 }}
-              className="text-center max-w-3xl mx-auto mb-20 space-y-4"
+              className="text-center max-w-3xl mx-auto mb-16 space-y-4"
             >
-              <span className="px-3.5 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider">
+              <span className="px-4 py-1.5 rounded-full bg-indigo-500/20 text-indigo-300 text-xs font-black uppercase tracking-widest border border-indigo-500/30 shadow-lg shadow-indigo-500/20">
                 Emergency Access
               </span>
-              <h2 className="font-extrabold text-3xl md:text-5xl text-on-surface tracking-tight" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
+              <h2 className="font-black text-3xl md:text-5xl tracking-tight bg-clip-text bg-gradient-to-r from-white via-indigo-100 to-purple-200" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
                 The On-Call Diagnostic &amp; &ldquo;Stat&rdquo; Dock
               </h2>
-              <p className="text-on-surface-variant font-medium text-base md:text-lg">
-                Tap the floating <strong>“+” button</strong> on your dashboard to instantly aggregate all of your assessment types, log entries, and real-time AI clinical assistants in one place.
+              <p className="text-slate-300 font-medium text-base md:text-lg leading-relaxed">
+                Tap the floating <strong className="text-white font-bold">“+” button</strong> on your dashboard to instantly aggregate all of your assessment types, log entries, and real-time AI clinical assistants in one place.
               </p>
             </motion.div>
 
-            {/* Completely redesigned spacious cards - Larger, better padded, clear design metrics */}
+            {/* High-Contrast Vibrant Dark Dock Cards */}
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
               
               {/* Card 1: WBA */}
@@ -521,32 +380,32 @@ export default function DoctorExperience() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.5, delay: 0 }}
-                className="bg-white/5 border border-outline-variant/20 p-8 rounded-[32px] hover:border-primary/40 hover:shadow-xl hover:scale-[1.02] transition-all duration-300 flex flex-col justify-between min-h-[340px] relative overflow-hidden group shadow-md"
+                className="bg-slate-900/90 border border-purple-500/30 p-8 rounded-[32px] hover:border-purple-400 hover:shadow-[0_0_30px_rgba(168,85,247,0.2)] hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between min-h-[340px] relative overflow-hidden group shadow-xl"
               >
-                <div className="absolute inset-0 bg-gradient-to-tr from-purple-500/[0.03] to-indigo-500/[0.03] opacity-80 group-hover:opacity-100 transition-opacity"></div>
+                <div className="absolute inset-0 bg-gradient-to-tr from-purple-500/10 via-transparent to-transparent opacity-60 group-hover:opacity-100 transition-opacity"></div>
                 
                 <div>
-                  <div className="w-12 h-12 rounded-2xl bg-purple-500/10 flex items-center justify-center text-purple-600 relative z-10 mb-6 shadow-sm">
-                    <span className="material-symbols-outlined text-[26px]">vaccines</span>
+                  <div className="w-14 h-14 rounded-2xl bg-purple-500/20 border border-purple-500/40 flex items-center justify-center text-purple-300 relative z-10 mb-6 shadow-[0_0_20px_rgba(168,85,247,0.25)]">
+                    <span className="material-symbols-outlined text-[28px]">vaccines</span>
                   </div>
                   
-                  {/* Mock Micro-UI form representation inside card to make it pop */}
-                  <div className="space-y-2 bg-slate-900/40 border border-white/5 p-3 rounded-2xl mb-4 relative z-10 text-[10px]">
-                    <div className="flex justify-between font-black text-purple-400">
-                      <span>Mini-CEX Assessment</span>
-                      <span className="text-emerald-400">Entrusted ✓</span>
+                  {/* High Contrast Micro-UI preview */}
+                  <div className="space-y-2 bg-slate-950/80 border border-purple-500/30 p-3.5 rounded-2xl mb-4 relative z-10 text-[10px] shadow-inner">
+                    <div className="flex justify-between font-black">
+                      <span className="text-purple-300">Mini-CEX Assessment</span>
+                      <span className="text-emerald-400 font-bold">Entrusted ✓</span>
                     </div>
-                    <div className="w-full h-1 bg-white/10 rounded-full overflow-hidden">
-                      <div className="w-4/5 h-full bg-purple-500"></div>
+                    <div className="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden p-0.5">
+                      <div className="w-4/5 h-full bg-gradient-to-r from-purple-500 to-indigo-400 rounded-full shadow-[0_0_8px_rgba(168,85,247,0.6)]"></div>
                     </div>
                   </div>
                 </div>
 
                 <div className="space-y-2.5 relative z-10">
-                  <h3 className="font-extrabold text-base text-on-surface leading-snug" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
+                  <h3 className="font-extrabold text-lg text-white leading-snug" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
                     WBA (Workplace Based Assessment)
                   </h3>
-                  <p className="text-on-surface-variant text-[12px] font-medium leading-relaxed">
+                  <p className="text-slate-300 text-[12px] font-medium leading-relaxed">
                     Instant access to required clinical competency forms for your rotation block.
                   </p>
                 </div>
@@ -558,32 +417,32 @@ export default function DoctorExperience() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.5, delay: 0.1 }}
-                className="bg-white/5 border border-outline-variant/20 p-8 rounded-[32px] hover:border-primary/40 hover:shadow-xl hover:scale-[1.02] transition-all duration-300 flex flex-col justify-between min-h-[340px] relative overflow-hidden group shadow-md"
+                className="bg-slate-900/90 border border-blue-500/30 p-8 rounded-[32px] hover:border-blue-400 hover:shadow-[0_0_30px_rgba(59,130,246,0.2)] hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between min-h-[340px] relative overflow-hidden group shadow-xl"
               >
-                <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/[0.03] to-indigo-500/[0.03] opacity-80 group-hover:opacity-100 transition-opacity"></div>
+                <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/10 via-transparent to-transparent opacity-60 group-hover:opacity-100 transition-opacity"></div>
                 
                 <div>
-                  <div className="w-12 h-12 rounded-2xl bg-blue-500/10 flex items-center justify-center text-blue-600 relative z-10 mb-6 shadow-sm">
-                    <span className="material-symbols-outlined text-[26px]">shield</span>
+                  <div className="w-14 h-14 rounded-2xl bg-blue-500/20 border border-blue-500/40 flex items-center justify-center text-blue-300 relative z-10 mb-6 shadow-[0_0_20px_rgba(59,130,246,0.25)]">
+                    <span className="material-symbols-outlined text-[28px]">shield</span>
                   </div>
                   
-                  {/* Mock Micro-UI progress inside card */}
-                  <div className="space-y-2 bg-slate-900/40 border border-white/5 p-3 rounded-2xl mb-4 relative z-10 text-[10px]">
-                    <div className="flex justify-between font-black text-blue-400">
-                      <span>EPA-03 Multi-Tasking</span>
-                      <span className="text-white/60">Stage 2</span>
+                  {/* High Contrast Micro-UI preview */}
+                  <div className="space-y-2 bg-slate-950/80 border border-blue-500/30 p-3.5 rounded-2xl mb-4 relative z-10 text-[10px] shadow-inner">
+                    <div className="flex justify-between font-black">
+                      <span className="text-blue-300">EPA-03 Multi-Tasking</span>
+                      <span className="text-cyan-400 font-bold">Stage 2</span>
                     </div>
-                    <div className="w-full h-1 bg-white/10 rounded-full overflow-hidden">
-                      <div className="w-3/5 h-full bg-blue-500"></div>
+                    <div className="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden p-0.5">
+                      <div className="w-3/5 h-full bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full shadow-[0_0_8px_rgba(59,130,246,0.6)]"></div>
                     </div>
                   </div>
                 </div>
 
                 <div className="space-y-2.5 relative z-10">
-                  <h3 className="font-extrabold text-base text-on-surface leading-snug" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
+                  <h3 className="font-extrabold text-lg text-white leading-snug" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
                     EPA (Entrustable Professional Activity)
                   </h3>
-                  <p className="text-on-surface-variant text-[12px] font-medium leading-relaxed">
+                  <p className="text-slate-300 text-[12px] font-medium leading-relaxed">
                     Log professional milestones with direct alignment to academic syllabus benchmarks.
                   </p>
                 </div>
@@ -595,46 +454,45 @@ export default function DoctorExperience() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="bg-white/5 border border-outline-variant/20 p-8 rounded-[32px] hover:border-primary/40 hover:shadow-xl hover:scale-[1.02] transition-all duration-300 flex flex-col justify-between min-h-[340px] relative overflow-hidden group shadow-md"
+                className="bg-slate-900/90 border border-fuchsia-500/30 p-8 rounded-[32px] hover:border-fuchsia-400 hover:shadow-[0_0_30px_rgba(217,70,239,0.2)] hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between min-h-[340px] relative overflow-hidden group shadow-xl"
               >
-                <div className="absolute inset-0 bg-gradient-to-tr from-fuchsia-500/[0.03] to-pink-500/[0.03] opacity-80 group-hover:opacity-100 transition-opacity"></div>
+                <div className="absolute inset-0 bg-gradient-to-tr from-fuchsia-500/10 via-transparent to-transparent opacity-60 group-hover:opacity-100 transition-opacity"></div>
                 
                 <div>
-                  <div className="w-12 h-12 rounded-2xl bg-fuchsia-500/10 flex items-center justify-center text-fuchsia-600 relative z-10 mb-6 shadow-sm">
-                    <span className="material-symbols-outlined text-[26px]">auto_awesome</span>
+                  <div className="w-14 h-14 rounded-2xl bg-fuchsia-500/20 border border-fuchsia-500/40 flex items-center justify-center text-fuchsia-300 relative z-10 mb-6 shadow-[0_0_20px_rgba(217,70,239,0.25)]">
+                    <span className="material-symbols-outlined text-[28px]">auto_awesome</span>
                   </div>
                   
-                  {/* Mock Micro-UI reflection typing simulation inside card */}
-                  <div className="bg-slate-900/40 border border-white/5 p-3 rounded-2xl mb-4 relative z-10 text-[9px] text-fuchsia-300 font-medium">
+                  {/* High Contrast Micro-UI preview */}
+                  <div className="bg-slate-950/80 border border-fuchsia-500/30 p-3.5 rounded-2xl mb-4 relative z-10 text-[10px] text-fuchsia-200 font-semibold shadow-inner flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-fuchsia-400 animate-ping"></span>
                     &ldquo;Reflecting on postoperative complications...&rdquo;
                   </div>
                 </div>
 
                 <div className="space-y-2.5 relative z-10">
-                  <h3 className="font-extrabold text-base text-on-surface leading-snug" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
+                  <h3 className="font-extrabold text-lg text-white leading-snug" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
                     Self-Reflection Module
                   </h3>
-                  <p className="text-on-surface-variant text-[12px] font-medium leading-relaxed">
+                  <p className="text-slate-300 text-[12px] font-medium leading-relaxed">
                     Record educational reflections on complex clinical scenarios with structured prompt guidance.
                   </p>
                 </div>
               </motion.div>
 
-              {/* Card 4: Clinical Brain AI (Highly Polished, No Black Block, Vivid emerald theme) */}
+              {/* Card 4: Clinical Brain AI */}
               <motion.div 
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.5, delay: 0.3 }}
-                className="bg-white/5 border-2 border-emerald-500/30 p-8 rounded-[32px] hover:scale-[1.03] hover:shadow-2xl hover:border-emerald-500/50 shadow-md shadow-emerald-500/5 transition-all duration-300 flex flex-col justify-between min-h-[340px] relative overflow-hidden group"
+                className="bg-slate-900/90 border border-emerald-500/40 p-8 rounded-[32px] hover:border-emerald-400 hover:shadow-[0_0_30px_rgba(16,185,129,0.25)] hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between min-h-[340px] relative overflow-hidden group shadow-xl"
               >
-                <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/5 via-teal-500/5 to-transparent"></div>
-                <div className="absolute -right-6 -top-6 w-36 h-32 bg-emerald-500/10 rounded-full blur-2xl group-hover:scale-150 transition-all duration-700"></div>
+                <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/10 via-transparent to-transparent opacity-60 group-hover:opacity-100 transition-opacity"></div>
 
                 <div>
-                  {/* Clean glowing logo frame - No more ugly black blob, beautifully matches screenshot horn styling */}
-                  <div className="w-14 h-14 rounded-2xl bg-neutral-900 border border-emerald-500/40 flex items-center justify-center p-3 relative z-10 shadow-[0_0_15px_rgba(16,185,129,0.25)] group-hover:shadow-[0_0_20px_rgba(16,185,129,0.45)] group-hover:border-emerald-500/80 transition-all mb-6">
-                    <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/10 to-teal-500/10 rounded-2xl animate-pulse"></div>
+                  {/* Clean glowing logo frame */}
+                  <div className="w-14 h-14 rounded-2xl bg-slate-950 border border-emerald-500/50 flex items-center justify-center p-3 relative z-10 shadow-[0_0_20px_rgba(16,185,129,0.3)] mb-6">
                     <img 
                       src="/images/logo-white.png" 
                       alt="Kudu" 
@@ -642,8 +500,8 @@ export default function DoctorExperience() {
                     />
                   </div>
 
-                  {/* Transcription waveform visualizer inside card */}
-                  <div className="flex gap-1 items-center bg-slate-900/40 border border-emerald-500/15 p-2 rounded-2xl mb-4 relative z-10 justify-center h-8">
+                  {/* Waveform visualizer inside card */}
+                  <div className="flex gap-1.5 items-center bg-slate-950/80 border border-emerald-500/30 p-2.5 rounded-2xl mb-4 relative z-10 justify-center h-9 shadow-inner">
                     <div className="w-1 h-3 bg-emerald-400 rounded-full animate-pulse" style={{ animationDelay: '0.1s' }}></div>
                     <div className="w-1 h-5 bg-emerald-400 rounded-full animate-pulse" style={{ animationDelay: '0.3s' }}></div>
                     <div className="w-1 h-2 bg-emerald-400 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
@@ -652,20 +510,137 @@ export default function DoctorExperience() {
                 </div>
 
                 <div className="space-y-2.5 relative z-10">
-                  <div className="inline-flex items-center gap-1.5 bg-emerald-500/10 border border-emerald-500/25 text-emerald-400 px-2 py-0.5 rounded-full text-[9px] font-black tracking-wider uppercase animate-pulse">
+                  <div className="inline-flex items-center gap-1.5 bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 px-2.5 py-0.5 rounded-full text-[9px] font-black tracking-wider uppercase">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
                     Voice Active
                   </div>
-                  <h3 className="font-extrabold text-base text-on-surface leading-snug" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
+                  <h3 className="font-extrabold text-lg text-white leading-snug" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
                     Clinical Brain AI Assistant
                   </h3>
-                  <p className="text-on-surface-variant text-[12px] font-medium leading-relaxed">
+                  <p className="text-slate-300 text-[12px] font-medium leading-relaxed">
                     Double-check complex case findings, guidelines, and diagnostic criteria right in the field with instant voice notes.
                   </p>
                 </div>
               </motion.div>
 
             </div>
+          </div>
+        </section>
+
+        {/* Step-by-Step Clinical Workflow Guide for Doctors */}
+        <section className="py-24 bg-surface border-b border-outline-variant/15 relative">
+          <div className="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
+            
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6 }}
+              className="text-center max-w-3xl mx-auto mb-16 space-y-4"
+            >
+              <span className="px-3.5 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider">
+                Step-by-Step Instruction
+              </span>
+              <h2 className="font-extrabold text-3xl md:text-5xl text-on-surface tracking-tight" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
+                How It Works: Step-by-Step
+              </h2>
+              <p className="text-on-surface-variant font-medium text-base md:text-lg">
+                Follow this simple step-by-step process to log clinical activities, sign off competencies, and track your rotation progress.
+              </p>
+            </motion.div>
+
+            {/* 10-Step Timeline Grid */}
+            <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
+              {[
+                {
+                  step: "01",
+                  title: "Visit heykudu.com",
+                  desc: "Go to heykudu.com on your web or mobile browser to get started.",
+                  icon: "language"
+                },
+                {
+                  step: "02",
+                  title: "Create Profile",
+                  desc: "Sign up for your secure doctor profile in under 30 seconds.",
+                  icon: "person_add"
+                },
+                {
+                  step: "03",
+                  title: "Complete Credentials",
+                  desc: "Add your academic training level, hospital, and clinical affiliations.",
+                  icon: "badge"
+                },
+                {
+                  step: "04",
+                  title: "Select Rotation",
+                  desc: "Pick your active term (e.g. O&G, Pediatrics, Emergency Medicine).",
+                  icon: "clinical_notes"
+                },
+                {
+                  step: "05",
+                  title: "1-Tap Check-In",
+                  desc: "Perform quick ward check-ins for everyday skills and patient interactions.",
+                  icon: "touch_app"
+                },
+                {
+                  step: "06",
+                  title: "Launch Assessment",
+                  desc: "Tap the floating '+' button on your homepage and pick WBA or EPA.",
+                  icon: "add_circle"
+                },
+                {
+                  step: "07",
+                  title: "Complete Form Together",
+                  desc: "Fill out the competency form side-by-side with your clinician or supervisor.",
+                  icon: "assignment"
+                },
+                {
+                  step: "08",
+                  title: "Bedside QR Scan",
+                  desc: "Hit submit to show your QR code. Your supervisor scans it to verify instantly.",
+                  icon: "qr_code_scanner"
+                },
+                {
+                  step: "09",
+                  title: "Repeat & Share",
+                  desc: "Log daily clinical milestones and invite colleagues to simplify sign-offs.",
+                  icon: "share"
+                },
+                {
+                  step: "10",
+                  title: "Export Logbook",
+                  desc: "Check progress on your profile and download your verified logbook anytime.",
+                  icon: "download"
+                }
+              ].map((stepItem, idx) => (
+                <motion.div
+                  key={stepItem.step}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.4, delay: idx * 0.05 }}
+                  className="bg-surface-container-low border border-outline-variant/20 p-6 rounded-2xl flex flex-col justify-between hover:border-primary/40 hover:shadow-md transition-all group"
+                >
+                  <div className="space-y-3">
+                    <div className="flex justify-between items-center">
+                      <span className="w-8 h-8 rounded-full bg-primary/10 text-primary font-black text-xs flex items-center justify-center">
+                        {stepItem.step}
+                      </span>
+                      <span className="material-symbols-outlined text-on-surface-variant/50 text-[20px] group-hover:text-primary transition-colors">
+                        {stepItem.icon}
+                      </span>
+                    </div>
+                    <h3 className="font-extrabold text-sm text-on-surface leading-tight" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
+                      {stepItem.title}
+                    </h3>
+                    <p className="text-on-surface-variant text-[11px] font-medium leading-relaxed">
+                      {stepItem.desc}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
           </div>
         </section>
 
