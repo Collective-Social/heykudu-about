@@ -3,22 +3,9 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Link from "next/link";
-import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 export default function NfcAndGeoFenceCombined() {
-  const [submissionsCount, setSubmissionsCount] = useState(1284);
-  const [pulseActive, setPulseActive] = useState(true);
-
-  // Simulate incoming real-time verified logs
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setSubmissionsCount((prev) => prev + 1);
-      setPulseActive(true);
-      setTimeout(() => setPulseActive(false), 800);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, []);
 
   const capabilities = [
     {
@@ -205,18 +192,6 @@ export default function NfcAndGeoFenceCombined() {
                       <h4 className="font-bold text-lg text-white">Offline Dead-Zone Queueing</h4>
                       <p className="text-slate-300 text-xs font-medium mt-0.5">Validates and queues check-in signatures offline in thick concrete ward basements, syncing instantly upon reconnect.</p>
                     </div>
-                  </div>
-                </div>
-
-                {/* Verified Submissions Live Widget */}
-                <div className="bg-slate-900/90 p-6 rounded-2xl border border-white/10 flex justify-between items-center shadow-xl">
-                  <div>
-                    <div className="text-[10px] font-black text-slate-400 uppercase tracking-wider">Verified Submissions Today</div>
-                    <div className="text-3xl font-black text-indigo-400 mt-1">{submissionsCount}</div>
-                  </div>
-                  <div className="flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1.5 rounded-full">
-                    <span className={`w-2.5 h-2.5 rounded-full bg-emerald-400 ${pulseActive ? "animate-ping" : ""}`}></span>
-                    <span className="text-xs font-bold text-emerald-400">Live Sync Active</span>
                   </div>
                 </div>
               </div>
