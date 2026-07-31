@@ -11,6 +11,7 @@ export default function Navbar() {
   const links = [
     { name: "Home", href: "/" },
     { name: "EPA & WBA", href: "/features/epa-tracking" },
+    { name: "Geo-Fence & NFC", href: "/features/nfc-attendance" },
     { name: "Education", href: "/education" },
     { name: "Doctors", href: "/doctors" },
     { name: "Dietetics", href: "/dietetics" },
@@ -38,9 +39,9 @@ export default function Navbar() {
         </Link>
 
         {/* Center: Desktop Nav Links */}
-        <div className="hidden lg:flex items-center gap-3 xl:gap-4.5 mx-auto">
+        <div className="hidden lg:flex items-center gap-2.5 xl:gap-4 mx-auto">
           {links.map((link) => {
-            const isActive = pathname === link.href;
+            const isActive = pathname === link.href || (link.href === "/features/nfc-attendance" && pathname === "/features/geo-fence");
             return (
               <Link
                 key={link.name}
@@ -96,7 +97,7 @@ export default function Navbar() {
       {mobileMenuOpen && (
         <div className="lg:hidden bg-[#6B00E6] border-b border-white/15 py-4 px-margin-mobile flex flex-col gap-3 animate-fade-in text-white">
           {links.map((link) => {
-            const isActive = pathname === link.href;
+            const isActive = pathname === link.href || (link.href === "/features/nfc-attendance" && pathname === "/features/geo-fence");
             return (
               <Link
                 key={link.name}
