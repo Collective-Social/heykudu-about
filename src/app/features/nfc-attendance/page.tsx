@@ -46,125 +46,121 @@ export default function NfcAndGeoFenceCombined() {
   return (
     <>
       <Navbar />
-      <main className="pt-28 bg-surface min-h-screen overflow-hidden">
+      <main className="min-h-screen bg-surface overflow-hidden">
         
-        {/* HERO SECTION */}
-        <section className="py-16 md:py-24 relative bg-gradient-to-b from-surface-container-low via-surface to-surface border-b border-outline-variant/10 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 via-transparent to-tertiary/5 pointer-events-none" />
-          
-          <div className="max-w-container-max mx-auto px-margin-mobile md:px-gutter relative z-10">
-            <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        {/* HERO SECTION - Deep Purple Full Gradient with Centered 3D Spinning Physical NFC Tag */}
+        <section className="pt-28 pb-20 md:py-28 relative bg-gradient-to-b from-[#5B00C7] via-[#7D00FF] to-slate-950 text-white border-b border-white/10 overflow-hidden text-center">
+          {/* Ambient Glows */}
+          <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] md:w-[850px] h-[450px] bg-purple-400/20 rounded-full blur-[140px] pointer-events-none" />
+
+          <div className="max-w-container-max mx-auto px-margin-mobile md:px-gutter relative z-10 flex flex-col items-center space-y-8">
+            
+            {/* Top Badge */}
+            <motion.div 
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/15 backdrop-blur-md border border-white/30 text-white font-extrabold text-xs uppercase tracking-widest shadow-lg"
+            >
+              <span className="material-symbols-outlined text-[16px] text-emerald-300">contactless</span>
+              PHYSICAL NFC TAG • GPS GEOFENCING
+            </motion.div>
+
+            {/* CENTERPIECE: THE 3D SPINNING HEYKUDU PHYSICAL NFC TAG */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="relative flex items-center justify-center my-2 group cursor-pointer"
+            >
+              {/* Outer Ambient Glow Waves */}
+              <div className="absolute w-64 h-64 md:w-80 md:h-80 rounded-full bg-white/20 blur-2xl animate-pulse pointer-events-none"></div>
+              <div className="absolute w-52 h-52 md:w-64 md:h-64 rounded-full border border-white/30 animate-ping pointer-events-none opacity-40"></div>
+
+              {/* Outer Glossy White Badge Frame */}
+              <div className="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 rounded-full bg-white/95 shadow-[0_0_80px_rgba(255,255,255,0.4),_0_20px_50px_rgba(0,0,0,0.5)] flex items-center justify-center p-3 border-4 border-white/80 backdrop-blur-md relative z-10">
+                
+                {/* Inner 3D Continuous Y-Axis Rotating Token */}
+                <motion.div
+                  animate={{ rotateY: [0, 360] }}
+                  transition={{ repeat: Infinity, duration: 7, ease: "linear" }}
+                  style={{ transformStyle: "preserve-3d" }}
+                  className="w-full h-full rounded-full bg-gradient-to-br from-purple-800 via-indigo-900 to-purple-950 border-2 border-purple-400/50 shadow-inner flex items-center justify-center relative"
+                >
+                  {/* Inner Ring with White Logo */}
+                  <div className="w-[88%] h-[88%] rounded-full bg-white/10 backdrop-blur-xs flex items-center justify-center border border-white/25">
+                    <img
+                      src="/images/logo-white.png"
+                      alt="heykudu physical tag"
+                      className="h-14 w-14 sm:h-16 sm:w-16 md:h-20 md:w-20 object-contain brightness-0 invert drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)]"
+                    />
+                  </div>
+                </motion.div>
+              </div>
+
+              {/* Floating Sensor Chip Badge */}
+              <div className="absolute -bottom-3 bg-slate-950/90 backdrop-blur-md border border-purple-400/50 px-4 py-1.5 rounded-full text-white shadow-xl flex items-center gap-2 z-20">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                <span className="text-[10px] font-black tracking-wider uppercase text-purple-200">NTAG213 Certified Chip</span>
+              </div>
+            </motion.div>
+
+            {/* Main Headline & Subtitle */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="max-w-3xl mx-auto space-y-4"
+            >
+              <h1 className="font-extrabold text-4xl sm:text-5xl md:text-6xl text-white tracking-tight leading-none" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
+                Tap to Check In.<br />
+                <span className="text-purple-200">Verified Attendance.</span>
+              </h1>
               
-              {/* Left Column: Headline & Copy */}
-              <motion.div 
-                initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8 }}
-                className="lg:col-span-6 space-y-6 text-left"
+              <p className="text-purple-100/90 font-medium text-base md:text-xl max-w-xl mx-auto leading-relaxed">
+                1-Tap Contactless Check-In + Anti-Spoofing GPS Geofencing. Place physical tags across your hospital wards and classrooms.
+              </p>
+            </motion.div>
+
+            {/* Action Buttons */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-2"
+            >
+              <Link
+                href="/contact"
+                className="px-10 py-4.5 bg-white text-purple-900 hover:bg-purple-50 rounded-full font-black text-sm shadow-[0_15px_35px_rgba(0,0,0,0.3)] hover:scale-105 active:scale-95 transition-all text-center flex items-center justify-center gap-2"
               >
-                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary font-bold text-xs uppercase tracking-wider">
-                  <span className="material-symbols-outlined text-[16px]">contactless</span>
-                  PHYSICAL NFC TAGS &amp; GPS GEOFENCING
-                </div>
-                
-                <h1 className="font-extrabold text-4xl md:text-5xl lg:text-6xl text-on-surface leading-tight tracking-tight" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
-                  Tap to Check In.<br />
-                  <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary via-purple-600 to-indigo-600">
-                    Verified Attendance.
-                  </span>
-                </h1>
-                
-                <p className="text-on-surface-variant font-medium text-base md:text-lg leading-relaxed max-w-xl">
-                  Eliminate paper sign-in sheets, buddy-punching, and location fraud. HeyKudu combines physical NTAG213 desk tags with GPS geofencing to record instant, tamper-proof attendance across hospitals and university classrooms.
-                </p>
-
-                <div className="flex flex-wrap gap-4 pt-2">
-                  <Link
-                    href="/contact"
-                    className="px-8 py-4 bg-primary text-on-primary rounded-full font-extrabold text-sm shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-95 transition-all text-center flex items-center gap-2"
-                  >
-                    <span className="material-symbols-outlined text-[18px]">contactless</span>
-                    Enable NFC Tags &amp; Geofencing
-                  </Link>
-                  <a
-                    href="#radar-demo"
-                    className="px-8 py-4 bg-surface-container border border-outline-variant/30 text-on-surface rounded-full font-bold text-sm hover:bg-surface-container-high transition-all text-center flex items-center gap-2"
-                  >
-                    <span className="material-symbols-outlined text-[18px]">radar</span>
-                    Live Geofence Radar
-                  </a>
-                </div>
-
-                {/* Micro metrics badges */}
-                <div className="pt-6 grid grid-cols-3 gap-4 border-t border-outline-variant/20 max-w-md">
-                  <div>
-                    <div className="font-black text-xl text-primary">&lt; 1s</div>
-                    <div className="text-[11px] text-on-surface-variant font-medium">NFC Tap Check-In</div>
-                  </div>
-                  <div>
-                    <div className="font-black text-xl text-emerald-600">100%</div>
-                    <div className="text-[11px] text-on-surface-variant font-medium">Geofence Accuracy</div>
-                  </div>
-                  <div>
-                    <div className="font-black text-xl text-purple-600">0%</div>
-                    <div className="text-[11px] text-on-surface-variant font-medium">Background Trailing</div>
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Right Column: Hero Artwork Showcase with Floating Spinning 3D Physical Tag Logo */}
-              <motion.div 
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="lg:col-span-6 flex justify-center relative"
+                <span className="material-symbols-outlined text-[20px] text-purple-700">contactless</span>
+                Enable Physical Tags
+              </Link>
+              <a
+                href="#radar-demo"
+                className="px-8 py-4.5 bg-white/10 hover:bg-white/20 border border-white/25 text-white rounded-full font-extrabold text-sm transition-all text-center flex items-center justify-center gap-2"
               >
-                <div className="relative p-3 bg-surface-container-lowest/80 border border-outline-variant/30 rounded-[40px] shadow-2xl overflow-hidden hover:scale-[1.01] transition-transform duration-500 max-w-[500px]">
-                  <img
-                    src="/images/nfc_attendance.png"
-                    alt="Physical NFC Location Attendance Tag Artwork"
-                    className="w-full h-auto rounded-[32px] object-cover"
-                  />
-                  
-                  {/* Floating Micro-Badge */}
-                  <div className="absolute top-8 right-8 bg-surface-container-lowest/90 backdrop-blur border border-outline-variant/30 rounded-2xl p-3 flex items-center gap-3 shadow-xl z-20">
-                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-                      <span className="material-symbols-outlined text-[20px] animate-pulse">sensors</span>
-                    </div>
-                    <div>
-                      <div className="text-[10px] font-bold text-on-surface-variant uppercase tracking-wider">SECURE CHIP</div>
-                      <div className="text-xs font-black text-on-surface">NFC NTAG213 + GPS</div>
-                    </div>
-                  </div>
+                <span className="material-symbols-outlined text-[18px]">radar</span>
+                Live Geofence Radar
+              </a>
+            </motion.div>
 
-                  {/* FLOATING SPINNING 3D PHYSICAL NFC TAG TOKEN (Identical to staging.heykudu.com/scan) */}
-                  <div className="absolute bottom-6 left-6 z-30 flex items-center gap-3 bg-slate-950/80 backdrop-blur-md p-2.5 rounded-full border border-purple-400/40 shadow-2xl">
-                    <div className="w-14 h-14 rounded-full bg-white/95 shadow-xl flex items-center justify-center p-1 border-2 border-white/60">
-                      <motion.div
-                        animate={{ rotateY: [0, 360] }}
-                        transition={{ repeat: Infinity, duration: 6, ease: "linear" }}
-                        style={{ transformStyle: "preserve-3d" }}
-                        className="w-full h-full rounded-full bg-gradient-to-br from-purple-700 via-indigo-800 to-purple-900 border border-purple-400/40 flex items-center justify-center relative shadow-inner"
-                      >
-                        <div className="w-[88%] h-[88%] rounded-full bg-white/10 flex items-center justify-center border border-white/20">
-                          <img
-                            src="/images/logo-white.png"
-                            alt="heykudu physical tag"
-                            className="h-5 w-5 object-contain brightness-0 invert drop-shadow"
-                          />
-                        </div>
-                      </motion.div>
-                    </div>
-                    <div className="pr-4 text-left">
-                      <div className="text-[10px] font-black text-purple-300 uppercase tracking-wider">Physical NFC Tag</div>
-                      <div className="text-xs font-extrabold text-white">Tap To Detect</div>
-                    </div>
-                  </div>
-
-                </div>
-              </motion.div>
-
+            {/* Micro Metrics Footer Bar */}
+            <div className="grid grid-cols-3 gap-6 pt-8 border-t border-white/15 max-w-lg mx-auto w-full text-center">
+              <div>
+                <div className="font-black text-2xl text-white">&lt; 1s</div>
+                <div className="text-[10px] text-purple-200 font-bold uppercase tracking-wider mt-0.5">Contactless Tap</div>
+              </div>
+              <div>
+                <div className="font-black text-2xl text-emerald-300">100%</div>
+                <div className="text-[10px] text-purple-200 font-bold uppercase tracking-wider mt-0.5">Geofence Match</div>
+              </div>
+              <div>
+                <div className="font-black text-2xl text-purple-200">0%</div>
+                <div className="text-[10px] text-purple-200 font-bold uppercase tracking-wider mt-0.5">Background Trailing</div>
+              </div>
             </div>
+
           </div>
         </section>
 
@@ -291,7 +287,7 @@ export default function NfcAndGeoFenceCombined() {
           </div>
         </section>
 
-        {/* SMART CLASSROOM & WARD TAG SHOWCASE WITH FEATURED SPINNING TAG DEMO */}
+        {/* SMART CLASSROOM & WARD TAG SHOWCASE */}
         <section className="py-24 bg-surface-container-lowest border-b border-outline-variant/15">
           <div className="max-w-container-max mx-auto px-margin-mobile md:px-gutter space-y-16">
             
@@ -308,18 +304,18 @@ export default function NfcAndGeoFenceCombined() {
               </p>
             </div>
 
-            {/* Interactive Spinning Tag Feature Showcase Box */}
+            {/* Interactive Hardware Showcase Box */}
             <div className="bg-gradient-to-br from-slate-950 via-[#120D2D] to-slate-950 text-white p-8 md:p-14 rounded-[40px] border border-white/15 shadow-2xl grid lg:grid-cols-12 gap-10 items-center">
               
-              {/* Left: The Spinning 3D Physical Tag Badge */}
+              {/* Left: Interactive 3D Spinning Tag Token Display */}
               <div className="lg:col-span-5 flex flex-col items-center justify-center space-y-6">
                 <div className="relative flex items-center justify-center p-8">
-                  {/* Glowing background ring */}
+                  {/* Ambient Ring */}
                   <div className="absolute inset-0 rounded-full bg-purple-600/30 blur-3xl animate-pulse"></div>
                   
-                  {/* White Outer Badge Frame */}
+                  {/* Outer White Badge Frame */}
                   <div className="w-44 h-44 sm:w-52 sm:h-52 rounded-full bg-white/95 shadow-[0_0_60px_rgba(125,0,255,0.5)] flex items-center justify-center relative p-2.5 border-4 border-white/60 backdrop-blur-md">
-                    {/* Spinning Inner 3D Tag Token */}
+                    {/* Inner 3D Rotating Token */}
                     <motion.div
                       animate={{ rotateY: [0, 360] }}
                       transition={{ repeat: Infinity, duration: 8, ease: "linear" }}
@@ -343,7 +339,7 @@ export default function NfcAndGeoFenceCombined() {
                 </div>
               </div>
 
-              {/* Right: Classroom Photo Showcase */}
+              {/* Right: Classroom Setup Photo */}
               <div className="lg:col-span-7 space-y-6">
                 <div className="relative rounded-[28px] overflow-hidden border border-white/15 shadow-xl group">
                   <img 
