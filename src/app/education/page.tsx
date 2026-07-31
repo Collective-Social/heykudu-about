@@ -85,7 +85,7 @@ export default function EducationExperience() {
                 </div>
               </motion.div>
 
-              {/* Right Phone Frame Mockup - Education Tailored */}
+              {/* Right Phone Frame Mockup */}
               <motion.div 
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -265,13 +265,14 @@ export default function EducationExperience() {
           </div>
         </section>
 
-        {/* The Academic & "Stat" Dock Section */}
-        <section className="py-24 bg-gradient-to-b from-slate-950 via-[#0F0C29] to-slate-950 text-white relative overflow-hidden border-y border-white/10 shadow-2xl">
-          <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-indigo-500/15 rounded-full blur-[140px] pointer-events-none" />
-          <div className="absolute bottom-0 right-10 w-[400px] h-[300px] bg-purple-500/10 rounded-full blur-[120px] pointer-events-none" />
+        {/* NEW BEAUTIFUL CLASSROOM NFC TAG ATTENDANCE SECTION */}
+        <section className="py-24 bg-gradient-to-b from-slate-950 via-[#110D2C] to-slate-950 text-white relative overflow-hidden border-y border-white/10 shadow-2xl">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-purple-500/15 rounded-full blur-[150px] pointer-events-none" />
+          <div className="absolute bottom-0 right-10 w-[500px] h-[300px] bg-indigo-500/15 rounded-full blur-[130px] pointer-events-none" />
 
           <div className="max-w-container-max mx-auto px-margin-mobile md:px-gutter relative z-10">
             
+            {/* Header */}
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -279,168 +280,107 @@ export default function EducationExperience() {
               transition={{ duration: 0.6 }}
               className="text-center max-w-3xl mx-auto mb-16 space-y-4"
             >
-              <span className="px-4 py-1.5 rounded-full bg-indigo-500/20 text-indigo-300 text-xs font-black uppercase tracking-widest border border-indigo-500/30 shadow-lg shadow-indigo-500/20">
-                Instant Access
+              <span className="px-4 py-1.5 rounded-full bg-purple-500/20 text-purple-300 text-xs font-black uppercase tracking-widest border border-purple-500/30 shadow-lg shadow-purple-500/20">
+                1-Tap Smart Classroom Hardware
               </span>
-              <h2 className="font-black text-3xl md:text-5xl tracking-tight bg-clip-text bg-gradient-to-r from-white via-indigo-100 to-purple-200" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
-                The Academic &amp; &ldquo;Stat&rdquo; Dock
+              <h2 className="font-black text-3xl md:text-5xl tracking-tight bg-clip-text bg-gradient-to-r from-white via-purple-100 to-indigo-200" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
+                Smart NFC Tags in Every Classroom
               </h2>
               <p className="text-slate-300 font-medium text-base md:text-lg leading-relaxed">
-                Tap the floating <strong className="text-white font-bold">“+” button</strong> on your dashboard to instantly aggregate all of your assessment types, log entries, and real-time AI academic assistants in one place.
+                Contactless attendance logging in less than a second. Students tap the desk-mounted HeyKudu Tag with their smartphone to record verified, geofenced class attendance instantly.
               </p>
             </motion.div>
 
-            {/* High-Contrast Dark Cards */}
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              
-              {/* Card 1: WBA */}
+            {/* Feature Showcase Container with Classroom Image & Floating Check-In Button Overlay */}
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.96 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8 }}
+              className="relative rounded-[36px] overflow-hidden border border-white/15 shadow-[0_25px_70px_rgba(0,0,0,0.8),_0_0_50px_rgba(125,0,255,0.2)] bg-slate-900 group"
+            >
+              {/* Classroom Photo */}
+              <img 
+                src="/images/classroom_nfc_tag.png" 
+                alt="Students in classroom with HeyKudu Smart NFC Tag" 
+                className="w-full h-[380px] md:h-[520px] object-cover object-center transform group-hover:scale-105 transition-transform duration-700"
+              />
+
+              {/* Gradient Overlay for Readability */}
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent pointer-events-none"></div>
+
+              {/* Floating Glowing 1-Tap "Check-In" Button Overlay */}
+              <div className="absolute top-6 left-1/2 -translate-x-1/2 bg-[#7D00FF] hover:bg-[#6B00E6] text-white px-6 md:px-8 py-3.5 rounded-full shadow-[0_10px_35px_rgba(125,0,255,0.6)] border border-white/40 flex items-center gap-3 animate-bounce z-20 transition-all cursor-pointer">
+                <span className="w-3 h-3 rounded-full bg-emerald-400 animate-ping"></span>
+                <span className="material-symbols-outlined text-[22px]">nfc</span>
+                <span className="font-black text-xs md:text-sm tracking-wide uppercase font-sans">TAP DESK TAG TO CHECK IN</span>
+                <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
+              </div>
+
+              {/* Floating Verification Badge (Bottom Overlay) */}
+              <div className="absolute bottom-6 left-6 right-6 md:left-8 md:right-auto bg-slate-950/90 backdrop-blur-md border border-purple-500/40 p-4.5 rounded-2xl text-white shadow-2xl z-20 max-w-md flex items-center gap-4">
+                <div className="w-12 h-12 rounded-xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400 shrink-0 shadow-[0_0_15px_rgba(52,211,153,0.3)]">
+                  <span className="material-symbols-outlined text-[24px]">verified</span>
+                </div>
+                <div>
+                  <div className="text-xs font-black text-white uppercase tracking-wider">Classroom 4A Verified</div>
+                  <div className="text-[11px] text-emerald-400 font-bold mt-0.5">GPS Geofence + Smart NFC Chip Match ✓</div>
+                  <div className="text-[10px] text-slate-400 font-medium">Recorded at 09:41 AM • Lecture: Advanced Pedagogy</div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* 3 Benefit Cards below image */}
+            <div className="grid md:grid-cols-3 gap-8 mt-12">
               <motion.div 
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
+                viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: 0 }}
-                className="bg-slate-900/90 border border-purple-500/30 p-8 rounded-[32px] hover:border-purple-400 hover:shadow-[0_0_30px_rgba(168,85,247,0.2)] hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between min-h-[340px] relative overflow-hidden group shadow-xl"
+                className="bg-slate-900/80 border border-white/10 p-6 rounded-3xl backdrop-blur-md space-y-3"
               >
-                <div className="absolute inset-0 bg-gradient-to-tr from-purple-500/10 via-transparent to-transparent opacity-60 group-hover:opacity-100 transition-opacity"></div>
-                
-                <div>
-                  <div className="w-14 h-14 rounded-2xl bg-purple-500/20 border border-purple-500/40 flex items-center justify-center text-purple-300 relative z-10 mb-6 shadow-[0_0_20px_rgba(168,85,247,0.25)]">
-                    <span className="material-symbols-outlined text-[28px]">assignment_turned_in</span>
-                  </div>
-                  
-                  {/* Micro-UI preview */}
-                  <div className="space-y-2 bg-slate-950/80 border border-purple-500/30 p-3.5 rounded-2xl mb-4 relative z-10 text-[10px] shadow-inner">
-                    <div className="flex justify-between font-black">
-                      <span className="text-purple-300">Practical Evaluation</span>
-                      <span className="text-emerald-400 font-bold">Passed ✓</span>
-                    </div>
-                    <div className="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden p-0.5">
-                      <div className="w-4/5 h-full bg-gradient-to-r from-purple-500 to-indigo-400 rounded-full shadow-[0_0_8px_rgba(168,85,247,0.6)]"></div>
-                    </div>
-                  </div>
+                <div className="w-10 h-10 rounded-xl bg-purple-500/20 border border-purple-500/30 flex items-center justify-center text-purple-300">
+                  <span className="material-symbols-outlined text-[20px]">nfc</span>
                 </div>
-
-                <div className="space-y-2.5 relative z-10">
-                  <h3 className="font-extrabold text-lg text-white leading-snug" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
-                    WBA (Workplace Based Assessment)
-                  </h3>
-                  <p className="text-slate-300 text-[12px] font-medium leading-relaxed">
-                    Instant access to required practical and rubric assessment forms for your course.
-                  </p>
-                </div>
+                <h3 className="font-extrabold text-base text-white">Sub-Second Contactless Tap</h3>
+                <p className="text-slate-300 text-xs leading-relaxed font-medium">
+                  No paper roll calls or slow login screens. Students hold their phone near the desk tag to log attendance instantly.
+                </p>
               </motion.div>
 
-              {/* Card 2: EPA */}
               <motion.div 
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
+                viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: 0.1 }}
-                className="bg-slate-900/90 border border-blue-500/30 p-8 rounded-[32px] hover:border-blue-400 hover:shadow-[0_0_30px_rgba(59,130,246,0.2)] hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between min-h-[340px] relative overflow-hidden group shadow-xl"
+                className="bg-slate-900/80 border border-white/10 p-6 rounded-3xl backdrop-blur-md space-y-3"
               >
-                <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/10 via-transparent to-transparent opacity-60 group-hover:opacity-100 transition-opacity"></div>
-                
-                <div>
-                  <div className="w-14 h-14 rounded-2xl bg-blue-500/20 border border-blue-500/40 flex items-center justify-center text-blue-300 relative z-10 mb-6 shadow-[0_0_20px_rgba(59,130,246,0.25)]">
-                    <span className="material-symbols-outlined text-[28px]">shield</span>
-                  </div>
-                  
-                  {/* Micro-UI preview */}
-                  <div className="space-y-2 bg-slate-950/80 border border-blue-500/30 p-3.5 rounded-2xl mb-4 relative z-10 text-[10px] shadow-inner">
-                    <div className="flex justify-between font-black">
-                      <span className="text-blue-300">EPA-02 Independent Research</span>
-                      <span className="text-cyan-400 font-bold">Stage 2</span>
-                    </div>
-                    <div className="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden p-0.5">
-                      <div className="w-3/5 h-full bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full shadow-[0_0_8px_rgba(59,130,246,0.6)]"></div>
-                    </div>
-                  </div>
+                <div className="w-10 h-10 rounded-xl bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-300">
+                  <span className="material-symbols-outlined text-[20px]">pin_drop</span>
                 </div>
-
-                <div className="space-y-2.5 relative z-10">
-                  <h3 className="font-extrabold text-lg text-white leading-snug" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
-                    EPA (Entrustable Professional Activity)
-                  </h3>
-                  <p className="text-slate-300 text-[12px] font-medium leading-relaxed">
-                    Log professional milestones with direct alignment to academic syllabus benchmarks.
-                  </p>
-                </div>
+                <h3 className="font-extrabold text-base text-white">Anti-Spoofing Geofence</h3>
+                <p className="text-slate-300 text-xs leading-relaxed font-medium">
+                  Combines physical NFC chip encryption with GPS location boundary verification to ensure students are physically present in the room.
+                </p>
               </motion.div>
 
-              {/* Card 3: Reflections */}
               <motion.div 
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
+                viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="bg-slate-900/90 border border-fuchsia-500/30 p-8 rounded-[32px] hover:border-fuchsia-400 hover:shadow-[0_0_30px_rgba(217,70,239,0.2)] hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between min-h-[340px] relative overflow-hidden group shadow-xl"
+                className="bg-slate-900/80 border border-white/10 p-6 rounded-3xl backdrop-blur-md space-y-3"
               >
-                <div className="absolute inset-0 bg-gradient-to-tr from-fuchsia-500/10 via-transparent to-transparent opacity-60 group-hover:opacity-100 transition-opacity"></div>
-                
-                <div>
-                  <div className="w-14 h-14 rounded-2xl bg-fuchsia-500/20 border border-fuchsia-500/40 flex items-center justify-center text-fuchsia-300 relative z-10 mb-6 shadow-[0_0_20px_rgba(217,70,239,0.25)]">
-                    <span className="material-symbols-outlined text-[28px]">auto_awesome</span>
-                  </div>
-                  
-                  {/* Micro-UI preview */}
-                  <div className="bg-slate-950/80 border border-fuchsia-500/30 p-3.5 rounded-2xl mb-4 relative z-10 text-[10px] text-fuchsia-200 font-semibold shadow-inner flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-fuchsia-400 animate-ping"></span>
-                    &ldquo;Reflecting on practicum teaching outcomes...&rdquo;
-                  </div>
+                <div className="w-10 h-10 rounded-xl bg-indigo-500/20 border border-indigo-500/30 flex items-center justify-center text-indigo-300">
+                  <span className="material-symbols-outlined text-[20px]">analytics</span>
                 </div>
-
-                <div className="space-y-2.5 relative z-10">
-                  <h3 className="font-extrabold text-lg text-white leading-snug" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
-                    Self-Reflection Module
-                  </h3>
-                  <p className="text-slate-300 text-[12px] font-medium leading-relaxed">
-                    Record educational reflections on academic scenarios with structured prompt guidance.
-                  </p>
-                </div>
+                <h3 className="font-extrabold text-base text-white">Live Instructor Analytics</h3>
+                <p className="text-slate-300 text-xs leading-relaxed font-medium">
+                  Professors and educators see real-time attendance rosters update live on their dashboard as students arrive.
+                </p>
               </motion.div>
-
-              {/* Card 4: Academic AI */}
-              <motion.div 
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-                className="bg-slate-900/90 border border-emerald-500/40 p-8 rounded-[32px] hover:border-emerald-400 hover:shadow-[0_0_30px_rgba(16,185,129,0.25)] hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between min-h-[340px] relative overflow-hidden group shadow-xl"
-              >
-                <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/10 via-transparent to-transparent opacity-60 group-hover:opacity-100 transition-opacity"></div>
-
-                <div>
-                  <div className="w-14 h-14 rounded-2xl bg-slate-950 border border-emerald-500/50 flex items-center justify-center p-3 relative z-10 shadow-[0_0_20px_rgba(16,185,129,0.3)] mb-6">
-                    <img 
-                      src="/images/logo-white.png" 
-                      alt="Kudu" 
-                      className="w-full h-full object-contain animate-pulse z-10"
-                    />
-                  </div>
-
-                  <div className="flex gap-1.5 items-center bg-slate-950/80 border border-emerald-500/30 p-2.5 rounded-2xl mb-4 relative z-10 justify-center h-9 shadow-inner">
-                    <div className="w-1 h-3 bg-emerald-400 rounded-full animate-pulse" style={{ animationDelay: '0.1s' }}></div>
-                    <div className="w-1 h-5 bg-emerald-400 rounded-full animate-pulse" style={{ animationDelay: '0.3s' }}></div>
-                    <div className="w-1 h-2 bg-emerald-400 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-                    <div className="w-1 h-4 bg-emerald-400 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}></div>
-                  </div>
-                </div>
-
-                <div className="space-y-2.5 relative z-10">
-                  <div className="inline-flex items-center gap-1.5 bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 px-2.5 py-0.5 rounded-full text-[9px] font-black tracking-wider uppercase">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
-                    Voice Active AI
-                  </div>
-                  <h3 className="font-extrabold text-lg text-white leading-snug" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
-                    Academic AI Assistant
-                  </h3>
-                  <p className="text-slate-300 text-[12px] font-medium leading-relaxed">
-                    Double-check rubric criteria, course guidelines, and academic references right in the field with instant voice notes.
-                  </p>
-                </div>
-              </motion.div>
-
             </div>
+
           </div>
         </section>
 
@@ -495,8 +435,8 @@ export default function EducationExperience() {
                 },
                 {
                   step: "05",
-                  title: "1-Tap Check-In",
-                  desc: "Perform quick check-ins for everyday classes, labs, and practicum hours.",
+                  title: "1-Tap NFC Check-In",
+                  desc: "Tap your phone on the classroom NFC tag for sub-second class check-ins.",
                   icon: "touch_app"
                 },
                 {
