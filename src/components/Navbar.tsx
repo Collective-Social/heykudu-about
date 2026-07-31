@@ -11,9 +11,9 @@ export default function Navbar() {
   const links = [
     { name: "Home", href: "/" },
     { name: "EPA & WBA", href: "/features/epa-tracking" },
-    { name: "Geo-Fence", href: "/features/geo-fence" },
-    { name: "NFC Attendance", href: "/features/nfc-attendance" },
-    { name: "Doctor Experience", href: "/doctors" },
+    { name: "Education", href: "/education" },
+    { name: "Doctors", href: "/doctors" },
+    { name: "Dietetics", href: "/dietetics" },
     { name: "Clinical Guide", href: "/guide" },
     { name: "FAQ", href: "/faq" },
     { name: "Contact", href: "/contact" },
@@ -38,7 +38,7 @@ export default function Navbar() {
         </Link>
 
         {/* Center: Desktop Nav Links */}
-        <div className="hidden lg:flex items-center gap-4 xl:gap-6 mx-auto">
+        <div className="hidden lg:flex items-center gap-3 xl:gap-4.5 mx-auto">
           {links.map((link) => {
             const isActive = pathname === link.href;
             return (
@@ -57,13 +57,13 @@ export default function Navbar() {
           })}
         </div>
 
-        {/* Right: Single "Go to App" Action Button - Always visible on desktop/laptop */}
+        {/* Right: Single "Go to App" Action Button */}
         <div className="hidden md:flex items-center shrink-0">
           <a
             href="https://heykudu.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 px-4.5 py-1.5 rounded-full border border-white/40 bg-white/10 text-white font-extrabold text-xs hover:bg-white/20 transition-all shadow-sm active:scale-95 whitespace-nowrap"
+            className="flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/40 bg-white/10 text-white font-extrabold text-xs hover:bg-white/20 transition-all shadow-sm active:scale-95 whitespace-nowrap"
           >
             Go to App
             <span className="material-symbols-outlined text-[15px]">arrow_forward</span>
