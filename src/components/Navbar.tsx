@@ -14,7 +14,6 @@ export default function Navbar() {
     { name: "Geo-Fence & NFC", href: "/features/nfc-attendance" },
     { name: "Education", href: "/education" },
     { name: "Doctors", href: "/doctors" },
-    { name: "Dietetics", href: "/dietetics" },
     { name: "Clinical Guide", href: "/guide" },
     { name: "FAQ", href: "/faq" },
     { name: "Contact", href: "/contact" },
