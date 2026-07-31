@@ -112,7 +112,7 @@ export default function NfcAndGeoFenceCombined() {
                 </div>
               </motion.div>
 
-              {/* Right Column: Hero Artwork Showcase */}
+              {/* Right Column: Hero Artwork Showcase with Floating Spinning 3D Physical Tag Logo */}
               <motion.div 
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -127,7 +127,7 @@ export default function NfcAndGeoFenceCombined() {
                   />
                   
                   {/* Floating Micro-Badge */}
-                  <div className="absolute top-8 right-8 bg-surface-container-lowest/90 backdrop-blur border border-outline-variant/30 rounded-2xl p-3 flex items-center gap-3 shadow-xl">
+                  <div className="absolute top-8 right-8 bg-surface-container-lowest/90 backdrop-blur border border-outline-variant/30 rounded-2xl p-3 flex items-center gap-3 shadow-xl z-20">
                     <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
                       <span className="material-symbols-outlined text-[20px] animate-pulse">sensors</span>
                     </div>
@@ -136,6 +136,31 @@ export default function NfcAndGeoFenceCombined() {
                       <div className="text-xs font-black text-on-surface">NFC NTAG213 + GPS</div>
                     </div>
                   </div>
+
+                  {/* FLOATING SPINNING 3D PHYSICAL NFC TAG TOKEN (Identical to staging.heykudu.com/scan) */}
+                  <div className="absolute bottom-6 left-6 z-30 flex items-center gap-3 bg-slate-950/80 backdrop-blur-md p-2.5 rounded-full border border-purple-400/40 shadow-2xl">
+                    <div className="w-14 h-14 rounded-full bg-white/95 shadow-xl flex items-center justify-center p-1 border-2 border-white/60">
+                      <motion.div
+                        animate={{ rotateY: [0, 360] }}
+                        transition={{ repeat: Infinity, duration: 6, ease: "linear" }}
+                        style={{ transformStyle: "preserve-3d" }}
+                        className="w-full h-full rounded-full bg-gradient-to-br from-purple-700 via-indigo-800 to-purple-900 border border-purple-400/40 flex items-center justify-center relative shadow-inner"
+                      >
+                        <div className="w-[88%] h-[88%] rounded-full bg-white/10 flex items-center justify-center border border-white/20">
+                          <img
+                            src="/images/logo-white.png"
+                            alt="heykudu physical tag"
+                            className="h-5 w-5 object-contain brightness-0 invert drop-shadow"
+                          />
+                        </div>
+                      </motion.div>
+                    </div>
+                    <div className="pr-4 text-left">
+                      <div className="text-[10px] font-black text-purple-300 uppercase tracking-wider">Physical NFC Tag</div>
+                      <div className="text-xs font-extrabold text-white">Tap To Detect</div>
+                    </div>
+                  </div>
+
                 </div>
               </motion.div>
 
@@ -266,66 +291,91 @@ export default function NfcAndGeoFenceCombined() {
           </div>
         </section>
 
-        {/* SMART CLASSROOM & WARD TAG SHOWCASE */}
+        {/* SMART CLASSROOM & WARD TAG SHOWCASE WITH FEATURED SPINNING TAG DEMO */}
         <section className="py-24 bg-surface-container-lowest border-b border-outline-variant/15">
-          <div className="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="max-w-container-max mx-auto px-margin-mobile md:px-gutter space-y-16">
+            
+            {/* Header */}
+            <div className="text-center max-w-3xl mx-auto space-y-4">
+              <span className="px-3.5 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider">
+                Hardware &amp; Software Synergy
+              </span>
+              <h2 className="font-extrabold text-3xl md:text-5xl text-on-surface tracking-tight" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
+                Physical Hardware Meets Intelligent Software
+              </h2>
+              <p className="text-on-surface-variant font-medium text-base md:text-lg">
+                HeyKudu supplies durable, waterproof NTAG213 smart tags and acrylic desktop plaques ready to mount in hospital wards, operating suites, and university lecture halls.
+              </p>
+            </div>
+
+            {/* Interactive Spinning Tag Feature Showcase Box */}
+            <div className="bg-gradient-to-br from-slate-950 via-[#120D2D] to-slate-950 text-white p-8 md:p-14 rounded-[40px] border border-white/15 shadow-2xl grid lg:grid-cols-12 gap-10 items-center">
               
-              {/* Left Photo Showcase */}
-              <motion.div 
-                initial={{ opacity: 0, scale: 0.96 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.6 }}
-                className="relative rounded-[32px] overflow-hidden border border-outline-variant/30 shadow-2xl group"
-              >
-                <img 
-                  src="/images/classroom_nfc_tag.png" 
-                  alt="Students using HeyKudu Smart NFC Tag in classroom" 
-                  className="w-full h-[360px] md:h-[420px] object-cover group-hover:scale-105 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
-                <div className="absolute bottom-6 left-6 right-6 text-white space-y-1">
-                  <div className="text-xs font-black uppercase tracking-wider text-emerald-400">Classroom Desk NFC Tag</div>
-                  <div className="text-sm font-bold">1-Tap Contactless Check-In for Lectures &amp; Practicums</div>
+              {/* Left: The Spinning 3D Physical Tag Badge */}
+              <div className="lg:col-span-5 flex flex-col items-center justify-center space-y-6">
+                <div className="relative flex items-center justify-center p-8">
+                  {/* Glowing background ring */}
+                  <div className="absolute inset-0 rounded-full bg-purple-600/30 blur-3xl animate-pulse"></div>
+                  
+                  {/* White Outer Badge Frame */}
+                  <div className="w-44 h-44 sm:w-52 sm:h-52 rounded-full bg-white/95 shadow-[0_0_60px_rgba(125,0,255,0.5)] flex items-center justify-center relative p-2.5 border-4 border-white/60 backdrop-blur-md">
+                    {/* Spinning Inner 3D Tag Token */}
+                    <motion.div
+                      animate={{ rotateY: [0, 360] }}
+                      transition={{ repeat: Infinity, duration: 8, ease: "linear" }}
+                      style={{ transformStyle: "preserve-3d" }}
+                      className="w-full h-full rounded-full bg-gradient-to-br from-purple-700 via-indigo-800 to-purple-900 border-2 border-purple-400/40 shadow-inner flex items-center justify-center relative"
+                    >
+                      <div className="w-[88%] h-[88%] rounded-full bg-white/10 backdrop-blur-xs flex items-center justify-center border border-white/20">
+                        <img
+                          src="/images/logo-white.png"
+                          alt="heykudu physical tag"
+                          className="h-12 w-12 sm:h-16 sm:w-16 object-contain brightness-0 invert drop-shadow-lg"
+                        />
+                      </div>
+                    </motion.div>
+                  </div>
                 </div>
-              </motion.div>
 
-              {/* Right Content */}
-              <motion.div 
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.6 }}
-                className="space-y-6"
-              >
-                <span className="px-3.5 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider">
-                  Hardware &amp; Software Synergy
-                </span>
-                <h2 className="font-extrabold text-3xl md:text-4xl text-on-surface tracking-tight" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
-                  Physical Hardware Meets Intelligent Software
-                </h2>
-                <p className="text-on-surface-variant font-medium leading-relaxed">
-                  HeyKudu supplies durable, waterproof NTAG213 smart tags and acrylic desktop plaques ready to mount in hospital wards, operating suites, and university lecture halls.
-                </p>
+                <div className="text-center space-y-1">
+                  <div className="text-sm font-black text-white tracking-tight">heykudu NTAG213 Certified Token</div>
+                  <div className="text-xs text-purple-300 font-bold">Continuous 3D Encrypted NFC Broadcast</div>
+                </div>
+              </div>
 
-                <div className="space-y-4 pt-2">
-                  <div className="flex gap-3 items-center">
-                    <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+              {/* Right: Classroom Photo Showcase */}
+              <div className="lg:col-span-7 space-y-6">
+                <div className="relative rounded-[28px] overflow-hidden border border-white/15 shadow-xl group">
+                  <img 
+                    src="/images/classroom_nfc_tag.png" 
+                    alt="Students using HeyKudu Smart NFC Tag in classroom" 
+                    className="w-full h-[280px] sm:h-[340px] object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+                  <div className="absolute bottom-4 left-6 right-6 text-white space-y-1">
+                    <div className="text-xs font-black uppercase tracking-wider text-emerald-400">Classroom Desk NFC Tag</div>
+                    <div className="text-sm font-bold">1-Tap Contactless Check-In for Lectures &amp; Practicums</div>
+                  </div>
+                </div>
+
+                <div className="grid sm:grid-cols-2 gap-4 pt-2">
+                  <div className="flex gap-3 items-center bg-white/5 border border-white/10 p-3.5 rounded-2xl">
+                    <div className="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-300">
                       <span className="material-symbols-outlined text-[16px]">touch_app</span>
                     </div>
-                    <span className="text-xs font-extrabold text-on-surface">Automated Check-In / Check-Out Detection</span>
+                    <span className="text-xs font-extrabold text-white">Automated Check-In / Out Flow</span>
                   </div>
-                  <div className="flex gap-3 items-center">
-                    <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                  <div className="flex gap-3 items-center bg-white/5 border border-white/10 p-3.5 rounded-2xl">
+                    <div className="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-300">
                       <span className="material-symbols-outlined text-[16px]">qr_code</span>
                     </div>
-                    <span className="text-xs font-extrabold text-on-surface">Printable High-Definition QR Code Backups</span>
+                    <span className="text-xs font-extrabold text-white">HD Printable QR Code Backup</span>
                   </div>
                 </div>
-              </motion.div>
+              </div>
 
             </div>
+
           </div>
         </section>
 
