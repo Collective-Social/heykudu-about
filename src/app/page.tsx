@@ -692,6 +692,191 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Student Learning Pathways & Real-Time Progress View Section */}
+        <section className="py-24 bg-surface-container-lowest border-b border-outline-variant/10 relative overflow-hidden">
+          {/* Subtle background glow */}
+          <div className="absolute top-1/2 right-0 w-[600px] h-[400px] bg-primary/5 rounded-full blur-[120px] pointer-events-none"></div>
+
+          <div className="max-w-container-max mx-auto px-margin-mobile md:px-gutter relative z-10 space-y-16">
+            
+            {/* Header */}
+            <div className="text-center max-w-3xl mx-auto space-y-4">
+              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary font-bold text-xs uppercase tracking-wider">
+                <span className="material-symbols-outlined text-[16px]">school</span>
+                STUDENT PROGRESS &amp; LEARNING PATHWAYS
+              </span>
+              <h2 className="font-extrabold text-4xl md:text-5xl lg:text-6xl text-on-surface tracking-tight" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
+                Clear Real-Time <span className="text-primary">Course Requirements.</span>
+              </h2>
+              <p className="text-on-surface-variant font-medium text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+                Students get a real-time, crystal-clear view of their active course or rotation. See outstanding requirements, compare individual progress against peer averages and expected targets, and always know what skills remain to be completed.
+              </p>
+            </div>
+
+            {/* High-Fidelity Student Progress Display Card (Matching Screenshot) */}
+            <div className="max-w-4xl mx-auto bg-gradient-to-br from-[#5B00C7] via-[#7D00FF] to-slate-900 rounded-[36px] p-6 sm:p-10 md:p-12 border border-white/20 text-white shadow-2xl relative overflow-hidden group">
+              
+              {/* Top Card Header */}
+              <div className="flex justify-between items-center pb-6 border-b border-white/15">
+                <h3 className="font-extrabold text-xl sm:text-2xl text-white tracking-tight" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
+                  Act and Skills (General Surgery &amp; Practicums)
+                </h3>
+                <button className="px-3.5 py-1.5 rounded-full bg-white/15 hover:bg-white/25 border border-white/30 text-white text-xs font-extrabold transition-all flex items-center gap-1.5 shadow-sm">
+                  <span className="material-symbols-outlined text-xs">sync</span>
+                  Change
+                </button>
+              </div>
+
+              {/* Main White Student Progress Container */}
+              <div className="bg-white text-slate-900 rounded-[28px] p-6 sm:p-8 my-6 shadow-xl space-y-6 relative overflow-visible">
+                
+                {/* Greeting & On-Track Badge Row */}
+                <div className="flex flex-wrap justify-between items-center gap-4">
+                  <div className="flex items-center gap-2">
+                    <h4 className="font-extrabold text-2xl sm:text-3xl text-slate-900" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
+                      Great job, Alex!
+                    </h4>
+                    <span className="w-5 h-5 rounded-full bg-purple-100 text-purple-700 flex items-center justify-center font-extrabold text-xs cursor-pointer shadow-xs">
+                      ?
+                    </span>
+                  </div>
+
+                  <span className="px-4 py-1.5 rounded-full bg-emerald-600 text-white text-xs font-black uppercase tracking-wider flex items-center gap-1.5 shadow-sm">
+                    <span className="material-symbols-outlined text-sm">check_circle</span>
+                    On track
+                  </span>
+                </div>
+
+                {/* Big Central Progress Bar with Callout Tooltips */}
+                <div className="py-6 relative my-2">
+                  
+                  {/* Floating Tooltip ABOVE Bar: "63% You" */}
+                  <div 
+                    className="absolute -top-3 left-[63%] -translate-x-1/2 bg-emerald-600 text-white px-3 py-1 rounded-full text-xs font-extrabold shadow-md flex items-center gap-1 border border-emerald-400 z-20"
+                  >
+                    <span>63% You</span>
+                    <span className="w-2 h-2 bg-emerald-600 rotate-45 absolute -bottom-1 left-1/2 -translate-x-1/2 border-r border-b border-emerald-400"></span>
+                  </div>
+
+                  {/* Main Progress Track */}
+                  <div className="w-full h-4 bg-slate-100 rounded-full relative shadow-inner overflow-hidden border border-slate-200">
+                    {/* Fill Bar: You */}
+                    <div className="h-full bg-emerald-600 rounded-full transition-all duration-1000" style={{ width: "63%" }}></div>
+                  </div>
+
+                  {/* Floating Tooltip BELOW Bar: "42% Peer Avg" */}
+                  <div 
+                    className="absolute -bottom-3 left-[42%] -translate-x-1/2 bg-purple-700 text-white px-3 py-1 rounded-full text-xs font-extrabold shadow-md flex items-center gap-1 border border-purple-400 z-20"
+                  >
+                    <span className="w-2 h-2 bg-purple-700 rotate-45 absolute -top-1 left-1/2 -translate-x-1/2 border-l border-t border-purple-400"></span>
+                    <span>42% Peer Avg</span>
+                  </div>
+
+                  {/* Peer Marker Indicator Dot on Track */}
+                  <div 
+                    className="absolute top-1/2 -translate-y-1/2 left-[42%] w-4 h-4 bg-blue-500 border-2 border-white rounded-full shadow-md z-10"
+                  ></div>
+
+                </div>
+
+                {/* Expected Progress Blue Pill Button on Bottom Right */}
+                <div className="flex justify-end pt-2">
+                  <span className="px-4 py-2 rounded-full bg-sky-600 text-white font-extrabold text-xs flex items-center gap-2 shadow-sm cursor-pointer hover:bg-sky-700 transition-colors">
+                    <span className="w-2.5 h-2.5 rounded-full bg-white animate-pulse"></span>
+                    <span>55% Expected Progress</span>
+                    <span className="material-symbols-outlined text-sm">chevron_right</span>
+                  </span>
+                </div>
+
+              </div>
+
+              {/* Outstanding Requirement Progress Bars (Below White Card) */}
+              <div className="space-y-4 pt-2 text-white">
+                
+                {/* Requirement 1: Check-ins */}
+                <div className="space-y-1">
+                  <div className="flex justify-between items-center text-xs font-extrabold opacity-95">
+                    <span>Check-ins &amp; Attendance</span>
+                    <span>82%</span>
+                  </div>
+                  <div className="w-full h-2 bg-white/20 rounded-full overflow-hidden">
+                    <div className="h-full bg-white rounded-full" style={{ width: "82%" }}></div>
+                  </div>
+                </div>
+
+                {/* Requirement 2: Rotation requirements */}
+                <div className="space-y-1">
+                  <div className="flex justify-between items-center text-xs font-extrabold opacity-95">
+                    <span>Rotation / Course Requirements</span>
+                    <span>63%</span>
+                  </div>
+                  <div className="w-full h-2 bg-white/20 rounded-full overflow-hidden">
+                    <div className="h-full bg-white rounded-full" style={{ width: "63%" }}></div>
+                  </div>
+                </div>
+
+                {/* Requirement 3: WBAs */}
+                <div className="space-y-1">
+                  <div className="flex justify-between items-center text-xs font-extrabold opacity-95">
+                    <span>Workplace Based Assessments (WBAs)</span>
+                    <span>48%</span>
+                  </div>
+                  <div className="w-full h-2 bg-white/20 rounded-full overflow-hidden">
+                    <div className="h-full bg-white rounded-full" style={{ width: "48%" }}></div>
+                  </div>
+                </div>
+
+                {/* Requirement 4: EPA */}
+                <div className="space-y-1">
+                  <div className="flex justify-between items-center text-xs font-extrabold opacity-95">
+                    <span>EPA &amp; Competency Milestones</span>
+                    <span>35%</span>
+                  </div>
+                  <div className="w-full h-2 bg-white/20 rounded-full overflow-hidden">
+                    <div className="h-full bg-white rounded-full" style={{ width: "35%" }}></div>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+
+            {/* Bottom 3 Feature Cards */}
+            <div className="grid md:grid-cols-3 gap-6 pt-4">
+              <div className="flex gap-4 items-start p-6 rounded-2xl bg-surface border border-outline-variant/15">
+                <div className="w-10 h-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center flex-shrink-0">
+                  <span className="material-symbols-outlined">trending_up</span>
+                </div>
+                <div>
+                  <h4 className="font-bold text-base text-on-surface">Real-Time Requirement Sync</h4>
+                  <p className="text-on-surface-variant text-xs mt-1">Instant updates automatically recalculate course requirements as soon as a tutor or tag certifies a skill.</p>
+                </div>
+              </div>
+
+              <div className="flex gap-4 items-start p-6 rounded-2xl bg-surface border border-outline-variant/15">
+                <div className="w-10 h-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center flex-shrink-0">
+                  <span className="material-symbols-outlined">analytics</span>
+                </div>
+                <div>
+                  <h4 className="font-bold text-base text-on-surface">Peer Benchmarking</h4>
+                  <p className="text-on-surface-variant text-xs mt-1">See how individual progress compares against peer cohort averages and expected timeline milestones.</p>
+                </div>
+              </div>
+
+              <div className="flex gap-4 items-start p-6 rounded-2xl bg-surface border border-outline-variant/15">
+                <div className="w-10 h-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center flex-shrink-0">
+                  <span className="material-symbols-outlined">checklist</span>
+                </div>
+                <div>
+                  <h4 className="font-bold text-base text-on-surface">Outstanding Skills Checklist</h4>
+                  <p className="text-on-surface-variant text-xs mt-1">Never wonder what is outstanding. Clear breakdown of check-ins, WBAs, and EPA milestones remaining.</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
         {/* Academic Workflow Section */}
         <section className="py-32 bg-surface-container-lowest border-y border-outline-variant/10 overflow-hidden">
           <div className="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
