@@ -470,31 +470,38 @@ export default function EducationExperience() {
                   icon: "download"
                 }
               ].map((stepItem, idx) => (
-                <motion.div
+                <motion.a
                   key={stepItem.step}
+                  href="https://heykudu.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-50px" }}
                   transition={{ duration: 0.4, delay: idx * 0.05 }}
-                  className="bg-surface-container-low border border-outline-variant/20 p-6 rounded-2xl flex flex-col justify-between hover:border-primary/40 hover:shadow-md transition-all group"
+                  className="bg-surface-container-low border border-outline-variant/20 p-6 rounded-2xl flex flex-col justify-between hover:border-primary hover:shadow-lg hover:-translate-y-1 transition-all group cursor-pointer"
                 >
                   <div className="space-y-3">
                     <div className="flex justify-between items-center">
-                      <span className="w-8 h-8 rounded-full bg-primary/10 text-primary font-black text-xs flex items-center justify-center">
+                      <span className="w-8 h-8 rounded-full bg-primary/10 text-primary font-black text-xs flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors">
                         {stepItem.step}
                       </span>
                       <span className="material-symbols-outlined text-on-surface-variant/50 text-[20px] group-hover:text-primary transition-colors">
                         {stepItem.icon}
                       </span>
                     </div>
-                    <h3 className="font-extrabold text-sm text-on-surface leading-tight" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
+                    <h3 className="font-extrabold text-sm text-on-surface leading-tight group-hover:text-primary transition-colors" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
                       {stepItem.title}
                     </h3>
                     <p className="text-on-surface-variant text-[11px] font-medium leading-relaxed">
                       {stepItem.desc}
                     </p>
                   </div>
-                </motion.div>
+                  <div className="mt-4 pt-3 border-t border-outline-variant/15 flex items-center justify-between text-[10px] font-black text-primary group-hover:underline">
+                    <span>Get Started</span>
+                    <span className="material-symbols-outlined text-[14px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                  </div>
+                </motion.a>
               ))}
             </div>
 

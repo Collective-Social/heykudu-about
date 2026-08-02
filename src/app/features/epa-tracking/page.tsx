@@ -279,7 +279,12 @@ export default function EPATracking() {
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
               
               {/* Step 1 */}
-              <div className="bg-surface rounded-3xl p-8 border border-outline-variant/30 hover:border-primary/50 hover:shadow-xl transition-all relative flex flex-col justify-between group">
+              <a 
+                href="https://heykudu.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-surface rounded-3xl p-8 border border-outline-variant/30 hover:border-primary hover:shadow-xl hover:-translate-y-1 transition-all relative flex flex-col justify-between group cursor-pointer"
+              >
                 <div className="space-y-4">
                   <div className="flex justify-between items-center">
                     <span className="w-10 h-10 rounded-2xl bg-primary text-on-primary font-black text-sm flex items-center justify-center shadow-md">
@@ -287,21 +292,26 @@ export default function EPATracking() {
                     </span>
                     <span className="material-symbols-outlined text-2xl text-primary">edit_note</span>
                   </div>
-                  <h3 className="font-extrabold text-xl text-on-surface" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
+                  <h3 className="font-extrabold text-xl text-on-surface group-hover:text-primary transition-colors" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
                     Fill Rubric Online
                   </h3>
                   <p className="text-on-surface-variant text-xs leading-relaxed font-medium">
                     Trainee opens HeyKudu on mobile and selects Mini-CEX, DOPS, or Case-Based Discussion. Scores competency criteria and adds self-reflection notes.
                   </p>
                 </div>
-                <div className="mt-6 pt-4 border-t border-outline-variant/15 text-[11px] font-bold text-primary flex items-center gap-1">
-                  <span>Standardized Clinical Criteria</span>
-                  <span className="material-symbols-outlined text-sm">chevron_right</span>
+                <div className="mt-6 pt-4 border-t border-outline-variant/15 text-[11px] font-bold text-primary flex items-center justify-between group-hover:underline">
+                  <span>Start on heykudu.com</span>
+                  <span className="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
                 </div>
-              </div>
+              </a>
 
               {/* Step 2 */}
-              <div className="bg-surface rounded-3xl p-8 border border-outline-variant/30 hover:border-primary/50 hover:shadow-xl transition-all relative flex flex-col justify-between group">
+              <a 
+                href="https://heykudu.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-surface rounded-3xl p-8 border border-outline-variant/30 hover:border-purple-600 hover:shadow-xl hover:-translate-y-1 transition-all relative flex flex-col justify-between group cursor-pointer"
+              >
                 <div className="space-y-4">
                   <div className="flex justify-between items-center">
                     <span className="w-10 h-10 rounded-2xl bg-purple-600 text-white font-black text-sm flex items-center justify-center shadow-md">
@@ -309,21 +319,26 @@ export default function EPATracking() {
                     </span>
                     <span className="material-symbols-outlined text-2xl text-purple-600">qr_code_2</span>
                   </div>
-                  <h3 className="font-extrabold text-xl text-on-surface" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
+                  <h3 className="font-extrabold text-xl text-on-surface group-hover:text-purple-600 transition-colors" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
                     Generate Student QR
                   </h3>
                   <p className="text-on-surface-variant text-xs leading-relaxed font-medium">
                     Upon completing the online rubric, HeyKudu compiles an encrypted single-use QR token displaying on the trainee&apos;s phone screen.
                   </p>
                 </div>
-                <div className="mt-6 pt-4 border-t border-outline-variant/15 text-[11px] font-bold text-purple-600 flex items-center gap-1">
-                  <span>Encrypted Instant Token</span>
-                  <span className="material-symbols-outlined text-sm">chevron_right</span>
+                <div className="mt-6 pt-4 border-t border-outline-variant/15 text-[11px] font-bold text-purple-600 flex items-center justify-between group-hover:underline">
+                  <span>Start on heykudu.com</span>
+                  <span className="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
                 </div>
-              </div>
+              </a>
 
               {/* Step 3 */}
-              <div className="bg-surface rounded-3xl p-8 border border-outline-variant/30 hover:border-primary/50 hover:shadow-xl transition-all relative flex flex-col justify-between group">
+              <a 
+                href="https://heykudu.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-surface rounded-3xl p-8 border border-outline-variant/30 hover:border-indigo-600 hover:shadow-xl hover:-translate-y-1 transition-all relative flex flex-col justify-between group cursor-pointer"
+              >
                 <div className="space-y-4">
                   <div className="flex justify-between items-center">
                     <span className="w-10 h-10 rounded-2xl bg-indigo-600 text-white font-black text-sm flex items-center justify-center shadow-md">
@@ -331,21 +346,26 @@ export default function EPATracking() {
                     </span>
                     <span className="material-symbols-outlined text-2xl text-indigo-600">qr_code_scanner</span>
                   </div>
-                  <h3 className="font-extrabold text-xl text-on-surface" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
+                  <h3 className="font-extrabold text-xl text-on-surface group-hover:text-indigo-600 transition-colors" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
                     Educator Scans QR
                   </h3>
                   <p className="text-on-surface-variant text-xs leading-relaxed font-medium">
                     The clinical supervisor or consultant scans the student&apos;s phone screen using their own camera or HeyKudu app in under 2 seconds.
                   </p>
                 </div>
-                <div className="mt-6 pt-4 border-t border-outline-variant/15 text-[11px] font-bold text-indigo-600 flex items-center gap-1">
-                  <span>Zero Password Typing</span>
-                  <span className="material-symbols-outlined text-sm">chevron_right</span>
+                <div className="mt-6 pt-4 border-t border-outline-variant/15 text-[11px] font-bold text-indigo-600 flex items-center justify-between group-hover:underline">
+                  <span>Start on heykudu.com</span>
+                  <span className="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
                 </div>
-              </div>
+              </a>
 
               {/* Step 4 */}
-              <div className="bg-surface rounded-3xl p-8 border border-outline-variant/30 hover:border-emerald-500/50 hover:shadow-xl transition-all relative flex flex-col justify-between group">
+              <a 
+                href="https://heykudu.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-surface rounded-3xl p-8 border border-outline-variant/30 hover:border-emerald-500 hover:shadow-xl hover:-translate-y-1 transition-all relative flex flex-col justify-between group cursor-pointer"
+              >
                 <div className="space-y-4">
                   <div className="flex justify-between items-center">
                     <span className="w-10 h-10 rounded-2xl bg-emerald-600 text-white font-black text-sm flex items-center justify-center shadow-md">
@@ -353,18 +373,18 @@ export default function EPATracking() {
                     </span>
                     <span className="material-symbols-outlined text-2xl text-emerald-600">verified_user</span>
                   </div>
-                  <h3 className="font-extrabold text-xl text-on-surface" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
+                  <h3 className="font-extrabold text-xl text-on-surface group-hover:text-emerald-600 transition-colors" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
                     1-Tap Sign-Off &amp; Smiles!
                   </h3>
                   <p className="text-on-surface-variant text-xs leading-relaxed font-medium">
                     Educator selects Entrustment Rating (Level 1-5), adds brief verbal feedback, and taps Confirm. Instantly signed off and synced to faculty portfolio.
                   </p>
                 </div>
-                <div className="mt-6 pt-4 border-t border-outline-variant/15 text-[11px] font-bold text-emerald-600 flex items-center gap-1">
-                  <span>Synced to E-Portfolio</span>
-                  <span className="material-symbols-outlined text-sm">done_all</span>
+                <div className="mt-6 pt-4 border-t border-outline-variant/15 text-[11px] font-bold text-emerald-600 flex items-center justify-between group-hover:underline">
+                  <span>Start on heykudu.com</span>
+                  <span className="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
                 </div>
-              </div>
+              </a>
 
             </div>
 
