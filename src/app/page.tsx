@@ -292,6 +292,394 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Live Admin Dashboard & Tap-to-Tag Sync Section */}
+        <section className="py-24 bg-surface border-b border-outline-variant/10 relative overflow-hidden">
+          {/* Subtle background glow */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-primary/5 rounded-full blur-[140px] pointer-events-none"></div>
+
+          <div className="max-w-container-max mx-auto px-margin-mobile md:px-gutter relative z-10 space-y-16">
+            
+            {/* Header */}
+            <div className="text-center max-w-3xl mx-auto space-y-4">
+              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary font-bold text-xs uppercase tracking-wider">
+                <span className="w-2 h-2 rounded-full bg-primary animate-ping"></span>
+                Real-Time Faculty Intelligence
+              </span>
+              <h2 className="font-extrabold text-4xl md:text-5xl lg:text-6xl text-on-surface tracking-tight" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
+                Never Let a Student <span className="text-primary">Miss a Beat.</span>
+              </h2>
+              <p className="text-on-surface-variant font-medium text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+                From a 1-second tap on a physical NFC tag to live faculty-wide intelligence. Track real-time attendance, geofenced location map pins, and unaccounted student alerts instantly on any desktop screen.
+              </p>
+            </div>
+
+            {/* Tap -> Tag -> Live Dashboard Flow Illustration Banner */}
+            <div className="bg-surface-container-lowest border border-outline-variant/20 rounded-3xl p-6 md:p-8 shadow-sm">
+              <div className="text-center mb-6">
+                <span className="text-[11px] font-extrabold text-primary uppercase tracking-widest">
+                  Instant Attendance Flow Architecture
+                </span>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-center text-center">
+                
+                {/* Flow Step 1: Student Phone Tap */}
+                <div className="flex flex-col items-center gap-3 p-4 rounded-2xl bg-surface border border-outline-variant/10 relative group hover:border-primary/30 transition-all">
+                  <div className="w-12 h-12 rounded-2xl bg-primary/10 text-primary flex items-center justify-center font-bold">
+                    <span className="material-symbols-outlined text-2xl">smartphone</span>
+                  </div>
+                  <div>
+                    <div className="font-extrabold text-sm text-on-surface">1. Student Taps Phone</div>
+                    <div className="text-xs text-on-surface-variant mt-0.5">1-second check-in on mobile browser</div>
+                  </div>
+                </div>
+
+                {/* Flow Step 2: Physical Revolving NFC Tag */}
+                <div className="flex flex-col items-center gap-3 p-4 rounded-2xl bg-gradient-to-b from-primary/5 to-surface border border-primary/20 relative group hover:scale-105 transition-all">
+                  <div className="w-16 h-16 relative flex items-center justify-center">
+                    <motion.img 
+                      animate={{ rotate: 360 }}
+                      transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
+                      src="/images/nfc_tag.png" 
+                      alt="HeyKudu Physical 3D NFC Tag Token"
+                      className="w-14 h-14 object-contain drop-shadow-md"
+                    />
+                    <span className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-green-500 animate-ping"></span>
+                  </div>
+                  <div>
+                    <div className="font-extrabold text-sm text-primary flex items-center gap-1.5 justify-center">
+                      <span>2. Physical NFC Tag</span>
+                      <span className="material-symbols-outlined text-xs">contactless</span>
+                    </div>
+                    <div className="text-xs text-on-surface-variant mt-0.5">Physical room token &amp; GPS geofence</div>
+                  </div>
+                </div>
+
+                {/* Flow Step 3: Live Sync to Admin Dashboard */}
+                <div className="flex flex-col items-center gap-3 p-4 rounded-2xl bg-surface border border-outline-variant/10 relative group hover:border-primary/30 transition-all">
+                  <div className="w-12 h-12 rounded-2xl bg-green-500/10 text-green-600 flex items-center justify-center font-bold">
+                    <span className="material-symbols-outlined text-2xl">desktop_windows</span>
+                  </div>
+                  <div>
+                    <div className="font-extrabold text-sm text-on-surface">3. Live Dashboard Sync</div>
+                    <div className="text-xs text-green-600 font-semibold mt-0.5">Appears on faculty screen under 0.2s</div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            {/* High-Fidelity Desktop Screen Mockup displaying Live Dashboard */}
+            <div className="relative rounded-[28px] border border-outline-variant/30 bg-slate-950 p-2 shadow-2xl overflow-hidden group">
+              
+              {/* Browser Window Header Bar */}
+              <div className="bg-slate-900 px-4 py-3 rounded-t-[20px] border-b border-slate-800 flex items-center justify-between text-xs text-slate-400 select-none">
+                <div className="flex items-center gap-2">
+                  <span className="w-3 h-3 rounded-full bg-red-500/80 inline-block"></span>
+                  <span className="w-3 h-3 rounded-full bg-yellow-500/80 inline-block"></span>
+                  <span className="w-3 h-3 rounded-full bg-green-500/80 inline-block"></span>
+                  <span className="ml-2 font-mono text-[11px] text-slate-400 hidden sm:inline-block">app.heykudu.com/admin/dashboard</span>
+                </div>
+                <div className="flex items-center gap-3 font-semibold">
+                  <span className="px-2.5 py-0.5 rounded-full bg-green-500/10 text-green-400 border border-green-500/20 text-[10px] flex items-center gap-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span>
+                    LIVE SYNC ACTIVE
+                  </span>
+                  <span className="hidden md:inline-block text-[11px] text-slate-400">Desktop Admin Console</span>
+                </div>
+              </div>
+
+              {/* Dashboard Content Container */}
+              <div className="bg-slate-900 text-slate-100 rounded-b-[20px] p-4 md:p-6 space-y-5 text-xs font-sans">
+                
+                {/* Dashboard Top Nav Bar */}
+                <div className="bg-[#7D00FF] -mx-4 -mt-4 md:-mx-6 md:-mt-6 p-4 md:px-6 flex flex-wrap justify-between items-center text-white rounded-t-none">
+                  <div className="flex items-center gap-6">
+                    <div className="flex items-center gap-2 font-black text-lg tracking-tight">
+                      <img src="/images/logo-white.png" alt="heykudu" className="h-6 w-auto" />
+                      <span>heykudu</span>
+                    </div>
+                    <div className="hidden sm:flex gap-4 font-bold text-xs">
+                      <span className="px-3 py-1 rounded-full bg-white/20 text-white cursor-pointer">Today</span>
+                      <span className="px-3 py-1 rounded-full hover:bg-white/10 text-white/80 cursor-pointer">Dashboard</span>
+                      <span className="px-3 py-1 rounded-full hover:bg-white/10 text-white/80 cursor-pointer">Settings</span>
+                      <span className="px-3 py-1 rounded-full hover:bg-white/10 text-white/80 cursor-pointer">SuperAdmin</span>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <span className="px-3 py-1 rounded-lg bg-white/10 border border-white/20 text-xs font-bold flex items-center gap-1 cursor-pointer">
+                      ← Back to App
+                    </span>
+                    <span className="w-7 h-7 rounded-full bg-white text-[#7D00FF] font-black flex items-center justify-center text-xs shadow-sm">
+                      P
+                    </span>
+                  </div>
+                </div>
+
+                {/* Filter Selector Row */}
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 pt-2 text-[10px]">
+                  
+                  {/* University */}
+                  <div className="bg-slate-800/80 border border-slate-700/60 p-2 rounded-xl space-y-1">
+                    <div className="text-slate-400 font-bold uppercase flex items-center gap-1 text-[9px]">
+                      <span className="material-symbols-outlined text-xs">account_balance</span>
+                      University
+                    </div>
+                    <div className="font-extrabold text-slate-200 truncate">University of Witwatersrand</div>
+                    <div className="text-slate-400 text-[9px]">510 Active Students</div>
+                  </div>
+
+                  {/* Faculty */}
+                  <div className="bg-slate-800/80 border border-slate-700/60 p-2 rounded-xl space-y-1">
+                    <div className="text-slate-400 font-bold uppercase flex items-center gap-1 text-[9px]">
+                      <span className="material-symbols-outlined text-xs">domain</span>
+                      Faculty
+                    </div>
+                    <div className="font-extrabold text-slate-200 truncate">Health Sciences &amp; Sci</div>
+                    <div className="text-slate-400 text-[9px]">486 Active Enrolled</div>
+                  </div>
+
+                  {/* Course */}
+                  <div className="bg-slate-800/80 border border-slate-700/60 p-2 rounded-xl space-y-1">
+                    <div className="text-slate-400 font-bold uppercase flex items-center gap-1 text-[9px]">
+                      <span className="material-symbols-outlined text-xs">school</span>
+                      Course
+                    </div>
+                    <div className="font-extrabold text-slate-200 truncate">MBBCh / Engineering</div>
+                    <div className="text-slate-400 text-[9px]">475 Registrations</div>
+                  </div>
+
+                  {/* Year */}
+                  <div className="bg-slate-800/80 border border-slate-700/60 p-2 rounded-xl space-y-1">
+                    <div className="text-slate-400 font-bold uppercase flex items-center gap-1 text-[9px]">
+                      <span className="material-symbols-outlined text-xs">calendar_today</span>
+                      Year
+                    </div>
+                    <div className="font-extrabold text-slate-200 truncate">GEMP 1 &amp; Year 2-4</div>
+                    <div className="text-slate-400 text-[9px]">261 Enrolled Cohort</div>
+                  </div>
+
+                  {/* Rotation / Placement */}
+                  <div className="bg-[#7D00FF]/20 border border-[#7D00FF]/50 p-2 rounded-xl space-y-1">
+                    <div className="text-[#A855F7] font-bold uppercase flex items-center justify-between text-[9px]">
+                      <span className="flex items-center gap-1">
+                        <span className="material-symbols-outlined text-xs">layers</span>
+                        Placement
+                      </span>
+                      <span>✕</span>
+                    </div>
+                    <div className="font-extrabold text-white truncate">O&amp;G GEMP II / Surgery</div>
+                    <div className="text-purple-300 text-[9px]">87 Active In Field</div>
+                  </div>
+
+                  {/* Locations */}
+                  <div className="bg-slate-800/80 border border-slate-700/60 p-2 rounded-xl space-y-1">
+                    <div className="text-slate-400 font-bold uppercase flex items-center gap-1 text-[9px]">
+                      <span className="material-symbols-outlined text-xs">location_on</span>
+                      Locations
+                    </div>
+                    <div className="font-extrabold text-slate-200 truncate">Charlotte Maxeke Hosp.</div>
+                    <div className="text-slate-400 text-[9px]">7 Active Clinical Hubs</div>
+                  </div>
+
+                </div>
+
+                {/* Key Metrics Row */}
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  
+                  {/* Metric 1: Total */}
+                  <div className="bg-slate-800/50 border border-slate-800 p-4 rounded-2xl flex justify-between items-center">
+                    <div>
+                      <div className="text-slate-400 font-bold text-xs uppercase tracking-wider">Total Expected</div>
+                      <div className="text-3xl font-black text-white mt-1">87</div>
+                    </div>
+                    <div className="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center">
+                      <span className="material-symbols-outlined text-xl">groups</span>
+                    </div>
+                  </div>
+
+                  {/* Metric 2: Today Verified */}
+                  <div className="bg-slate-800/50 border border-slate-800 p-4 rounded-2xl flex justify-between items-center">
+                    <div>
+                      <div className="text-slate-400 font-bold text-xs uppercase tracking-wider">Accounted Today</div>
+                      <div className="text-3xl font-black text-green-400 mt-1">27</div>
+                    </div>
+                    <div className="w-10 h-10 rounded-xl bg-green-500/10 text-green-400 flex items-center justify-center">
+                      <span className="material-symbols-outlined text-xl">event_available</span>
+                    </div>
+                  </div>
+
+                  {/* Metric 3: Not Accounted For (CRITICAL ALERT) */}
+                  <div className="bg-red-500/10 border border-red-500/30 p-4 rounded-2xl flex justify-between items-center">
+                    <div>
+                      <div className="text-red-400 font-bold text-xs uppercase tracking-wider flex items-center gap-1">
+                        <span>Not Accounted For</span>
+                      </div>
+                      <div className="text-3xl font-black text-red-500 mt-1">60</div>
+                    </div>
+                    <div className="w-10 h-10 rounded-xl bg-red-500/20 text-red-400 flex items-center justify-center">
+                      <span className="material-symbols-outlined text-xl animate-pulse">warning</span>
+                    </div>
+                  </div>
+
+                </div>
+
+                {/* Main Dashboard Panel: Live Map & Activity Feed */}
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 pt-1">
+                  
+                  {/* Left Column: Live Map (8 cols) */}
+                  <div className="lg:col-span-8 bg-slate-950 border border-slate-800 rounded-2xl p-4 relative min-h-[320px] flex flex-col justify-between overflow-hidden">
+                    {/* Map Header */}
+                    <div className="flex justify-between items-center z-10">
+                      <span className="font-extrabold text-xs text-white flex items-center gap-1.5">
+                        <span className="material-symbols-outlined text-sm text-purple-400">location_on</span>
+                        Live Geofenced Placement Map
+                      </span>
+                      <span className="px-2.5 py-1 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30 text-[10px] font-bold">
+                        500m Geofence Radius
+                      </span>
+                    </div>
+
+                    {/* Simulated Map Graphical Visual */}
+                    <div className="absolute inset-0 opacity-40 bg-[radial-gradient(#334155_1px,transparent_1px)] [background-size:16px_1px] pointer-events-none"></div>
+                    
+                    {/* Map Roads & Map Pin Visual Representation */}
+                    <div className="relative my-auto py-12 flex flex-col items-center justify-center">
+                      
+                      {/* Map Pins Cluster */}
+                      <div className="relative w-64 h-36 border border-dashed border-purple-500/30 rounded-full flex items-center justify-center bg-purple-500/5">
+                        
+                        {/* Geofence Ring */}
+                        <div className="absolute inset-0 rounded-full border border-green-500/30 animate-ping"></div>
+
+                        {/* Cluster Pins */}
+                        <div className="flex items-center gap-1 bg-green-500 text-slate-950 px-2.5 py-1 rounded-full font-black text-[11px] shadow-lg animate-bounce">
+                          <span className="w-2 h-2 rounded-full bg-slate-950"></span>
+                          <span>Johannesburg Hospital Hub (27 checked-in)</span>
+                        </div>
+
+                        {/* Outer Pin 1 */}
+                        <div className="absolute top-2 left-4 w-3 h-3 rounded-full bg-green-400 border-2 border-slate-950 shadow"></div>
+                        {/* Outer Pin 2 */}
+                        <div className="absolute bottom-3 right-8 w-3 h-3 rounded-full bg-green-400 border-2 border-slate-950 shadow"></div>
+                        {/* Outer Pin 3 */}
+                        <div className="absolute -left-6 top-1/2 w-3 h-3 rounded-full bg-green-400 border-2 border-slate-950 shadow"></div>
+
+                      </div>
+
+                      <div className="mt-4 text-[10px] text-slate-400 font-mono">
+                        LAT: -26.1958 • LON: 28.0341 • GEOFENCE ENFORCED
+                      </div>
+                    </div>
+
+                    {/* Zoom Controls */}
+                    <div className="absolute left-3 bottom-3 bg-slate-900 border border-slate-800 rounded-lg flex flex-col font-black text-xs text-slate-300 z-10">
+                      <button className="px-2 py-1 hover:bg-slate-800 border-b border-slate-800">+</button>
+                      <button className="px-2 py-1 hover:bg-slate-800">-</button>
+                    </div>
+                  </div>
+
+                  {/* Right Column: Live Anonymized Activity Feed (4 cols) */}
+                  <div className="lg:col-span-4 bg-slate-800/40 border border-slate-800 rounded-2xl p-3.5 space-y-3">
+                    
+                    <div className="flex justify-between items-center border-b border-slate-800 pb-2">
+                      <span className="font-extrabold text-xs text-slate-200 flex items-center gap-1">
+                        <span className="material-symbols-outlined text-sm text-green-400">bolt</span>
+                        Activity Feed
+                      </span>
+                      <span className="px-2 py-0.5 rounded bg-green-500/20 text-green-400 font-bold text-[9px] uppercase tracking-wider">
+                        Live
+                      </span>
+                    </div>
+
+                    {/* Feed Item 1 */}
+                    <div className="bg-slate-900/80 border border-slate-800 rounded-xl p-2.5 space-y-1 hover:border-purple-500/40 transition-colors">
+                      <div className="flex justify-between items-center text-[10px]">
+                        <span className="font-bold text-slate-200 flex items-center gap-1">
+                          <span className="w-4 h-4 rounded-full bg-green-500/20 text-green-400 font-extrabold text-[9px] flex items-center justify-center">27</span>
+                          student.281@university.edu
+                        </span>
+                        <span className="text-slate-400 font-semibold">5m ago</span>
+                      </div>
+                      <div className="flex gap-1 pt-0.5">
+                        <span className="px-1.5 py-0.5 rounded bg-purple-500/10 text-purple-300 text-[8px] font-bold">O&amp;G GEMP II</span>
+                        <span className="px-1.5 py-0.5 rounded bg-purple-500/10 text-purple-300 text-[8px] font-bold">GYNAECOLOGY</span>
+                      </div>
+                    </div>
+
+                    {/* Feed Item 2 */}
+                    <div className="bg-slate-900/80 border border-slate-800 rounded-xl p-2.5 space-y-1 hover:border-purple-500/40 transition-colors">
+                      <div className="flex justify-between items-center text-[10px]">
+                        <span className="font-bold text-slate-200 flex items-center gap-1">
+                          <span className="w-4 h-4 rounded-full bg-green-500/20 text-green-400 font-extrabold text-[9px] flex items-center justify-center">20</span>
+                          student.104@university.edu
+                        </span>
+                        <span className="text-slate-400 font-semibold">7m ago</span>
+                      </div>
+                      <div className="flex gap-1 pt-0.5">
+                        <span className="px-1.5 py-0.5 rounded bg-purple-500/10 text-purple-300 text-[8px] font-bold">O&amp;G GEMP II</span>
+                        <span className="px-1.5 py-0.5 rounded bg-pink-500/10 text-pink-300 text-[8px] font-bold">INTRAPARTUM CASE</span>
+                      </div>
+                    </div>
+
+                    {/* Feed Item 3 */}
+                    <div className="bg-slate-900/80 border border-slate-800 rounded-xl p-2.5 space-y-1 hover:border-purple-500/40 transition-colors">
+                      <div className="flex justify-between items-center text-[10px]">
+                        <span className="font-bold text-slate-200 flex items-center gap-1">
+                          <span className="w-4 h-4 rounded-full bg-green-500/20 text-green-400 font-extrabold text-[9px] flex items-center justify-center">14</span>
+                          student.392@university.edu
+                        </span>
+                        <span className="text-slate-400 font-semibold">8m ago</span>
+                      </div>
+                      <div className="flex gap-1 pt-0.5">
+                        <span className="px-1.5 py-0.5 rounded bg-purple-500/10 text-purple-300 text-[8px] font-bold">SURGERY GEMP II</span>
+                        <span className="px-1.5 py-0.5 rounded bg-blue-500/10 text-blue-300 text-[8px] font-bold">POST-OP WARDS</span>
+                      </div>
+                    </div>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+            {/* Bottom Key Features Row */}
+            <div className="grid md:grid-cols-3 gap-6 pt-4">
+              <div className="flex gap-4 items-start p-6 rounded-2xl bg-surface-container-lowest border border-outline-variant/15">
+                <div className="w-10 h-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center flex-shrink-0">
+                  <span className="material-symbols-outlined">location_on</span>
+                </div>
+                <div>
+                  <h4 className="font-bold text-base text-on-surface">Location-Based Geofencing</h4>
+                  <p className="text-on-surface-variant text-xs mt-1">Enforce 500m physical geofences around lecture halls, hospitals, and lab sites to eliminate proxy check-ins.</p>
+                </div>
+              </div>
+
+              <div className="flex gap-4 items-start p-6 rounded-2xl bg-red-500/5 border border-red-500/20">
+                <div className="w-10 h-10 rounded-xl bg-red-500/10 text-red-500 flex items-center justify-center flex-shrink-0">
+                  <span className="material-symbols-outlined">warning</span>
+                </div>
+                <div>
+                  <h4 className="font-bold text-base text-on-surface">Unaccounted Student Alerts</h4>
+                  <p className="text-on-surface-variant text-xs mt-1">Real-time alerts highlight missing or unverified students immediately so coordinators can intervene proactively.</p>
+                </div>
+              </div>
+
+              <div className="flex gap-4 items-start p-6 rounded-2xl bg-surface-container-lowest border border-outline-variant/15">
+                <div className="w-10 h-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center flex-shrink-0">
+                  <span className="material-symbols-outlined">dataset</span>
+                </div>
+                <div>
+                  <h4 className="font-bold text-base text-on-surface">Multi-Faculty Filtering</h4>
+                  <p className="text-on-surface-variant text-xs mt-1">Filter instantaneously by University, Faculty, Course, Cohort Year, or Specific Placement Location in seconds.</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
         {/* Academic Workflow Section */}
         <section className="py-32 bg-surface-container-lowest border-y border-outline-variant/10 overflow-hidden">
           <div className="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
