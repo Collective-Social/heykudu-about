@@ -66,47 +66,47 @@ export default function Home() {
   const roles = [
     {
       id: "student",
-      name: "Student / Resident",
+      name: "Student / Trainee",
       icon: "school",
-      tagline: "Your entire clinical training catalog, beautifully streamlined.",
-      details: "Ditch the paper sign-off cards. Track your clinical attendance, ward rotations, and Workplace Based Assessments (Mini-CEX, DOPS, MSF) securely from any mobile browser, keeping detailed analytics on your progress.",
+      tagline: "Your entire academic & field training catalog, beautifully streamlined.",
+      details: "Ditch paper attendance sheets and sign-off forms. Track lecture attendance, lab sessions, field placements, and practical competencies securely from any mobile browser, keeping real-time analytics on your progress.",
       cta: "Get Started Now",
       target: "https://heykudu.com",
       isExternal: true,
-      features: ["Real-time EPA milestone logs", "Instant device-to-device QR scanning", "Personalized skill gap charts"]
+      features: ["Real-time academic milestone logs", "Instant device-to-device QR scanning", "Personalized skill & credit progress charts"]
     },
     {
-      id: "clinician",
-      name: "Clinical Tutor / Supervisor",
-      icon: "medical_services",
-      tagline: "Evaluate on the ward in under 10 seconds.",
-      details: "No more tracking down paperwork or logging into heavy school systems. Simply scan the student's screen with your device camera to securely open, evaluate, and submit assessment ratings instantly on your smartphone.",
+      id: "educator",
+      name: "Educator / Field Supervisor",
+      icon: "diversity_3",
+      tagline: "Evaluate in class or in the field in under 10 seconds.",
+      details: "No more manual attendance registers or paper assessment rubrics. Simply scan the student's screen or tap classroom NFC tags to securely verify attendance and grade competency rubrics instantly on your smartphone.",
       cta: "Learn Scan Verification",
       target: "/features/geo-fence",
       isExternal: false,
-      features: ["Zero administrative log-in needed", "Privacy-preserving GPS confirmation", "Instant EPA progression approval"]
+      features: ["Zero administrative log-in needed", "Privacy-preserving GPS confirmation", "Instant rubric & attendance approval"]
     },
     {
       id: "coordinator",
-      name: "Program Coordinator",
+      name: "Program & Faculty Coordinator",
       icon: "grid_view",
-      tagline: "Total curriculum insight. Standardized workflows.",
-      details: "Gain immediate oversight over active cohorts, attendance rates, and assessment matrices. Map trainee achievements to global competency standards and coordinate clinical assignments seamlessly.",
+      tagline: "Total curriculum insight across every department.",
+      details: "Gain immediate oversight over active cohorts, lecture attendance, lab completions, and rubric matrices across every department. Map student achievements to university learning outcomes effortlessly.",
       cta: "Explore Tracking Metrics",
       target: "/features/epa-tracking",
       isExternal: false,
-      features: ["Automated rotation assignment charts", "Unified skills compliance matrices", "One-click CSV/PDF reports export"]
+      features: ["Automated cohort management charts", "Unified skills compliance matrices", "One-click CSV/PDF reports export"]
     },
     {
       id: "dean",
       name: "Institutional Leader / Dean",
       icon: "verified_user",
-      tagline: "Clinical standardizations at scale.",
-      details: "Deploy heykudu across your medical university, residency network, or hospital group. Benefit from secure end-to-end encryption, automatic LMS sync integrations, and fully audit-ready compliance trails.",
+      tagline: "University-wide tracking & attendance at scale.",
+      details: "Deploy heykudu across your entire campus network, faculties, and departments. Benefit from secure end-to-end encryption, automatic Canvas & Moodle LMS sync integrations, and fully audit-ready compliance trails.",
       cta: "Request Institutional Demo",
       target: "/contact",
       isExternal: false,
-      features: ["Full Canvas & Moodle integrations", "Enterprise HIPAA & GDPR isolation", "Flexible global grading parameters"]
+      features: ["Full Canvas & Moodle integrations", "Enterprise FERPA & GDPR security", "Flexible university grading parameters"]
     }
   ];
 
@@ -132,14 +132,14 @@ export default function Home() {
         {/* Hero Section */}
         <section className="relative min-h-[92vh] flex items-center bg-surface overflow-hidden py-28 border-b border-outline-variant/10">
           
-          {/* Google Health Style: Full-bleed background image with premium overlay mask */}
+          {/* Google Style: Full-bleed background image with premium overlay mask */}
           <div className="absolute inset-0 w-full h-full select-none pointer-events-none transition-all duration-1000 z-0">
             <img 
               className="w-full h-full object-cover object-center lg:object-right opacity-[0.80] transition-all duration-1000" 
               src="/images/clean-team.png" 
-              alt="heykudu clinical rotation collaborative team background"
+              alt="heykudu university academic tracking collaborative team background"
             />
-            {/* Custom high-end vignette overlay: strong solid cover on the left for text readability, fading to transparent on the right, and smoothly merging to surface color on top and bottom */}
+            {/* Custom high-end vignette overlay: strong solid cover on the left for text readability, fading to transparent on the right */}
             <div className="absolute inset-0 bg-gradient-to-r from-surface via-surface/50 to-transparent z-10"></div>
             <div className="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-surface/10 z-10"></div>
           </div>
@@ -158,7 +158,7 @@ export default function Home() {
                 className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/5 text-primary font-semibold text-xs uppercase tracking-wider"
               >
                 <span className="material-symbols-outlined text-[16px]">verified</span>
-                Standardizing Clinical Excellence
+                Standardizing Higher Education Tracking
               </motion.div>
  
               <motion.h1 
@@ -166,14 +166,14 @@ export default function Home() {
                 className="font-extrabold text-5xl md:text-6xl lg:text-7xl text-on-surface leading-[1.05] tracking-tight"
                 style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
               >
-                Clinical tracking,<br />simplified.
+                Academic &amp; attendance<br />tracking, simplified.
               </motion.h1>
  
               <motion.p 
                 variants={fadeInUp}
                 className="font-medium text-lg md:text-xl text-on-surface-variant max-w-lg leading-relaxed"
               >
-                The modern tracking platform for rotations, attendance, and clinical assessment milestones. Built for medical students, tutors, and global university programs.
+                The modern tracking platform for attendance, field placements, practicals, and academic milestones. Built for students, educators, and university programs across all faculties.
               </motion.p>
  
               <motion.div variants={fadeInUp} className="flex flex-wrap gap-4 pt-2">
@@ -292,7 +292,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* EPA Workflow Section */}
+        {/* Academic Workflow Section */}
         <section className="py-32 bg-surface-container-lowest border-y border-outline-variant/10 overflow-hidden">
           <div className="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
             
@@ -302,10 +302,10 @@ export default function Home() {
                 Practical Guide
               </span>
               <h2 className="font-extrabold text-4xl md:text-5xl lg:text-6xl text-on-surface tracking-tight" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
-                The Paperless EPA Workflow
+                The Paperless Academic Workflow
               </h2>
               <p className="text-on-surface-variant font-medium text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
-                Zero friction, absolute trust. See how medical programs transition completely off paper, completing secure bedside assessments in under 10 seconds.
+                Zero friction, absolute trust. See how university faculties transition completely off paper, verifying lecture attendance and conducting practical rubrics in under 10 seconds.
               </p>
             </div>
 
@@ -327,13 +327,13 @@ export default function Home() {
                     <span className="px-3 py-1 rounded-full bg-primary/5 text-primary text-xs font-bold uppercase tracking-wider">Initiation</span>
                   </div>
                   <h3 className="font-black text-2xl md:text-3xl text-on-surface leading-tight" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
-                    Define the Clinical Encounter & Skill Context
+                    Define the Academic &amp; Skill Context
                   </h3>
                   <p className="text-on-surface-variant font-medium text-base leading-relaxed">
-                    Ditch standard loose-leaf cards. Right at the bedside, the student opens heykudu on any mobile device and selects their current active rotation context—such as General Surgery or Pediatric Emergency.
+                    Ditch standard paper sign-off sheets. Right in class, lab, or field placement, the student opens heykudu on any mobile browser and selects their active department or module—such as Engineering Practicum, Health Sciences, or Business Analytics.
                   </p>
                   <p className="text-on-surface-variant font-medium text-base leading-relaxed">
-                    They choose the target Entrustable Professional Activity (EPA) milestone directly from the university&apos;s pre-loaded curriculum catalog. The system prepares the parameters dynamically based on rotation stage and difficulty level.
+                    They select the target milestone directly from the university&apos;s pre-loaded curriculum catalog. The system prepares the parameters dynamically based on course stage and rubric criteria.
                   </p>
                 </div>
                 
@@ -918,10 +918,10 @@ export default function Home() {
           <div className="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
             <div className="text-center max-w-3xl mx-auto mb-16">
               <h2 className="font-bold text-headline-lg-mobile md:text-headline-lg mb-6 text-on-surface" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
-                Master every clinical milestone.
+                Master every academic milestone.
               </h2>
               <p className="font-body-lg text-body-lg text-on-surface-variant">
-                Designed by clinicians, for clinicians. Kudu automates the heavy lifting of administrative tracking so you can focus on excellence.
+                Designed for universities and higher education institutions. Kudu automates administrative tracking so faculty and students can focus on academic excellence.
               </p>
             </div>
 
@@ -941,7 +941,7 @@ export default function Home() {
                     Precision Attendance
                   </h3>
                   <p className="text-on-surface-variant text-body-md">
-                    Geo-verified tracking for rotations, lectures, and lab sessions. No more manual logs or lost signatures.
+                    NFC &amp; Geo-verified tracking for lectures, lab sessions, and field placements across every faculty. No more paper registers or lost signatures.
                   </p>
                 </div>
               </motion.div>
@@ -955,15 +955,15 @@ export default function Home() {
               >
                 <div className="flex-1 space-y-4">
                   <h3 className="font-bold text-2xl md:text-3xl" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
-                    Workplace Based Assessments
+                    Practical &amp; Field Assessments
                   </h3>
                   <p className="text-body-lg opacity-90">
-                    Real-time feedback loops that connect students and mentors. Capture insights at the point of care with mobile-first WBA forms.
+                    Real-time feedback loops connecting students and faculty. Capture competency rubrics at the point of learning with mobile-first assessment forms.
                   </p>
                   <ul className="space-y-3 font-semibold text-sm">
-                    <li className="flex items-center gap-2"><span className="material-symbols-outlined text-[18px]">check_circle</span> Mini-CEX Integration</li>
-                    <li className="flex items-center gap-2"><span className="material-symbols-outlined text-[18px]">check_circle</span> DOPS Tracking</li>
-                    <li className="flex items-center gap-2"><span className="material-symbols-outlined text-[18px]">check_circle</span> Multi-Source Feedback</li>
+                    <li className="flex items-center gap-2"><span className="material-symbols-outlined text-[18px]">check_circle</span> Practical Competency Rubrics</li>
+                    <li className="flex items-center gap-2"><span className="material-symbols-outlined text-[18px]">check_circle</span> Direct Observation Logs</li>
+                    <li className="flex items-center gap-2"><span className="material-symbols-outlined text-[18px]">check_circle</span> Multi-Criteria Performance Feedback</li>
                   </ul>
                 </div>
                 <div className="flex-1 w-full flex justify-center">
@@ -984,13 +984,13 @@ export default function Home() {
               >
                 <div className="flex-1 space-y-4">
                   <h3 className="font-bold text-2xl md:text-3xl text-on-surface" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
-                    EPA Proficiency Pathways
+                    Competency &amp; Skill Pathways
                   </h3>
                   <p className="text-on-surface-variant text-body-md">
-                    Visualize Entrustable Professional Activities (EPAs) through interactive growth charts. Monitor competency development across entire cohorts.
+                    Visualize student progression and learning outcomes through interactive growth charts. Monitor competency development across entire department cohorts.
                   </p>
-                  <Link href="/features/geo-fence" className="inline-flex items-center gap-2 text-primary font-bold group">
-                    Learn about EPA Analytics
+                  <Link href="/features/epa-tracking" className="inline-flex items-center gap-2 text-primary font-bold group">
+                    Learn about Skill Analytics
                     <span className="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_forward</span>
                   </Link>
                 </div>
@@ -1188,13 +1188,13 @@ export default function Home() {
               >
                 <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary font-label-md text-label-md">
                   <span className="material-symbols-outlined text-[18px]">psychology</span>
-                  New: AI Clinical Brain
+                  New: AI Academic Assistant
                 </div>
                 <h2 className="font-bold text-headline-lg-mobile md:text-headline-lg text-on-surface" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
                   Expert Feedback at the <span className="text-primary">Speed of Voice.</span>
                 </h2>
                 <p className="font-body-lg text-body-lg text-on-surface-variant">
-                  Record patient context and proposed treatments to receive instant, expert feedback based on the latest clinical guidelines. Bridge the 116-year gap between paper logbooks and GenAI.
+                  Record project context, lab observations, and student presentations to receive instant, structured feedback aligned with university learning outcomes. Bridge paper logbooks with GenAI.
                 </p>
                 <ul className="space-y-4">
                   <li className="flex items-start gap-4">
@@ -1203,7 +1203,7 @@ export default function Home() {
                     </div>
                     <div>
                       <h4 className="font-semibold text-on-surface text-lg">Voice Record</h4>
-                      <p className="text-on-surface-variant text-body-md">Speak your clinical case naturally.</p>
+                      <p className="text-on-surface-variant text-body-md">Speak your project or academic case naturally.</p>
                     </div>
                   </li>
                   <li className="flex items-start gap-4">
@@ -1211,8 +1211,8 @@ export default function Home() {
                       <span className="material-symbols-outlined">fact_check</span>
                     </div>
                     <div>
-                      <h4 className="font-semibold text-on-surface text-lg">Guideline Verification</h4>
-                      <p className="text-on-surface-variant text-body-md">Cross-check against the latest medical standards.</p>
+                      <h4 className="font-semibold text-on-surface text-lg">Curriculum Alignment</h4>
+                      <p className="text-on-surface-variant text-body-md">Cross-check against faculty learning outcomes.</p>
                     </div>
                   </li>
                   <li className="flex items-start gap-4">
@@ -1221,7 +1221,7 @@ export default function Home() {
                     </div>
                     <div>
                       <h4 className="font-semibold text-on-surface text-lg">Live Feedback</h4>
-                      <p className="text-on-surface-variant text-body-md">Instant senior consultant-level insights.</p>
+                      <p className="text-on-surface-variant text-body-md">Instant, faculty-grade qualitative insights.</p>
                     </div>
                   </li>
                 </ul>
@@ -1244,16 +1244,16 @@ export default function Home() {
               >
                 <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary font-label-md text-label-md">
                   <span className="material-symbols-outlined text-[18px]">contactless</span>
-                  NEW: NFC Location Verification
+                  NEW: NFC Campus &amp; Classroom Verification
                 </div>
                 
                 <h2 className="font-bold text-headline-lg-mobile md:text-headline-lg text-on-surface leading-tight" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
                   Tap to Check In. <br />
-                  <span className="text-primary">Instant Ward Verification.</span>
+                  <span className="text-primary">Instant Classroom &amp; Lab Verification.</span>
                 </h2>
                 
                 <p className="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
-                  Place highly durable, secure physical NFC tags or high-definition QR plaques across clinical rooms and wards. Students simply tap their phone to instantly verify physical presence and log check-ins/outs under 3 seconds.
+                  Place highly durable, secure physical NFC tags or high-definition QR plaques across lecture halls, laboratories, and seminar rooms. Students simply tap their phone to instantly verify physical presence and log attendance in under 3 seconds.
                 </p>
 
                 <div className="grid sm:grid-cols-2 gap-6">
@@ -1273,7 +1273,7 @@ export default function Home() {
                     </div>
                     <div>
                       <h4 className="font-bold text-base text-on-surface">GPS &amp; Geofencing</h4>
-                      <p className="text-on-surface-variant text-xs mt-1">Dual geofence checks prevent buddy check-ins and logs fraud.</p>
+                      <p className="text-on-surface-variant text-xs mt-1">Dual geofence checks prevent proxy attendance and logs fraud.</p>
                     </div>
                   </div>
                 </div>
@@ -1320,7 +1320,7 @@ export default function Home() {
                 viewport={{ once: true }}
               >
                 <h2 className="font-bold text-headline-lg-mobile md:text-headline-lg mb-12 text-on-surface" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
-                  Seamlessly integrated into clinical workflow.
+                  Seamlessly integrated into university workflows.
                 </h2>
                 <div className="space-y-12">
                   <div className="flex gap-6 relative">
@@ -1328,9 +1328,9 @@ export default function Home() {
                     <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold text-lg z-10">1</div>
                     <div>
                       <h4 className="font-bold text-xl mb-2 text-on-surface" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
-                        Connect Your Institution
+                        Connect Your University
                       </h4>
-                      <p className="text-on-surface-variant text-body-md">Onboard students and faculty in minutes with our native SIS integrations. Kudu syncs with your existing medical curriculum automatically.</p>
+                      <p className="text-on-surface-variant text-body-md">Onboard students and faculty in minutes with our native SIS &amp; LMS integrations. Kudu syncs with your university curriculum automatically.</p>
                     </div>
                   </div>
 
@@ -1339,9 +1339,9 @@ export default function Home() {
                     <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary-fixed-dim text-primary flex items-center justify-center font-bold text-lg z-10">2</div>
                     <div>
                       <h4 className="font-bold text-xl mb-2 text-on-surface" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
-                        Live Tracking &amp; WBAs
+                        Live Tracking &amp; Rubrics
                       </h4>
-                      <p className="text-on-surface-variant text-body-md">Capture assessments at the bedside. Faculty use QR codes or direct digital prompts to certify student performance instantly.</p>
+                      <p className="text-on-surface-variant text-body-md">Capture attendance and assessments in class or in the field. Faculty use QR codes or classroom NFC tags to certify performance instantly.</p>
                     </div>
                   </div>
 
@@ -1351,7 +1351,7 @@ export default function Home() {
                       <h4 className="font-bold text-xl mb-2 text-on-surface" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
                         Real-Time Insights
                       </h4>
-                      <p className="text-on-surface-variant text-body-md">Dynamic dashboards visualize EPA mastery. Identify students needing support early and celebrate excellence as it happens.</p>
+                      <p className="text-on-surface-variant text-body-md">Dynamic dashboards visualize student skill mastery. Identify students needing support early and celebrate excellence as it happens.</p>
                     </div>
                   </div>
                 </div>
@@ -1373,8 +1373,8 @@ export default function Home() {
                   </div>
                   <div className="space-y-6">
                     <div className="bg-surface-container rounded-2xl p-4">
-                      <div className="text-xs font-semibold text-on-surface-variant mb-2">Active Rotation</div>
-                      <div className="font-bold text-xl text-on-surface">Cardiology Unit 4</div>
+                      <div className="text-xs font-semibold text-on-surface-variant mb-2">Active Course</div>
+                      <div className="font-bold text-xl text-on-surface">Applied Engineering 101</div>
                     </div>
                     <div className="grid grid-cols-2 gap-4">
                       <div className="bg-primary-container/10 p-4 rounded-2xl border border-primary/20">
@@ -1382,7 +1382,7 @@ export default function Home() {
                         <div className="text-xl font-bold">98%</div>
                       </div>
                       <div className="bg-tertiary-container/10 p-4 rounded-2xl border border-tertiary/20">
-                        <div className="text-[12px] font-bold text-tertiary">EPAs Met</div>
+                        <div className="text-[12px] font-bold text-tertiary">Skills Met</div>
                         <div className="text-xl font-bold">14/20</div>
                       </div>
                     </div>
@@ -1415,10 +1415,10 @@ export default function Home() {
               <div className="absolute top-0 right-0 w-96 h-96 bg-primary/20 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2"></div>
               <div className="relative z-10 max-w-2xl mx-auto space-y-8">
                 <h2 className="font-bold text-headline-lg-mobile md:text-headline-lg text-inverse-on-surface" style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
-                  Ready to transform your clinical education?
+                  Ready to transform your university tracking?
                 </h2>
                 <p className="font-body-lg text-body-lg text-inverse-on-surface opacity-80">
-                  Join the world&apos;s leading medical institutions and streamline your tracking today. No setup fees, no legacy headaches.
+                  Join leading universities and higher education institutions worldwide to streamline attendance, practicals, and student progress across all faculties.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
                   <a
