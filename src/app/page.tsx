@@ -336,14 +336,26 @@ export default function Home() {
                 {/* Flow Step 2: Physical Revolving NFC Tag */}
                 <div className="flex flex-col items-center gap-3 p-4 rounded-2xl bg-gradient-to-b from-primary/5 to-surface border border-primary/20 relative group hover:scale-105 transition-all">
                   <div className="w-16 h-16 relative flex items-center justify-center">
-                    <motion.img 
-                      animate={{ rotate: 360 }}
-                      transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
-                      src="/images/nfc_tag.png" 
-                      alt="HeyKudu Physical 3D NFC Tag Token"
-                      className="w-14 h-14 object-contain drop-shadow-md"
-                    />
-                    <span className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-green-500 animate-ping"></span>
+                    {/* Outer Glossy White Badge Frame */}
+                    <div className="w-14 h-14 rounded-full bg-white/95 shadow-md flex items-center justify-center p-1 border-2 border-white/80 relative z-10">
+                      {/* Inner 3D Continuous Y-Axis Rotating Token */}
+                      <motion.div
+                        animate={{ rotateY: [0, 360] }}
+                        transition={{ repeat: Infinity, duration: 7, ease: "linear" }}
+                        style={{ transformStyle: "preserve-3d" }}
+                        className="w-full h-full rounded-full bg-gradient-to-br from-purple-800 via-indigo-900 to-purple-950 border border-purple-400/50 flex items-center justify-center relative"
+                      >
+                        {/* Inner Ring with White Logo */}
+                        <div className="w-[88%] h-[88%] rounded-full bg-white/10 flex items-center justify-center border border-white/25">
+                          <img
+                            src="/images/logo-white.png"
+                            alt="heykudu physical tag"
+                            className="h-5 w-5 object-contain brightness-0 invert drop-shadow"
+                          />
+                        </div>
+                      </motion.div>
+                    </div>
+                    <span className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-green-500 animate-ping z-20"></span>
                   </div>
                   <div>
                     <div className="font-extrabold text-sm text-primary flex items-center gap-1.5 justify-center">
