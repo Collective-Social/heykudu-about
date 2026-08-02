@@ -557,24 +557,53 @@ export default function Home() {
                     {/* Map Roads & Map Pin Visual Representation */}
                     <div className="relative my-auto py-12 flex flex-col items-center justify-center">
                       
-                      {/* Map Pins Cluster */}
-                      <div className="relative w-64 h-36 border border-dashed border-purple-500/30 rounded-full flex items-center justify-center bg-purple-500/5">
+                      {/* Map Pins Cluster with Live Green Flashing Dots */}
+                      <div className="relative w-72 h-40 border border-dashed border-purple-500/40 rounded-full flex items-center justify-center bg-purple-500/10 shadow-2xl my-2">
                         
-                        {/* Geofence Ring */}
-                        <div className="absolute inset-0 rounded-full border border-green-500/30 animate-ping"></div>
+                        {/* Outer Radar Geofence Ring */}
+                        <div className="absolute inset-0 rounded-full border-2 border-emerald-500/30 animate-ping pointer-events-none"></div>
 
-                        {/* Cluster Pins */}
-                        <div className="flex items-center gap-1 bg-green-500 text-slate-950 px-2.5 py-1 rounded-full font-black text-[11px] shadow-lg animate-bounce">
-                          <span className="w-2 h-2 rounded-full bg-slate-950"></span>
+                        {/* Central Hospital Hub Badge */}
+                        <div className="flex items-center gap-2 bg-emerald-500 text-slate-950 px-3.5 py-1.5 rounded-full font-black text-[11px] shadow-xl z-20 hover:scale-105 transition-transform">
+                          <span className="w-2.5 h-2.5 rounded-full bg-slate-950 animate-ping"></span>
                           <span>Johannesburg Hospital Hub (27 checked-in)</span>
                         </div>
 
-                        {/* Outer Pin 1 */}
-                        <div className="absolute top-2 left-4 w-3 h-3 rounded-full bg-green-400 border-2 border-slate-950 shadow"></div>
-                        {/* Outer Pin 2 */}
-                        <div className="absolute bottom-3 right-8 w-3 h-3 rounded-full bg-green-400 border-2 border-slate-950 shadow"></div>
-                        {/* Outer Pin 3 */}
-                        <div className="absolute -left-6 top-1/2 w-3 h-3 rounded-full bg-green-400 border-2 border-slate-950 shadow"></div>
+                        {/* Green Flashing Dot 1 */}
+                        <div className="absolute top-2 left-6 flex items-center justify-center">
+                          <span className="absolute w-6 h-6 rounded-full bg-emerald-400 animate-ping opacity-75"></span>
+                          <span className="w-3.5 h-3.5 rounded-full bg-emerald-400 border-2 border-slate-950 shadow-md relative z-10"></span>
+                        </div>
+
+                        {/* Green Flashing Dot 2 */}
+                        <div className="absolute bottom-3 right-8 flex items-center justify-center">
+                          <span className="absolute w-6 h-6 rounded-full bg-emerald-400 animate-ping opacity-75"></span>
+                          <span className="w-3.5 h-3.5 rounded-full bg-emerald-400 border-2 border-slate-950 shadow-md relative z-10"></span>
+                        </div>
+
+                        {/* Green Flashing Dot 3 */}
+                        <div className="absolute -left-5 top-1/2 -translate-y-1/2 flex items-center justify-center">
+                          <span className="absolute w-6 h-6 rounded-full bg-emerald-400 animate-ping opacity-75"></span>
+                          <span className="w-3.5 h-3.5 rounded-full bg-emerald-400 border-2 border-slate-950 shadow-md relative z-10"></span>
+                        </div>
+
+                        {/* Green Flashing Dot 4 */}
+                        <div className="absolute top-4 right-6 flex items-center justify-center">
+                          <span className="absolute w-6 h-6 rounded-full bg-emerald-400 animate-ping opacity-75"></span>
+                          <span className="w-3.5 h-3.5 rounded-full bg-emerald-400 border-2 border-slate-950 shadow-md relative z-10"></span>
+                        </div>
+
+                        {/* Green Flashing Dot 5 */}
+                        <div className="absolute -bottom-2 left-10 flex items-center justify-center">
+                          <span className="absolute w-6 h-6 rounded-full bg-emerald-400 animate-ping opacity-75"></span>
+                          <span className="w-3.5 h-3.5 rounded-full bg-emerald-400 border-2 border-slate-950 shadow-md relative z-10"></span>
+                        </div>
+
+                        {/* Green Flashing Dot 6 */}
+                        <div className="absolute -right-5 top-1/3 flex items-center justify-center">
+                          <span className="absolute w-6 h-6 rounded-full bg-emerald-400 animate-ping opacity-75"></span>
+                          <span className="w-3.5 h-3.5 rounded-full bg-emerald-400 border-2 border-slate-950 shadow-md relative z-10"></span>
+                        </div>
 
                       </div>
 
