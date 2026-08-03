@@ -538,10 +538,10 @@ export default function Home() {
                 {/* Main Dashboard Panel: Live Map & Activity Feed */}
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 pt-1">
                   
-                  {/* Left Column: Live Map (8 cols) */}
-                  <div className="lg:col-span-8 bg-slate-950 border border-slate-800 rounded-2xl p-4 relative min-h-[320px] flex flex-col justify-between overflow-hidden">
+                  {/* Left Column: Live Real Map (8 cols) */}
+                  <div className="lg:col-span-8 bg-slate-950 border border-slate-800 rounded-2xl p-4 relative min-h-[340px] flex flex-col justify-between overflow-hidden group">
                     {/* Map Header */}
-                    <div className="flex justify-between items-center z-10">
+                    <div className="flex justify-between items-center z-10 bg-slate-950/80 backdrop-blur-sm -mx-4 -mt-4 p-3.5 px-4 border-b border-slate-800/80">
                       <span className="font-extrabold text-xs text-white flex items-center gap-1.5">
                         <span className="material-symbols-outlined text-sm text-purple-400">location_on</span>
                         Live Geofenced Placement Map
@@ -551,72 +551,50 @@ export default function Home() {
                       </span>
                     </div>
 
-                    {/* Simulated Map Graphical Visual */}
-                    <div className="absolute inset-0 opacity-40 bg-[radial-gradient(#334155_1px,transparent_1px)] [background-size:16px_1px] pointer-events-none"></div>
-                    
-                    {/* Map Roads & Map Pin Visual Representation */}
-                    <div className="relative my-auto py-12 flex flex-col items-center justify-center">
-                      
-                      {/* Map Pins Cluster with Live Green Flashing Dots */}
-                      <div className="relative w-72 h-40 border border-dashed border-purple-500/40 rounded-full flex items-center justify-center bg-purple-500/10 shadow-2xl my-2">
+                    {/* Real OpenStreetMap / Leaflet Map Image Surface */}
+                    <div className="relative my-2 rounded-xl overflow-hidden border border-slate-800/80 shadow-2xl">
+                      <img 
+                        src="/images/live_map.png" 
+                        alt="Real Live Geofenced Placement Map of Johannesburg" 
+                        className="w-full h-auto object-cover rounded-xl transition-transform duration-700"
+                      />
+
+                      {/* Live Flashing Pulsing Green Marker Overlays */}
+                      <div className="absolute inset-0 pointer-events-none">
                         
-                        {/* Outer Radar Geofence Ring */}
-                        <div className="absolute inset-0 rounded-full border-2 border-emerald-500/30 animate-ping pointer-events-none"></div>
-
-                        {/* Central Hospital Hub Badge */}
-                        <div className="flex items-center gap-2 bg-emerald-500 text-slate-950 px-3.5 py-1.5 rounded-full font-black text-[11px] shadow-xl z-20 hover:scale-105 transition-transform">
-                          <span className="w-2.5 h-2.5 rounded-full bg-slate-950 animate-ping"></span>
-                          <span>Johannesburg Hospital Hub (27 checked-in)</span>
+                        {/* Johannesburg Central Hub Pulse */}
+                        <div className="absolute top-[48%] left-[48%] -translate-x-1/2 -translate-y-1/2 flex items-center justify-center">
+                          <span className="absolute w-10 h-10 rounded-full bg-emerald-400/60 animate-ping"></span>
+                          <span className="w-3 h-3 rounded-full bg-emerald-500 border-2 border-white shadow-lg relative z-10"></span>
                         </div>
 
-                        {/* Green Flashing Dot 1 */}
-                        <div className="absolute top-2 left-6 flex items-center justify-center">
-                          <span className="absolute w-6 h-6 rounded-full bg-emerald-400 animate-ping opacity-75"></span>
-                          <span className="w-3.5 h-3.5 rounded-full bg-emerald-400 border-2 border-slate-950 shadow-md relative z-10"></span>
+                        {/* Sandton Cluster Pulse */}
+                        <div className="absolute top-[22%] left-[54%] -translate-x-1/2 -translate-y-1/2 flex items-center justify-center">
+                          <span className="absolute w-8 h-8 rounded-full bg-emerald-400/50 animate-ping"></span>
+                          <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 border border-white shadow-md relative z-10"></span>
                         </div>
 
-                        {/* Green Flashing Dot 2 */}
-                        <div className="absolute bottom-3 right-8 flex items-center justify-center">
-                          <span className="absolute w-6 h-6 rounded-full bg-emerald-400 animate-ping opacity-75"></span>
-                          <span className="w-3.5 h-3.5 rounded-full bg-emerald-400 border-2 border-slate-950 shadow-md relative z-10"></span>
+                        {/* Soweto Cluster Pulse */}
+                        <div className="absolute top-[58%] left-[30%] -translate-x-1/2 -translate-y-1/2 flex items-center justify-center">
+                          <span className="absolute w-8 h-8 rounded-full bg-emerald-400/50 animate-ping"></span>
+                          <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 border border-white shadow-md relative z-10"></span>
                         </div>
 
-                        {/* Green Flashing Dot 3 */}
-                        <div className="absolute -left-5 top-1/2 -translate-y-1/2 flex items-center justify-center">
-                          <span className="absolute w-6 h-6 rounded-full bg-emerald-400 animate-ping opacity-75"></span>
-                          <span className="w-3.5 h-3.5 rounded-full bg-emerald-400 border-2 border-slate-950 shadow-md relative z-10"></span>
-                        </div>
-
-                        {/* Green Flashing Dot 4 */}
-                        <div className="absolute top-4 right-6 flex items-center justify-center">
-                          <span className="absolute w-6 h-6 rounded-full bg-emerald-400 animate-ping opacity-75"></span>
-                          <span className="w-3.5 h-3.5 rounded-full bg-emerald-400 border-2 border-slate-950 shadow-md relative z-10"></span>
-                        </div>
-
-                        {/* Green Flashing Dot 5 */}
-                        <div className="absolute -bottom-2 left-10 flex items-center justify-center">
-                          <span className="absolute w-6 h-6 rounded-full bg-emerald-400 animate-ping opacity-75"></span>
-                          <span className="w-3.5 h-3.5 rounded-full bg-emerald-400 border-2 border-slate-950 shadow-md relative z-10"></span>
-                        </div>
-
-                        {/* Green Flashing Dot 6 */}
-                        <div className="absolute -right-5 top-1/3 flex items-center justify-center">
-                          <span className="absolute w-6 h-6 rounded-full bg-emerald-400 animate-ping opacity-75"></span>
-                          <span className="w-3.5 h-3.5 rounded-full bg-emerald-400 border-2 border-slate-950 shadow-md relative z-10"></span>
+                        {/* Boksburg Cluster Pulse */}
+                        <div className="absolute top-[48%] left-[79%] -translate-x-1/2 -translate-y-1/2 flex items-center justify-center">
+                          <span className="absolute w-8 h-8 rounded-full bg-emerald-400/50 animate-ping"></span>
+                          <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 border border-white shadow-md relative z-10"></span>
                         </div>
 
                       </div>
 
-                      <div className="mt-4 text-[10px] text-slate-400 font-mono">
-                        LAT: -26.1958 • LON: 28.0341 • GEOFENCE ENFORCED
+                      {/* Live GPS Coordinates Footer Overlay */}
+                      <div className="absolute bottom-2 left-2 bg-slate-950/90 backdrop-blur-md px-3 py-1 rounded-lg border border-purple-500/40 text-[9px] font-mono text-purple-200 flex items-center gap-2 shadow-lg">
+                        <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                        <span>JOHANNESBURG METRO • LAT: -26.1958 LON: 28.0341</span>
                       </div>
                     </div>
 
-                    {/* Zoom Controls */}
-                    <div className="absolute left-3 bottom-3 bg-slate-900 border border-slate-800 rounded-lg flex flex-col font-black text-xs text-slate-300 z-10">
-                      <button className="px-2 py-1 hover:bg-slate-800 border-b border-slate-800">+</button>
-                      <button className="px-2 py-1 hover:bg-slate-800">-</button>
-                    </div>
                   </div>
 
                   {/* Right Column: Live Anonymized Activity Feed (4 cols) */}
