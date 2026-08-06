@@ -10,6 +10,7 @@ export default function Navbar() {
 
   const links = [
     { name: "Home", href: "/" },
+    { name: "Wits Strategy", href: "/presentation" },
     { name: "EPA & WBA", href: "/features/epa-tracking" },
     { name: "Geo-Fence & NFC", href: "/features/nfc-attendance" },
     { name: "Education", href: "/education" },

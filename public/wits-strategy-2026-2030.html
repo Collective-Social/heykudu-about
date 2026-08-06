@@ -1,0 +1,2000 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wits University 2026-2030 Digital Migration Strategy | HeyKudu AI</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+  
+  <!-- Tailwind CSS CDN & html2pdf.js -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            display: ['Outfit', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#f3e8ff',
+              100: '#e9d5ff',
+              200: '#d8b4fe',
+              500: '#9333ea',
+              600: '#7c3aed',
+              700: '#630ed4',
+              800: '#4c05a7',
+              900: '#25005a',
+            },
+            emeraldContainer: '#007650',
+            emeraldBright: '#10b981',
+            accentGold: '#d97706',
+            surfaceDark: '#0f0919',
+            cardDark: '#181028',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    /* Custom Scrollbar & Animations */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(124, 58, 237, 0.5);
+      border-radius: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    /* High Contrast Soft-Medical Glass Card System */
+    .glass-card {
+      background: #ffffff;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 2px solid #cbd5e1;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+      border-radius: 1.5rem; /* rounded-3xl (24px) */
+    }
+
+    .dark .glass-card {
+      background: #181028;
+      backdrop-filter: blur(16px);
+      border: 2px solid rgba(139, 92, 246, 0.4);
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5);
+      border-radius: 1.5rem; /* rounded-3xl (24px) */
+    }
+
+    .gradient-hero-bg {
+      background: radial-gradient(circle at 15% 15%, rgba(99, 14, 212, 0.12) 0%, transparent 55%),
+                  radial-gradient(circle at 85% 85%, rgba(0, 118, 80, 0.1) 0%, transparent 55%),
+                  linear-gradient(135deg, #f8f9fa 0%, #ede8f7 100%);
+    }
+
+    .dark .gradient-hero-bg {
+      background: radial-gradient(circle at 15% 15%, rgba(124, 58, 237, 0.35) 0%, transparent 55%),
+                  radial-gradient(circle at 85% 85%, rgba(16, 185, 129, 0.2) 0%, transparent 55%),
+                  linear-gradient(135deg, #090514 0%, #150a2b 100%);
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #4c05a7 0%, #630ed4 50%, #007650 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .dark .gradient-text {
+      background: linear-gradient(135deg, #d8b4fe 0%, #a855f7 50%, #34d399 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Fixed Top & Bottom Control Headers */
+    header.top-bar {
+      height: 4rem;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+    }
+
+    header.bottom-bar {
+      height: 4rem;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+    }
+
+    /* Slide viewport & animation - Stretches 100% from top to bottom bar */
+    .slide-viewport {
+      position: fixed;
+      top: 0;
+      bottom: 4rem;
+      left: 0;
+      right: 0;
+      overflow: hidden;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(20px) scale(0.98);
+      transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 2rem 3.5rem;
+      box-sizing: border-box;
+    }
+
+    .slide.active {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0) scale(1);
+      z-index: 10;
+    }
+
+    /* Interactive Timeline Node */
+    .timeline-node {
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+      min-height: 3.5rem;
+    }
+
+    .timeline-node:hover {
+      transform: translateY(-3px);
+    }
+
+    .timeline-node.active-year {
+      background: #630ed4 !important;
+      color: #ffffff !important;
+      border-color: #a855f7 !important;
+      box-shadow: 0 10px 25px rgba(99, 14, 212, 0.4) !important;
+    }
+
+    .timeline-node.active-year * {
+      color: #ffffff !important;
+    }
+
+    .pulse-glow {
+      box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+      animation: pulseGlow 2s infinite;
+    }
+
+    @keyframes pulseGlow {
+      0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+      70% { box-shadow: 0 0 0 12px rgba(16, 185, 129, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+    }
+
+    /* Print & PDF Export Styles (Perfect A4 Landscape PDF output with zero margin bleeding or edge clipping) */
+    @media print {
+      @page {
+        size: A4 landscape;
+        margin: 0;
+      }
+      *, *::before, *::after {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        box-sizing: border-box !important;
+      }
+      html, body {
+        background: #090514 !important;
+        color: #ffffff !important;
+        width: 100vw !important;
+        height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: visible !important;
+      }
+      header.top-bar, header.bottom-bar, #overview-modal, .no-print, #pdf-toast, button {
+        display: none !important;
+      }
+      .slide-viewport {
+        position: static !important;
+        width: 100vw !important;
+        height: auto !important;
+        overflow: visible !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+      .slide {
+        position: relative !important;
+        inset: auto !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        pointer-events: auto !important;
+        transform: none !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        page-break-before: always !important;
+        page-break-after: always !important;
+        break-before: page !important;
+        break-after: page !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        min-height: 100vh !important;
+        max-height: 100vh !important;
+        box-sizing: border-box !important;
+        padding: 1rem 1.75rem !important;
+        background: #090514 !important;
+        border: none !important;
+        margin: 0 !important;
+        overflow: hidden !important;
+      }
+      .slide:first-child {
+        page-break-before: avoid !important;
+        break-before: auto !important;
+      }
+      .glass-card {
+        background: #181028 !important;
+        border: 2px solid rgba(139, 92, 246, 0.4) !important;
+        color: #ffffff !important;
+        padding: 0.45rem 0.75rem !important;
+      }
+      .gradient-text {
+        background: linear-gradient(135deg, #d8b4fe 0%, #a855f7 50%, #34d399 100%) !important;
+        -webkit-background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
+      }
+
+      /* Slide 1 Cover Page Print Styling */
+      #slide-1 {
+        background: linear-gradient(135deg, #12042b 0%, #4c05a7 50%, #0a0218 100%) !important;
+        color: #ffffff !important;
+      }
+
+      /* Ultra-Compact Spacing for Zero-Bleed Landscape Print Output */
+      h2 { font-size: 1.4rem !important; line-height: 1.2 !important; margin-bottom: 0.2rem !important; }
+      h3 { font-size: 0.95rem !important; line-height: 1.2 !important; margin-bottom: 0.15rem !important; }
+      p, li { font-size: 0.75rem !important; line-height: 1.2 !important; }
+      
+      .mb-8, .mb-6, .mb-5 { margin-bottom: 0.4rem !important; }
+      .mb-4, .mb-3, .mb-2 { margin-bottom: 0.25rem !important; }
+      .mt-6, .mt-5, .mt-4, .mt-3 { margin-top: 0.35rem !important; }
+      
+      .space-y-4 > :not([hidden]) ~ :not([hidden]) { margin-top: 0.3rem !important; }
+      .space-y-3 > :not([hidden]) ~ :not([hidden]) { margin-top: 0.25rem !important; }
+      .space-y-2.5 > :not([hidden]) ~ :not([hidden]) { margin-top: 0.2rem !important; }
+      .space-y-2 > :not([hidden]) ~ :not([hidden]) { margin-top: 0.15rem !important; }
+      
+      .gap-5, .gap-4, .gap-3 { gap: 0.4rem !important; }
+
+      /* Slide 5 (Paper Band-Aid vs AI Standard) Scale Fix */
+      #slide-5 .glass-card { padding: 0.5rem 0.75rem !important; }
+
+      /* Slide 6 (Administrative Bottlenecks) Scale Fix */
+      #slide-6 .space-y-4 > :not([hidden]) ~ :not([hidden]) { margin-top: 0.25rem !important; }
+      #slide-6 .glass-card { padding: 0.45rem 0.65rem !important; }
+
+      /* Slide 7 (Gantt Table) Print Fix */
+      #slide-7 table { width: 100% !important; table-layout: fixed !important; font-size: 9.5px !important; }
+      #slide-7 th, #slide-7 td { padding: 2px 4px !important; word-wrap: break-word !important; }
+
+      /* Slide 8 (Digital Maturity Progress Bars) Scale Fix */
+      #slide-8 .space-y-3 > :not([hidden]) ~ :not([hidden]) { margin-top: 0.2rem !important; }
+      #slide-8 .p-4, #slide-8 .p-3.5 { padding: 0.35rem 0.6rem !important; }
+
+      /* Slide 10 (Mobile Experience Engine) Scale Fix */
+      #slide-10 .space-y-3 > :not([hidden]) ~ :not([hidden]) { margin-top: 0.2rem !important; }
+      #slide-10 .glass-card { padding: 0.4rem 0.6rem !important; }
+      #slide-10 img { max-height: 180px !important; object-fit: contain !important; }
+      #slide-10 .max-w-\[280px\] { max-width: 170px !important; }
+
+      /* Slide 11 (Implementation Tiers Matrix) Scale Fix - Force Horizontal 4-Column Row */
+      #slide-11 .grid-cols-1, #slide-11 .grid {
+        display: grid !important;
+        grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+        gap: 0.4rem !important;
+      }
+      #slide-11 .glass-card { padding: 0.5rem 0.65rem !important; }
+      #slide-11 ul { margin-top: 0.25rem !important; }
+      #slide-11 li { font-size: 0.7rem !important; }
+
+      /* Force Horizontal Grids Across All Multi-Card Slides in Print */
+      #slide-2 .grid { display: grid !important; grid-template-columns: repeat(4, minmax(0, 1fr)) !important; gap: 0.4rem !important; }
+      #slide-3 .grid { display: grid !important; grid-template-columns: repeat(4, minmax(0, 1fr)) !important; gap: 0.4rem !important; }
+      #slide-5 .grid { display: grid !important; grid-template-columns: repeat(3, minmax(0, 1fr)) !important; gap: 0.4rem !important; }
+      #slide-9 .grid { display: grid !important; grid-template-columns: repeat(4, minmax(0, 1fr)) !important; gap: 0.4rem !important; }
+    }
+  </style>
+</head>
+<body class="bg-[#f8f9fa] dark:bg-[#090514] text-slate-900 dark:text-slate-100 font-sans transition-colors duration-300 antialiased selection:bg-brand-500 selection:text-white">
+
+  <!-- Main Presentation Viewport -->
+  <main class="slide-viewport">
+
+    <!-- SLIDE 1: Hyper-Minimalist Brand Cover Page -->
+    <section class="slide active bg-gradient-to-br from-[#12042b] via-[#4c05a7] to-[#0a0218] text-white flex flex-col items-center justify-between py-10 px-6 relative overflow-hidden" id="slide-1">
+      <div></div>
+
+      <!-- Center Hero: Pure Minimalist Identity -->
+      <div class="z-10 text-center my-auto flex flex-col items-center justify-center max-w-3xl mx-auto">
+        
+        <!-- Glowing Kudu Icon -->
+        <div class="relative w-36 h-36 sm:w-44 sm:h-44 rounded-full bg-gradient-to-tr from-purple-500 via-brand-500 to-emerald-400 p-1.5 shadow-[0_0_90px_rgba(147,51,234,0.6)] mb-8 transition-all hover:scale-105">
+          <div class="w-full h-full rounded-full bg-[#120826] flex items-center justify-center border-2 border-white/20">
+            <img src="/images/logo-white.png" alt="heykudu" class="w-20 h-20 sm:w-24 sm:h-24 object-contain filter drop-shadow-[0_0_20px_rgba(168,85,247,0.8)]" />
+          </div>
+        </div>
+
+        <!-- Clean Brand Title -->
+        <h1 class="font-sans font-black text-6xl sm:text-8xl tracking-tight text-white mb-4">
+          heykudu
+        </h1>
+
+        <!-- Simple Subtitle -->
+        <p class="text-purple-200 font-extrabold text-lg sm:text-2xl max-w-xl mx-auto tracking-wide">
+          Wits University • 2026–2030 Digital Strategy
+        </p>
+      </div>
+
+      <!-- Bottom Prompt Footer -->
+      <div class="z-10 w-full text-sm text-purple-300/80 font-extrabold flex justify-between items-center border-t border-white/10 pt-4 max-w-7xl mx-auto">
+        <span>Press <kbd class="px-2.5 py-1 rounded bg-white/20 text-white font-mono text-sm">Space</kbd> or <kbd class="px-2.5 py-1 rounded bg-white/20 text-white font-mono text-sm">→</kbd> to begin executive briefing</span>
+        <span class="text-white font-black">Slide 1 of 13</span>
+      </div>
+    </section>
+
+    <!-- SLIDE 2: Executive Vision -->
+    <section class="slide gradient-hero-bg" id="slide-2">
+      <div class="max-w-7xl mx-auto w-full flex-1 flex flex-col justify-center my-auto">
+        <span class="text-sm font-black text-brand-700 dark:text-brand-300 uppercase tracking-wider mb-2">Executive Leadership Briefing</span>
+
+        <h1 class="font-display text-4xl lg:text-6xl font-black tracking-tight leading-[1.1] mb-6 text-slate-900 dark:text-white">
+          Attendance, Requirements, & <br class="hidden sm:block" />
+          <span class="gradient-text">Wits Digital Safety Net</span>
+        </h1>
+
+        <p class="text-slate-800 dark:text-slate-100 text-lg lg:text-xl max-w-3xl font-extrabold leading-relaxed mb-10">
+          The pilot is successful and now we are reaching scale-up across all 5 Wits Faculties.
+        </p>
+
+        <!-- Executive Key Stat Badges -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-5 max-w-5xl">
+          <div class="glass-card p-6 border-l-8 border-l-brand-700 bg-white dark:bg-[#181028]">
+            <div class="text-4xl font-black font-display text-[#630ed4] dark:text-[#d8b4fe]">500+</div>
+            <div class="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wider mt-1.5">Daily Active Users</div>
+            <div class="text-sm font-extrabold text-slate-700 dark:text-purple-200 mt-1">2 – 15 check-ins / student / day</div>
+          </div>
+
+          <div class="glass-card p-6 border-l-8 border-l-emerald-600 bg-white dark:bg-[#181028]">
+            <div class="text-4xl font-black font-display text-[#007650] dark:text-[#34d399]">40,800+</div>
+            <div class="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wider mt-1.5">Digital Submissions</div>
+            <div class="text-sm font-extrabold text-slate-700 dark:text-emerald-200 mt-1">Health Sciences GEMP 1 & 2</div>
+          </div>
+
+          <div class="glass-card p-6 border-l-8 border-l-purple-600 bg-white dark:bg-[#181028]">
+            <div class="text-4xl font-black font-display text-[#5a00c6] dark:text-[#c084fc]">5 Faculties</div>
+            <div class="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wider mt-1.5">Institutional Scope</div>
+            <div class="text-sm font-extrabold text-slate-700 dark:text-purple-200 mt-1">Preloaded & ready to activate</div>
+          </div>
+
+          <div class="glass-card p-6 border-l-8 border-l-amber-600 bg-white dark:bg-[#181028]">
+            <div class="text-4xl font-black font-display text-[#b45309] dark:text-[#fbbf24]">Real-Time AI</div>
+            <div class="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wider mt-1.5">Curriculum Engine</div>
+            <div class="text-sm font-extrabold text-slate-700 dark:text-amber-200 mt-1">Adaptive course requirements</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-sm text-slate-900 dark:text-slate-100 font-extrabold flex justify-between items-center border-t-2 border-slate-300 dark:border-slate-800 pt-3">
+        <span>Vice-Chancellor & Deans Council Executive Briefing</span>
+        <span>Slide 2 of 13</span>
+      </div>
+    </section>
+
+    <!-- SLIDE 3: 110-Year AI & Education Convergence Timeline Road -->
+    <section class="slide" id="slide-3">
+      <div class="max-w-7xl mx-auto w-full flex-1 flex flex-col justify-center my-auto">
+        <div class="text-center max-w-3xl mx-auto mb-6">
+          <span class="text-sm font-black text-brand-700 dark:text-brand-300 uppercase tracking-wider">HISTORICAL EVOLUTION (1920 – 2030)</span>
+          <h2 class="font-display text-3xl lg:text-5xl font-black mt-1 text-slate-900 dark:text-white">
+            110 Years from Paper Logbooks to AI Intelligence
+          </h2>
+          <p class="text-slate-700 dark:text-slate-200 text-sm font-extrabold mt-1.5">
+            Tracing higher education's journey from the first 1920 paper logbook to real-time AI curriculum engines.
+          </p>
+        </div>
+
+        <!-- Central Timeline Highway / Road Container -->
+        <div class="glass-card p-6 border-2 border-purple-500/40 bg-white/90 dark:bg-[#0c1224] shadow-2xl relative overflow-hidden mb-4">
+          
+          <!-- Middle Glowing Timeline Highway Bar -->
+          <div class="hidden lg:block absolute top-1/2 left-8 right-8 h-4 bg-gradient-to-r from-rose-500 via-amber-500 via-purple-600 to-emerald-400 rounded-full -translate-y-1/2 shadow-lg shadow-purple-500/30"></div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-4 gap-6 relative z-10">
+            
+            <!-- Node 1: 1920 Paper Logbook Created -->
+            <div class="bg-slate-100 dark:bg-slate-900/90 p-5 rounded-2xl border-2 border-rose-500/50 flex flex-col justify-between shadow-xl">
+              <div>
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-sm font-black text-rose-600 dark:text-rose-400 uppercase tracking-wider">1920 ERA</span>
+                  <span class="text-sm font-bold font-black bg-rose-500 text-white px-2.5 py-0.5 rounded-full">1920</span>
+                </div>
+                <h3 class="font-display font-black text-lg text-slate-900 dark:text-white mb-2">1st Paper Logbook Created</h3>
+                <p class="text-sm text-slate-700 dark:text-slate-300 font-extrabold leading-relaxed">
+                  Flexner Report introduces paper logbooks. Physical paper registers become the standard for 100+ years.
+                </p>
+              </div>
+              <div class="mt-4 pt-3 border-t border-slate-200 dark:border-slate-800 text-sm font-black font-black text-rose-600 dark:text-rose-400 flex items-center gap-1">
+                <span class="material-symbols-outlined text-base">description</span>
+                <span>Manual Paper Era</span>
+              </div>
+            </div>
+
+            <!-- Node 2: 1960s-2000s Dawn of Computing -->
+            <div class="bg-slate-100 dark:bg-slate-900/90 p-5 rounded-2xl border-2 border-amber-500/50 flex flex-col justify-between shadow-xl">
+              <div>
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-sm font-black text-amber-600 dark:text-amber-400 uppercase tracking-wider">1960s–2000s</span>
+                  <span class="text-sm font-bold font-black bg-amber-500 text-white px-2.5 py-0.5 rounded-full">2000s</span>
+                </div>
+                <h3 class="font-display font-black text-lg text-slate-900 dark:text-white mb-2">Dawn of Computing</h3>
+                <p class="text-sm text-slate-700 dark:text-slate-300 font-extrabold leading-relaxed">
+                  Initial mainframe & spreadsheet digitization. However, clinical and field tracking remained trapped on paper.
+                </p>
+              </div>
+              <div class="mt-4 pt-3 border-t border-slate-200 dark:border-slate-800 text-sm font-black font-black text-amber-600 dark:text-amber-400 flex items-center gap-1">
+                <span class="material-symbols-outlined text-base">computer</span>
+                <span>Siloed Spreadsheets</span>
+              </div>
+            </div>
+
+            <!-- Node 3: 2010s Paper/Digital Divide -->
+            <div class="bg-slate-100 dark:bg-slate-900/90 p-5 rounded-2xl border-2 border-purple-500/50 flex flex-col justify-between shadow-xl">
+              <div>
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-sm font-black text-purple-600 dark:text-purple-300 uppercase tracking-wider">2010s ERA</span>
+                  <span class="text-sm font-bold font-black bg-purple-600 text-white px-2.5 py-0.5 rounded-full">2010s</span>
+                </div>
+                <h3 class="font-display font-black text-lg text-slate-900 dark:text-white mb-2">Mobile & LMS Divide</h3>
+                <p class="text-sm text-slate-700 dark:text-slate-300 font-extrabold leading-relaxed">
+                  Smartphones and LMS platforms emerge, yet students still carry physical paper booklets to ward rotations.
+                </p>
+              </div>
+              <div class="mt-4 pt-3 border-t border-slate-200 dark:border-slate-800 text-sm font-black font-black text-purple-600 dark:text-purple-300 flex items-center gap-1">
+                <span class="material-symbols-outlined text-base">phone_iphone</span>
+                <span>The Paper Stagnation</span>
+              </div>
+            </div>
+
+            <!-- Node 4: 2026-2030 THE CONVERGENCE (HeyKudu AI Engine) -->
+            <div class="bg-gradient-to-br from-[#4c05a7] via-[#630ed4] to-[#1c0048] text-white p-5 rounded-2xl border-2 border-emerald-400 flex flex-col justify-between shadow-2xl relative">
+              <div>
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-sm font-black text-emerald-300 uppercase tracking-widest">THE CONVERGENCE</span>
+                  <span class="text-sm font-bold font-black bg-emerald-500 text-white px-2.5 py-0.5 rounded-full uppercase">2026–2030</span>
+                </div>
+                <h3 class="font-display font-black text-xl text-white mb-2">AI-Driven Wits Curriculum</h3>
+                <p class="text-sm text-purple-100 font-extrabold leading-relaxed">
+                  HeyKudu ends 110 years of paper friction by applying GenAI to student check-ins and logbook data.
+                </p>
+              </div>
+              <div class="mt-4 pt-3 border-t border-purple-400/40 text-sm font-black font-black text-amber-300 flex items-center gap-1">
+                <span class="material-symbols-outlined text-base">workspace_premium</span>
+                <span>Makes Wits #1 Globally by 2030</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Banner Note -->
+        <div class="p-4 rounded-2xl bg-gradient-to-r from-brand-900 via-purple-950 to-brand-800 text-white text-sm sm:text-sm font-extrabold flex items-center justify-between border border-purple-400/30">
+          <div class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-emerald-400 text-2xl">route</span>
+            <span><strong>The Timeline Highway:</strong> Wits leaps from a 1920 paper-based standard directly to a 2026–2030 real-time AI curriculum engine.</span>
+          </div>
+          <span class="font-black text-sm bg-emerald-500 text-white px-3 py-1.5 rounded-xl uppercase shrink-0 hidden sm:inline-block">110-Year Paradigm Shift</span>
+        </div>
+      </div>
+
+      <div class="text-sm text-slate-900 dark:text-slate-100 font-extrabold flex justify-between items-center border-t-2 border-slate-300 dark:border-slate-800 pt-3">
+        <span>110-Year AI & Education Convergence Timeline Road</span>
+        <span>Slide 3 of 13</span>
+      </div>
+    </section>
+
+    <!-- SLIDE 4: NFC Smart Tag & Live Geofence Map -->
+    <section class="slide" id="slide-4">
+      <div class="max-w-7xl mx-auto w-full flex-1 flex flex-col justify-center my-auto">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-4">
+          <div>
+            <span class="text-sm font-black text-brand-700 dark:text-brand-300 uppercase tracking-wider">HARDWARE & LIVE MAP INFRASTRUCTURE</span>
+            <h2 class="font-display text-3xl lg:text-4xl font-black mt-1 text-slate-900 dark:text-white">
+              Actual Mounted NFC Tag Hardware & Live Tag Map
+            </h2>
+          </div>
+          <div class="text-sm font-extrabold text-emerald-900 dark:text-emerald-300 bg-emerald-500/20 border-2 border-emerald-600 px-4 py-1.5 rounded-full flex items-center gap-2 mt-2 md:mt-0">
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 pulse-glow"></span>
+            NTAG213 Certified Tags + Live GPS Geofence
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch mb-4">
+          
+          <!-- Left Col (5 cols): Actual Physical Classroom NFC Tag Photo -->
+          <div class="lg:col-span-5 glass-card p-5 border-2 border-brand-500/40 bg-gradient-to-br from-[#2a0462] via-[#4c05a7] to-[#120038] text-white flex flex-col justify-between relative overflow-hidden shadow-2xl">
+            <div class="text-center relative z-10 mb-3">
+              <span class="px-3 py-1 rounded-full bg-emerald-500/30 text-emerald-300 border border-emerald-400/50 text-sm font-bold font-black uppercase tracking-wider">
+                PHYSICAL MOUNTED NFC TAG • LIVE AT WITS
+              </span>
+              <h3 class="font-display font-black text-xl text-white mt-1.5">Mounted Classroom & Ward NFC Tag</h3>
+            </div>
+
+            <!-- Actual NFC Tag Image Display -->
+            <div class="relative z-10 rounded-2xl overflow-hidden border-2 border-emerald-400 shadow-2xl my-1 group">
+              <img src="/images/classroom_nfc_tag.png" alt="Actual Mounted NFC Tag at Wits" class="w-full h-52 object-cover transition-transform duration-500 group-hover:scale-105">
+              <div class="absolute bottom-2 left-2 right-2 bg-slate-950/80 backdrop-blur-md p-2 rounded-xl border border-emerald-400/50 flex justify-between items-center text-sm font-bold font-black text-white">
+                <span class="flex items-center gap-1.5 text-emerald-400">
+                  <span class="material-symbols-outlined text-base">nfc</span>
+                  <span>NTAG213 Certified</span>
+                </span>
+                <span class="bg-emerald-500 text-white px-2 py-0.5 rounded text-sm font-bold font-black">&lt; 1s Contactless Tap</span>
+              </div>
+            </div>
+
+            <!-- Stats Bar -->
+            <div class="grid grid-cols-3 text-center gap-2 pt-3 border-t border-purple-400/30 text-sm font-black relative z-10">
+              <div class="bg-black/40 p-2 rounded-xl">
+                <div class="text-emerald-300 font-display text-sm">&lt; 1s</div>
+                <div class="text-sm font-bold text-purple-200">CONTACTLESS</div>
+              </div>
+              <div class="bg-black/40 p-2 rounded-xl">
+                <div class="text-emerald-300 font-display text-sm">100%</div>
+                <div class="text-sm font-bold text-purple-200">GEOFENCE MATCH</div>
+              </div>
+              <div class="bg-black/40 p-2 rounded-xl">
+                <div class="text-emerald-300 font-display text-sm">0%</div>
+                <div class="text-sm font-bold text-purple-200">PROXY CHECK-IN</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Col (7 cols): Map Visualizing Installed Tag Locations -->
+          <div class="lg:col-span-7 glass-card p-6 border-2 border-slate-300 dark:border-slate-800 flex flex-col justify-between bg-white dark:bg-[#120826]">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <div class="flex items-center gap-2">
+                  <span class="material-symbols-outlined text-purple-600 dark:text-purple-400 text-2xl">map</span>
+                  <h3 class="font-display font-black text-lg text-slate-900 dark:text-white">Live Installed Tag & Geofence Map</h3>
+                </div>
+                <span class="text-sm font-extrabold text-slate-700 dark:text-slate-300 bg-slate-200 dark:bg-slate-800 px-3 py-1 rounded-full">
+                  500m Geofence Radius
+                </span>
+              </div>
+
+              <!-- Map Visualization UI Box -->
+              <div class="bg-slate-900 rounded-2xl p-4 border-2 border-slate-700 relative overflow-hidden min-h-[220px] flex flex-col justify-between text-white">
+                <!-- Grid Map Lines Background -->
+                <div class="absolute inset-0 bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:16px_16px] opacity-20"></div>
+
+                <!-- Hospital & Campus Nodes -->
+                <div class="relative z-10 grid grid-cols-2 sm:grid-cols-3 gap-3">
+                  <!-- Node 1: Chris Hani Baragwanath -->
+                  <div class="bg-slate-950/80 p-3 rounded-xl border border-emerald-500/50 flex flex-col justify-between">
+                    <div class="flex items-center justify-between mb-1">
+                      <span class="material-symbols-outlined text-emerald-400 text-lg">local_hospital</span>
+                      <span class="text-sm font-bold font-black bg-emerald-500/20 text-emerald-300 px-1.5 py-0.5 rounded">ACTIVE</span>
+                    </div>
+                    <div class="text-sm font-black text-white">Bara Hospital</div>
+                    <div class="text-sm font-bold text-emerald-400 font-bold mt-0.5">182 Active Tags</div>
+                  </div>
+
+                  <!-- Node 2: Charlotte Maxeke -->
+                  <div class="bg-slate-950/80 p-3 rounded-xl border border-emerald-500/50 flex flex-col justify-between">
+                    <div class="flex items-center justify-between mb-1">
+                      <span class="material-symbols-outlined text-emerald-400 text-lg">domain</span>
+                      <span class="text-sm font-bold font-black bg-emerald-500/20 text-emerald-300 px-1.5 py-0.5 rounded">ACTIVE</span>
+                    </div>
+                    <div class="text-sm font-black text-white">Charlotte Maxeke</div>
+                    <div class="text-sm font-bold text-emerald-400 font-bold mt-0.5">145 Active Tags</div>
+                  </div>
+
+                  <!-- Node 3: Wits Medical School -->
+                  <div class="bg-slate-950/80 p-3 rounded-xl border border-brand-500/50 flex flex-col justify-between">
+                    <div class="flex items-center justify-between mb-1">
+                      <span class="material-symbols-outlined text-purple-400 text-lg">school</span>
+                      <span class="text-sm font-bold font-black bg-purple-500/20 text-purple-300 px-1.5 py-0.5 rounded">CAMPUS</span>
+                    </div>
+                    <div class="text-sm font-black text-white">Medical School</div>
+                    <div class="text-sm font-bold text-purple-300 font-bold mt-0.5">96 Active Tags</div>
+                  </div>
+
+                  <!-- Node 4: Rahima Moosa -->
+                  <div class="bg-slate-950/80 p-3 rounded-xl border border-emerald-500/50 flex flex-col justify-between">
+                    <div class="flex items-center justify-between mb-1">
+                      <span class="material-symbols-outlined text-emerald-400 text-lg">vaccines</span>
+                      <span class="text-sm font-bold font-black bg-emerald-500/20 text-emerald-300 px-1.5 py-0.5 rounded">ACTIVE</span>
+                    </div>
+                    <div class="text-sm font-black text-white">Rahima Moosa</div>
+                    <div class="text-sm font-bold text-emerald-400 font-bold mt-0.5">64 Active Tags</div>
+                  </div>
+
+                  <!-- Node 5: Geology & Fieldwork Sites -->
+                  <div class="bg-slate-950/80 p-3 rounded-xl border border-amber-500/50 flex flex-col justify-between">
+                    <div class="flex items-center justify-between mb-1">
+                      <span class="material-symbols-outlined text-amber-400 text-lg">landscape</span>
+                      <span class="text-sm font-bold font-black bg-amber-500/20 text-amber-300 px-1.5 py-0.5 rounded">PILOT</span>
+                    </div>
+                    <div class="text-sm font-black text-white">Geology Field Sites</div>
+                    <div class="text-sm font-bold text-amber-300 font-bold mt-0.5">42 GPS Nodes</div>
+                  </div>
+
+                  <!-- Node 6: Main Wits Campus -->
+                  <div class="bg-slate-950/80 p-3 rounded-xl border border-purple-500/50 flex flex-col justify-between">
+                    <div class="flex items-center justify-between mb-1">
+                      <span class="material-symbols-outlined text-purple-400 text-lg">account_balance</span>
+                      <span class="text-sm font-bold font-black bg-purple-500/20 text-purple-300 px-1.5 py-0.5 rounded">PRELOADED</span>
+                    </div>
+                    <div class="text-sm font-black text-white">Main Braam Campus</div>
+                    <div class="text-sm font-bold text-purple-300 font-bold mt-0.5">Ready Oct 2026</div>
+                  </div>
+                </div>
+
+                <!-- Map Status Footer -->
+                <div class="relative z-10 pt-3 border-t border-slate-800 flex justify-between items-center text-sm font-black font-bold text-slate-300">
+                  <span>📍 Real-Time Location Verification</span>
+                  <span class="text-emerald-400 font-black">529+ Total Active Tags Placed</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Feature Summary -->
+            <div class="mt-3 pt-3 border-t border-slate-200 dark:border-slate-800 text-sm font-extrabold text-slate-800 dark:text-slate-100 flex items-center justify-between">
+              <span>Automatic Geofence + Cryptographic Tag Verification</span>
+              <span class="text-[#630ed4] dark:text-purple-300 font-black">Gamified Module Logbooks</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Flow Banner -->
+        <div class="p-4 rounded-2xl bg-gradient-to-r from-brand-900 via-purple-950 to-brand-800 text-white text-sm sm:text-sm font-extrabold flex items-center justify-between border border-purple-400/30">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-emerald-400 text-xl">east</span>
+            <span><strong>Seamless Student Journey:</strong> From 1-Tap Physical Tag Check-In $\rightarrow$ Live GPS Verification $\rightarrow$ Gamified Rotational & Module Requirement Tracking.</span>
+          </div>
+          <span class="font-black text-sm bg-emerald-500 text-white px-3 py-1.5 rounded-xl uppercase shrink-0 hidden sm:inline-block">Full Data Pipeline</span>
+        </div>
+      </div>
+
+      <div class="text-sm text-slate-900 dark:text-slate-100 font-extrabold flex justify-between items-center border-t-2 border-slate-300 dark:border-slate-800 pt-3">
+        <span>Actual NFC Tag Hardware & Live Map Infrastructure</span>
+        <span>Slide 4 of 13</span>
+      </div>
+    </section>
+
+    <!-- SLIDE 5: Pulling Off the Paper Band-Aid -->
+    <section class="slide" id="slide-5">
+      <div class="max-w-7xl mx-auto w-full flex-1 flex flex-col justify-center my-auto">
+        <div class="text-center max-w-3xl mx-auto mb-6">
+          <span class="text-sm font-black text-brand-700 dark:text-brand-300 uppercase tracking-wider">PARADIGM SHIFT • DATA-CAPTURE REVOLUTION</span>
+          <h2 class="font-display text-3xl lg:text-4xl font-black mt-1 text-slate-900 dark:text-white">When are you ready to pull off your paper band-aid?</h2>
+          <p class="text-slate-700 dark:text-slate-300 text-sm font-extrabold mt-1.5">
+            Transitioning from legacy manual attendance to automated, student-powered curriculum AI.
+          </p>
+        </div>
+
+        <!-- 3-Step Illustration Progression -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-6">
+          <!-- Step 1: Paper Registers -->
+          <div class="glass-card p-5 border-t-8 border-t-rose-500 flex flex-col justify-between text-center relative">
+            <div>
+              <div class="w-14 h-14 rounded-2xl bg-rose-100 text-rose-600 dark:bg-rose-950/80 dark:text-rose-300 mx-auto flex items-center justify-center font-black mb-3 border border-rose-300">
+                <span class="material-symbols-outlined text-3xl">article</span>
+              </div>
+              <span class="px-3 py-1 rounded-full bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-200 text-sm font-bold font-black uppercase tracking-wider border border-rose-300">
+                1. Legacy Paper
+              </span>
+              <h3 class="font-display font-black text-lg text-slate-900 dark:text-white mt-3 mb-1">Paper Registers</h3>
+              <p class="text-sm text-slate-700 dark:text-slate-300 font-extrabold leading-relaxed">
+                Manual clipboard tracking, lost paper sheets, spreadsheet bottlenecks, and zero real-time visibility into student attendance.
+              </p>
+            </div>
+            <div class="mt-4 pt-2 border-t border-slate-200 dark:border-slate-800 text-sm font-black font-black text-rose-600 dark:text-rose-400">
+              ✕ High Error Rate • Admin Overhead
+            </div>
+          </div>
+
+          <!-- Step 2: Paper Band-Aid -->
+          <div class="glass-card p-5 border-t-8 border-t-amber-500 flex flex-col justify-between text-center relative">
+            <div>
+              <div class="w-14 h-14 rounded-2xl bg-amber-100 text-amber-600 dark:bg-amber-950/80 dark:text-amber-300 mx-auto flex items-center justify-center font-black mb-3 border border-amber-300">
+                <span class="material-symbols-outlined text-3xl">healing</span>
+              </div>
+              <span class="px-3 py-1 rounded-full bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-200 text-sm font-bold font-black uppercase tracking-wider border border-amber-300">
+                2. Temporary Patch
+              </span>
+              <h3 class="font-display font-black text-lg text-slate-900 dark:text-white mt-3 mb-1">Paper Band-Aid</h3>
+              <p class="text-sm text-slate-700 dark:text-slate-300 font-extrabold leading-relaxed">
+                Ad-hoc Google Forms, unverified QR codes, and temporary digital workarounds that still leave curriculum data disconnected.
+              </p>
+            </div>
+            <div class="mt-4 pt-2 border-t border-slate-200 dark:border-slate-800 text-sm font-black font-black text-amber-600 dark:text-amber-400">
+              ⚠️ Easy to Proxy • Unverified Data
+            </div>
+          </div>
+
+          <!-- Step 3: AI Digital Engine -->
+          <div class="glass-card p-5 border-t-8 border-t-emerald-500 flex flex-col justify-between text-center relative">
+            <div>
+              <div class="w-14 h-14 rounded-2xl bg-emerald-100 text-emerald-600 dark:bg-emerald-950/80 dark:text-emerald-300 mx-auto flex items-center justify-center font-black mb-3 border border-emerald-300">
+                <span class="material-symbols-outlined text-3xl">psychology</span>
+              </div>
+              <span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-200 text-sm font-bold font-black uppercase tracking-wider border border-emerald-300">
+                3. AI Digital Standard
+              </span>
+              <h3 class="font-display font-black text-lg text-slate-900 dark:text-white mt-3 mb-1">AI Digital Engine</h3>
+              <p class="text-sm text-slate-700 dark:text-slate-300 font-extrabold leading-relaxed">
+                Hardware NFC tags & GPS geofencing with sub-2-second check-ins, feeding real-time data directly into Curriculum AI.
+              </p>
+            </div>
+            <div class="mt-4 pt-2 border-t border-slate-200 dark:border-slate-800 text-sm font-black font-black text-emerald-600 dark:text-emerald-400">
+              ✓ 100% Cryptographic Accuracy • Real-Time
+            </div>
+          </div>
+        </div>
+
+        <!-- Quote / Banner Card -->
+        <div class="glass-card p-6 bg-gradient-to-r from-brand-900 via-purple-950 to-brand-800 text-white rounded-3xl border-2 border-purple-400/40 shadow-2xl flex items-center justify-between gap-4">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-2xl bg-emerald-500/20 border-2 border-emerald-400 flex items-center justify-center text-emerald-300 shrink-0">
+              <span class="material-symbols-outlined text-2xl">auto_awesome</span>
+            </div>
+            <div>
+              <h3 class="font-display font-black text-lg sm:text-xl text-white">
+                Students are your new data capturers to unlock insights and power your curriculum AI.
+              </h3>
+              <p class="text-sm text-purple-200 font-bold mt-1">
+                Every daily check-in and logbook entry feeds real-time intelligence directly to Wits academic leadership.
+              </p>
+            </div>
+          </div>
+          <span class="px-4 py-2 rounded-xl bg-emerald-500 text-white font-black text-sm uppercase tracking-wider shrink-0 hidden lg:inline-block">
+            ACTIVE REVOLUTION
+          </span>
+        </div>
+      </div>
+
+      <div class="text-sm text-slate-900 dark:text-slate-100 font-extrabold flex justify-between items-center border-t-2 border-slate-300 dark:border-slate-800 pt-3">
+        <span>Paradigm Shift: Paper Band-Aid to AI Digital Standard</span>
+        <span>Slide 5 of 13</span>
+      </div>
+    </section>
+
+    <!-- SLIDE 6: Addressing Administrative Adoption -->
+    <section class="slide" id="slide-6">
+      <div class="max-w-7xl mx-auto w-full flex-1 flex flex-col justify-center my-auto">
+        <div class="text-center max-w-3xl mx-auto mb-6">
+          <span class="text-sm font-black text-brand-700 dark:text-brand-300 uppercase tracking-wider">OPERATIONAL ALIGNMENT</span>
+          <h2 class="font-display text-3xl lg:text-4xl font-black mt-1 text-slate-900 dark:text-white">Addressing Administrative Adoption Bottlenecks</h2>
+          <p class="text-slate-700 dark:text-slate-300 text-sm font-extrabold mt-1.5">
+            Bridging staff uptake friction through preloaded course templates and top-down executive policy.
+          </p>
+        </div>
+
+        <!-- 3 Condensed Cards Layout -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-6">
+          <!-- Card 1: Problem / Friction -->
+          <div class="glass-card p-5 border-t-8 border-t-rose-500 flex flex-col justify-between text-left">
+            <div>
+              <span class="text-sm font-bold font-mono font-black text-rose-600 dark:text-rose-400 uppercase tracking-widest block mb-2">
+                1. THE BOTTLENECK
+              </span>
+              <h3 class="font-display font-black text-lg text-slate-900 dark:text-white mb-2">Administrative Friction</h3>
+              <p class="text-sm text-slate-700 dark:text-slate-300 font-extrabold leading-relaxed">
+                Staff reluctance to configure new software and reliance on legacy paper spreadsheets slow down full faculty adoption.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-200 dark:border-slate-800 text-sm font-black font-black text-rose-600 dark:text-rose-400 flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-base">warning</span>
+              <span>Requires Zero Faculty Setup Work</span>
+            </div>
+          </div>
+
+          <!-- Card 2: Preloaded Solution -->
+          <div class="glass-card p-5 border-t-8 border-t-brand-700 flex flex-col justify-between text-left">
+            <div>
+              <span class="text-sm font-bold font-mono font-black text-[#630ed4] dark:text-purple-300 uppercase tracking-widest block mb-2">
+                2. PRELOADED MODELS
+              </span>
+              <h3 class="font-display font-black text-lg text-slate-900 dark:text-white mb-2">Concierge Course Setup</h3>
+              <p class="text-sm text-slate-700 dark:text-slate-300 font-extrabold leading-relaxed">
+                All 5 Wits Faculties are preloaded with course rotations, rosters, and modules — staff do not need to build anything manually.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-200 dark:border-slate-800 text-sm font-black font-black text-[#630ed4] dark:text-purple-300 flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-base">check_circle</span>
+              <span>Ready for Oct 2026 Tag Activation</span>
+            </div>
+          </div>
+
+          <!-- Card 3: Top-Down Mandate -->
+          <div class="glass-card p-5 border-t-8 border-t-emerald-600 flex flex-col justify-between text-left">
+            <div>
+              <span class="text-sm font-bold font-mono font-black text-[#007650] dark:text-emerald-400 uppercase tracking-widest block mb-2">
+                3. EXECUTIVE POLICY
+              </span>
+              <h3 class="font-display font-black text-lg text-slate-900 dark:text-white mb-2">Top-Down Policy Mandate</h3>
+              <p class="text-sm text-slate-700 dark:text-slate-300 font-extrabold leading-relaxed">
+                VC & Deans Council mandate attendance and requirement check-ins for 2027, unlocking rapid adoption across all cohorts.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-200 dark:border-slate-800 text-sm font-black font-black text-emerald-600 dark:text-emerald-400 flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-base">verified</span>
+              <span>100% Institutional Scale</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Banner Note -->
+        <div class="p-4 rounded-2xl bg-gradient-to-r from-brand-900 via-purple-950 to-brand-800 text-white text-sm sm:text-sm font-extrabold flex items-center justify-between border border-purple-400/30">
+          <div class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-emerald-400 text-2xl">verified_user</span>
+            <span><strong>Frictionless Transition:</strong> By removing administrative setup burdens, Wits achieves immediate 2027 attendance coverage across all 5 Faculties.</span>
+          </div>
+          <span class="font-black text-sm bg-emerald-500 text-white px-3 py-1.5 rounded-xl uppercase shrink-0 hidden sm:inline-block">Zero Setup Load</span>
+        </div>
+      </div>
+
+      <div class="text-sm text-slate-900 dark:text-slate-100 font-extrabold flex justify-between items-center border-t-2 border-slate-300 dark:border-slate-800 pt-3">
+        <span>Addressing Administrative Adoption</span>
+        <span>Slide 6 of 13</span>
+      </div>
+    </section>
+
+    <!-- SLIDE 7: Executive Gantt Chart Implementation Roadmap -->
+    <section class="slide" id="slide-7">
+      <div class="max-w-7xl mx-auto w-full flex-1 flex flex-col justify-center my-auto">
+        <div class="text-center max-w-3xl mx-auto mb-6">
+          <span class="text-sm font-black text-brand-700 dark:text-brand-300 uppercase tracking-wider">STRATEGIC IMPLEMENTATION GANTT ROADMAP</span>
+          <h2 class="font-display text-3xl lg:text-4xl font-black mt-1 text-slate-900 dark:text-white">
+            2026 – 2030 Executive Implementation Roadmap
+          </h2>
+          <p class="text-slate-700 dark:text-slate-300 text-sm font-extrabold mt-1.5">
+            Clear multi-year project timeline to overcome administrative paper inertia and position Wits as #1 in Africa.
+          </p>
+        </div>
+
+        <!-- Gantt Chart Container -->
+        <div class="glass-card p-6 border-2 border-purple-500/40 bg-white/90 dark:bg-[#0c1224] shadow-2xl overflow-hidden">
+          <div class="overflow-x-auto">
+            <div class="min-w-[800px]">
+              
+              <!-- Gantt Header Row -->
+              <div class="grid grid-cols-12 gap-3 pb-3 border-b-2 border-slate-300 dark:border-slate-800 text-sm font-black font-mono font-black uppercase text-slate-700 dark:text-slate-300">
+                <div class="col-span-4">MILESTONE / STRATEGIC OBJECTIVE</div>
+                <div class="col-span-2 text-center bg-purple-500/10 py-1.5 rounded-lg border border-purple-400/30 text-purple-700 dark:text-purple-300">2026 (FOUNDATION)</div>
+                <div class="col-span-2 text-center bg-amber-500/10 py-1.5 rounded-lg border border-amber-400/30 text-amber-700 dark:text-amber-300">2027 (PULL BAND-AID)</div>
+                <div class="col-span-2 text-center bg-blue-500/10 py-1.5 rounded-lg border border-blue-400/30 text-blue-700 dark:text-blue-300">2028 (AI HELP)</div>
+                <div class="col-span-2 text-center bg-emerald-500/10 py-1.5 rounded-lg border border-emerald-400/30 text-emerald-700 dark:text-emerald-300">2029–2030 (CURRICULUM)</div>
+              </div>
+
+              <!-- Gantt Body Rows -->
+              <div class="space-y-4 pt-4">
+
+                <!-- Row 1: 2026 Preloaded Models & Tag Prep -->
+                <div class="grid grid-cols-12 gap-3 items-center">
+                  <div class="col-span-4">
+                    <div class="text-sm font-black text-slate-900 dark:text-white flex items-center gap-1.5">
+                      <span class="w-2.5 h-2.5 rounded-full bg-purple-500 shrink-0"></span>
+                      <span>1. Preload Course Models & Setup</span>
+                    </div>
+                    <div class="text-sm font-black text-slate-600 dark:text-slate-400 font-extrabold mt-0.5">
+                      Eliminates admin setup burdens for all 5 Wits Faculties.
+                    </div>
+                  </div>
+                  <!-- Gantt Bar: Spans 2026 -->
+                  <div class="col-span-2">
+                    <div class="bg-gradient-to-r from-purple-600 to-brand-700 text-white p-2 rounded-xl text-sm font-bold font-black text-center shadow-lg shadow-purple-500/20">
+                      ✓ Active Baseline & Oct Tags
+                    </div>
+                  </div>
+                  <div class="col-span-6 text-center text-sm font-black text-slate-400 font-mono">── Complete ──</div>
+                </div>
+
+                <!-- Row 2: 2027 Pulling Off the Paper Band-Aid -->
+                <div class="grid grid-cols-12 gap-3 items-center">
+                  <div class="col-span-4">
+                    <div class="text-sm font-black text-slate-900 dark:text-white flex items-center gap-1.5">
+                      <span class="w-2.5 h-2.5 rounded-full bg-amber-500 shrink-0"></span>
+                      <span>2. Pull Off the Paper Band-Aid</span>
+                    </div>
+                    <div class="text-sm font-black text-slate-600 dark:text-slate-400 font-extrabold mt-0.5">
+                      100% digital check-in mandate; retires physical paper registers.
+                    </div>
+                  </div>
+                  <div class="col-span-2 text-center text-sm font-black text-slate-400 font-mono">──</div>
+                  <!-- Gantt Bar: Spans 2027 -->
+                  <div class="col-span-2">
+                    <div class="bg-gradient-to-r from-amber-500 to-orange-600 text-white p-2 rounded-xl text-sm font-bold font-black text-center shadow-lg shadow-amber-500/20">
+                      ⚡ Universal Mandate
+                    </div>
+                  </div>
+                  <div class="col-span-4 text-center text-sm font-black text-slate-400 font-mono">── Expansion ──</div>
+                </div>
+
+                <!-- Row 3: 2028 AI Support for Struggling Students -->
+                <div class="grid grid-cols-12 gap-3 items-center">
+                  <div class="col-span-4">
+                    <div class="text-sm font-black text-slate-900 dark:text-white flex items-center gap-1.5">
+                      <span class="w-2.5 h-2.5 rounded-full bg-blue-500 shrink-0"></span>
+                      <span>3. AI Support for Falling-Behind Students</span>
+                    </div>
+                    <div class="text-sm font-black text-slate-600 dark:text-slate-400 font-extrabold mt-0.5">
+                      Deploy AI agents to identify gaps & help struggling students learn better.
+                    </div>
+                  </div>
+                  <div class="col-span-4 text-center text-sm font-black text-slate-400 font-mono">── Phase 1 & 2 ──</div>
+                  <!-- Gantt Bar: Spans 2028 -->
+                  <div class="col-span-2">
+                    <div class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white p-2 rounded-xl text-sm font-bold font-black text-center shadow-lg shadow-blue-500/20">
+                      🤖 AI Student Support
+                    </div>
+                  </div>
+                  <div class="col-span-2 text-center text-sm font-black text-slate-400 font-mono">──</div>
+                </div>
+
+                <!-- Row 4: 2029-2030 Live AI Curriculum Engine -->
+                <div class="grid grid-cols-12 gap-3 items-center">
+                  <div class="col-span-4">
+                    <div class="text-sm font-black text-slate-900 dark:text-white flex items-center gap-1.5">
+                      <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 shrink-0"></span>
+                      <span>4. AI-Informed Live Curriculum</span>
+                    </div>
+                    <div class="text-sm font-black text-slate-600 dark:text-slate-400 font-extrabold mt-0.5">
+                      Real-time logbook exhaust dynamically updates course requirements.
+                    </div>
+                  </div>
+                  <div class="col-span-6 text-center text-sm font-black text-slate-400 font-mono">── Foundation & Rollout ──</div>
+                  <!-- Gantt Bar: Spans 2029-2030 -->
+                  <div class="col-span-2">
+                    <div class="bg-gradient-to-r from-emerald-500 to-teal-600 text-white p-2 rounded-xl text-sm font-bold font-black text-center shadow-lg shadow-emerald-500/20">
+                      🏆 #1 University in Africa
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Banner Note -->
+        <div class="mt-4 p-4 rounded-2xl bg-gradient-to-r from-brand-900 via-purple-950 to-brand-800 text-white text-sm sm:text-sm font-extrabold flex items-center justify-between border border-purple-400/30">
+          <div class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-amber-300 text-2xl">insights</span>
+            <span><strong>Clear Executive Vision:</strong> Phased Gantt rollout eliminates administrative bottlenecks while systematically building Africa's premier AI curriculum.</span>
+          </div>
+          <span class="font-black text-sm bg-emerald-500 text-white px-3 py-1.5 rounded-xl uppercase shrink-0 hidden sm:inline-block">High-Level Executive Roadmap</span>
+        </div>
+      </div>
+
+      <div class="text-sm text-slate-900 dark:text-slate-100 font-extrabold flex justify-between items-center border-t-2 border-slate-300 dark:border-slate-800 pt-3">
+        <span>Strategic Implementation Gantt Roadmap</span>
+        <span>Slide 7 of 13</span>
+      </div>
+    </section>
+
+    <!-- SLIDE 8: Faculty Onboarding Progress Bars & Snowball Traction -->
+    <section class="slide" id="slide-8">
+      <div class="max-w-7xl mx-auto w-full flex-1 flex flex-col justify-center my-auto">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-4">
+          <div>
+            <span class="text-sm font-black text-brand-700 dark:text-brand-300 uppercase tracking-wider">INSTITUTIONAL MATURITY PROGRESS BARS</span>
+            <h2 class="font-display text-3xl lg:text-4xl font-black mt-1 text-slate-900 dark:text-white">
+              Faculty Digital Maturity & Snowball Traction
+            </h2>
+          </div>
+          <div class="text-sm font-extrabold text-purple-900 dark:text-purple-200 bg-purple-500/20 border-2 border-purple-500 px-4 py-1.5 rounded-full flex items-center gap-2 mt-2 md:mt-0">
+            <span class="w-2.5 h-2.5 rounded-full bg-purple-500 pulse-glow"></span>
+            500 GEMP Students • 2,000+ Daily Return Check-Ins
+          </div>
+        </div>
+
+        <!-- Progress Stage Legend -->
+        <div class="grid grid-cols-4 gap-2 mb-4 text-sm font-black font-mono font-black text-center text-slate-700 dark:text-slate-300">
+          <div class="bg-purple-500/10 py-1.5 rounded-lg border border-purple-400/30">STAGE 1: PRELOADED MODELS</div>
+          <div class="bg-blue-500/10 py-1.5 rounded-lg border border-blue-400/30">STAGE 2: ATTENDANCE ACTIVE</div>
+          <div class="bg-amber-500/10 py-1.5 rounded-lg border border-amber-400/30">STAGE 3: DIGITAL LOGBOOKS</div>
+          <div class="bg-emerald-500/10 py-1.5 rounded-lg border border-emerald-400/30">STAGE 4: 100% DAILY USAGE</div>
+        </div>
+
+        <!-- 5 Faculty Progress Bar Cards -->
+        <div class="glass-card p-5 border-2 border-purple-500/40 bg-white/90 dark:bg-[#0c1224] space-y-3 shadow-2xl">
+          
+          <!-- Faculty 1: Health Sciences (~75% Progress) -->
+          <div class="bg-slate-100 dark:bg-slate-900/90 p-3.5 rounded-2xl border-2 border-emerald-500/50">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
+              <div class="flex items-center gap-2">
+                <span class="font-display font-black text-sm text-slate-900 dark:text-white">Faculty of Health Sciences</span>
+              </div>
+              <span class="text-sm font-black text-emerald-600 dark:text-emerald-400">GEMP 1 & 2 Live • ~75% Maturity</span>
+            </div>
+            <!-- Progress Bar -->
+            <div class="w-full h-3.5 bg-slate-300 dark:bg-slate-800 rounded-full overflow-hidden p-0.5 border border-emerald-500/30">
+              <div class="h-full bg-gradient-to-r from-purple-600 via-brand-500 to-emerald-400 rounded-full w-[75%] transition-all duration-500"></div>
+            </div>
+            <div class="flex justify-between items-center text-sm font-bold font-bold text-slate-600 dark:text-slate-400 mt-1">
+              <span>500 GEMP students returning 2,000+ times/day across hospital wards</span>
+              <span class="text-emerald-400 font-black">40,800+ Logbook Submissions</span>
+            </div>
+          </div>
+
+          <!-- Faculty 2: Science / Geology (~35% Progress) -->
+          <div class="bg-slate-100 dark:bg-slate-900/90 p-3.5 rounded-2xl border border-slate-300 dark:border-slate-800">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
+              <div class="flex items-center gap-2">
+                <span class="font-display font-black text-sm text-slate-900 dark:text-white">Faculty of Science</span>
+              </div>
+              <span class="text-sm font-black text-amber-600 dark:text-amber-400">Fieldwork Active • ~35% Maturity</span>
+            </div>
+            <!-- Progress Bar -->
+            <div class="w-full h-3.5 bg-slate-300 dark:bg-slate-800 rounded-full overflow-hidden p-0.5">
+              <div class="h-full bg-gradient-to-r from-purple-600 to-amber-500 rounded-full w-[35%] transition-all duration-500"></div>
+            </div>
+            <div class="flex justify-between items-center text-sm font-bold font-bold text-slate-600 dark:text-slate-400 mt-1">
+              <span>Geology GPS fieldwork logbooks active (~10% faculty cohort)</span>
+              <span>Practical Lab Tracking Next</span>
+            </div>
+          </div>
+
+          <!-- Faculty 3: Commerce, Law & Management (~25% Progress) -->
+          <div class="bg-slate-100 dark:bg-slate-900/90 p-3 rounded-2xl border border-slate-300 dark:border-slate-800">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-1.5">
+              <span class="font-display font-black text-sm text-slate-900 dark:text-white">Commerce, Law & Management (CLM)</span>
+              <span class="text-sm font-black text-purple-600 dark:text-purple-300">Models Preloaded • Oct 2026 Tag Activation</span>
+            </div>
+            <!-- Progress Bar -->
+            <div class="w-full h-2.5 bg-slate-300 dark:bg-slate-800 rounded-full overflow-hidden p-0.5">
+              <div class="h-full bg-brand-700 rounded-full w-[25%]"></div>
+            </div>
+          </div>
+
+          <!-- Faculty 4: Engineering & Built Environment (~25% Progress) -->
+          <div class="bg-slate-100 dark:bg-slate-900/90 p-3 rounded-2xl border border-slate-300 dark:border-slate-800">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-1.5">
+              <span class="font-display font-black text-sm text-slate-900 dark:text-white">Engineering & Built Environment (EBE)</span>
+              <span class="text-sm font-black text-purple-600 dark:text-purple-300">Models Preloaded • Oct 2026 Tag Activation</span>
+            </div>
+            <!-- Progress Bar -->
+            <div class="w-full h-2.5 bg-slate-300 dark:bg-slate-800 rounded-full overflow-hidden p-0.5">
+              <div class="h-full bg-brand-700 rounded-full w-[25%]"></div>
+            </div>
+          </div>
+
+          <!-- Faculty 5: Faculty of Humanities (~25% Progress) -->
+          <div class="bg-slate-100 dark:bg-slate-900/90 p-3 rounded-2xl border border-slate-300 dark:border-slate-800">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-1.5">
+              <span class="font-display font-black text-sm text-slate-900 dark:text-white">Faculty of Humanities</span>
+              <span class="text-sm font-black text-purple-600 dark:text-purple-300">Models Preloaded • Oct 2026 Tag Activation</span>
+            </div>
+            <!-- Progress Bar -->
+            <div class="w-full h-2.5 bg-slate-300 dark:bg-slate-800 rounded-full overflow-hidden p-0.5">
+              <div class="h-full bg-brand-700 rounded-full w-[25%]"></div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Banner Note -->
+        <div class="mt-3 p-3.5 rounded-2xl bg-gradient-to-r from-brand-900 via-purple-950 to-brand-800 text-white text-sm font-extrabold flex items-center justify-between border border-purple-400/30">
+          <div class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-emerald-400 text-xl">cyclone</span>
+            <span><strong>The Adoption Snowball:</strong> Health Sciences GEMP 1 & 2 prove massive daily student engagement (2,000+ check-ins/day). All 5 Wits Faculties are preloaded to replicate this snowball.</span>
+          </div>
+          <span class="font-black text-sm bg-emerald-500 text-white px-3 py-1 rounded-xl uppercase shrink-0 hidden sm:inline-block">Target: 100% Wits Scale</span>
+        </div>
+      </div>
+
+      <div class="text-sm text-slate-900 dark:text-slate-100 font-extrabold flex justify-between items-center border-t-2 border-slate-300 dark:border-slate-800 pt-3">
+        <span>Faculty Digital Maturity Progress Bars</span>
+        <span>Slide 8 of 13</span>
+      </div>
+    </section>
+
+    <!-- SLIDE 9: Live AI Agents -->
+    <section class="slide" id="slide-9">
+      <div class="max-w-7xl mx-auto w-full flex-1 flex flex-col justify-center my-auto">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-4">
+          <div>
+            <span class="text-sm font-black text-brand-700 dark:text-brand-300 uppercase tracking-wider">Automated Intelligence</span>
+            <h2 class="font-display text-3xl lg:text-4xl font-black mt-1 text-slate-900 dark:text-white">Live AI Agents Running on HeyKudu</h2>
+          </div>
+          <div class="text-sm font-extrabold text-emerald-900 dark:text-emerald-300 bg-emerald-500/20 border-2 border-emerald-600 px-4 py-1.5 rounded-full">
+            Real-Time Anomaly Detection Active
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div class="glass-card p-6 border-t-8 border-t-brand-700 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center gap-3 mb-3">
+                <span class="material-symbols-outlined text-[#630ed4] text-3xl">shield_person</span>
+                <h3 class="font-display font-black text-lg text-slate-900 dark:text-white">Attendance Safeguard Agent</h3>
+              </div>
+              <p class="text-sm text-slate-900 dark:text-slate-100 font-extrabold leading-relaxed mb-4">
+                Monitors daily GPS check-ins. Automatically flags out-of-bounds geofence attempts and late departures.
+              </p>
+            </div>
+            <div class="pt-3 border-t-2 border-slate-300 text-sm font-black text-[#630ed4] dark:text-purple-300">
+              ✓ 95% admin workload reduction
+            </div>
+          </div>
+
+          <div class="glass-card p-6 border-t-8 border-t-emerald-600 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center gap-3 mb-3">
+                <span class="material-symbols-outlined text-[#007650] text-3xl">query_stats</span>
+                <h3 class="font-display font-black text-lg text-slate-900 dark:text-white">Curriculum Gap Agent</h3>
+              </div>
+              <p class="text-sm text-slate-900 dark:text-slate-100 font-extrabold leading-relaxed mb-4">
+                Compares student logbook submissions against syllabus targets to identify underserved procedure exposure weeks in advance.
+              </p>
+            </div>
+            <div class="pt-3 border-t-2 border-slate-300 text-sm font-black text-[#007650] dark:text-emerald-400">
+              ✓ Guarantees 100% exam competency
+            </div>
+          </div>
+
+          <div class="glass-card p-6 border-t-8 border-t-purple-600 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center gap-3 mb-3">
+                <span class="material-symbols-outlined text-purple-700 text-3xl">psychology</span>
+                <h3 class="font-display font-black text-lg text-slate-900 dark:text-white">Standards & Research Sync</h3>
+              </div>
+              <p class="text-sm text-slate-900 dark:text-slate-100 font-extrabold leading-relaxed mb-4">
+                Synthesizes student submission trends with emergent global research and professional protocols for live syllabus updates.
+              </p>
+            </div>
+            <div class="pt-3 border-t-2 border-slate-300 text-sm font-black text-purple-700 dark:text-purple-300">
+              ✓ Most agile curriculum engine globally
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-sm text-slate-900 dark:text-slate-100 font-extrabold flex justify-between items-center border-t-2 border-slate-300 dark:border-slate-800 pt-3">
+        <span>AI Agents & Operations</span>
+        <span>Slide 9 of 13</span>
+      </div>
+    </section>
+
+    <!-- SLIDE 10: Gamified Student Experience & Real-Time Mobile Progress -->
+    <section class="slide" id="slide-10">
+      <div class="max-w-7xl mx-auto w-full flex-1 flex flex-col justify-center my-auto">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-3">
+          <div>
+            <span class="text-sm font-black text-brand-700 dark:text-brand-300 uppercase tracking-wider">GAMIFIED STUDENT EXPERIENCE</span>
+            <h2 class="font-display text-3xl lg:text-4xl font-black mt-0.5 text-slate-900 dark:text-white">
+              Real-Time Mobile Student Experience & Logbook Engine
+            </h2>
+          </div>
+          <div class="text-sm font-extrabold text-emerald-900 dark:text-emerald-300 bg-emerald-500/20 border-2 border-emerald-600 px-3.5 py-1 rounded-full flex items-center gap-1.5 mt-2 md:mt-0">
+            <span class="material-symbols-outlined text-base">sentiment_very_satisfied</span>
+            High Student Satisfaction: Instant Progress & Zero Paper Friction
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-center">
+          
+          <!-- Left: Single Large Upright iPhone Mockup with User Mobile Dashboard -->
+          <div class="lg:col-span-5 flex flex-col items-center justify-center p-3 relative">
+            
+            <!-- Polished Upright iPhone 15 Pro Frame -->
+            <div class="bg-slate-950 rounded-[44px] p-3 border-4 border-purple-400/50 shadow-[0_25px_60px_rgba(0,0,0,0.8)] relative max-w-[280px] w-full mx-auto group">
+              
+              <!-- iPhone Top Dynamic Island / Speaker Notch -->
+              <div class="w-24 h-4 bg-black rounded-full mx-auto mb-2 flex items-center justify-center relative z-20">
+                <div class="w-3.5 h-3.5 rounded-full bg-slate-900 border border-slate-700"></div>
+              </div>
+
+              <!-- Actual User Mobile App Screen Image -->
+              <div class="bg-slate-900 rounded-[34px] overflow-hidden border border-purple-500/30 shadow-2xl relative">
+                <img src="/images/mobile_dashboard.png" alt="HeyKudu O&G GEMPII Real-Time Student App" class="w-full h-auto object-cover block">
+              </div>
+
+              <!-- iPhone Bottom Home Bar -->
+              <div class="w-20 h-1.5 bg-slate-700 rounded-full mx-auto mt-2.5"></div>
+            </div>
+
+            <!-- Mobile Badge Tag -->
+            <div class="mt-3 text-center">
+              <span class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-emerald-500/20 border border-emerald-400/50 text-emerald-300 text-xs font-black uppercase tracking-wider">
+                <span class="material-symbols-outlined text-sm">smartphone</span>
+                <span>100% Mobile Native • Instant Check-In</span>
+              </span>
+            </div>
+          </div>
+
+          <!-- Right: 4 Detailed Feature Cards -->
+          <div class="lg:col-span-7 space-y-3">
+            
+            <!-- Card 1: Deliverables & Uploads -->
+            <div class="glass-card p-3.5 border-l-8 border-l-brand-700 flex items-start gap-3">
+              <span class="material-symbols-outlined text-[#630ed4] dark:text-purple-300 text-2xl shrink-0">upload_file</span>
+              <div>
+                <h3 class="font-display font-black text-sm text-slate-900 dark:text-white">Deliverables, Due Dates & File Uploads</h3>
+                <p class="text-sm text-slate-700 dark:text-slate-300 font-extrabold mt-0.5 leading-snug">
+                  Students upload case documents, view assignment due dates, and capture supervisor digital signatures directly in-app.
+                </p>
+              </div>
+            </div>
+
+            <!-- Card 2: User Images & Comments -->
+            <div class="glass-card p-3.5 border-l-8 border-l-emerald-600 flex items-start gap-3">
+              <span class="material-symbols-outlined text-[#007650] dark:text-emerald-400 text-2xl shrink-0">add_a_photo</span>
+              <div>
+                <h3 class="font-display font-black text-sm text-slate-900 dark:text-white">Image Proof & Supervisor Comments</h3>
+                <p class="text-sm text-slate-700 dark:text-slate-300 font-extrabold mt-0.5 leading-snug">
+                  Attach photo evidence of clinical procedures and exchange instant feedback comments with rotation supervisors.
+                </p>
+              </div>
+            </div>
+
+            <!-- Card 3: Learning Opportunity Surveys -->
+            <div class="glass-card p-3.5 border-l-8 border-l-amber-600 flex items-start gap-3">
+              <span class="material-symbols-outlined text-amber-700 dark:text-amber-300 text-2xl shrink-0">rate_review</span>
+              <div>
+                <h3 class="font-display font-black text-sm text-slate-900 dark:text-white">Surveys & Learning Opportunity Inputs</h3>
+                <p class="text-sm text-slate-700 dark:text-slate-300 font-extrabold mt-0.5 leading-snug">
+                  Provide qualitative text feedback on ward learning opportunities, supervisor availability, and clinical exposure.
+                </p>
+              </div>
+            </div>
+
+            <!-- Card 4: Faculty Data Classification -->
+            <div class="glass-card p-3.5 border-l-8 border-l-purple-600 flex items-start gap-3">
+              <span class="material-symbols-outlined text-purple-700 dark:text-purple-300 text-2xl shrink-0">analytics</span>
+              <div>
+                <h3 class="font-display font-black text-sm text-slate-900 dark:text-white">Faculty-Wide Exposure Intelligence</h3>
+                <p class="text-sm text-slate-700 dark:text-slate-300 font-extrabold mt-0.5 leading-snug">
+                  Classifies faculty data into real-time skill exposures, patient diagnoses, clinical findings, and degree requirements.
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Banner Note -->
+        <div class="mt-3 p-3 rounded-2xl bg-gradient-to-r from-brand-900 via-purple-950 to-brand-800 text-white text-sm font-extrabold flex items-center justify-between border border-purple-400/30">
+          <div class="flex items-center gap-2.5">
+            <span class="material-symbols-outlined text-emerald-400 text-xl">thumb_up</span>
+            <span><strong>High Student Satisfaction:</strong> Students love the digital simplicity. Gamified progress and peer benchmarks drive 2,000+ daily check-ins and zero lost logbooks.</span>
+          </div>
+          <span class="font-black text-sm bg-emerald-500 text-white px-2.5 py-1 rounded-xl uppercase shrink-0 hidden sm:inline-block">100% Mobile Ready</span>
+        </div>
+      </div>
+
+      <div class="text-sm text-slate-900 dark:text-slate-100 font-extrabold flex justify-between items-center border-t-2 border-slate-300 dark:border-slate-800 pt-3">
+        <span>Gamified Student Experience & Real-Time Mobile Progress</span>
+        <span>Slide 10 of 13</span>
+      </div>
+    </section>
+
+    <!-- SLIDE 11: Implementation Tier Selection Matrix -->
+    <section class="slide" id="slide-11">
+      <div class="max-w-7xl mx-auto w-full flex-1 flex flex-col justify-center my-auto">
+        <div class="text-center max-w-3xl mx-auto mb-6">
+          <span class="text-sm font-black text-brand-700 dark:text-brand-300 uppercase tracking-wider">FACULTY ONBOARDING OPTIONS</span>
+          <h2 class="font-display text-3xl lg:text-4xl font-black mt-1 text-slate-900 dark:text-white">Choose Your Faculty Implementation Level</h2>
+          <p class="text-slate-700 dark:text-slate-300 text-sm font-extrabold mt-1.5">
+            Select the operational depth that fits your faculty. Every level builds cumulatively on the previous tier.
+          </p>
+        </div>
+
+        <!-- 4 Implementation Level Cards with Stacked Icons & Clear Value -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+          
+          <!-- Level 1: Basic Tag Check-in -->
+          <div class="glass-card p-5 border-2 border-emerald-500/50 bg-white/90 dark:bg-[#0c1224] flex flex-col justify-between text-left hover:border-emerald-500 transition-all">
+            <div>
+              <div class="w-12 h-12 rounded-2xl bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold mb-3 shadow-md">
+                <span class="material-symbols-outlined text-3xl">tap_and_play</span>
+              </div>
+              <span class="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-200 text-sm font-bold font-black uppercase tracking-wider border border-emerald-300 block w-fit mb-2">
+                LEVEL 1 • BASIC
+              </span>
+              <h3 class="font-display font-black text-xl text-slate-900 dark:text-white mb-2">Tag Check-In / Out</h3>
+              
+              <ul class="space-y-2 text-sm font-extrabold text-slate-700 dark:text-slate-300">
+                <li class="flex items-center gap-1.5 text-emerald-700 dark:text-emerald-400">
+                  <span class="material-symbols-outlined text-base">check_circle</span>
+                  <span>NFC Tag Tap Verification</span>
+                </li>
+                <li class="flex items-center gap-1.5 text-emerald-700 dark:text-emerald-400">
+                  <span class="material-symbols-outlined text-base">check_circle</span>
+                  <span>GPS Geofence Security</span>
+                </li>
+                <li class="flex items-center gap-1.5 text-emerald-700 dark:text-emerald-400">
+                  <span class="material-symbols-outlined text-base">check_circle</span>
+                  <span>Basic Attendance Dashboard</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="mt-4 pt-3 border-t border-slate-200 dark:border-slate-800 text-center">
+              <span class="text-sm font-bold font-black bg-emerald-500 text-white px-3 py-1 rounded-full uppercase">
+                Instant Deployment
+              </span>
+            </div>
+          </div>
+
+          <!-- Level 2: Admin Portal & Ulwazi Sync -->
+          <div class="glass-card p-5 border-2 border-brand-500/50 bg-white/90 dark:bg-[#0c1224] flex flex-col justify-between text-left hover:border-brand-500 transition-all">
+            <div>
+              <div class="w-12 h-12 rounded-2xl bg-purple-500/20 text-[#630ed4] dark:text-purple-300 flex items-center justify-center font-bold mb-3 shadow-md">
+                <span class="material-symbols-outlined text-3xl">sync</span>
+              </div>
+              <span class="px-2.5 py-0.5 rounded-full bg-purple-100 text-brand-800 dark:bg-brand-950 dark:text-purple-200 text-sm font-bold font-black uppercase tracking-wider border border-brand-300 block w-fit mb-2">
+                LEVEL 2 • LMS SYNC
+              </span>
+              <h3 class="font-display font-black text-xl text-slate-900 dark:text-white mb-2">Ulwazi LMS Sync</h3>
+
+              <div class="text-sm font-bold font-mono font-black text-purple-700 dark:text-purple-300 mb-2">+ INCLUDES LEVEL 1 FEATURES</div>
+
+              <ul class="space-y-2 text-sm font-extrabold text-slate-700 dark:text-slate-300">
+                <li class="flex items-center gap-1.5 text-[#630ed4] dark:text-purple-300">
+                  <span class="material-symbols-outlined text-base">check_circle</span>
+                  <span>Wits Ulwazi (Canvas) Sync</span>
+                </li>
+                <li class="flex items-center gap-1.5 text-[#630ed4] dark:text-purple-300">
+                  <span class="material-symbols-outlined text-base">check_circle</span>
+                  <span>CSV Export & Admin Reports</span>
+                </li>
+                <li class="flex items-center gap-1.5 text-[#630ed4] dark:text-purple-300">
+                  <span class="material-symbols-outlined text-base">check_circle</span>
+                  <span>Automated Roster Imports</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="mt-4 pt-3 border-t border-slate-200 dark:border-slate-800 text-center">
+              <span class="text-sm font-bold font-black bg-brand-700 text-white px-3 py-1 rounded-full uppercase">
+                Admin Automation
+              </span>
+            </div>
+          </div>
+
+          <!-- Level 3: Course Logbooks & Gamified Progress -->
+          <div class="glass-card p-5 border-2 border-blue-500/50 bg-white/90 dark:bg-[#0c1224] flex flex-col justify-between text-left hover:border-blue-500 transition-all">
+            <div>
+              <div class="w-12 h-12 rounded-2xl bg-blue-500/20 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold mb-3 shadow-md">
+                <span class="material-symbols-outlined text-3xl">checklist_rtl</span>
+              </div>
+              <span class="px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-800 dark:bg-blue-950 dark:text-blue-200 text-sm font-bold font-black uppercase tracking-wider border border-blue-300 block w-fit mb-2">
+                LEVEL 3 • LOGBOOKS
+              </span>
+              <h3 class="font-display font-black text-xl text-slate-900 dark:text-white mb-2">Digital Logbooks</h3>
+
+              <div class="text-sm font-bold font-mono font-black text-blue-700 dark:text-blue-300 mb-2">+ INCLUDES LEVEL 1 & 2 FEATURES</div>
+
+              <ul class="space-y-2 text-sm font-extrabold text-slate-700 dark:text-slate-300">
+                <li class="flex items-center gap-1.5 text-blue-600 dark:text-blue-400">
+                  <span class="material-symbols-outlined text-base">check_circle</span>
+                  <span>Gamified Student Progress</span>
+                </li>
+                <li class="flex items-center gap-1.5 text-blue-600 dark:text-blue-400">
+                  <span class="material-symbols-outlined text-base">check_circle</span>
+                  <span>Photo Proof & Verifications</span>
+                </li>
+                <li class="flex items-center gap-1.5 text-blue-600 dark:text-blue-400">
+                  <span class="material-symbols-outlined text-base">check_circle</span>
+                  <span>Missing Requirement Alerts</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="mt-4 pt-3 border-t border-slate-200 dark:border-slate-800 text-center">
+              <span class="text-sm font-bold font-black bg-blue-600 text-white px-3 py-1 rounded-full uppercase">
+                Student Gamification
+              </span>
+            </div>
+          </div>
+
+          <!-- Level 4: Custom AI Engine -->
+          <div class="glass-card p-5 border-2 border-amber-500/50 bg-white/90 dark:bg-[#0c1224] flex flex-col justify-between text-left hover:border-amber-500 transition-all">
+            <div>
+              <div class="w-12 h-12 rounded-2xl bg-amber-500/20 text-amber-600 dark:text-amber-400 flex items-center justify-center font-bold mb-3 shadow-md">
+                <span class="material-symbols-outlined text-3xl">psychology</span>
+              </div>
+              <span class="px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-200 text-sm font-bold font-black uppercase tracking-wider border border-amber-300 block w-fit mb-2">
+                LEVEL 4 • AI ENGINE
+              </span>
+              <h3 class="font-display font-black text-xl text-slate-900 dark:text-white mb-2">Bespoke AI Engine</h3>
+
+              <div class="text-sm font-bold font-mono font-black text-amber-700 dark:text-amber-300 mb-2">+ INCLUDES LEVEL 1, 2 & 3 FEATURES</div>
+
+              <ul class="space-y-2 text-sm font-extrabold text-slate-700 dark:text-slate-300">
+                <li class="flex items-center gap-1.5 text-amber-600 dark:text-amber-400">
+                  <span class="material-symbols-outlined text-base">check_circle</span>
+                  <span>Live AI Anomaly Safeguards</span>
+                </li>
+                <li class="flex items-center gap-1.5 text-amber-600 dark:text-amber-400">
+                  <span class="material-symbols-outlined text-base">check_circle</span>
+                  <span>Adaptive Curriculum Feeds</span>
+                </li>
+                <li class="flex items-center gap-1.5 text-amber-600 dark:text-amber-400">
+                  <span class="material-symbols-outlined text-base">check_circle</span>
+                  <span>Predictive Exam Intelligence</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="mt-4 pt-3 border-t border-slate-200 dark:border-slate-800 text-center">
+              <span class="text-sm font-bold font-black bg-amber-600 text-white px-3 py-1 rounded-full uppercase">
+                Full AI Power
+              </span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Banner Note -->
+        <div class="p-3.5 rounded-2xl bg-gradient-to-r from-brand-900 via-purple-950 to-brand-800 text-white text-sm sm:text-sm font-extrabold flex items-center justify-between border border-purple-400/30">
+          <div class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-emerald-400 text-2xl">tune</span>
+            <span><strong>Modular Onboarding:</strong> Wits faculties can begin at Level 1 today and seamlessly upgrade to Level 4 as digital readiness expands.</span>
+          </div>
+          <span class="font-black text-sm bg-emerald-500 text-white px-3 py-1.5 rounded-xl uppercase shrink-0 hidden sm:inline-block">Modular Upgrade Path</span>
+        </div>
+      </div>
+
+      <div class="text-sm text-slate-900 dark:text-slate-100 font-extrabold flex justify-between items-center border-t-2 border-slate-300 dark:border-slate-800 pt-3">
+        <span>Choose Your Implementation Level</span>
+        <span>Slide 11 of 13</span>
+      </div>
+    </section>
+
+    <!-- SLIDE 12: Senior Leadership Decision Matrix -->
+    <section class="slide" id="slide-12">
+      <div class="max-w-7xl mx-auto w-full flex-1 flex flex-col justify-center my-auto">
+        <div class="text-center max-w-3xl mx-auto mb-8">
+          <span class="text-sm font-black text-brand-700 dark:text-brand-300 uppercase tracking-wider">Executive Decision Matrix</span>
+          <h2 class="font-display text-4xl lg:text-5xl font-black mt-1 text-slate-900 dark:text-white">Accelerating Wits Digital Migration</h2>
+          <p class="text-slate-900 dark:text-slate-100 text-sm sm:text-base font-extrabold mt-2">
+            Requested leadership actions to activate a university-wide AI-enabled standard.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+          <div class="glass-card p-5 border-t-8 border-t-brand-700 text-center flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-2xl bg-brand-700 text-white mx-auto flex items-center justify-center font-black text-lg mb-3">1</div>
+              <h3 class="font-display font-black text-base text-slate-900 dark:text-white mb-2">Top-Down Policy Mandate</h3>
+              <p class="text-sm text-slate-900 dark:text-slate-100 font-extrabold">Formalize 2027 attendance requirement across all 5 Wits faculties.</p>
+            </div>
+            <div class="mt-4 pt-2 text-sm font-black text-[#630ed4] dark:text-purple-300 uppercase">Q3 2026 Sign-Off</div>
+          </div>
+
+          <div class="glass-card p-5 border-t-8 border-t-emerald-600 text-center flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-2xl bg-emerald-600 text-white mx-auto flex items-center justify-center font-black text-lg mb-3">2</div>
+              <h3 class="font-display font-black text-base text-slate-900 dark:text-white mb-2">Faculty Champions</h3>
+              <p class="text-sm text-slate-900 dark:text-slate-100 font-extrabold">Appoint 1 academic lead per faculty to finalize preloaded course templates.</p>
+            </div>
+            <div class="mt-4 pt-2 text-sm font-black text-[#007650] dark:text-emerald-400 uppercase">Appoint Leads</div>
+          </div>
+
+          <div class="glass-card p-5 border-t-8 border-t-purple-600 text-center flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-2xl bg-purple-600 text-white mx-auto flex items-center justify-center font-black text-lg mb-3">3</div>
+              <h3 class="font-display font-black text-base text-slate-900 dark:text-white mb-2">Ulwazi Integration</h3>
+              <p class="text-sm text-slate-900 dark:text-slate-100 font-extrabold">Authorize automated student roster & gradebook sync with Wits Ulwazi portal.</p>
+            </div>
+            <div class="mt-4 pt-2 text-sm font-black text-purple-700 dark:text-purple-300 uppercase">API Sync Ready</div>
+          </div>
+
+          <div class="glass-card p-5 border-t-8 border-t-amber-600 text-center flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-2xl bg-amber-600 text-white mx-auto flex items-center justify-center font-black text-lg mb-3">4</div>
+              <h3 class="font-display font-black text-base text-slate-900 dark:text-white mb-2">Quarterly AI Reviews</h3>
+              <p class="text-sm text-slate-900 dark:text-slate-100 font-extrabold">Deans receive real-time dashboard reports on student competency gaps.</p>
+            </div>
+            <div class="mt-4 pt-2 text-sm font-black text-amber-700 dark:text-amber-400 uppercase">Council Oversight</div>
+          </div>
+        </div>
+
+        <!-- Big Final Call to Action -->
+        <div class="glass-card p-7 bg-gradient-to-r from-brand-900 via-purple-950 to-brand-800 text-white text-center border-2 border-purple-400/40 shadow-2xl flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div class="text-left">
+            <h3 class="font-display font-black text-2xl text-white">Position Wits as Africa's #1 AI University</h3>
+            <p class="text-sm text-purple-200 font-bold mt-1">Ready to activate all 5 Faculties for 2027.</p>
+          </div>
+
+          <button onclick="alert('Thank you! Wits Executive Sign-Off proposal registered for Council review.')" class="h-14 px-8 rounded-2xl bg-emerald-500 hover:bg-emerald-600 text-white font-display font-black text-sm tracking-wide shadow-xl shadow-emerald-500/40 transition-all active:scale-95 shrink-0 flex items-center gap-2 border-2 border-emerald-300">
+            <span class="material-symbols-outlined text-xl">draw</span>
+            Approve Top-Down Mandate
+          </button>
+        </div>
+      </div>
+
+      <div class="text-sm text-slate-900 dark:text-slate-100 font-extrabold flex justify-between items-center border-t-2 border-slate-300 dark:border-slate-800 pt-3">
+        <span>Leadership Action & Sign-Off</span>
+        <span>Slide 12 of 13</span>
+      </div>
+    </section>
+
+    <!-- SLIDE 13: Thank You & System Access Landing Page -->
+    <section class="slide" id="slide-13">
+      <div class="max-w-7xl mx-auto w-full flex-1 flex flex-col justify-center my-auto text-center">
+        
+        <!-- Brand Badge -->
+        <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-purple-500/20 border border-purple-400/40 text-purple-200 mx-auto mb-6 shadow-xl">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 pulse-glow"></span>
+          <span class="text-sm font-mono font-black uppercase tracking-widest">WITS UNIVERSITY • DIGITAL MIGRATION 2026–2030</span>
+        </div>
+
+        <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 dark:text-white tracking-tight mb-4">
+          Thank You
+        </h1>
+        <p class="text-base sm:text-xl font-extrabold text-slate-700 dark:text-slate-200 max-w-2xl mx-auto mb-8 leading-relaxed">
+          Pioneering AI-driven curriculum intelligence and daily student safety across all 5 Wits Faculties.
+        </p>
+
+        <!-- Access & Contact Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto w-full mb-8 text-left">
+          
+          <!-- System Portal Link Card -->
+          <div class="glass-card p-6 border-2 border-brand-500/50 bg-white/90 dark:bg-[#0c1224] shadow-2xl flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-2xl bg-brand-700 text-white flex items-center justify-center font-black mb-4 shadow-lg">
+                <span class="material-symbols-outlined text-2xl">launch</span>
+              </div>
+              <h3 class="font-display font-black text-xl text-slate-900 dark:text-white mb-1.5">System Portal Access</h3>
+              <p class="text-sm text-slate-700 dark:text-slate-300 font-extrabold mb-4 leading-relaxed">
+                Explore live faculty dashboards, NFC tag geofences, and student logbook analytics.
+              </p>
+            </div>
+            <a href="https://heykudu.com" target="_blank" class="h-12 px-6 rounded-xl bg-brand-700 hover:bg-brand-800 text-white font-display font-black text-sm uppercase tracking-wider flex items-center justify-center gap-2 shadow-md transition-all active:scale-95">
+              <span>Access System Portal</span>
+              <span class="material-symbols-outlined text-base">arrow_forward</span>
+            </a>
+          </div>
+
+          <!-- Contact / Email Card -->
+          <div class="glass-card p-6 border-2 border-emerald-500/50 bg-white/90 dark:bg-[#0c1224] shadow-2xl flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-2xl bg-emerald-600 text-white flex items-center justify-center font-black mb-4 shadow-lg">
+                <span class="material-symbols-outlined text-2xl">mail</span>
+              </div>
+              <h3 class="font-display font-black text-xl text-slate-900 dark:text-white mb-1.5">Questions & Executive Support</h3>
+              <p class="text-sm text-slate-700 dark:text-slate-300 font-extrabold mb-4 leading-relaxed">
+                For inquiries, custom faculty onboarding templates, or technical assistance:
+              </p>
+            </div>
+            <a href="mailto:no-reply@heykudu.com" class="p-3 rounded-xl bg-slate-100 dark:bg-slate-800/90 text-[#630ed4] dark:text-purple-300 font-mono font-black text-sm text-center border border-slate-300 dark:border-slate-700 hover:border-purple-400 transition-all flex items-center justify-center gap-2">
+              <span class="material-symbols-outlined text-base">alternate_email</span>
+              <span>no-reply@heykudu.com</span>
+            </a>
+          </div>
+
+        </div>
+
+        <div class="text-sm text-slate-500 dark:text-slate-400 font-extrabold">
+          University of the Witwatersrand • All 5 Faculties Preloaded for October 2026
+        </div>
+
+      </div>
+
+      <div class="text-sm text-slate-900 dark:text-slate-100 font-extrabold flex justify-between items-center border-t-2 border-slate-300 dark:border-slate-800 pt-3">
+        <span>Executive Presentation • HeyKudu</span>
+        <span>Slide 13 of 13</span>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Bottom Interactive Slide Control Bar -->
+  <header class="bottom-bar px-8 glass-card border-t-2 border-slate-300 dark:border-purple-500/40 rounded-none bg-white/95 dark:bg-[#120826]/95 flex items-center justify-between">
+    <!-- Progress Dots Bar -->
+    <div class="flex items-center gap-2.5" id="slide-dots-container">
+      <!-- Injected by JavaScript -->
+    </div>
+
+    <div class="text-sm font-extrabold text-slate-900 dark:text-slate-100 hidden sm:block">
+      Navigation: <kbd class="px-2 py-1 rounded bg-slate-900 text-white font-mono text-sm">←</kbd> <kbd class="px-2 py-1 rounded bg-slate-900 text-white font-mono text-sm">→</kbd> <kbd class="px-2 py-1 rounded bg-slate-900 text-white font-mono text-sm">Space</kbd>
+    </div>
+  </header>
+
+  <!-- Slide Overview Grid Modal -->
+  <div id="overview-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-xl hidden flex-col p-8 overflow-y-auto">
+    <div class="flex items-center justify-between mb-6 max-w-7xl mx-auto w-full">
+      <div>
+        <h2 class="font-display text-3xl font-black text-white">Presentation Slide Index</h2>
+        <p class="text-sm font-bold text-purple-200 mt-1">Click any slide thumbnail to jump directly to it</p>
+      </div>
+      <button onclick="toggleOverviewModal()" class="h-12 w-12 rounded-full bg-white/20 hover:bg-white/30 text-white flex items-center justify-center active:scale-95">
+        <span class="material-symbols-outlined text-2xl">close</span>
+      </button>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-5 max-w-7xl mx-auto w-full" id="slide-overview-grid">
+      <!-- Injected by JavaScript -->
+    </div>
+  </div>
+
+  <!-- JavaScript Presentation Engine -->
+  <script>
+    // State management
+    let currentSlide = 1;
+    const totalSlides = 13;
+
+    // Planner Data
+    const plannerData = {
+      2026: {
+        title: "2026: Health Sciences (~50%) & Preloaded Models for All 5 Faculties",
+        badge: "CURRENT ACTIVE BASELINE",
+        badgeColor: "bg-emerald-600 text-white border-none",
+        description: "MBBCh GEMP 1 & 2 live (~50% Health Sciences; Physio & Nursing onboarding next). Geology fieldwork active at ~10%. All 5 Wits Faculties preloaded with course models & rotations, ready for October 2026 NFC Tag installations.",
+        deliverables: [
+          "Health Sciences (~50%): GEMP 1 & 2 live; Physio, Nursing & OT onboarding next.",
+          "Science (~10%): Geology fieldwork location tracking & digital logbooks active.",
+          "All 5 Faculties: Course models & rotations preloaded — ready for Oct 2026 NFC Tags."
+        ],
+        targetUsers: "569 Active Students • 40,800+ Logbook Submissions • Preloaded for Oct 2026 Tags"
+      },
+      2027: {
+        title: "2027: Universal Attendance Across ALL 5 Faculties",
+        badge: "INSTITUTIONAL MANDATE",
+        badgeColor: "bg-brand-700 text-white border-none",
+        description: "Expand Geo-Fenced Check-In / Check-Out attendance verification to EVERY faculty across Wits University.",
+        deliverables: [
+          "Mandate daily attendance check-ins for CLM, EBE, Humanities, Science.",
+          "Roll out lab & fieldwork location tracking for Engineering & Science.",
+          "Eliminate paper attendance registers university-wide."
+        ],
+        targetUsers: "12,000+ Daily Active Students • 100% Attendance Coverage"
+      },
+      2028: {
+        title: "2028: Detailed Course Requirements & Digital Logbooks",
+        badge: "FULL CURRICULUM DIGITIZATION",
+        badgeColor: "bg-purple-800 text-white border-none",
+        description: "Digitize all course requirements, practical logbooks, capstones, and Workplace Based Assessments for every degree program.",
+        deliverables: [
+          "CLM: Court moots & BAccSc auditing firm practicum hours.",
+          "EBE: Industrial vacation training & capstone milestones.",
+          "Science & Humanities: Psychology practicums & lab coding projects."
+        ],
+        targetUsers: "25,000+ Students • 500+ Modules Digitized"
+      },
+      2029: {
+        title: "2029: Real-Time AI Curriculum Coordinators",
+        badge: "AI CURRICULUM INTELLIGENCE",
+        badgeColor: "bg-amber-600 text-white border-none",
+        description: "Deploy AI Agents that continuously analyze student submissions in real time against course requirements and industry standards.",
+        deliverables: [
+          "Real-time AI matching of daily student logbook entries.",
+          "AI detection of curriculum gaps (e.g. rare clinical cases).",
+          "Automated recommendations for adaptive syllabus tweaks."
+        ],
+        targetUsers: "AI Agents Active on 100% of Wits Dashboards"
+      },
+      2030: {
+        title: "2030: Full AI Adaptive Learning & Continental Leadership",
+        badge: "#1 UNIVERSITY IN AFRICA",
+        badgeColor: "bg-emerald-600 text-white border-none",
+        description: "Achieve complete AI-driven adaptive higher education, cementing Wits as the premier AI university in Africa.",
+        deliverables: [
+          "Predictive student success intervention before exams.",
+          "Automated professional accreditation reporting (HPCSA, SAICA, ECSA).",
+          "Personalized learning pathways based on real-time performance."
+        ],
+        targetUsers: "35,000+ Students • Fully Autonomous AI Curriculum Engine"
+      }
+    };
+
+    // Initialize presentation
+    function init() {
+      updateSlideDisplay();
+      renderDots();
+      renderOverviewGrid();
+      selectPlannerYear(2026);
+    }
+
+    // Update active slide
+    function updateSlideDisplay() {
+      document.querySelectorAll('.slide').forEach((slide, idx) => {
+        if (idx + 1 === currentSlide) {
+          slide.classList.add('active');
+        } else {
+          slide.classList.remove('active');
+        }
+      });
+
+      const slideNumEl = document.getElementById('current-slide-num');
+      if (slideNumEl) slideNumEl.innerText = currentSlide;
+      const totalNumEl = document.getElementById('total-slide-num');
+      if (totalNumEl) totalNumEl.innerText = totalSlides;
+
+      // Update dots
+      document.querySelectorAll('.slide-dot').forEach((dot, idx) => {
+        if (idx + 1 === currentSlide) {
+          dot.className = "slide-dot w-8 h-3 rounded-full bg-brand-700 dark:bg-purple-400 transition-all shadow-md";
+        } else {
+          dot.className = "slide-dot w-3 h-3 rounded-full bg-slate-300 dark:bg-slate-700 hover:bg-slate-400 transition-all cursor-pointer";
+        }
+      });
+    }
+
+    function renderDots() {
+      const container = document.getElementById('slide-dots-container');
+      container.innerHTML = '';
+      for (let i = 1; i <= totalSlides; i++) {
+        const dot = document.createElement('div');
+        dot.className = "slide-dot w-3 h-3 rounded-full bg-slate-300 dark:bg-slate-700 hover:bg-slate-400 transition-all cursor-pointer";
+        dot.onclick = () => goToSlide(i);
+        container.appendChild(dot);
+      }
+    }
+
+    function goToSlide(num) {
+      if (num >= 1 && num <= totalSlides) {
+        currentSlide = num;
+        updateSlideDisplay();
+      }
+    }
+
+    function nextSlide() {
+      if (currentSlide < totalSlides) {
+        currentSlide++;
+        updateSlideDisplay();
+      }
+    }
+
+    function prevSlide() {
+      if (currentSlide > 1) {
+        currentSlide--;
+        updateSlideDisplay();
+      }
+    }
+
+    // Year Planner Tab Selection
+    function selectPlannerYear(year) {
+      [2026, 2027, 2028, 2029, 2030].forEach(y => {
+        const btn = document.getElementById(`year-btn-${y}`);
+        if (y === year) {
+          btn.className = "timeline-node active-year p-3.5 rounded-2xl glass-card text-center border-2 border-brand-700 active:scale-95";
+        } else {
+          btn.className = "timeline-node p-3.5 rounded-2xl glass-card text-center border-2 border-slate-300 dark:border-slate-700 active:scale-95";
+        }
+      });
+
+      const data = plannerData[year];
+      const card = document.getElementById('planner-detail-card');
+      card.innerHTML = `
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+          <span class="px-3.5 py-1.5 rounded-xl text-sm font-black uppercase tracking-wide ${data.badgeColor} w-fit shadow-sm">
+            ${data.badge}
+          </span>
+          <span class="text-sm font-black text-brand-900 bg-brand-100 dark:bg-brand-900 dark:text-purple-100 px-3 py-1.5 rounded-xl border border-brand-300">
+            Target: ${data.targetUsers}
+          </span>
+        </div>
+
+        <h3 class="font-display font-black text-xl text-slate-900 dark:text-white mb-2">${data.title}</h3>
+        <p class="text-sm sm:text-sm font-extrabold text-slate-900 dark:text-slate-100 leading-relaxed mb-4">${data.description}</p>
+
+        <h4 class="text-sm font-black text-slate-900 dark:text-slate-100 uppercase tracking-wider mb-2">Key Deliverables:</h4>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm text-slate-900 dark:text-slate-100 font-extrabold">
+          ${data.deliverables.map(item => `
+            <div class="flex items-start gap-2 bg-slate-100 dark:bg-slate-800/90 p-3 rounded-2xl border border-slate-300 dark:border-slate-700">
+              <span class="material-symbols-outlined text-emerald-600 text-lg shrink-0">check_circle</span>
+              <span class="leading-snug">${item}</span>
+            </div>
+          `).join('')}
+        </div>
+      `;
+    }
+
+    // Toggle overview modal
+    function toggleOverviewModal() {
+      const modal = document.getElementById('overview-modal');
+      modal.classList.toggle('hidden');
+      modal.classList.toggle('flex');
+    }
+
+    function renderOverviewGrid() {
+      const grid = document.getElementById('slide-overview-grid');
+      const titles = [
+        "1. HeyKudu Brand Cover Page",
+        "2. Executive Title & Vision",
+        "3. AI & Education Convergence Timeline",
+        "4. NFC Smart Tag Hardware System",
+        "5. Paper Band-Aid to AI Digital Standard",
+        "6. Administrative Challenge & Solution",
+        "7. Executive Gantt Implementation Roadmap",
+        "8. Faculty Digital Maturity Progress Bars",
+        "9. Live AI Agents & Operations",
+        "10. Gamified Student Experience",
+        "11. Implementation Depth Options (Level 1–4)",
+        "12. Leadership Decision & Sign-Off",
+        "13. Thank You & System Access"
+      ];
+
+      grid.innerHTML = titles.map((t, idx) => `
+        <div onclick="goToSlide(${idx + 1}); toggleOverviewModal();" class="glass-card p-5 rounded-2xl cursor-pointer hover:border-brand-500 transition-all text-left active:scale-95">
+          <div class="text-sm font-black text-brand-700 dark:text-brand-300 mb-1 uppercase">Slide ${idx + 1}</div>
+          <div class="font-display font-extrabold text-sm text-slate-900 dark:text-white">${t}</div>
+        </div>
+      `).join('');
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === 'Space') {
+        nextSlide();
+      } else if (e.key === 'ArrowLeft') {
+        prevSlide();
+      } else if (e.key === 'o' || e.key === 'O') {
+        toggleOverviewModal();
+      } else if (e.key === 'f' || e.key === 'F') {
+        toggleFullscreen();
+      }
+    });
+
+    // Dark mode toggle
+    function toggleDarkMode() {
+      document.documentElement.classList.toggle('dark');
+    }
+
+    // Fullscreen toggle
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(() => {});
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        }
+      }
+    }
+
+    // High-Resolution 16:9 PDF Export Generator (Exact 1-Slide-Per-Page Full-Bleed Engine)
+    function downloadPDF() {
+      let toast = document.getElementById('pdf-toast');
+      if (!toast) {
+        toast = document.createElement('div');
+        toast.id = 'pdf-toast';
+        toast.className = 'fixed top-20 right-8 z-50 bg-[#007650] text-white px-6 py-3.5 rounded-2xl font-black text-sm shadow-2xl flex items-center gap-2.5 border-2 border-emerald-400 animate-pulse';
+        toast.innerHTML = '<span class="material-symbols-outlined text-lg">downloading</span> Generating Pixel-Perfect 10-Slide PDF Deck...';
+        document.body.appendChild(toast);
+      }
+
+      if (typeof html2pdf !== 'undefined') {
+        const PX_WIDTH = 1122; // Equivalent 96 DPI width in px
+        const PX_HEIGHT = 793; // Equivalent 96 DPI height in px (A4 aspect ratio)
+
+        window.scrollTo(0, 0);
+
+        const container = document.createElement('div');
+        container.style.position = 'absolute';
+        container.style.left = '0';
+        container.style.top = '0';
+        container.style.width = PX_WIDTH + 'px';
+        container.style.background = '#f8f9fa';
+        container.style.margin = '0';
+        container.style.padding = '0';
+        container.style.boxSizing = 'border-box';
+        container.style.zIndex = '999999';
+        container.style.opacity = '1';
+        document.body.appendChild(container);
+
+        document.querySelectorAll('.slide').forEach((slide, idx) => {
+          const clone = slide.cloneNode(true);
+          clone.style.position = 'relative';
+          clone.style.width = PX_WIDTH + 'px';
+          clone.style.height = PX_HEIGHT + 'px';
+          clone.style.opacity = '1';
+          clone.style.pointerEvents = 'auto';
+          clone.style.transform = 'none';
+          clone.style.display = 'flex';
+          clone.style.flexDirection = 'column';
+          clone.style.justifyContent = 'space-between';
+          clone.style.boxSizing = 'border-box';
+          clone.style.padding = idx === 0 ? '3.5rem 3rem' : '2.75rem 3.5rem';
+          clone.style.background = idx === 0 ? 'linear-gradient(135deg, #12042b 0%, #4c05a7 50%, #0a0218 100%)' : '#f8f9fa';
+          clone.style.pageBreakAfter = 'always';
+          clone.style.pageBreakInside = 'avoid';
+          clone.style.breakAfter = 'page';
+          clone.style.breakInside = 'avoid';
+
+          // Sanitize clone styles for html2canvas compatibility
+          clone.querySelectorAll('.glass-card').forEach(card => {
+            card.style.backdropFilter = 'none';
+            card.style.webkitBackdropFilter = 'none';
+            card.style.background = '#ffffff';
+            card.style.border = '2px solid #e2e8f0';
+            card.style.boxShadow = '0 2px 8px rgba(0,0,0,0.04)';
+          });
+
+          clone.querySelectorAll('.gradient-text').forEach(gt => {
+            gt.style.background = 'none';
+            gt.style.webkitTextFillColor = '#630ed4';
+            gt.style.color = '#630ed4';
+          });
+
+          container.appendChild(clone);
+        });
+
+        const opt = {
+          margin: 0,
+          filename: 'Wits_University_Digital_Migration_Strategy_2026_2030.pdf',
+          image: { type: 'jpeg', quality: 0.98 },
+          html2canvas: { 
+            scale: 2, 
+            useCORS: true, 
+            logging: false, 
+            scrollX: 0, 
+            scrollY: 0, 
+            x: 0, 
+            y: 0, 
+            width: PX_WIDTH, 
+            windowWidth: PX_WIDTH 
+          },
+          jsPDF: { unit: 'pt', format: 'a4', orientation: 'landscape' },
+          pagebreak: { mode: ['css', 'legacy'] }
+        };
+
+        html2pdf().set(opt).from(container).save().then(() => {
+          if (toast) toast.remove();
+          if (container) container.remove();
+        }).catch((err) => {
+          console.error(err);
+          if (toast) toast.remove();
+          if (container) container.remove();
+          window.print();
+        });
+      } else {
+        setTimeout(() => {
+          if (toast) toast.remove();
+          window.print();
+        }, 500);
+      }
+    }
+
+    // Auto-trigger PDF download if URL contains ?print=true
+    window.addEventListener('load', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get('print') === 'true') {
+        setTimeout(() => {
+          downloadPDF();
+        }, 800);
+      }
+    });
+
+    // Run init on load
+    window.onload = init;
+  </script>
+</body>
+</html>
