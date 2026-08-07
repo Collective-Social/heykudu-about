@@ -153,6 +153,10 @@ export default function PresentationPage() {
             -webkit-print-color-adjust: exact !important;
             print-color-adjust: exact !important;
             box-sizing: border-box !important;
+            box-shadow: none !important;
+            text-shadow: none !important;
+            filter: none !important;
+            backdrop-filter: none !important;
           }
           html, body, #__next {
             background: #090514 !important;
