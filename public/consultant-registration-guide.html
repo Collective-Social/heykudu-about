@@ -12,13 +12,27 @@
             margin: 0;
         }
         body {
+            /* Force exact A4 dimensions */
             width: 210mm;
             height: 297mm;
+            min-height: 297mm;
+            max-height: 297mm;
             margin: 0 auto;
             background-color: white;
             font-family: 'Inter', sans-serif;
             -webkit-print-color-adjust: exact;
             print-color-adjust: exact;
+        }
+        /* Ensure the main container takes exactly the available space minus header/footer */
+        main {
+            height: calc(297mm - 9rem - 5rem); /* 297mm - 144px (header) - 80px (footer) */
+            overflow: hidden;
+        }
+        @media print {
+            body {
+                width: 210mm;
+                height: 297mm;
+            }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -92,8 +106,8 @@
                 <div class="flex items-start bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
                     <div class="flex-shrink-0 w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center text-[#002f6c] font-bold text-3xl mr-6 border-[3px] border-white ring-2 ring-blue-100">4</div>
                     <div class="pt-2">
-                        <h3 class="text-2xl font-bold text-gray-900">Repeat Usage</h3>
-                        <p class="text-gray-500 mt-2 text-lg">Use your camera phone to scan the QR code that the students show you to sign off on specific submissions.</p>
+                        <h3 class="text-2xl font-bold text-gray-900">Scan to Verify</h3>
+                        <p class="text-gray-500 mt-2 text-lg leading-relaxed">Engage with students, and if you want to sign off on that engagement once they submit it on their phone (or if they submit at home and show you tomorrow), ask them for the QR code for that specific submission and scan it to verify it. That counts as your paper signature.</p>
                     </div>
                 </div>
             </div>
