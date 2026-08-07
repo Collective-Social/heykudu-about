@@ -55,77 +55,79 @@
         </div>
     </header>
 
-    <!-- Main Content -->
-    <main class="flex-1 flex flex-col items-center px-20 pt-8 pb-4 bg-white">
-        
-        <div class="w-full max-w-4xl flex flex-col space-y-6">
-            <div class="text-center pb-1">
-                <h2 class="text-4xl font-extrabold text-[#002f6c] mb-2 leading-tight tracking-tight">How to Sign Up</h2>
-                <p class="text-gray-500 text-lg max-w-2xl mx-auto leading-relaxed">Follow these simple steps to register and start managing your students seamlessly on HeyKudu.</p>
-            </div>
-
-            <div class="grid grid-cols-2 gap-5">
-                <!-- Step 1 -->
-                <div class="flex items-start bg-white rounded-2xl p-5 border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
-                    <div class="flex-shrink-0 w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center text-[#002f6c] font-bold text-xl mr-4 border-2 border-white ring-2 ring-blue-100">1</div>
-                    <div class="pt-1">
-                        <h3 class="text-xl font-bold text-gray-900">Go to heykudu.com</h3>
-                        <p class="text-gray-500 mt-1 text-base">Visit our website on any device to begin the registration process.</p>
-                    </div>
+    <!-- Main Content Wrapped in Link -->
+    <a href="https://app.heykudu.com" target="_blank" class="flex-1 flex flex-col w-full text-left block group">
+        <main class="flex-1 flex flex-col items-center px-20 pt-8 pb-4 bg-white w-full">
+            
+            <div class="w-full max-w-4xl flex flex-col space-y-6">
+                <div class="text-center pb-1">
+                    <h2 class="text-4xl font-extrabold text-[#002f6c] mb-2 leading-tight tracking-tight group-hover:text-blue-600 transition-colors">How to Sign Up</h2>
+                    <p class="text-gray-500 text-lg max-w-2xl mx-auto leading-relaxed group-hover:text-gray-700 transition-colors">Follow these simple steps to register and start managing your students seamlessly on HeyKudu.</p>
                 </div>
 
-                <!-- Step 2 -->
-                <div class="flex items-start bg-white rounded-2xl p-5 border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
-                    <div class="flex-shrink-0 w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center text-[#002f6c] font-bold text-xl mr-4 border-2 border-white ring-2 ring-blue-100">2</div>
-                    <div class="pt-1">
-                        <h3 class="text-xl font-bold text-gray-900">Complete Profile</h3>
-                        <p class="text-gray-500 mt-1 text-base">Fill in your details and click the <span class="font-bold text-[#002f6c]">Complete Profile</span> button.</p>
+                <div class="grid grid-cols-2 gap-5">
+                    <!-- Step 1 -->
+                    <div class="flex items-start bg-white rounded-2xl p-5 border border-gray-100 shadow-sm transition-shadow group-hover:border-blue-200">
+                        <div class="flex-shrink-0 w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center text-[#002f6c] font-bold text-xl mr-4 border-2 border-white ring-2 ring-blue-100">1</div>
+                        <div class="pt-1">
+                            <h3 class="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">Go to <span class="text-blue-600 hover:underline underline">heykudu.com</span></h3>
+                            <p class="text-gray-500 mt-1 text-base">Visit our website on any device to sign up.</p>
+                        </div>
                     </div>
-                </div>
 
-                <!-- Step 3 -->
-                <div class="flex items-start bg-[#f4f7fb] rounded-2xl p-6 border border-blue-200 shadow-md relative overflow-hidden transform scale-[1.02] z-10">
-                    <div class="absolute left-0 top-0 bottom-0 w-2 bg-[#002f6c]"></div>
-                    <div class="absolute top-0 right-0 w-24 h-24 bg-blue-200 rounded-full filter blur-2xl opacity-50 transform translate-x-1/2 -translate-y-1/2"></div>
+                    <!-- Step 2 -->
+                    <div class="flex items-start bg-white rounded-2xl p-5 border border-gray-100 shadow-sm transition-shadow group-hover:border-blue-200">
+                        <div class="flex-shrink-0 w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center text-[#002f6c] font-bold text-xl mr-4 border-2 border-white ring-2 ring-blue-100">2</div>
+                        <div class="pt-1">
+                            <h3 class="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">Complete Profile</h3>
+                            <p class="text-gray-500 mt-1 text-base">Fill in your details and click the <span class="font-bold text-[#002f6c]">Complete Profile</span> button.</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="flex items-start bg-[#f4f7fb] rounded-2xl p-6 border border-blue-200 shadow-md relative overflow-hidden transform scale-[1.02] z-10 transition-transform group-hover:scale-[1.03]">
+                        <div class="absolute left-0 top-0 bottom-0 w-2 bg-[#002f6c]"></div>
+                        <div class="absolute top-0 right-0 w-24 h-24 bg-blue-200 rounded-full filter blur-2xl opacity-50 transform translate-x-1/2 -translate-y-1/2"></div>
+                        
+                        <div class="flex-shrink-0 w-12 h-12 bg-[#002f6c] rounded-full flex items-center justify-center text-white font-bold text-xl mr-4 shadow-lg border-2 border-[#002f6c] ring-4 ring-blue-100">3</div>
+                        <div class="pt-1">
+                            <h3 class="text-xl font-bold text-[#002f6c] flex items-center gap-2">
+                                Important for Consultants
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-500" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+                                </svg>
+                            </h3>
+                            <p class="text-gray-700 mt-2 text-base leading-relaxed">Make sure you toggle <span class="font-extrabold text-green-700 bg-green-100 px-2 py-0.5 rounded shadow-sm border border-green-200 tracking-wide uppercase text-xs align-middle mx-1">ON</span> the <span class="font-bold text-gray-900 border-b-2 border-[#002f6c]">Educator Supervisor Control</span> and select the correct role.</p>
+                        </div>
+                    </div>
                     
-                    <div class="flex-shrink-0 w-12 h-12 bg-[#002f6c] rounded-full flex items-center justify-center text-white font-bold text-xl mr-4 shadow-lg border-2 border-[#002f6c] ring-4 ring-blue-100">3</div>
-                    <div class="pt-1">
-                        <h3 class="text-xl font-bold text-[#002f6c] flex items-center gap-2">
-                            Important for Consultants
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-500" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
-                            </svg>
-                        </h3>
-                        <p class="text-gray-700 mt-2 text-base leading-relaxed">Make sure you toggle <span class="font-extrabold text-green-700 bg-green-100 px-2 py-0.5 rounded shadow-sm border border-green-200 tracking-wide uppercase text-xs align-middle mx-1">ON</span> the <span class="font-bold text-gray-900 border-b-2 border-[#002f6c]">Educator Supervisor Control</span> and accurately select your role.</p>
+                    <!-- Step 4 -->
+                    <div class="flex items-start bg-white rounded-2xl p-5 border border-gray-100 shadow-sm transition-shadow group-hover:border-blue-200">
+                        <div class="flex-shrink-0 w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center text-[#002f6c] font-bold text-xl mr-4 border-2 border-white ring-2 ring-blue-100">4</div>
+                        <div class="pt-1">
+                            <h3 class="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">Scan to Verify</h3>
+                            <p class="text-gray-500 mt-2 text-sm leading-relaxed">To sign off on a student's work, simply ask them to show you the QR code for their submission and scan it with your phone. This counts as your official signature.</p>
+                        </div>
                     </div>
                 </div>
-                
-                <!-- Step 4 -->
-                <div class="flex items-start bg-white rounded-2xl p-5 border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
-                    <div class="flex-shrink-0 w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center text-[#002f6c] font-bold text-xl mr-4 border-2 border-white ring-2 ring-blue-100">4</div>
-                    <div class="pt-1">
-                        <h3 class="text-xl font-bold text-gray-900">Scan to Verify</h3>
-                        <p class="text-gray-500 mt-2 text-sm leading-relaxed">Engage with students, and if you want to sign off on that engagement once they submit it on their phone (or if they submit at home and show you tomorrow), ask them for the QR code for that specific submission and scan it to verify it. That counts as your paper signature.</p>
+
+                <!-- Notice -->
+                <div class="bg-indigo-50 rounded-2xl p-5 border border-indigo-100 flex items-center gap-5 shadow-inner transition-colors group-hover:bg-indigo-100/50">
+                    <div class="bg-indigo-100/80 rounded-full p-3 flex-shrink-0 text-indigo-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-bold text-indigo-900">Need detailed rotation access?</h4>
+                        <p class="text-base text-indigo-800/80">Email <span class="text-indigo-600 font-extrabold hover:underline">no-reply@heykudu.com</span> to request full access for the entire rotation.</p>
                     </div>
                 </div>
+
             </div>
 
-            <!-- Notice -->
-            <div class="bg-indigo-50 rounded-2xl p-5 border border-indigo-100 flex items-center gap-5 shadow-inner">
-                <div class="bg-indigo-100/80 rounded-full p-3 flex-shrink-0 text-indigo-600">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                </div>
-                <div>
-                    <h4 class="text-lg font-bold text-indigo-900">Need detailed rotation access?</h4>
-                    <p class="text-base text-indigo-800/80">Email <a href="mailto:noreply@heykudu.com" class="text-indigo-600 font-extrabold hover:underline">noreply@heykudu.com</a> to request full access for the entire rotation.</p>
-                </div>
-            </div>
-
-        </div>
-
-    </main>
+        </main>
+    </a>
     
     <!-- Footer -->
     <footer class="bg-[#0b0914] w-full py-8 px-16 flex flex-col items-center justify-center shrink-0 relative overflow-hidden">
