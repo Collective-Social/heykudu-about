@@ -23,93 +23,118 @@
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
-<body class="relative flex flex-col bg-white overflow-hidden text-gray-800">
+<body class="relative flex flex-col bg-gray-50 overflow-hidden text-gray-800">
     <!-- Header -->
-    <header class="bg-[#002f6c] w-full h-32 flex items-center justify-between px-16 shrink-0 relative overflow-hidden">
+    <header class="bg-[#0b0914] w-full h-36 flex items-center justify-between px-16 shrink-0 relative overflow-hidden border-b-4 border-indigo-500">
         <!-- Abstract shape -->
-        <div class="absolute -right-20 -top-20 w-64 h-64 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-50"></div>
-        <div class="absolute -left-20 -bottom-20 w-64 h-64 bg-teal-400 rounded-full mix-blend-multiply filter blur-3xl opacity-50"></div>
+        <div class="absolute -right-20 -top-20 w-64 h-64 bg-purple-900 rounded-full mix-blend-screen filter blur-3xl opacity-40"></div>
+        <div class="absolute -left-20 -bottom-20 w-64 h-64 bg-blue-900 rounded-full mix-blend-screen filter blur-3xl opacity-40"></div>
         
-        <img src="images/logo-white.png" alt="HeyKudu Logo" class="h-16 z-10">
-        <h1 class="text-white text-2xl font-bold tracking-wide z-10 uppercase">Consultant Guide</h1>
+        <!-- Logo with Gradient Ring -->
+        <div class="flex items-center gap-5 z-10">
+            <div class="w-[72px] h-[72px] rounded-full bg-gradient-to-br from-[#8a2be2] via-[#4169e1] to-[#00ffff] p-[3px] shadow-lg shadow-purple-900/20">
+                <div class="w-full h-full bg-[#0b0914] rounded-full flex items-center justify-center overflow-hidden p-3">
+                    <img src="images/logo-white.png" alt="HeyKudu Icon" class="w-full h-full object-contain">
+                </div>
+            </div>
+            <span class="text-white text-4xl font-extrabold tracking-tight lowercase" style="letter-spacing: -0.05em;">heykudu</span>
+        </div>
+        
+        <h1 class="text-gray-200 text-xl font-bold tracking-widest z-10 uppercase opacity-90 border-l-2 border-gray-600 pl-6 py-2">Consultant Guide</h1>
     </header>
 
     <!-- Main Content -->
-    <main class="flex-1 flex flex-row px-12 py-10 gap-10">
+    <main class="flex-1 flex flex-col items-center px-20 py-12 bg-white">
         
-        <!-- Left Column: Steps -->
-        <div class="flex-1 flex flex-col justify-center space-y-8">
-            <div>
-                <h2 class="text-4xl font-extrabold text-[#002f6c] mb-2 leading-tight">Join the Future of<br>Medical Education</h2>
-                <p class="text-gray-500 text-lg">Follow these simple steps to register and start managing your students seamlessly on HeyKudu.</p>
+        <div class="w-full max-w-3xl flex flex-col space-y-12">
+            <div class="text-center pb-4">
+                <h2 class="text-5xl font-extrabold text-[#002f6c] mb-5 leading-tight tracking-tight">Join the Future of<br>Medical Education</h2>
+                <p class="text-gray-500 text-xl max-w-2xl mx-auto leading-relaxed">Follow these simple steps to register and start managing your students seamlessly on HeyKudu.</p>
             </div>
 
             <div class="space-y-6">
                 <!-- Step 1 -->
-                <div class="flex items-start">
-                    <div class="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-[#002f6c] font-bold text-xl mr-5 shadow-sm border-2 border-white ring-2 ring-blue-50">1</div>
-                    <div class="pt-1">
-                        <h3 class="text-xl font-bold text-gray-900">Go to heykudu.com</h3>
-                        <p class="text-gray-600 mt-1">Visit our website on any device to begin the registration process.</p>
+                <div class="flex items-start bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="flex-shrink-0 w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center text-[#002f6c] font-bold text-3xl mr-6 border-[3px] border-white ring-2 ring-blue-100">1</div>
+                    <div class="pt-2">
+                        <h3 class="text-2xl font-bold text-gray-900">Go to heykudu.com</h3>
+                        <p class="text-gray-500 mt-2 text-lg">Visit our website on any device to begin the registration process.</p>
                     </div>
                 </div>
 
                 <!-- Step 2 -->
-                <div class="flex items-start">
-                    <div class="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-[#002f6c] font-bold text-xl mr-5 shadow-sm border-2 border-white ring-2 ring-blue-50">2</div>
-                    <div class="pt-1">
-                        <h3 class="text-xl font-bold text-gray-900">Complete Profile</h3>
-                        <p class="text-gray-600 mt-1">Fill in your details and click the <span class="font-semibold text-[#002f6c]">Complete Profile</span> button.</p>
+                <div class="flex items-start bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="flex-shrink-0 w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center text-[#002f6c] font-bold text-3xl mr-6 border-[3px] border-white ring-2 ring-blue-100">2</div>
+                    <div class="pt-2">
+                        <h3 class="text-2xl font-bold text-gray-900">Complete Profile</h3>
+                        <p class="text-gray-500 mt-2 text-lg">Fill in your details and click the <span class="font-bold text-[#002f6c]">Complete Profile</span> button.</p>
                     </div>
                 </div>
 
                 <!-- Step 3 -->
-                <div class="flex items-start bg-blue-50 rounded-2xl p-5 border border-blue-100 shadow-sm relative overflow-hidden">
-                    <div class="absolute left-0 top-0 bottom-0 w-2 bg-[#002f6c]"></div>
-                    <div class="flex-shrink-0 w-12 h-12 bg-[#002f6c] rounded-full flex items-center justify-center text-white font-bold text-xl mr-5 shadow-md">3</div>
+                <div class="flex items-start bg-[#f4f7fb] rounded-2xl p-8 border border-blue-200 shadow-md relative overflow-hidden transform scale-[1.03] z-10 my-8">
+                    <div class="absolute left-0 top-0 bottom-0 w-3 bg-[#002f6c]"></div>
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-blue-200 rounded-full filter blur-3xl opacity-50 transform translate-x-1/2 -translate-y-1/2"></div>
+                    
+                    <div class="flex-shrink-0 w-16 h-16 bg-[#002f6c] rounded-full flex items-center justify-center text-white font-bold text-3xl mr-6 shadow-lg border-[3px] border-[#002f6c] ring-4 ring-blue-100">3</div>
                     <div class="pt-1">
-                        <h3 class="text-xl font-bold text-[#002f6c]">Important for Consultants</h3>
-                        <p class="text-gray-700 mt-1">Make sure you toggle <span class="font-bold text-green-600">ON</span> the <span class="font-semibold">Educator Supervisor Control</span> and accurately select your role.</p>
+                        <h3 class="text-2xl font-bold text-[#002f6c] flex items-center gap-2">
+                            Important for Consultants
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-yellow-500" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+                            </svg>
+                        </h3>
+                        <p class="text-gray-700 mt-3 text-lg leading-relaxed">Make sure you toggle <span class="font-extrabold text-green-700 bg-green-100 px-3 py-1 rounded-md shadow-sm border border-green-200 tracking-wide uppercase text-sm align-middle mx-1">ON</span> the <span class="font-bold text-gray-900 border-b-2 border-[#002f6c]">Educator Supervisor Control</span> and accurately select your role.</p>
                     </div>
                 </div>
                 
                 <!-- Step 4 -->
-                <div class="flex items-start">
-                    <div class="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-[#002f6c] font-bold text-xl mr-5 shadow-sm border-2 border-white ring-2 ring-blue-50">4</div>
-                    <div class="pt-1">
-                        <h3 class="text-xl font-bold text-gray-900">Repeat Usage</h3>
-                        <p class="text-gray-600 mt-1">Once set up, simply scan the correct and appropriate submissions from students. No manual scanning or signing required!</p>
+                <div class="flex items-start bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="flex-shrink-0 w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center text-[#002f6c] font-bold text-3xl mr-6 border-[3px] border-white ring-2 ring-blue-100">4</div>
+                    <div class="pt-2">
+                        <h3 class="text-2xl font-bold text-gray-900">Repeat Usage</h3>
+                        <p class="text-gray-500 mt-2 text-lg">Use your camera phone to scan the QR code that the students show you to sign off on specific submissions.</p>
                     </div>
                 </div>
             </div>
 
             <!-- Notice -->
-            <div class="mt-8 bg-gray-50 rounded-xl p-5 border border-gray-200 flex items-center gap-4">
-                <div class="bg-gray-200 rounded-full p-3 flex-shrink-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <div class="mt-6 bg-indigo-50 rounded-2xl p-8 border border-indigo-100 flex items-center gap-6 shadow-inner">
+                <div class="bg-indigo-100/80 rounded-full p-4 flex-shrink-0 text-indigo-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
                 </div>
                 <div>
-                    <h4 class="font-bold text-gray-800">Need detailed rotation access?</h4>
-                    <p class="text-sm text-gray-600">Email <a href="mailto:noreply@heykudu.com" class="text-blue-600 font-semibold hover:underline">noreply@heykudu.com</a> to request full access for the entire rotation.</p>
+                    <h4 class="text-xl font-bold text-indigo-900">Need detailed rotation access?</h4>
+                    <p class="text-lg text-indigo-800/80 mt-1">Email <a href="mailto:noreply@heykudu.com" class="text-indigo-600 font-extrabold hover:underline">noreply@heykudu.com</a> to request full access for the entire rotation.</p>
                 </div>
             </div>
 
         </div>
 
-        <!-- Right Column: Big Phone Image -->
-        <div class="w-[360px] flex-shrink-0 flex items-center justify-center relative -mt-4">
-            <!-- Decorative blobs behind phone -->
-            <div class="absolute w-80 h-80 bg-blue-200 rounded-full filter blur-3xl opacity-40 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
-            <img src="images/app_usage.png" alt="HeyKudu App on Phone" class="relative z-10 w-full object-cover drop-shadow-2xl rounded-[2.5rem]">
-        </div>
-
     </main>
     
     <!-- Footer -->
-    <footer class="bg-gray-50 h-16 w-full flex items-center justify-center border-t border-gray-200 shrink-0 text-gray-500 text-sm">
-        &copy; 2026 HeyKudu. All rights reserved. | Empowering Medical Education
+    <footer class="bg-[#0b0914] w-full py-12 px-16 flex flex-col items-center justify-center shrink-0 relative overflow-hidden">
+        <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-purple-900 rounded-full mix-blend-screen filter blur-3xl opacity-30"></div>
+        <div class="absolute -left-10 -top-10 w-40 h-40 bg-blue-900 rounded-full mix-blend-screen filter blur-3xl opacity-30"></div>
+        
+        <div class="flex flex-col items-center z-10">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#8a2be2] via-[#4169e1] to-[#00ffff] p-[2px]">
+                    <div class="w-full h-full bg-[#0b0914] rounded-full flex items-center justify-center overflow-hidden p-1.5">
+                        <img src="images/logo-white.png" alt="HeyKudu Icon" class="w-full h-full object-contain">
+                    </div>
+                </div>
+                <span class="text-white text-2xl font-extrabold tracking-tight lowercase" style="letter-spacing: -0.05em;">heykudu</span>
+            </div>
+            
+            <div class="w-24 h-1 bg-gradient-to-r from-[#8a2be2] to-[#00ffff] rounded-full mb-6"></div>
+            
+            <p class="text-gray-400 text-sm tracking-wide font-medium uppercase mb-2">Empowering Medical Education</p>
+            <p class="text-gray-500 text-xs">&copy; 2026 HeyKudu. All rights reserved.</p>
+        </div>
     </footer>
 </body>
 </html>
