@@ -648,16 +648,16 @@
           <svg class="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 800 500" fill="none" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <radialGradient id="paperGrad" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.4"/>
-                <stop offset="100%" stop-color="#6d28d9" stop-opacity="0.12"/>
+                <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.35"/>
+                <stop offset="100%" stop-color="#6d28d9" stop-opacity="0.1"/>
               </radialGradient>
               <radialGradient id="digitalGrad" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.4"/>
-                <stop offset="100%" stop-color="#d97706" stop-opacity="0.12"/>
+                <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.35"/>
+                <stop offset="100%" stop-color="#d97706" stop-opacity="0.1"/>
               </radialGradient>
               <radialGradient id="aiGrad" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stop-color="#10b981" stop-opacity="0.4"/>
-                <stop offset="100%" stop-color="#059669" stop-opacity="0.12"/>
+                <stop offset="0%" stop-color="#10b981" stop-opacity="0.35"/>
+                <stop offset="100%" stop-color="#059669" stop-opacity="0.1"/>
               </radialGradient>
               <radialGradient id="kuduGlow" cx="50%" cy="50%" r="50%">
                 <stop offset="0%" stop-color="#34d399" stop-opacity="0.5"/>
@@ -666,58 +666,57 @@
             </defs>
 
             <!-- Circle 1: Paper (Top Left) -->
-            <circle cx="300" cy="200" r="175" fill="url(#paperGrad)" stroke="#a855f7" stroke-width="3" class="drop-shadow-[0_0_25px_rgba(168,85,247,0.35)]"/>
+            <circle cx="300" cy="200" r="175" fill="url(#paperGrad)" stroke="#a855f7" stroke-width="2.5" class="drop-shadow-[0_0_20px_rgba(168,85,247,0.3)]"/>
             
             <!-- Circle 2: Digital (Top Right) -->
-            <circle cx="500" cy="200" r="175" fill="url(#digitalGrad)" stroke="#f59e0b" stroke-width="3" class="drop-shadow-[0_0_25px_rgba(245,158,11,0.35)]"/>
+            <circle cx="500" cy="200" r="175" fill="url(#digitalGrad)" stroke="#f59e0b" stroke-width="2.5" class="drop-shadow-[0_0_20px_rgba(245,158,11,0.3)]"/>
             
             <!-- Circle 3: AI (Bottom Center) -->
-            <circle cx="400" cy="325" r="175" fill="url(#aiGrad)" stroke="#10b981" stroke-width="3" class="drop-shadow-[0_0_25px_rgba(16,185,129,0.35)]"/>
+            <circle cx="400" cy="325" r="175" fill="url(#aiGrad)" stroke="#10b981" stroke-width="2.5" class="drop-shadow-[0_0_20px_rgba(16,185,129,0.3)]"/>
 
             <!-- Center Glow -->
             <circle cx="400" cy="250" r="95" fill="url(#kuduGlow)"/>
           </svg>
 
-          <!-- Overlay Callout Cards -->
+          <!-- Overlay Callout Cards (Minimal & Ultra Clean) -->
           
           <!-- Top-Left Card: PAPER -->
-          <div class="absolute top-[6%] left-[2%] sm:left-[5%] max-w-[220px] sm:max-w-[240px] p-3.5 sm:p-4 rounded-2xl glass-card border-2 border-purple-400/50 bg-purple-950/70 backdrop-blur-md shadow-2xl text-left z-10">
-            <div class="flex items-center gap-2 mb-1 text-purple-300">
-              <span class="material-symbols-outlined text-2xl">article</span>
-              <h3 class="font-display font-black text-lg text-white">PAPER</h3>
+          <div class="absolute top-[8%] left-[3%] sm:left-[7%] max-w-[190px] sm:max-w-[210px] p-3 rounded-2xl glass-card border border-purple-400/40 bg-purple-950/60 backdrop-blur-md shadow-lg text-left z-10">
+            <div class="flex items-center gap-1.5 mb-0.5 text-purple-300">
+              <span class="material-symbols-outlined text-xl">article</span>
+              <h3 class="font-display font-black text-base text-white">PAPER</h3>
             </div>
-            <p class="text-xs text-purple-100 font-extrabold leading-snug">
-              Physical Logbooks, Verified Signatures & Regulatory Baseline Trust
+            <p class="text-xs text-purple-100 font-bold leading-snug">
+              Physical Logbooks & Baseline Trust
             </p>
           </div>
 
           <!-- Top-Right Card: DIGITAL -->
-          <div class="absolute top-[6%] right-[2%] sm:right-[5%] max-w-[220px] sm:max-w-[240px] p-3.5 sm:p-4 rounded-2xl glass-card border-2 border-amber-400/50 bg-amber-950/70 backdrop-blur-md shadow-2xl text-right z-10">
-            <div class="flex items-center justify-end gap-2 mb-1 text-amber-300">
-              <h3 class="font-display font-black text-lg text-white">DIGITAL</h3>
-              <span class="material-symbols-outlined text-2xl">devices</span>
+          <div class="absolute top-[8%] right-[3%] sm:right-[7%] max-w-[190px] sm:max-w-[210px] p-3 rounded-2xl glass-card border border-amber-400/40 bg-amber-950/60 backdrop-blur-md shadow-lg text-right z-10">
+            <div class="flex items-center justify-end gap-1.5 mb-0.5 text-amber-300">
+              <h3 class="font-display font-black text-base text-white">DIGITAL</h3>
+              <span class="material-symbols-outlined text-xl">devices</span>
             </div>
-            <p class="text-xs text-amber-100 font-extrabold leading-snug">
-              Mobile Check-Ins, Cloud Submissions & LMS Portal Integration
+            <p class="text-xs text-amber-100 font-bold leading-snug">
+              Mobile Check-Ins & Cloud Sync
             </p>
           </div>
 
           <!-- Bottom-Center Card: AI -->
-          <div class="absolute bottom-[2%] sm:bottom-[3%] max-w-[250px] p-3.5 sm:p-4 rounded-2xl glass-card border-2 border-emerald-400/50 bg-emerald-950/70 backdrop-blur-md shadow-2xl text-center z-10">
-            <div class="flex items-center justify-center gap-2 mb-1 text-emerald-300">
-              <span class="material-symbols-outlined text-2xl">psychology</span>
-              <h3 class="font-display font-black text-lg text-white">AI</h3>
+          <div class="absolute bottom-[2%] sm:bottom-[4%] max-w-[210px] p-3 rounded-2xl glass-card border border-emerald-400/40 bg-emerald-950/60 backdrop-blur-md shadow-lg text-center z-10">
+            <div class="flex items-center justify-center gap-1.5 mb-0.5 text-emerald-300">
+              <span class="material-symbols-outlined text-xl">psychology</span>
+              <h3 class="font-display font-black text-base text-white">AI</h3>
             </div>
-            <p class="text-xs text-emerald-100 font-extrabold leading-snug">
-              Automated Intelligence, Live Feedback & Curriculum Analytics
+            <p class="text-xs text-emerald-100 font-bold leading-snug">
+              Live Feedback & Analytics
             </p>
           </div>
 
           <!-- Center Overlap Badge: HEYKUDU -->
-          <div class="absolute top-[48%] left-1/2 -translate-x-1/2 -translate-y-1/2 p-4 sm:p-5 rounded-3xl bg-gradient-to-br from-[#1c0048] via-[#4c05a7] to-[#043323] border-2 border-emerald-400 shadow-[0_0_40px_rgba(52,211,153,0.6)] text-center z-20 hover:scale-105 transition-transform duration-300 min-w-[170px] sm:min-w-[200px]">
-            <img src="/images/logo-white.png" alt="HeyKudu Logo" class="h-10 sm:h-12 w-auto mx-auto mb-1.5 drop-shadow-[0_0_12px_rgba(52,211,153,0.8)]" />
+          <div class="absolute top-[48%] left-1/2 -translate-x-1/2 -translate-y-1/2 p-4 sm:p-5 rounded-3xl bg-gradient-to-br from-[#1c0048] via-[#4c05a7] to-[#043323] border-2 border-emerald-400 shadow-[0_0_35px_rgba(52,211,153,0.5)] text-center z-20 hover:scale-105 transition-transform duration-300 min-w-[160px] sm:min-w-[190px]">
+            <img src="/images/logo-white.png" alt="HeyKudu Logo" class="h-10 sm:h-12 w-auto mx-auto mb-1 drop-shadow-[0_0_12px_rgba(52,211,153,0.8)]" />
             <span class="font-display font-black text-xl sm:text-2xl text-emerald-300 block tracking-tight">heykudu</span>
-            <span class="text-[10px] sm:text-xs font-black text-purple-200 block uppercase tracking-widest mt-0.5">The Unified Standard</span>
           </div>
 
         </div>
