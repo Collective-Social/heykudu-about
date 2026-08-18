@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HeyKudu NFC Attendance Guide</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* A4 dimensions for PDF printing */
+        @page {
+            size: A4;
+            margin: 0;
+        }
+        body {
+            /* Force exact A4 dimensions */
+            width: 210mm;
+            height: 297mm;
+            min-height: 297mm;
+            max-height: 297mm;
+            margin: 0 auto;
+            background-color: white;
+            font-family: 'Inter', sans-serif;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+        /* Ensure the main container takes exactly the available space minus header/footer */
+        main {
+            height: calc(297mm - 7rem - 5rem); /* 297mm - header - footer */
+            overflow: hidden;
+        }
+        @media print {
+            body {
+                width: 210mm;
+                height: 297mm;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="relative flex flex-col bg-gray-50 overflow-hidden text-gray-800">
+    <!-- Header -->
+    <header class="bg-[#0b0914] w-full h-28 flex items-center justify-between px-16 shrink-0 relative overflow-hidden border-b-4 border-indigo-500">
+        <!-- Abstract shape -->
+        <div class="absolute -right-20 -top-20 w-64 h-64 bg-purple-900 rounded-full mix-blend-screen filter blur-3xl opacity-40"></div>
+        <div class="absolute -left-20 -bottom-20 w-64 h-64 bg-blue-900 rounded-full mix-blend-screen filter blur-3xl opacity-40"></div>
+        
+        <!-- Logo with Gradient Ring -->
+        <div class="flex items-center gap-5 z-10 mx-auto">
+            <div class="w-[72px] h-[72px] rounded-full bg-gradient-to-br from-[#8a2be2] via-[#4169e1] to-[#00ffff] p-[3px] shadow-lg shadow-purple-900/20">
+                <div class="w-full h-full bg-[#0b0914] rounded-full flex items-center justify-center overflow-hidden p-3">
+                    <img src="images/logo-white.png" alt="HeyKudu Icon" class="w-full h-full object-contain">
+                </div>
+            </div>
+            <span class="text-white text-4xl font-extrabold tracking-tight lowercase" style="letter-spacing: -0.05em;">heykudu</span>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 flex flex-col items-center px-16 pt-8 pb-4 bg-white w-full">
+        
+        <div class="w-full max-w-4xl flex flex-col space-y-6">
+            <div class="text-center pb-2">
+                <h2 class="text-4xl font-extrabold text-[#002f6c] mb-2 leading-tight tracking-tight">Scan NFC Attendance Tags</h2>
+                <p class="text-gray-500 text-lg max-w-2xl mx-auto leading-relaxed">Follow these simple instructions to log your attendance seamlessly using HeyKudu's NFC tags.</p>
+            </div>
+
+            <div class="grid grid-cols-2 gap-6">
+                
+                <!-- iOS Card -->
+                <div class="flex flex-col bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-md transition-shadow hover:border-green-200">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="flex-shrink-0 w-14 h-14 bg-green-50 rounded-full flex items-center justify-center text-green-600 font-bold text-2xl border-2 border-white ring-2 ring-green-100 shadow-sm">
+                            📱
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900">For iPhone (iOS)</h3>
+                    </div>
+                    <ul class="space-y-3 text-gray-600 text-base">
+                        <li class="flex items-start gap-2">
+                            <span class="text-green-500 font-bold mt-0.5">•</span>
+                            <span>Wake your phone &ndash; the screen must be on (lock screen or unlocked).</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-green-500 font-bold mt-0.5">•</span>
+                            <span>Tap the <span class="font-bold text-gray-900">TOP edge</span> of your iPhone (near the camera) directly against the tag.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-green-500 font-bold mt-0.5">•</span>
+                            <span>Tap the pop-up notification <span class="font-bold text-gray-900">"Open in Safari"</span> to record your attendance.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Android Card -->
+                <div class="flex flex-col bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-md transition-shadow hover:border-blue-200">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="flex-shrink-0 w-14 h-14 bg-blue-50 rounded-full flex items-center justify-center text-blue-600 font-bold text-2xl border-2 border-white ring-2 ring-blue-100 shadow-sm">
+                            🤖
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900">For Android</h3>
+                    </div>
+                    <ul class="space-y-3 text-gray-600 text-base">
+                        <li class="flex items-start gap-2">
+                            <span class="text-blue-500 font-bold mt-0.5">•</span>
+                            <span>Turn <span class="font-bold text-gray-900">NFC ON</span> &ndash; swipe down from the top of your screen to check Quick Settings.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-blue-500 font-bold mt-0.5">•</span>
+                            <span>Unlock your phone.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-blue-500 font-bold mt-0.5">•</span>
+                            <span>Tap the <span class="font-bold text-gray-900">CENTER</span> of the back of your phone against the tag.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-blue-500 font-bold mt-0.5">•</span>
+                            <span>Tap the notification to open in Chrome.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Cycle Card -->
+                <div class="flex flex-col bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-md transition-shadow hover:border-orange-200">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="flex-shrink-0 w-14 h-14 bg-orange-50 rounded-full flex items-center justify-center text-orange-600 font-bold text-2xl border-2 border-white ring-2 ring-orange-100 shadow-sm">
+                            ⏱️
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900">Check-In & Check-Out</h3>
+                    </div>
+                    <ul class="space-y-4 text-gray-600 text-base">
+                        <li class="flex items-start gap-3 bg-gray-50 p-2 rounded-lg border border-gray-100">
+                            <span class="text-xl">✅</span>
+                            <div>
+                                <span class="font-bold text-gray-900 block">Arriving at session</span>
+                                Tap once ➔ <span class="text-green-600 font-bold">Check-In</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3 bg-gray-50 p-2 rounded-lg border border-gray-100">
+                            <span class="text-xl">🏁</span>
+                            <div>
+                                <span class="font-bold text-gray-900 block">Leaving session</span>
+                                Tap again when finished ➔ <span class="text-orange-600 font-bold">Check-Out</span>
+                            </div>
+                        </li>
+                    </ul>
+                    <p class="mt-4 text-sm text-gray-500 italic bg-orange-50/50 p-2 rounded border border-orange-100">Accidental double-taps within 5 minutes will <span class="font-bold text-gray-700">NOT</span> create duplicates.</p>
+                </div>
+
+                <!-- Troubleshooting Card -->
+                <div class="flex flex-col bg-[#f4f7fb] rounded-2xl p-6 border border-blue-200 shadow-md relative overflow-hidden transform z-10 transition-transform">
+                    <div class="absolute left-0 top-0 bottom-0 w-2 bg-[#002f6c]"></div>
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-blue-200 rounded-full filter blur-2xl opacity-50 transform translate-x-1/2 -translate-y-1/2"></div>
+                    
+                    <div class="flex items-center gap-4 mb-4 relative z-10">
+                        <div class="flex-shrink-0 w-14 h-14 bg-[#002f6c] rounded-full flex items-center justify-center text-white font-bold text-2xl shadow-lg border-2 border-[#002f6c] ring-4 ring-blue-100">
+                            💡
+                        </div>
+                        <h3 class="text-2xl font-bold text-[#002f6c]">Quick Troubleshooting</h3>
+                    </div>
+                    <ul class="space-y-4 text-gray-700 text-sm relative z-10">
+                        <li>
+                            <span class="font-bold text-gray-900 block mb-0.5">Thick or magnetic cases</span>
+                            If your phone doesn't detect the tag, remove thick wallet cases or metal phone grips (PopSockets).
+                        </li>
+                        <li>
+                            <span class="font-bold text-gray-900 block mb-0.5">Hold still for 1 second</span>
+                            Keep your phone against the sticker for a moment until the link pops up.
+                        </li>
+                        <li>
+                            <span class="font-bold text-gray-900 block mb-0.5">Stay logged in</span>
+                            Make sure you are signed into heykudu.com on your mobile browser for automatic 1-second check-ins.
+                        </li>
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-[#0b0914] w-full py-8 px-16 flex flex-col items-center justify-center shrink-0 relative overflow-hidden">
+        <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-purple-900 rounded-full mix-blend-screen filter blur-3xl opacity-30"></div>
+        <div class="absolute -left-10 -top-10 w-40 h-40 bg-blue-900 rounded-full mix-blend-screen filter blur-3xl opacity-30"></div>
+        
+        <div class="flex flex-col items-center z-10">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#8a2be2] via-[#4169e1] to-[#00ffff] p-[2px]">
+                    <div class="w-full h-full bg-[#0b0914] rounded-full flex items-center justify-center overflow-hidden p-1.5">
+                        <img src="images/logo-white.png" alt="HeyKudu Icon" class="w-full h-full object-contain">
+                    </div>
+                </div>
+                <span class="text-white text-2xl font-extrabold tracking-tight lowercase" style="letter-spacing: -0.05em;">heykudu</span>
+            </div>
+            
+            <div class="w-24 h-1 bg-gradient-to-r from-[#8a2be2] to-[#00ffff] rounded-full mb-6"></div>
+            
+            <p class="text-gray-400 text-sm tracking-wide font-medium uppercase mb-2">Empowering Medical Education</p>
+            <p class="text-gray-500 text-xs">&copy; 2026 HeyKudu. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

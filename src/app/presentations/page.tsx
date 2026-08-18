@@ -11,7 +11,7 @@ interface PresentationDeck {
   client: string;
   faculty: string;
   date: string;
-  status: "Active Executive Deal" | "In Review" | "Proposal Template";
+  status: "Active Executive Deal" | "In Review" | "Proposal Template" | "Active Use";
   statusColor: string;
   viewUrl: string;
   standaloneUrl: string;
@@ -24,18 +24,46 @@ export default function PresentationHubPage() {
 
   const decks: PresentationDeck[] = [
     {
-      id: "uct-general-surgery-2026",
-      title: "UCT General Surgery & Health Sciences Digital Migration & Pricing Strategy",
-      client: "University of Cape Town (UCT)",
-      faculty: "Department of Surgery • Dr M. Visser (Convenor)",
+      id: "wits-deal-26",
+      title: "Wits Digital Migration Strategy",
+      client: "University of the Witwatersrand",
+      faculty: "Duncan Luke",
       date: "August 2026",
       status: "Active Executive Deal",
       statusColor: "bg-emerald-100 text-emerald-900 border-emerald-300",
       viewUrl: "/uct-presentation",
-      standaloneUrl: "/uct-strategy-2026-2030.html",
+      standaloneUrl: "/wits-strategy-2026-2030.html",
       description:
-        "Focused briefing for Dr M. Visser detailing General Surgery no-cost pilot structure, NFC ward check-ins, transparent per-student licensing, and zero implementation setup fees.",
-      slidesCount: 11,
+        "Comprehensive 2026-2030 digital migration blueprint for the Faculty of Health Sciences. Covers GEMP rollout, integration timelines, and ROI metrics.",
+      slidesCount: 16,
+    },
+    {
+      id: "heykudu-consultant",
+      title: "HeyKudu Consultant Registration Guide",
+      client: "Consultants & Faculty",
+      faculty: "Duncan Luke",
+      date: "August 2026",
+      status: "Active Use",
+      statusColor: "bg-blue-100 text-blue-900 border-blue-300",
+      viewUrl: "/consultant-registration-guide.html",
+      standaloneUrl: "/consultant-registration-guide.html",
+      description:
+        "A printable 1-pager explaining how consultants can sign up, create their profiles, and scan QR codes.",
+      slidesCount: 1,
+    },
+    {
+      id: "nfc-attendance-guide",
+      title: "NFC Attendance Scan Poster",
+      client: "Students & Staff",
+      faculty: "Duncan Luke",
+      date: "August 2026",
+      status: "Active Use",
+      statusColor: "bg-purple-100 text-purple-900 border-purple-300",
+      viewUrl: "/nfc-attendance-guide.html",
+      standaloneUrl: "/nfc-attendance-guide.html",
+      description:
+        "Printable A4 poster guide to teach students how to scan NFC check-in points accurately with iOS and Android.",
+      slidesCount: 1,
     },
     {
       id: "wits-2026-2030",
