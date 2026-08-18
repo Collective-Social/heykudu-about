@@ -25,7 +25,7 @@
         }
         /* Ensure the main container takes exactly the available space minus header/footer */
         main {
-            height: calc(297mm - 7rem - 5rem); /* 297mm - header - footer */
+            height: calc(297mm - 6rem - 5rem); /* 297mm - header - footer */
             overflow: hidden;
         }
         @media print {
@@ -39,19 +39,12 @@
 </head>
 <body class="relative flex flex-col bg-gray-50 overflow-hidden text-gray-800">
     <!-- Header -->
-    <header class="bg-[#0b0914] w-full h-28 flex items-center justify-between px-16 shrink-0 relative overflow-hidden border-b-4 border-indigo-500">
-        <!-- Abstract shape -->
-        <div class="absolute -right-20 -top-20 w-64 h-64 bg-purple-900 rounded-full mix-blend-screen filter blur-3xl opacity-40"></div>
-        <div class="absolute -left-20 -bottom-20 w-64 h-64 bg-blue-900 rounded-full mix-blend-screen filter blur-3xl opacity-40"></div>
-        
-        <!-- Logo with Gradient Ring -->
-        <div class="flex items-center gap-5 z-10 mx-auto">
-            <div class="w-[72px] h-[72px] rounded-full bg-gradient-to-br from-[#8a2be2] via-[#4169e1] to-[#00ffff] p-[3px] shadow-lg shadow-purple-900/20">
-                <div class="w-full h-full bg-[#0b0914] rounded-full flex items-center justify-center overflow-hidden p-3">
-                    <img src="images/logo-white.png" alt="HeyKudu Icon" class="w-full h-full object-contain">
-                </div>
+    <header class="bg-gradient-to-r from-[#7D00FF] to-[#3B82F6] w-full h-24 flex items-center px-10 shrink-0 border-b border-white/10 shadow-sm">
+        <div class="flex items-center gap-4">
+            <div class="w-14 h-14 rounded-[16px] bg-white/20 flex items-center justify-center p-2.5 backdrop-blur-sm">
+                <img src="images/logo-white.png" alt="HeyKudu Icon" class="w-full h-full object-contain filter drop-shadow-sm">
             </div>
-            <span class="text-white text-4xl font-extrabold tracking-tight lowercase" style="letter-spacing: -0.05em;">heykudu</span>
+            <span class="text-white text-[32px] font-extrabold tracking-tight lowercase" style="letter-spacing: -0.02em;">heykudu</span>
         </div>
     </header>
 
