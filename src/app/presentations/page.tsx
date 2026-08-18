@@ -35,7 +35,7 @@ export default function PresentationHubPage() {
       standaloneUrl: "/uct-strategy-2026-2030.html",
       description:
         "Focused briefing for Dr M. Visser detailing General Surgery no-cost pilot structure, NFC ward check-ins, transparent per-student licensing, and zero implementation setup fees.",
-      slidesCount: 11,
+      slidesCount: 10,
     },
     {
       id: "wits-2026-2030",
