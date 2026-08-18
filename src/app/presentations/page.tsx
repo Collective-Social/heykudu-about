@@ -24,6 +24,20 @@ export default function PresentationHubPage() {
 
   const decks: PresentationDeck[] = [
     {
+      id: "uct-general-surgery-2026",
+      title: "UCT General Surgery & Health Sciences Digital Migration & Pricing Strategy",
+      client: "University of Cape Town (UCT)",
+      faculty: "Department of Surgery • Dr M. Visser (Convenor)",
+      date: "August 2026",
+      status: "Active Executive Deal",
+      statusColor: "bg-emerald-100 text-emerald-900 border-emerald-300",
+      viewUrl: "/uct-presentation",
+      standaloneUrl: "/uct-strategy-2026-2030.html",
+      description:
+        "Focused briefing for Dr M. Visser detailing General Surgery no-cost pilot structure, NFC ward check-ins, transparent per-student licensing, and zero implementation setup fees.",
+      slidesCount: 11,
+    },
+    {
       id: "wits-2026-2030",
       title: "Wits University 2026–2030 Top-Down Digital Migration & Real-Time AI Strategy",
       client: "University of the Witwatersrand (Wits)",
@@ -35,7 +49,7 @@ export default function PresentationHubPage() {
       standaloneUrl: "/wits-strategy-2026-2030.html",
       description:
         "Comprehensive executive deck outlining Health Sciences 500+ DAU traction, Ulwazi (Canvas LMS) integration, and 2026–2030 multi-year expansion.",
-      slidesCount: 13,
+      slidesCount: 11,
     },
     {
       id: "health-sciences-gemp",
@@ -49,7 +63,7 @@ export default function PresentationHubPage() {
       standaloneUrl: "/wits-strategy-2026-2030.html",
       description:
         "Detailed operational breakdown of 569 active students, 40,800+ logbook submissions, and hospital ward GPS verification.",
-      slidesCount: 13,
+      slidesCount: 11,
     },
     {
       id: "clm-law-accounting",
@@ -63,7 +77,7 @@ export default function PresentationHubPage() {
       standaloneUrl: "/wits-strategy-2026-2030.html",
       description:
         "Strategic rollout plan for 2027 lecture/exam check-ins and 2028 Court Moot & BAccSc audit firm practicum tracking.",
-      slidesCount: 13,
+      slidesCount: 11,
     },
   ];
 
