@@ -259,6 +259,10 @@
         page-break-before: avoid !important;
         break-before: auto !important;
       }
+      .slide:last-child {
+        page-break-after: avoid !important;
+        break-after: auto !important;
+      }
       .glass-card {
         background: #181028 !important;
         border: 2px solid rgba(139, 92, 246, 0.4) !important;
@@ -266,9 +270,11 @@
         padding: 0.45rem 0.75rem !important;
       }
       .gradient-text {
-        background: linear-gradient(135deg, #d8b4fe 0%, #a855f7 50%, #34d399 100%) !important;
-        -webkit-background-clip: text !important;
-        -webkit-text-fill-color: transparent !important;
+        background: none !important;
+        -webkit-background-clip: unset !important;
+        background-clip: unset !important;
+        color: #c084fc !important;
+        -webkit-text-fill-color: #c084fc !important;
       }
 
       /* Slide 1 Cover Page Print Styling */
@@ -278,20 +284,20 @@
       }
 
       /* Ultra-Compact Spacing for Zero-Bleed Landscape Print Output */
-      h2 { font-size: 1.4rem !important; line-height: 1.2 !important; margin-bottom: 0.2rem !important; }
+      h2 { font-size: 1.35rem !important; line-height: 1.2 !important; margin-bottom: 0.2rem !important; }
       h3 { font-size: 0.95rem !important; line-height: 1.2 !important; margin-bottom: 0.15rem !important; }
       p, li { font-size: 0.75rem !important; line-height: 1.2 !important; }
       
-      .mb-8, .mb-6, .mb-5 { margin-bottom: 0.4rem !important; }
-      .mb-4, .mb-3, .mb-2 { margin-bottom: 0.25rem !important; }
-      .mt-6, .mt-5, .mt-4, .mt-3 { margin-top: 0.35rem !important; }
+      .mb-8, .mb-6, .mb-5 { margin-bottom: 0.35rem !important; }
+      .mb-4, .mb-3, .mb-2 { margin-bottom: 0.2rem !important; }
+      .mt-6, .mt-5, .mt-4, .mt-3 { margin-top: 0.3rem !important; }
       
-      .space-y-4 > :not([hidden]) ~ :not([hidden]) { margin-top: 0.3rem !important; }
-      .space-y-3 > :not([hidden]) ~ :not([hidden]) { margin-top: 0.25rem !important; }
-      .space-y-2.5 > :not([hidden]) ~ :not([hidden]) { margin-top: 0.2rem !important; }
+      .space-y-4 > :not([hidden]) ~ :not([hidden]) { margin-top: 0.25rem !important; }
+      .space-y-3 > :not([hidden]) ~ :not([hidden]) { margin-top: 0.2rem !important; }
+      .space-y-2.5 > :not([hidden]) ~ :not([hidden]) { margin-top: 0.18rem !important; }
       .space-y-2 > :not([hidden]) ~ :not([hidden]) { margin-top: 0.15rem !important; }
       
-      .gap-5, .gap-4, .gap-3 { gap: 0.4rem !important; }
+      .gap-5, .gap-4, .gap-3 { gap: 0.35rem !important; }
 
       #slide-5 .glass-card { padding: 0.5rem 0.75rem !important; }
       #slide-6 .space-y-4 > :not([hidden]) ~ :not([hidden]) { margin-top: 0.25rem !important; }
@@ -300,24 +306,30 @@
       #slide-7 th, #slide-7 td { padding: 2px 4px !important; word-wrap: break-word !important; }
       #slide-8 .space-y-3 > :not([hidden]) ~ :not([hidden]) { margin-top: 0.2rem !important; }
       #slide-8 .p-4, #slide-8 .p-3.5 { padding: 0.35rem 0.6rem !important; }
-      #slide-10 .space-y-3 > :not([hidden]) ~ :not([hidden]) { margin-top: 0.2rem !important; }
-      #slide-10 .glass-card { padding: 0.4rem 0.6rem !important; }
-      #slide-10 img { max-height: 180px !important; object-fit: contain !important; }
-      #slide-10 .max-w-\[280px\] { max-width: 170px !important; }
+      #slide-8 img { max-height: 170px !important; object-fit: contain !important; }
+      #slide-8 .max-w-\[280px\] { max-width: 160px !important; }
 
-      #slide-11 .grid-cols-1, #slide-11 .grid {
+      /* Slide 9 (Implementation Level Selection Matrix) - Force 4-Column Horizontal Layout */
+      #slide-9 .grid-cols-1, #slide-9 .grid {
         display: grid !important;
         grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
         gap: 0.4rem !important;
       }
-      #slide-11 .glass-card { padding: 0.5rem 0.65rem !important; }
-      #slide-11 ul { margin-top: 0.25rem !important; }
-      #slide-11 li { font-size: 0.7rem !important; }
+      #slide-9 .glass-card { padding: 0.45rem 0.6rem !important; }
+      #slide-9 ul { margin-top: 0.2rem !important; }
+      #slide-9 li { font-size: 0.68rem !important; }
+
+      /* Slide 11 (Thank You & Support) - Force 2-Column Horizontal Layout */
+      #slide-11 .grid-cols-1, #slide-11 .grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 1rem !important;
+      }
+      #slide-11 .glass-card { padding: 1rem 1.25rem !important; }
 
       #slide-2 .grid { display: grid !important; grid-template-columns: repeat(4, minmax(0, 1fr)) !important; gap: 0.4rem !important; }
       #slide-3 .grid { display: grid !important; grid-template-columns: repeat(4, minmax(0, 1fr)) !important; gap: 0.4rem !important; }
       #slide-5 .grid { display: grid !important; grid-template-columns: repeat(3, minmax(0, 1fr)) !important; gap: 0.4rem !important; }
-      #slide-9 .grid { display: grid !important; grid-template-columns: repeat(4, minmax(0, 1fr)) !important; gap: 0.4rem !important; }
     }
   </style>
 </head>

@@ -205,38 +205,41 @@ export default function PresentationPage() {
             margin: 0 !important;
             overflow: hidden !important;
           }
-          #print-slides-container .slide:first-child {
-            page-break-before: avoid !important;
-            break-before: auto !important;
+          #print-slides-container .slide:last-child {
+            page-break-after: avoid !important;
+            break-after: auto !important;
           }
           #print-slides-container .glass-card {
             background: #181028 !important;
             border: 2px solid rgba(139, 92, 246, 0.4) !important;
             color: #ffffff !important;
-            padding: 0.75rem 1rem !important;
+            padding: 0.45rem 0.75rem !important;
           }
           #print-slides-container .gradient-text {
-            background: linear-gradient(135deg, #d8b4fe 0%, #a855f7 50%, #34d399 100%) !important;
-            -webkit-background-clip: text !important;
-            -webkit-text-fill-color: transparent !important;
+            background: none !important;
+            -webkit-background-clip: unset !important;
+            background-clip: unset !important;
+            color: #c084fc !important;
+            -webkit-text-fill-color: #c084fc !important;
           }
-          #print-slides-container .mb-6, #print-slides-container .mb-5 { margin-bottom: 0.5rem !important; }
-          #print-slides-container .mb-4, #print-slides-container .mb-3 { margin-bottom: 0.35rem !important; }
-          #print-slides-container .mt-6, #print-slides-container .mt-5 { margin-top: 0.5rem !important; }
-          #print-slides-container .space-y-4 > :not([hidden]) ~ :not([hidden]) { margin-top: 0.35rem !important; }
-          #print-slides-container .space-y-3 > :not([hidden]) ~ :not([hidden]) { margin-top: 0.25rem !important; }
-          #print-slides-container .space-y-2.5 > :not([hidden]) ~ :not([hidden]) { margin-top: 0.2rem !important; }
+          #print-slides-container .mb-6, #print-slides-container .mb-5 { margin-bottom: 0.35rem !important; }
+          #print-slides-container .mb-4, #print-slides-container .mb-3 { margin-bottom: 0.2rem !important; }
+          #print-slides-container .mt-6, #print-slides-container .mt-5 { margin-top: 0.3rem !important; }
+          #print-slides-container .space-y-4 > :not([hidden]) ~ :not([hidden]) { margin-top: 0.25rem !important; }
+          #print-slides-container .space-y-3 > :not([hidden]) ~ :not([hidden]) { margin-top: 0.2rem !important; }
+          #print-slides-container .space-y-2.5 > :not([hidden]) ~ :not([hidden]) { margin-top: 0.18rem !important; }
           #print-slides-container .space-y-2 > :not([hidden]) ~ :not([hidden]) { margin-top: 0.15rem !important; }
 
           /* Force Horizontal Grids Across All Multi-Card Slides in Print */
           #print-slides-container #slide-2 .grid { display: grid !important; grid-template-columns: repeat(4, minmax(0, 1fr)) !important; gap: 0.4rem !important; }
           #print-slides-container #slide-3 .grid { display: grid !important; grid-template-columns: repeat(4, minmax(0, 1fr)) !important; gap: 0.4rem !important; }
           #print-slides-container #slide-5 .grid { display: grid !important; grid-template-columns: repeat(3, minmax(0, 1fr)) !important; gap: 0.4rem !important; }
-          #print-slides-container #slide-9 .grid { display: grid !important; grid-template-columns: repeat(4, minmax(0, 1fr)) !important; gap: 0.4rem !important; }
-          #print-slides-container #slide-11 .grid-cols-1, #print-slides-container #slide-11 .grid { display: grid !important; grid-template-columns: repeat(4, minmax(0, 1fr)) !important; gap: 0.4rem !important; }
-          #print-slides-container #slide-11 .glass-card { padding: 0.5rem 0.65rem !important; }
-          #print-slides-container #slide-11 ul { margin-top: 0.25rem !important; }
-          #print-slides-container #slide-11 li { font-size: 0.7rem !important; }
+          #print-slides-container #slide-10 .grid-cols-1, #print-slides-container #slide-10 .grid { display: grid !important; grid-template-columns: repeat(4, minmax(0, 1fr)) !important; gap: 0.4rem !important; }
+          #print-slides-container #slide-10 .glass-card { padding: 0.45rem 0.6rem !important; }
+          #print-slides-container #slide-10 ul { margin-top: 0.2rem !important; }
+          #print-slides-container #slide-10 li { font-size: 0.68rem !important; }
+          #print-slides-container #slide-11 .grid-cols-1, #print-slides-container #slide-11 .grid { display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 1rem !important; }
+          #print-slides-container #slide-11 .glass-card { padding: 1rem 1.25rem !important; }
         }
       `}</style>
 
