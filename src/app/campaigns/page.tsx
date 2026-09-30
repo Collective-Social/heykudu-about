@@ -20,7 +20,9 @@ import {
   Lock,
   Eye,
   RefreshCw,
+  Target,
 } from "lucide-react";
+import FunnelHubView from "@/components/campaigns/FunnelHubView";
 
 interface DeliverableElement {
   id: string;
@@ -60,6 +62,9 @@ export default function CampaignCommandCenter() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [pinInput, setPinInput] = useState("");
   const [authError, setAuthError] = useState("");
+
+  // View Mode: Campaigns Pipeline vs 50-4-4 Funnel Hub
+  const [mainView, setMainView] = useState<"campaigns" | "funnel_hub">("campaigns");
 
   // Campaign State
   const [campaigns, setCampaigns] = useState<Campaign[]>([]);
@@ -365,6 +370,32 @@ export default function CampaignCommandCenter() {
           </div>
         </div>
 
+        {/* View Switcher Tabs */}
+        <div className="flex items-center gap-1 bg-slate-950/80 border border-slate-800 p-1 rounded-xl">
+          <button
+            onClick={() => setMainView("campaigns")}
+            className={`px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-colors ${
+              mainView === "campaigns"
+                ? "bg-emerald-500 text-slate-950 font-bold shadow"
+                : "text-slate-400 hover:text-white"
+            }`}
+          >
+            <Sparkles className="w-3.5 h-3.5" />
+            Campaigns Pipeline
+          </button>
+          <button
+            onClick={() => setMainView("funnel_hub")}
+            className={`px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-colors ${
+              mainView === "funnel_hub"
+                ? "bg-emerald-500 text-slate-950 font-bold shadow"
+                : "text-slate-400 hover:text-white"
+            }`}
+          >
+            <Target className="w-3.5 h-3.5" />
+            50-4-4 Funnel & Leads Hub
+          </button>
+        </div>
+
         <div className="flex items-center gap-3">
           <button
             onClick={fetchCampaigns}
@@ -386,7 +417,10 @@ export default function CampaignCommandCenter() {
       </header>
 
       {/* Main Container */}
-      <div className="flex-1 flex flex-col lg:flex-row overflow-hidden">
+      {mainView === "funnel_hub" ? (
+        <FunnelHubView />
+      ) : (
+        <div className="flex-1 flex flex-col lg:flex-row overflow-hidden">
         {/* Left Sidebar: Campaigns List & New Campaign Creator */}
         <div className="w-full lg:w-96 border-r border-slate-800/80 bg-slate-900/30 flex flex-col p-4 overflow-y-auto">
           {/* New Campaign Intake Form */}
@@ -979,6 +1013,7 @@ export default function CampaignCommandCenter() {
           )}
         </div>
       </div>
+      )}
     </div>
   );
 }

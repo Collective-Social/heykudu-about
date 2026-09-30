@@ -66,6 +66,20 @@ export default function PresentationHubPage() {
       slidesCount: 1,
     },
     {
+      id: "heykudu-a5-poster",
+      title: "HeyKudu A5 QR Code Poster",
+      client: "Universities & Hospitals",
+      faculty: "Duncan Luke",
+      date: "September 2026",
+      status: "Active Use",
+      statusColor: "bg-purple-100 text-purple-900 border-purple-300",
+      viewUrl: "/heykudu-a5-poster.html",
+      standaloneUrl: "/heykudu-a5-poster.html",
+      description:
+        "Minimalist printable A5 poster featuring HeyKudu's blue-to-indigo gradient, top-centered logo, high-contrast QR code, and 'attendance on heykudu.com' caption. Includes print-ready PDF and 300 DPI PNG.",
+      slidesCount: 1,
+    },
+    {
       id: "wits-2026-2030",
       title: "Wits University 2026–2030 Top-Down Digital Migration & Real-Time AI Strategy",
       client: "University of the Witwatersrand (Wits)",
