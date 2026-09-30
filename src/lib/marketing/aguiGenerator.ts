@@ -1,4 +1,4 @@
-import { createClient } from "@supabase/supabase-js";
+import { supabase } from "@/lib/supabaseClient";
 
 export interface AguiSimulatorConfig {
   metricName: string; // e.g. "Practical Sessions", "Clinical Hours", "Bedside Procedures"
@@ -71,13 +71,6 @@ export interface AguiVariant {
   googleAdDescriptions?: string[];
 }
 
-function getSupabaseClient() {
-  const url = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
-  const key = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "";
-  if (!url || !key) return null;
-  return createClient(url, key);
-}
-
 function normalizeKey(str: string): string {
   return str
     .toLowerCase()
@@ -99,8 +92,6 @@ export async function generateAguiPayload(params: {
   const cacheKey = normalizeKey(
     [query, params.targetRole, params.faculty, params.institution].filter(Boolean).join("--")
   );
-
-  const supabase = getSupabaseClient();
 
   // 1. Check Supabase AGUI cache
   if (supabase) {
