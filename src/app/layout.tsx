@@ -57,18 +57,21 @@ export default function RootLayout({
             });
           `}
         </Script>
+        {/* Google tag (gtag.js) */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=AW-18484531720"
-          strategy="afterInteractive"
+          strategy="beforeInteractive"
         />
-        <Script id="google-ads-gtag" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'AW-18484531720');
-          `}
-        </Script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'AW-18484531720');
+            `,
+          }}
+        />
       </head>
       <body
         className={`${plusJakartaSans.variable} ${inter.variable} font-sans bg-surface text-on-surface antialiased`}

@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useParams, useSearchParams } from "next/navigation";
 import { FUNNEL_MATRIX, FunnelVariant } from "@/lib/marketing/funnelMatrix";
+import { trackGoogleLeadConversion } from "@/lib/gtag";
 import {
   ShieldAlert,
   Clock,
@@ -157,6 +158,7 @@ export default function LandingPage() {
         setWhatsappShareText(data.whatsapp_share_text);
       }
 
+      trackGoogleLeadConversion(1.0, "ZAR");
       setIsSubmitted(true);
     } catch (err: any) {
       setErrorMessage(err.message || "Failed to submit. Please try again.");

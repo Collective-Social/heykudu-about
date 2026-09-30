@@ -6,6 +6,7 @@ import { useSearchParams, useRouter } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { AguiVariant } from "@/lib/marketing/aguiGenerator";
+import { trackGoogleLeadConversion } from "@/lib/gtag";
 import {
   ShieldAlert,
   Clock,
@@ -251,6 +252,7 @@ function AguiContent() {
       if (data.success) {
         setIsSubmitted(true);
         setSubmittedLeadId(data.lead_id);
+        trackGoogleLeadConversion(1.0, "ZAR");
         if (data.whatsapp_share_url) {
           setWhatsappShareUrl(data.whatsapp_share_url);
           setWhatsappShareText(data.whatsapp_share_text);

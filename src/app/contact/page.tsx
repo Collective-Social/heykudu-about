@@ -4,6 +4,7 @@ import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { motion, AnimatePresence } from "framer-motion";
+import { trackGoogleLeadConversion } from "@/lib/gtag";
 
 export default function ContactPage() {
   const [program, setProgram] = useState("");
@@ -28,6 +29,7 @@ export default function ContactPage() {
 
       if (response.ok) {
         setSubmitStatus("success");
+        trackGoogleLeadConversion(1.0, "ZAR");
         setProgram("");
         setEmail("");
         setMessage("");
