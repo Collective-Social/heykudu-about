@@ -79,7 +79,7 @@ export default function FunnelHubView() {
             }`}
           >
             <Layers className="w-3.5 h-3.5" />
-            4 Landing Pages & CTAs
+            {variants.length} Landing Pages & CTAs
           </button>
 
           <button
@@ -91,7 +91,7 @@ export default function FunnelHubView() {
             }`}
           >
             <Sparkles className="w-3.5 h-3.5" />
-            50 Google Ads (RSAs)
+            {variants.reduce((acc, v) => acc + v.googleAdHeadlines.length, 0)} Google Ads (RSAs)
           </button>
 
           <button
@@ -121,20 +121,20 @@ export default function FunnelHubView() {
 
         <div className="flex items-center gap-2">
           <span className="text-[11px] font-mono text-slate-500">
-            50-4-4-4 Testing Matrix Active
+            {variants.length}-Angle B2B Testing Matrix Active
           </span>
         </div>
       </div>
 
       {/* Main Content Area */}
       <div className="p-6 max-w-7xl mx-auto w-full">
-        {/* TAB 1: 4 LANDING PAGES */}
+        {/* TAB 1: LANDING PAGES */}
         {activeTab === "landing_pages" && (
           <div className="space-y-6">
             <div>
-              <h2 className="text-xl font-bold text-white mb-1">4 University Landing Pages & CTAs</h2>
+              <h2 className="text-xl font-bold text-white mb-1">{variants.length} University Landing Pages & CTAs</h2>
               <p className="text-xs text-slate-400">
-                Persona-targeted landing pages on <span className="font-mono text-slate-300">about.heykudu.com/lp/[angle]</span>. Dynamic copy maps directly to incoming Google Ads to maintain 10/10 Quality Scores.
+                Persona-targeted landing pages on <span className="font-mono text-slate-300">about.heykudu.com/lp/[angle]</span>. Covers Health Sciences, Law, Engineering, Science & Humanities with 10/10 Google Ads Quality Score alignment.
               </p>
             </div>
 
@@ -146,9 +146,14 @@ export default function FunnelHubView() {
                 >
                   <div>
                     <div className="flex items-center justify-between mb-3">
-                      <span className="text-[11px] font-bold font-mono px-2.5 py-1 rounded-md bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                        {v.slug.toUpperCase()}
-                      </span>
+                      <div className="flex items-center gap-2">
+                        <span className="text-[11px] font-bold font-mono px-2.5 py-1 rounded-md bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                          {v.slug.toUpperCase()}
+                        </span>
+                        <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-slate-800 text-slate-300 border border-slate-700">
+                          {v.category === "medical" ? "Medical Faculty" : "University-Wide"}
+                        </span>
+                      </div>
                       <span className="text-xs text-slate-400 font-medium">
                         Target: <span className="text-slate-200">{v.targetRole}</span>
                       </span>
@@ -213,25 +218,30 @@ export default function FunnelHubView() {
           <div className="space-y-6">
             <div className="flex items-center justify-between flex-wrap gap-4">
               <div>
-                <h2 className="text-xl font-bold text-white mb-1">50 Google Responsive Search Ads (RSAs)</h2>
+                <h2 className="text-xl font-bold text-white mb-1">
+                  {variants.reduce((acc, v) => acc + v.googleAdHeadlines.length, 0)} Google Responsive Search Ads (RSAs)
+                </h2>
                 <p className="text-xs text-slate-400">
-                  5 focused Thematic Ad Groups. Copy headlines and descriptions straight into Google Ads Manager.
+                  {variants.length} focused Thematic Ad Groups across Medical and University-Wide faculties. Copy headlines and descriptions straight into Google Ads Manager.
                 </p>
               </div>
 
               {/* Selector Pills */}
-              <div className="flex items-center gap-2 bg-slate-900 border border-slate-800 p-1 rounded-xl">
+              <div className="flex items-center gap-1.5 bg-slate-900 border border-slate-800 p-1 rounded-xl flex-wrap">
                 {variants.map((v) => (
                   <button
                     key={v.slug}
                     onClick={() => setSelectedVariantKey(v.slug)}
-                    className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+                    className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all flex items-center gap-1.5 ${
                       selectedVariantKey === v.slug
                         ? "bg-emerald-500 text-slate-950 shadow-md font-bold"
                         : "text-slate-400 hover:text-white"
                     }`}
                   >
-                    {v.slug}
+                    <span className="text-[10px] opacity-70">
+                      {v.category === "medical" ? "Med" : "Uni"}
+                    </span>
+                    <span>{v.slug}</span>
                   </button>
                 ))}
               </div>

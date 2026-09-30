@@ -60,6 +60,10 @@ export default function LandingPage() {
     else if (slug === "departmental") setRole("Head of Department");
     else if (slug === "bedside-wba") setRole("Clinical Consultant / Supervisor");
     else if (slug === "epa-transition") setRole("Curriculum Committee Chair");
+    else if (slug === "paperless-attendance") setRole("Course Convenor / Lecturer");
+    else if (slug === "student-rag-analytics") setRole("Director of Teaching & Learning");
+    else if (slug === "distributed-sites") setRole("Director of Work-Integrated Learning (WIL)");
+    else if (slug === "academic-apis") setRole("Head of Academic IT / EdTech");
   }, [slug]);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -140,7 +144,7 @@ export default function LandingPage() {
           <Link href="/" className="flex items-center gap-2">
             <span className="text-xl font-bold tracking-tight text-white">Heykudu</span>
             <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-              Health Sciences
+              {variant.category === "medical" ? "Health Sciences" : "Higher Education"}
             </span>
           </Link>
           <div className="flex items-center gap-4">
@@ -148,7 +152,7 @@ export default function LandingPage() {
               href="#lead-form"
               className="text-xs md:text-sm font-semibold px-4 py-2 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 transition-colors shadow-lg shadow-emerald-500/20"
             >
-              Get Rotation Blueprint
+              {variant.category === "medical" ? "Get Rotation Blueprint" : "Get Attendance Playbook"}
             </a>
           </div>
         </div>
@@ -262,30 +266,52 @@ export default function LandingPage() {
         <div className="max-w-4xl mx-auto bg-slate-900/80 border border-slate-800 rounded-2xl p-8 md:p-12 relative overflow-hidden">
           <div className="flex items-center gap-2 text-emerald-400 text-xs font-bold tracking-wider uppercase mb-3">
             <Building2 className="w-4 h-4" />
-            Verified Empirical Field Study
+            {variant.category === "medical"
+              ? "Verified Empirical Clinical Field Study"
+              : "Proven University-Wide Operational Architecture"}
           </div>
           <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
-            University of the Witwatersrand (Wits) GEMP 2 Paediatrics
+            {variant.category === "medical"
+              ? "University of the Witwatersrand (Wits) GEMP 2 Paediatrics"
+              : "Engineered for 400-Seat Lecture Theatres & Distributed Satellite Sites"}
           </h3>
           <p className="text-slate-300 text-sm md:text-base leading-relaxed mb-6">
-            In 2026, the Department of Paediatrics replaced physical cardboard sign-off cards with Heykudu across Charlotte Maxeke Johannesburg Academic Hospital and Chris Hani Baragwanath. Over a 6-week rotation block, 100% of procedure quotas were logged at the bedside with zero lost records and zero consultant grading backlogs.
+            {variant.category === "medical"
+              ? "In 2026, the Department of Paediatrics replaced physical cardboard sign-off cards with Heykudu across Charlotte Maxeke Johannesburg Academic Hospital and Chris Hani Baragwanath. Over a 6-week rotation block, 100% of procedure quotas were logged at the bedside with zero lost records and zero consultant grading backlogs."
+              : "Whether managing a 400-seat introductory lecture hall, 15-student practical labs, or students distributed across 25 external fieldwork sites, Heykudu eliminates paper registers. Students scan dynamic anti-cheat QR codes or NFC checkpoints in 2 seconds, while lecturers track real-time RAG progress and automated course requirement thresholds."}
           </p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 border-t border-slate-800 pt-6">
             <div>
-              <div className="text-2xl font-bold text-emerald-400">100%</div>
-              <div className="text-xs text-slate-400">Card Retention Rate</div>
+              <div className="text-2xl font-bold text-emerald-400">
+                {variant.category === "medical" ? "100%" : "0 Sec"}
+              </div>
+              <div className="text-xs text-slate-400">
+                {variant.category === "medical" ? "Card Retention Rate" : "Class Time Wasted"}
+              </div>
             </div>
             <div>
-              <div className="text-2xl font-bold text-emerald-400">Week 2</div>
-              <div className="text-xs text-slate-400">Early Deficit Detection</div>
+              <div className="text-2xl font-bold text-emerald-400">
+                {variant.category === "medical" ? "Week 2" : "100%"}
+              </div>
+              <div className="text-xs text-slate-400">
+                {variant.category === "medical" ? "Early Deficit Detection" : "Proxy Sign-In Prevention"}
+              </div>
             </div>
             <div>
-              <div className="text-2xl font-bold text-emerald-400">14 Days</div>
-              <div className="text-xs text-slate-400">Department Rollout</div>
+              <div className="text-2xl font-bold text-emerald-400">
+                {variant.category === "medical" ? "14 Days" : "Week 3"}
+              </div>
+              <div className="text-xs text-slate-400">
+                {variant.category === "medical" ? "Department Rollout" : "Early RAG Deficit Alerts"}
+              </div>
             </div>
             <div>
-              <div className="text-2xl font-bold text-emerald-400">Zero</div>
-              <div className="text-xs text-slate-400">IT Disruption</div>
+              <div className="text-2xl font-bold text-emerald-400">
+                {variant.category === "medical" ? "Zero" : "1-Click"}
+              </div>
+              <div className="text-xs text-slate-400">
+                {variant.category === "medical" ? "IT Disruption" : "LMS & Excel Sync"}
+              </div>
             </div>
           </div>
         </div>
@@ -391,12 +417,16 @@ export default function LandingPage() {
                     className="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-emerald-500 text-sm"
                   >
                     <option value="Executive Dean">Executive Dean / Deanery</option>
-                    <option value="Deputy Dean of Education">Deputy Dean of Education</option>
+                    <option value="Deputy Dean of Education">Deputy Dean of Education / Academic Dean</option>
                     <option value="Head of Department">Head of Department (HOD)</option>
-                    <option value="Clinical Lecturer / Course Convenor">Clinical Lecturer / Course Convenor</option>
-                    <option value="Clinical Consultant / Supervisor">Clinical Consultant / Supervisor</option>
+                    <option value="Course Convenor / Lecturer">Course Convenor / Lecturer</option>
+                    <option value="Director of Teaching & Learning">Director of Teaching & Learning / Academic Advisor</option>
+                    <option value="Director of Work-Integrated Learning (WIL)">Director of WIL / Fieldwork Coordinator</option>
+                    <option value="Head of Academic IT / EdTech">Head of Academic IT / EdTech Specialist</option>
+                    <option value="Clinical Lecturer / Course Convenor">Clinical Lecturer / Course Convenor (Medical)</option>
+                    <option value="Clinical Consultant / Supervisor">Clinical Consultant / Ward Supervisor (Medical)</option>
                     <option value="Curriculum Committee Chair">Curriculum Committee Chair</option>
-                    <option value="Other">Other Faculty Member</option>
+                    <option value="Other">Other Faculty Member / Administrator</option>
                   </select>
                 </div>
 

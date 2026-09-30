@@ -1,11 +1,13 @@
 /**
- * Heykudu University B2B Funnel Matrix (50-4-4-4-4 Testing Engine)
- * Defines the 4 Landing Pages, 4 CTAs, 4 Deliverables, 4 Scripts,
- * and 50 Google Responsive Search Ad variations across target roles.
+ * Heykudu University B2B Funnel Matrix (Enterprise 8-Variant Testing Engine)
+ * Defines the Landing Pages, CTAs, Deliverables, Scripts,
+ * and 80+ Google Responsive Search Ad variations across target roles.
+ * Covers both Medical/Health Sciences and University-Wide/Non-Medical applications.
  */
 
 export interface FunnelVariant {
   slug: string;
+  category: "medical" | "university_wide";
   badge: string;
   title: string;
   targetPersona: string;
@@ -49,8 +51,13 @@ export interface FunnelVariant {
 }
 
 export const FUNNEL_MATRIX: Record<string, FunnelVariant> = {
+  // ============================================================================
+  // MEDICAL / HEALTH SCIENCES FACULTY SOLUTIONS
+  // ============================================================================
+
   accreditation: {
     slug: "accreditation",
+    category: "medical",
     badge: "HPCSA Audit Shield & Institutional Governance",
     title: "Accreditation & Institutional Governance Shield",
     targetPersona: "The Deanery, Deputy Deans of Education & Quality Assurance Committees",
@@ -99,26 +106,26 @@ export const FUNNEL_MATRIX: Record<string, FunnelVariant> = {
       {
         title: "Multi-Hospital Geofenced Radar",
         description:
-          "High-precision geofencing across regional teaching hospital complexes ensures physical presence before any shift is clocked.",
+          "Ensures medical students and interns are physically inside ward perimeters (e.g. Chris Hani Baragwanath, Charlotte Maxeke) before sign-in unlocks.",
         icon: "map-pin"
       },
       {
-        title: "Tamper-Proof Audit Trail",
+        title: "Immutable Digital Logbook Records",
         description:
-          "Every bedside procedure, delivery, and clinical debrief is cryptographically signed and stored with timestamped supervisor verification.",
+          "Every procedure, bedside observation, and consultant signature is timestamped, cryptographically anchored, and protected against backdating.",
         icon: "check-circle"
       },
       {
-        title: "Deanery Executive Dashboard",
+        title: "Real-Time Faculty Oversight Dashboard",
         description:
-          "Real-time faculty-wide visibility over clinical exposure quotas, absent students, and departmental accreditation readiness.",
+          "Deaneries monitor clinical exposure, rotation quotas, and hospital attendance in real time across all academic training platforms.",
         icon: "bar-chart"
       }
     ],
     primaryCta: {
-      label: "Schedule a 15-Minute Deanery Briefing",
+      label: "Schedule a 15-Minute Deanery Executive Briefing",
       actionType: "schedule_briefing",
-      helperText: "Confidential institutional briefing with Duncan Luke • Includes HPCSA Compliance Checklist"
+      helperText: "Confidential institutional consultation • Includes 2026 HPCSA Audit Readiness Checklist"
     },
     deliverable: {
       title: "The 2026 HPCSA Clinical Training Compliance & Audit Kit",
@@ -128,324 +135,328 @@ export const FUNNEL_MATRIX: Record<string, FunnelVariant> = {
       filename: "Heykudu_2026_HPCSA_Compliance_Kit.pdf"
     },
     closingScript: {
-      title: "Executive Dean Discovery Briefing",
+      title: "Executive Dean Discovery & Briefing Script",
       targetRole: "Executive Dean / Deputy Dean of Education",
       discoveryQuestions: [
-        "When the HPCSA or your internal quality review audits clinical training hours, how many days does it take to pull verified ward hours across your teaching hospital complex?",
-        "What is the protocol when a senior student loses their physical sign-off card two weeks before final clinical OSCEs?",
-        "If we can prove 100% verified bedside presence and zero lost logbooks in a single 6-week rotation block at no institutional risk, would you sponsor a pilot with your Paediatrics or Surgery department?"
+        "When the HPCSA conducts its next clinical training review, how long would it take your team to produce verified bedside attendance for your 4th, 5th, and 6th-year cohorts across all teaching hospitals?",
+        "How are you currently handling disputes when a student claims they completed their clinical quota but the department has no physical paper record on file?",
+        "If we could demonstrate 100% compliance within a single department pilot in 14 days without IT disruption, would that warrant an institutional briefing?"
       ],
       pilotMemorandumTerms: [
-        "Zero institutional budget commitment for initial 6-week evaluation",
-        "POPIA compliant, encrypted South African cloud data residency",
-        "Full faculty board report and exportable CSV/PDF audit package provided upon completion"
+        "Zero software license fee during initial 6-week departmental pilot",
+        "Includes faculty onboarding and hospital GPS geofencing configuration",
+        "Executive compliance readout delivered to the Deanery at pilot conclusion"
       ]
     },
     googleAdHeadlines: [
-      "HPCSA Clinical Audit Coming?",
-      "Stop Losing Student Logbooks",
-      "100% Verified Clinical Hours",
-      "Paper Logbooks Fail Audits",
-      "Cryptographic Ward Presence",
-      "Wits GEMP 2 Case Study",
-      "Audit-Ready Portfolios",
+      "HPCSA Audit Shield",
+      "Medical Faculty Compliance",
       "Eliminate Ghost Attendance",
-      "Real-Time Clinical Governance",
-      "Medical School Compliance App"
+      "Digital Clinical Logbooks",
+      "Medical Student Tracking",
+      "Protect Faculty Accreditation",
+      "Tamper-Proof Bedside Logs",
+      "Zero Lost Procedure Cards",
+      "South African Health Sciences",
+      "Live Deanery Dashboard"
     ],
     googleAdDescriptions: [
-      "Replace lost paper cards with tamper-proof geofenced bedside verification. Trusted by top SA universities.",
-      "Eliminate ghost sign-ins and prepare for HPCSA reviews with 1-click verified accreditation portfolios.",
-      "Discover how Wits University achieved 100% procedure quota compliance in clinical rotations.",
-      "Geofenced NFC check-ins and offline-first mobile logging for medical faculties. Book a deanery briefing."
+      "Protect your health sciences faculty with tamper-proof clinical training records. Meets HPCSA standards.",
+      "Replace vulnerable paper registers with geofenced hospital check-in and 1-click audit portfolios.",
+      "Eliminate ghost sign-ins and lost cards across Charlotte Maxeke, Bara, and regional hospitals.",
+      "Download the 2026 HPCSA Clinical Training Compliance & Audit Kit for medical school leadership."
     ]
   },
 
   departmental: {
     slug: "departmental",
-    badge: "Departmental & Course Convenor Rotation Rescue",
-    title: "Paperless Clinical Rotations in 14 Days",
-    targetPersona: "Academic HODs, Course Convenors, Clinical Lecturers & Block Coordinators",
-    targetRole: "Head of Department / Clinical Lecturer / Course Convenor",
-    heroHeadline: "Eliminate Paper Logbooks Across Your Clinical Rotations in 14 Days",
+    category: "medical",
+    badge: "Departmental Rescue & Turnkey Lecturer Setup",
+    title: "Clinical Departmental Turnkey Pilot (HODs & Course Convenors)",
+    targetPersona: "Academic Heads of Department, Clinical Lecturers, Course Convenors, and Rotation Coordinators",
+    targetRole: "Head of Department (HOD) / Clinical Lecturer / Course Convenor",
+    heroHeadline: "Rescue Your Clinical Rotation from Paperwork Chaos",
     heroSubhead:
-      "For HODs, Course Convenors, and Clinical Lecturers drowning in lost cardboard cards and weekend grading marathons. Heykudu digitizes your exact rotation curriculum checklist into a real-time mobile app in 15 minutes.",
+      "Tired of chasing 150 lost paper sign-off cards, grading on weekends, and dealing with end-of-block attendance disputes? Launch a zero-friction, 6-week digital rotation pilot with Heykudu.",
     proofStats: [
       {
-        value: "0",
-        label: "Lost Logbooks",
-        subtext: "100% procedure retention across 6-week rotation blocks"
+        value: "14 Days",
+        label: "Department Deployment",
+        subtext: "Rapid onboarding without complex university IT integration"
       },
       {
-        value: "Week 2",
-        label: "Deficiency Radar",
-        subtext: "Identify students falling behind on quotas 4 weeks before exams"
+        value: "0 Hrs",
+        label: "Lost Card Grading",
+        subtext: "Automated real-time procedure count and student quota progress"
       },
       {
-        value: "80%",
-        label: "Grading Time Saved",
-        subtext: "Reclaim tutor weekends from manual paper card tallying"
+        value: "100%",
+        label: "Bedside Compliance",
+        subtext: "Verified in Wits GEMP 2 Paediatrics rotation"
       }
     ],
     painPoints: [
       {
-        title: "The Weekend Grading Backlog",
+        title: "The End-of-Rotation Grading Stampede",
         description:
-          "Lecturers and consultants spending their Sundays deciphering illegible signatures and manually tallying procedure numbers in Excel.",
+          "Lecturers and HODs spend entire weekends manually tallying physical cardboard sign-off sheets, illegible handwriting, and missing consultant signatures.",
+        icon: "user-x"
+      },
+      {
+        title: "Lost Cards Stalling Student Exams",
+        description:
+          "Cardboard cards get soaked in antiseptic, torn in scrub pockets, or lost, creating high-friction disputes right before block exam eligibility cutoff.",
         icon: "file-text"
       },
       {
-        title: "Late Quota Surprises at Exam Boards",
+        title: "Zero Mid-Block Quota Visibility",
         description:
-          "Only discovering a student missed 10 mandatory paediatric or surgical procedures when they submit their battered paper card the night before finals.",
+          "Course convenors cannot see which students are falling behind on mandatory clinical conditions or procedures until the rotation is already finished.",
         icon: "alert-triangle"
-      },
-      {
-        title: "Frustrated Hospital Consultants",
-        description:
-          "Ward doctors hate stopping clinical rounds to fill out multi-page paper booklets, leading to retrospective and rubber-stamped sign-offs.",
-        icon: "user-x"
       }
     ],
     solutionFeatures: [
       {
-        title: "15-Minute Self-Serve Curriculum Setup",
+        title: "Turnkey Departmental Setup (15 Mins)",
         description:
-          "Upload your existing rotation conditions and procedure checklist directly. Zero waiting for central university IT tickets.",
+          "Lecturers upload rotation conditions, required procedures, and student rosters in 15 minutes. No complex centralized IT setup required.",
         icon: "zap"
       },
       {
-        title: "Live Procedure Quota Dashboard",
+        title: "Mid-Rotation Early Warning Radar",
         description:
-          "Real-time heatmaps show exactly how many lumbar punctures, normal deliveries, or IV cannulations each student has logged.",
+          "Convenors see live progress bars and RAG status. If a student is on Week 3 with only 1 neonatal lumbar puncture, you spot the deficit immediately.",
         icon: "activity"
       },
       {
-        title: "1-Tap NFC Supervisor Verification",
+        title: "1-Click Rotation Gradebook Export",
         description:
-          "Supervisors simply tap their phone to the student's badge to approve procedures in 20 seconds at the bedside.",
-        icon: "smartphone"
+          "At the end of the 6-week block, click one button to generate a fully verified, sorted spreadsheet of all procedure quotas and bedside ratings.",
+        icon: "check-circle"
       }
     ],
     primaryCta: {
-      label: "Deploy a 6-Week Departmental Pilot",
+      label: "Deploy a 6-Week Turnkey Departmental Pilot",
       actionType: "deploy_pilot",
-      helperText: "Setup takes 15 minutes • Includes Turnkey HOD Permission Memo & Free Student Sandbox"
+      helperText: "Zero budget required for approved academic departments • 14-day setup guarantee"
     },
     deliverable: {
-      title: "The Wits GEMP 2 Paediatrics Field Study & Convenor Setup Blueprint",
-      format: "Field Study Case Retrospective + 14-Day Departmental Launch Guide",
+      title: "The 6-Week Turnkey Departmental Pilot Blueprint & Setup Guide",
+      format: "PDF Step-by-Step Implementation Guide + Departmental Memo Template",
       description:
-        "The empirical field study of how Wits GEMP 2 eliminated paper logbooks across Charlotte Maxeke and Chris Hani Baragwanath, with a step-by-step setup guide for lecturers.",
-      filename: "Heykudu_Wits_Paediatrics_Field_Study_Blueprint.pdf"
+        "The complete departmental roadmap used by Wits Paediatrics to transition 150 students from paper logbooks to digital bedside cards in 14 days.",
+      filename: "Heykudu_Departmental_Pilot_Blueprint.pdf"
     },
     closingScript: {
-      title: "Lecturer & HOD Departmental Pilot Agreement",
-      targetRole: "Clinical Lecturer / Course Convenor / Academic HOD",
+      title: "Academic HOD & Lecturer Turnkey Pilot Closing Script",
+      targetRole: "Academic Head of Department / Clinical Lecturer & Course Convenor",
       discoveryQuestions: [
-        "How many hours do you and your registrars spend at the end of each rotation block manually deciphering and grading paper cards?",
-        "How early in the block can you spot a student who isn't getting enough clinical exposure on the wards?",
-        "If we upload your exact rotation curriculum checklist into Heykudu today so you can test it on your phone, would you run this with your upcoming student cohort?"
+        "How many hours do your lecturers and tutors spend at the end of each block tallying paper procedure cards and chasing missing signatures?",
+        "When students rotate through multiple hospitals or clinics, how quickly can you identify a student who isn't seeing enough required clinical conditions?",
+        "If we handle 100% of the digital card configuration for your upcoming rotation block, would you run a 6-week pilot to see if it eliminates your paperwork burden?"
       ],
       pilotMemorandumTerms: [
-        "Turnkey 1-page HOD permission memo ready for immediate signature",
-        "Zero disruption to existing hospital shifts or hospital IT systems",
-        "Includes NFC badges and onboarding for 40 students and departmental tutors"
+        "1-Page Departmental Permission Memorandum (HOD authorization)",
+        "Rotation conditions and procedure thresholds configured by Heykudu team",
+        "Weekly progress digest sent directly to Course Convenor and HOD",
+        "Student orientation session conducted in 15 minutes before block start"
       ]
     },
     googleAdHeadlines: [
-      "Paperless Clinical Rotations",
-      "Zero Lost Cards in 6 Weeks",
-      "For Course Convenors & HODs",
-      "Digitize Rotation Logbooks",
-      "Reclaim Your Weekends",
-      "Real-Time Procedure Quotas",
-      "Alert Deficient Students Early",
-      "Cut Grading Time by 80%",
-      "15-Min Rotation Setup",
-      "Built for Clinical Lecturers"
+      "Clinical Rotation Software",
+      "Ditch Paper Logbooks",
+      "Medical Student Sign-Offs",
+      "Turnkey Department Pilot",
+      "HOD Medical Education Tool",
+      "Lecturer Rotation Setup",
+      "Track Bedside Procedures",
+      "Zero Lost Clinical Cards",
+      "Automatic Rotation Grading",
+      "Paediatrics & Surgery Logs"
     ],
     googleAdDescriptions: [
-      "Give clinical lecturers and tutors their weekends back. 30-second digital bedside sign-offs on student mobile phones.",
-      "Self-serve 15-minute curriculum setup. Turn your rotation paper checklist into a real-time mobile tracking app.",
-      "Identify procedure deficiencies in Week 2 rather than failing students at final OSCE exams.",
-      "Deploy a 6-week paperless rotation pilot in your clinical department with zero university IT delays."
+      "End the paper card nightmare in your clinical department. Launch a turnkey digital pilot in 14 days.",
+      "Track medical student procedure quotas and clinical attendance with zero IT friction. Used at Wits.",
+      "Lecturers and course convenors: set up your rotation in 15 minutes and end weekend grading.",
+      "Download the 6-Week Departmental Pilot Blueprint & 1-Page HOD Permission Memo template."
     ]
   },
 
   "bedside-wba": {
     slug: "bedside-wba",
-    badge: "Bedside Speed & Workplace-Based Assessments",
-    title: "Bedside Mini-CEX & DOPS in Under 60 Seconds",
-    targetPersona: "Clinical Consultants, Registrars, Tutors & Teaching Hospital Supervisors",
-    targetRole: "Clinical Consultant / Senior Registrar / Ward Supervisor",
-    heroHeadline: "Conduct Bedside Mini-CEX & DOPS in Under 60 Seconds Without Paperwork",
+    category: "medical",
+    badge: "Bedside Speed Engine & Mini-CEX Workflows",
+    title: "Bedside Workplace-Based Assessments (Mini-CEX, DOPS, CBD)",
+    targetPersona: "Clinical Consultants, Ward Supervisors, Registrars & Teaching Hospital Tutors",
+    targetRole: "Consultant Physician / Clinical Supervisor",
+    heroHeadline: "Complete Bedside Mini-CEX Assessments in Under 45 Seconds",
     heroSubhead:
-      "Hospital consultants don't have time to fill out multi-page paper evaluation forms during ward rounds. Heykudu puts standardized Mini-CEX, DOPS, and Case-Based Discussions on mobile with 1-tap supervisor verification.",
+      "Clinical ward rounds are overburdened with acute patient care. Heykudu empowers consultants to sign off procedure quotas, provide voice feedback, and evaluate entrustability in seconds—without logging into desktop portals.",
     proofStats: [
       {
-        value: "30s",
+        value: "45 sec",
         label: "Bedside Sign-Off",
-        subtext: "1-tap phone-to-phone or NFC badge verification"
-      },
-      {
-        value: "0",
-        label: "Login Headaches",
-        subtext: "Supervisors verify with zero account friction"
+        subtext: "Fast rubric evaluation with one-tap consultant PIN or QR scan"
       },
       {
         value: "100%",
-        label: "Rubric Standardization",
-        subtext: "Objective clinical scoring aligned with faculty guidelines"
+        label: "Offline Operability",
+        subtext: "Works in basement wards and Faraday-cage ICUs with zero Wi-Fi"
+      },
+      {
+        value: "3x",
+        label: "Feedback Frequency",
+        subtext: "More formative workplace-based assessments captured per student"
       }
     ],
     painPoints: [
       {
-        title: "Clinician Administrative Burnout",
+        title: "Consultants Drowning in Clinical Rounds",
         description:
-          "Doctors on busy hospital wards want to teach clinical decision-making, not spend 15 minutes filling out paper assessment rubrics.",
+          "Doctors are managing critically ill patients. They do not have time to sit at a hospital desktop to fill out 20-question web evaluation forms.",
         icon: "user-minus"
       },
       {
-        title: "Retrospective Rubber-Stamping",
+        title: "Lost Cards & Illegible Signatures",
         description:
-          "Paper logbooks get signed in bulk weeks after the patient encounter took place, destroying meaningful formative clinical feedback.",
+          "Scrawled doctor signatures on physical paper cards are unverified, illegible, and easily forged by desperate students.",
         icon: "edit-3"
       },
       {
-        title: "Subjective, Inconsistent Grading",
+        title: "Hospital Dead-Zones & Zero Wi-Fi",
         description:
-          "Different tutors grade with varying stringency when using paper forms, leading to student friction and disputed assessment marks.",
-        icon: "sliders"
+          "Traditional web portals fail completely in hospital basement wards, radiology suites, and rural clinics without reliable Internet.",
+        icon: "wifi-off"
       }
     ],
     solutionFeatures: [
       {
-        title: "1-Tap Mobile Mini-CEX & DOPS",
+        title: "One-Tap Consultant Sign-Off",
         description:
-          "Pre-populated clinical rubrics allow consultants to evaluate history-taking, physical examination, and procedural skills in under a minute.",
+          "Students present their phone. The consultant enters their 4-digit PIN or scans a QR code to verify the procedure instantly.",
         icon: "check-square"
       },
       {
-        title: "Instant Formative Voice Feedback",
+        title: "Voice-to-Text Clinical Feedback",
         description:
-          "Consultants can dictate quick 15-second audio pearls at the bedside that are automatically transcribed into the student's clinical portfolio.",
+          "Consultants dictate actionable, 10-second formative feedback at the bedside. Heykudu transcribes and formats it automatically.",
         icon: "mic"
       },
       {
-        title: "Offline-First Ward Sync",
+        title: "Guaranteed Offline Operation",
         description:
-          "Works perfectly in thick hospital basements, ICUs, and wards with zero cellular reception. Syncs automatically when connected.",
-        icon: "wifi-off"
+          "Engineered with local-first offline storage. Every assessment is cached securely on the student device and syncs when back online.",
+        icon: "smartphone"
       }
     ],
     primaryCta: {
-      label: "Test the 60-Second Bedside Demo",
+      label: "Experience the 45-Second Bedside WBA Interactive Demo",
       actionType: "interactive_demo",
-      helperText: "Interactive mobile walkthrough • See 1-tap supervisor verification on your phone"
+      helperText: "Test the mobile consultant assessment interface directly in your browser"
     },
     deliverable: {
-      title: "The Clinician Time-Savings Whitepaper & Bedside WBA Protocol",
-      format: "Whitepaper + Standardized Mini-CEX/DOPS Protocol",
+      title: "The Clinical Educator's Guide to 45-Second Bedside Workplace-Based Assessments",
+      format: "PDF Quick-Start Guide + Mini-CEX Rubric Bank",
       description:
-        "How teaching hospital departments cut consultant administrative burden by 80% while dramatically improving bedside clinical teaching quality.",
-      filename: "Heykudu_Clinician_WBA_Protocol_Whitepaper.pdf"
+        "High-yield rubrics for Mini-CEX, DOPS, and Case-Based Discussions designed for fast-paced public hospital rounds.",
+      filename: "Heykudu_Bedside_Assessment_Guide.pdf"
     },
     closingScript: {
-      title: "Clinical Director Bedside Protocol Walkthrough",
-      targetRole: "Clinical Director / Academic Consultant",
+      title: "Clinical Consultant & Director of Clinical Training Script",
+      targetRole: "Clinical Director / Lead Consultant Tutor",
       discoveryQuestions: [
-        "When your registrars and consultants supervise students at the bedside, how much time is spent filling out paper evaluation rubrics?",
-        "How often are clinical cards signed weeks after the patient encounter because there was no time during ward rounds?",
-        "Would your consultants prefer a 30-second mobile tap on the student's phone with standardized scoring rubrics?"
+        "How often do your consultants skip doing formative Mini-CEX assessments simply because the university's web portal is too slow or paper forms get lost?",
+        "Do your ward tutors experience poor cellular signal in your hospital wards?",
+        "If your doctors could sign off a procedure in 45 seconds using their phone with zero desktop login required, would your department capture more clinical feedback?"
       ],
       pilotMemorandumTerms: [
-        "Tested in real teaching hospital conditions (no WiFi required)",
-        "Zero IT overhead for busy consultants",
-        "Instant automated aggregation into faculty grading books"
+        "Fast-track ward consultant onboarding (3-minute video guide)",
+        "Customizable rubric bank (Mini-CEX, DOPS, Entrustment scales)",
+        "Zero desktop logins required for teaching doctors"
       ]
     },
     googleAdHeadlines: [
-      "30-Second Bedside Mini-CEX",
-      "Mobile WBA Assessments",
-      "DOPS & CBD on Mobile",
-      "Stop Paperwork at Bedside",
-      "1-Tap Supervisor Sign-Off",
-      "No More Grading Backlogs",
-      "Instant Clinical Debriefs",
-      "Standardize Assessment Rubrics",
-      "Clinician-First Mobile WBA",
-      "Protect Clinical Teaching Time"
+      "Bedside Mini-CEX App",
+      "Fast Clinical Sign-Offs",
+      "Doctor Workplace Ratings",
+      "Mobile DOPS Assessments",
+      "Offline Hospital Logbook",
+      "Voice Clinical Feedback",
+      "Ward Round Efficiency",
+      "Zero Desktop Portal Hassle",
+      "45-Second Sign-Off Tool",
+      "Medical Tutor App"
     ],
     googleAdDescriptions: [
-      "Conduct Mini-CEX and DOPS in under 60 seconds directly at the bedside with standardized digital rubrics.",
-      "Clinicians tap their phone to the student's badge to approve procedures. No usernames, no passwords.",
-      "Streamline clinical assessments across teaching hospitals with zero consultant administrative drag.",
-      "Real-time feedback loops between registrars, consultants, and undergraduate medical students."
+      "Consultants complete Mini-CEX & DOPS assessments in under 45 seconds right at the bedside.",
+      "Works 100% offline in hospital wards and ICUs. No desktop logins or clunky web forms required.",
+      "Capture rich voice feedback and verify student clinical procedures instantly with a 4-digit PIN.",
+      "Download the Clinical Educator's Guide to Fast Bedside Workplace-Based Assessments."
     ]
   },
 
   "epa-transition": {
     slug: "epa-transition",
-    badge: "Curriculum Modernization & EPAs",
-    title: "Operationalizing Entrustable Professional Activities",
-    targetPersona: "Curriculum Committee Chairs, Directors of Medical Education & Innovation",
-    targetRole: "Director of Medical Education / Curriculum Committee Chair",
-    heroHeadline: "Operationalize Entrustable Professional Activities (EPAs) Without Administrative Chaos",
+    category: "medical",
+    badge: "Next-Gen EPA Transition & Legacy Replacement",
+    title: "Entrustable Professional Activities (EPA) Modernization",
+    targetPersona: "Curriculum Committee Chairs, Directors of Medical Education & EdTech Innovators",
+    targetRole: "Curriculum Committee Chair / Director of Medical Education",
+    heroHeadline: "Modernize from Legacy Portals to Real-Time Entrustable Professional Activities",
     heroSubhead:
-      "Modern medical curricula require transitioning from hours-based seat time to competency-based Entrustable Professional Activities. Heykudu tracks entrustment levels and provides curriculum-grounded Socratic reflection.",
+      "Still running medical rotations on desktop software built in 2008? Upgrade to a native, offline-first mobile platform with embedded Socratic AI mentoring and automated EPA milestone analytics.",
     proofStats: [
       {
-        value: "Level 1–5",
-        label: "Entrustment Tracking",
-        subtext: "Automated progression tracking from observation to indirect supervision"
+        value: "12 EPAs",
+        label: "Mapped Out of the Box",
+        subtext: "Aligned with international and South African health curriculum frameworks"
       },
       {
-        value: "Offline AI",
-        label: "Socratic Mentor",
-        subtext: "Curriculum-grounded clinical case debriefs without patient data exposure"
+        value: "4.9 / 5",
+        label: "Student Usability",
+        subtext: "Native iOS & Android mobile UX designed for Gen Z medical cohorts"
       },
       {
-        value: "14 Days",
-        label: "Curriculum Mapping",
-        subtext: "Map your faculty's EPAs and milestone rubrics with zero coding"
+        value: "90%",
+        label: "Cost Savings",
+        subtext: "Compared to complex multi-year enterprise legacy portal contracts"
       }
     ],
     painPoints: [
       {
-        title: "EPA Implementation Friction",
+        title: "Antiquated 2000s-Era Portals",
         description:
-          "Defining EPAs on paper is easy, but tracking whether 300 medical students reach Level 3 entrustment in clinical practice is a logistical nightmare.",
-        icon: "trending-down"
-      },
-      {
-        title: "Clunky Legacy LMS Portals",
-        description:
-          "Traditional university LMS systems like Moodle or Blackboard are desktop-bound and fail completely inside busy teaching hospitals.",
+          "Medical schools pay exorbitant annual fees for legacy web portals that are clunky, require desktop laptops, and lack offline capabilities.",
         icon: "monitor-x"
       },
       {
-        title: "Superficial Case Reflection",
+        title: "Disconnected Competency Curricula",
         description:
-          "Students copy-paste generic text into reflection logs rather than engaging in critical clinical reasoning and diagnostic reflection.",
+          "Faculties write modern EPA learning outcomes on paper, but have no mobile software capable of capturing progressive supervision levels.",
         icon: "book-open"
+      },
+      {
+        title: "Superficial Ticking the Box",
+        description:
+          "Students rush through paper logs at the end of the year without meaningful pedagogical debriefs or clinical reflection.",
+        icon: "trending-down"
       }
     ],
     solutionFeatures: [
       {
-        title: "Automated Entrustment Progression Curves",
+        title: "Dynamic EPA Entrustability Scales",
         description:
-          "Real-time analytics chart each student's journey from direct supervision to unsupervised practice across core clinical domains.",
+          "Capture supervisor entrustment levels (from direct observation to independent practice) with visual longitudinal growth curves.",
         icon: "trending-up"
       },
       {
-        title: "Embedded Socratic Clinical Mentor",
+        title: "Embedded Socratic AI Clinical Mentor",
         description:
-          "Interactive case debrief engine asks probing questions on patient management, differential diagnosis, and evidence-based medicine.",
+          "When students log an acute clinical case, Heykudu's embedded clinical AI debriefs them with Socratic reasoning questions.",
         icon: "cpu"
       },
       {
-        title: "Seamless Institutional Integration",
+        title: "Seamless SIS & LMS Integration",
         description:
           "Integrates with university student information systems and exports clean, formatted competency transcripts for graduation boards.",
         icon: "layers"
@@ -494,6 +505,462 @@ export const FUNNEL_MATRIX: Record<string, FunnelVariant> = {
       "Transition your curriculum smoothly to Entrustable Professional Activities (EPAs) with automated progress bars.",
       "Integrates with your university LMS while providing students an offline-first Socratic AI case debrief.",
       "Designed specifically for African and Commonwealth medical curricula. Explore our interactive sandbox."
+    ]
+  },
+
+  // ============================================================================
+  // UNIVERSITY-WIDE & NON-MEDICAL CAMPUS SOLUTIONS
+  // ============================================================================
+
+  "paperless-attendance": {
+    slug: "paperless-attendance",
+    category: "university_wide",
+    badge: "University-Wide Paperless Attendance & Digital Sheets",
+    title: "Paperless Student Attendance & Anti-Proxy Digital Sheets",
+    targetPersona: "Deans, Department Heads, Course Convenors & Lecturers (All Faculties: Law, Engineering, Commerce, Science, Humanities)",
+    targetRole: "University Course Convenor / Lead Lecturer",
+    heroHeadline: "Replace Paper Sign-In Sheets with Foolproof Digital Attendance",
+    heroSubhead:
+      "Stop wasting 15 minutes passing around paper clipboards that students sign for absent friends. Heykudu gives lecturers instant, anti-cheat digital attendance sheets with automated requirement tracking across any class size.",
+    proofStats: [
+      {
+        value: "0 sec",
+        label: "Class Time Wasted",
+        subtext: "Instant roll call in 400-seat lecture halls or 15-student labs"
+      },
+      {
+        value: "100%",
+        label: "Buddy Signing Eliminated",
+        subtext: "Cryptographic QR cycling, device fingerprinting & GPS lock"
+      },
+      {
+        value: "15 min",
+        label: "Self-Serve Setup",
+        subtext: "Lecturers set up courses with custom attendance quotas in minutes"
+      }
+    ],
+    painPoints: [
+      {
+        title: "The Paper Clipboard Bottleneck",
+        description:
+          "Passing around paper registers disrupts lectures, takes 20 minutes to circulate 300 seats, and frequently gets lost or coffee-stained.",
+        icon: "file-text"
+      },
+      {
+        title: "Rampant Proxy & Buddy Signing",
+        description:
+          "Students routinely sign the paper sheet for 3 or 4 absent friends sitting in the campus cafeteria or dormitory, corrupting university attendance data.",
+        icon: "user-x"
+      },
+      {
+        title: "Manual Excel Grading Weekends",
+        description:
+          "At the end of semester, lecturers spend whole weekends manually transcribing thousands of paper signatures into Excel to verify exam DP eligibility.",
+        icon: "clock"
+      }
+    ],
+    solutionFeatures: [
+      {
+        title: "Dynamic Anti-Cheat QR & NFC Sheets",
+        description:
+          "Display a cycling dynamic QR code or tap NFC cards. Codes rotate every 5 seconds to prevent students from texting screenshots to absent friends.",
+        icon: "smartphone"
+      },
+      {
+        title: "Automated Course Requirement Quotas",
+        description:
+          "Define mandatory attendance rules (e.g. 'Must attend 8 of 10 lectures and 4 practicals'). The engine tracks each student's threshold automatically.",
+        icon: "check-circle"
+      },
+      {
+        title: "1-Click LMS & Spreadsheet Sync",
+        description:
+          "Instantly export verified attendance rosters into Moodle, Canvas, Blackboard, or Excel with one click. Zero manual data entry.",
+        icon: "layers"
+      }
+    ],
+    primaryCta: {
+      label: "Try the Digital Attendance Sheet Sandbox",
+      actionType: "interactive_demo",
+      helperText: "Instant access • Works for lectures from 10 to 1,000 students • No credit card required"
+    },
+    deliverable: {
+      title: "The Complete Paperless University Attendance Playbook",
+      format: "PDF Architecture Guide + Course Attendance Quota Calculator",
+      description:
+        "The practical blueprint for course convenors to eliminate paper registers, stop proxy sign-ins, and automate semester attendance rules.",
+      filename: "Heykudu_Paperless_University_Attendance_Playbook.pdf"
+    },
+    closingScript: {
+      title: "Course Convenor Paperless Attendance Discovery Script",
+      targetRole: "Course Convenor / Academic Program Director",
+      discoveryQuestions: [
+        "How much class time do your lecturers lose passing around paper sign-in clipboards in your large lectures or practical labs?",
+        "How big of an issue is buddy signing and proxy attendance in your department's mandatory attendance courses?",
+        "If your lecturers could project a dynamic QR code that takes attendance for 300 students in 20 seconds with zero proxy sign-ins, would you test it in one course?"
+      ],
+      pilotMemorandumTerms: [
+        "Instant course setup without university central IT intervention",
+        "Supports hybrid: large lecture halls, small tutorials, and remote field sites",
+        "Exports directly to Moodle, Canvas, or CSV spreadsheets"
+      ]
+    },
+    googleAdHeadlines: [
+      "Paperless Student Attendance",
+      "Stop Proxy Attendance Fraud",
+      "Digital Attendance Sheets",
+      "Instant Lecture Roll Call",
+      "No More Paper Sign-In Sheets",
+      "Track University Attendance",
+      "Large Classroom Attendance",
+      "Anti-Cheat QR Check-In",
+      "Automated DP Quota Tracker",
+      "15-Minute Course Rollout"
+    ],
+    googleAdDescriptions: [
+      "Eliminate clipboard registers and proxy signing. Switch to instant, tamper-proof mobile attendance.",
+      "Designed for 500-seat lecture halls and small tutorials alike. Zero wasted class time.",
+      "Set mandatory course attendance rules. Real-time RAG progress alerts for at-risk students.",
+      "Integrates with Moodle, Canvas, and Blackboard. Try our free 14-day departmental sandbox."
+    ]
+  },
+
+  "student-rag-analytics": {
+    slug: "student-rag-analytics",
+    category: "university_wide",
+    badge: "Early-Warning RAG Status & Student Progress Engine",
+    title: "Student Progress Bars & Early-Warning RAG Analytics",
+    targetPersona: "Academic Advisors, Teaching & Learning Deans, Course Convenors & Multi-Lecturer Teams",
+    targetRole: "Director of Teaching & Learning / Course Convenor",
+    heroHeadline: "Spot At-Risk Students Weeks Before Exam DP Refusal",
+    heroSubhead:
+      "Empower students with visual live progress bars while giving lecturers an automated Red-Amber-Green (RAG) dashboard to intervene before students fail mandatory course attendance requirements.",
+    proofStats: [
+      {
+        value: "Week 3",
+        label: "Earliest Deficit Alert",
+        subtext: "Detect attendance drop-offs early enough for meaningful academic intervention"
+      },
+      {
+        value: "40%",
+        label: "Fewer DP Appeals",
+        subtext: "100% transparent student records eliminate end-of-term attendance disputes"
+      },
+      {
+        value: "Multi-Team",
+        label: "Lecturer Coordination",
+        subtext: "Unifies attendance across multiple lecturers, guest speakers & lab tutors"
+      }
+    ],
+    painPoints: [
+      {
+        title: "The End-of-Term DP Ambush",
+        description:
+          "Students only find out they've failed minimum attendance requirements (DP refusal) right before final exams, triggering anger and endless appeals.",
+        icon: "alert-triangle"
+      },
+      {
+        title: "Multi-Lecturer Blind Spots",
+        description:
+          "When a course is taught by 4 different lecturers and 6 tutors, attendance data sits in separate silos, leaving everyone in the dark on overall student health.",
+        icon: "user-minus"
+      },
+      {
+        title: "Zero Student Self-Accountability",
+        description:
+          "Students have no idea how many classes they've missed because the university's paper records aren't accessible until the term concludes.",
+        icon: "file-question"
+      }
+    ],
+    solutionFeatures: [
+      {
+        title: "Student Mobile Progress Bars",
+        description:
+          "Students see their exact progress on their phone: '8/10 Lectures Complete • 80% • On Track for Exam Admittance'.",
+        icon: "trending-up"
+      },
+      {
+        title: "Automated Faculty RAG Radar",
+        description:
+          "Lecturers filter cohorts with 1 click: Green (On Track), Amber (Warning Zone), and Red (At Risk of DP Refusal). Intervene proactively.",
+        icon: "activity"
+      },
+      {
+        title: "Multi-Lecturer & Multi-Outcome Unification",
+        description:
+          "Seamlessly combine attendance across main lectures, guest masterclasses, tutorial seminars, and lab practicals in one unified course roster.",
+        icon: "layers"
+      }
+    ],
+    primaryCta: {
+      label: "Request a Student Retention & RAG Demo",
+      actionType: "schedule_briefing",
+      helperText: "See how early RAG indicators reduce student drop-out and streamline course management"
+    },
+    deliverable: {
+      title: "The University DP & Student Retention Analytics Framework",
+      format: "PDF Whitepaper + RAG Student Intervention SOP",
+      description:
+        "How top universities use real-time attendance analytics and visual progress indicators to improve student retention and resolve exam appeals.",
+      filename: "Heykudu_Student_RAG_Analytics_Framework.pdf"
+    },
+    closingScript: {
+      title: "Academic Retention & Teaching Dean Discovery Script",
+      targetRole: "Dean of Teaching & Learning / Academic Advisor",
+      discoveryQuestions: [
+        "How many administrative hours does your faculty spend every semester adjudicating student attendance appeals and DP refusals?",
+        "When 3 or 4 different lecturers teach modules in the same course, how do you currently aggregate attendance into a single student record?",
+        "If students could monitor their own live progress bars and your team had an early RAG dashboard, how would that impact your course completion rates?"
+      ],
+      pilotMemorandumTerms: [
+        "Automated RAG thresholds tailored to your university's exact DP rules",
+        "Includes multi-lecturer permission roles and guest tutor accounts",
+        "Comprehensive student retention report at end of semester"
+      ]
+    },
+    googleAdHeadlines: [
+      "Student RAG Progress Bars",
+      "Prevent DP Refusal Appeals",
+      "Early Warning Student Alerts",
+      "Track Course Requirements",
+      "Multi-Lecturer Attendance",
+      "Spot At-Risk Students Early",
+      "Real-Time Attendance Engine",
+      "Automated Exam Eligibility",
+      "Student Retention Analytics",
+      "Transparent Student Quotas"
+    ],
+    googleAdDescriptions: [
+      "Give students visual progress bars and give convenors early RAG alerts before exam time.",
+      "Stop end-of-semester attendance disputes. Fully transparent, audit-ready student logs.",
+      "Coordinate multi-lecturer courses seamlessly. All lecture, lab, and tutorial data in one place.",
+      "Free up 20+ hours of administrative audit work per course. Explore Heykudu's live demo."
+    ]
+  },
+
+  "distributed-sites": {
+    slug: "distributed-sites",
+    category: "university_wide",
+    badge: "Multi-Campus & Distributed Learning Site Verifier",
+    title: "Distributed Learning Sites, Satellite Campuses & Fieldwork",
+    targetPersona: "Work-Integrated Learning (WIL) Coordinators, Deans of Engineering, Education, Science, Law & Health",
+    targetRole: "Director of Distributed Learning / WIL Coordinator",
+    heroHeadline: "Know Exactly Who Shows Up at Distributed Satellite Sites",
+    heroSubhead:
+      "When students are scattered across 25 remote clinics, rural schools, regional campuses, or industrial engineering sites, paper logs fail completely. Heykudu guarantees verifiable, geofenced proof of presence everywhere.",
+    proofStats: [
+      {
+        value: "25+ Sites",
+        label: "Unified in One Console",
+        subtext: "Real-time visibility across regional campuses and rural fieldwork"
+      },
+      {
+        value: "Sub-Meter",
+        label: "Geofenced Perimeters",
+        subtext: "Attendance unlocks only inside approved campus or site GPS bounds"
+      },
+      {
+        value: "100%",
+        label: "Offline Syncing",
+        subtext: "Logs check-ins in areas with zero cellular signal and syncs when reconnected"
+      }
+    ],
+    painPoints: [
+      {
+        title: "Ghost Satellite & Field Attendance",
+        description:
+          "Students placed at satellite sites or rural practicals claim to be on site while remaining at home, creating severe accreditation exposure.",
+        icon: "map-pin"
+      },
+      {
+        title: "The Busy Remote Mentor Dilemma",
+        description:
+          "On-site supervisors and workplace mentors are too busy with daily operations to fill out paper evaluation sheets and attendance slips.",
+        icon: "user-minus"
+      },
+      {
+        title: "Zero Central Faculty Visibility",
+        description:
+          "Main campus coordinators have no way of knowing whether students or tutors are actually attending remote sessions until weeks later.",
+        icon: "alert-triangle"
+      }
+    ],
+    solutionFeatures: [
+      {
+        title: "Multi-Site GPS Geofence Radar",
+        description:
+          "Establish circular or polygon geofences around satellite campuses, remote clinics, schools, and engineering plants with sub-meter accuracy.",
+        icon: "map-pin"
+      },
+      {
+        title: "Resilient Offline Check-In",
+        description:
+          "Designed for rural practicals with poor connectivity. The application cryptographically signs presence offline and syncs upon reconnection.",
+        icon: "wifi-off"
+      },
+      {
+        title: "Remote Mentor 10-Second Validation",
+        description:
+          "Site supervisors confirm student presence and practical performance in seconds from their own smartphone with no desktop setup required.",
+        icon: "check-circle"
+      }
+    ],
+    primaryCta: {
+      label: "Map Your Distributed Sites in a Sandbox",
+      actionType: "deploy_pilot",
+      helperText: "Configure up to 10 satellite sites in 15 minutes • Free trial for university faculties"
+    },
+    deliverable: {
+      title: "Distributed Campus & Remote Site Accountability Blueprint",
+      format: "PDF Architecture Guide + Satellite Geofencing Setup Template",
+      description:
+        "The complete institutional framework for monitoring student attendance and practical hours across multi-campus networks and remote training platforms.",
+      filename: "Heykudu_Distributed_Site_Accountability_Blueprint.pdf"
+    },
+    closingScript: {
+      title: "Distributed Learning & WIL Coordinator Script",
+      targetRole: "Director of Work-Integrated Learning (WIL) / Satellite Dean",
+      discoveryQuestions: [
+        "How do you currently verify that students placed at remote satellite facilities or rural sites are physically attending their required hours?",
+        "What happens when students in remote areas have no cellular signal or Wi-Fi?",
+        "If you could view a live radar map showing verified presence across all your external placement sites simultaneously, would that streamline your compliance?"
+      ],
+      pilotMemorandumTerms: [
+        "Geofencing setup for all external satellite campuses and clinics included",
+        "Full offline validation support for remote and rural areas",
+        "Executive site compliance dashboard provided to faculty board"
+      ]
+    },
+    googleAdHeadlines: [
+      "Distributed Site Attendance",
+      "Multi-Campus Student Tracking",
+      "Satellite Site Geofencing",
+      "Remote Clinic Attendance",
+      "Work-Integrated Learning WIL",
+      "Verify Student Field Presence",
+      "Rural Practical Logbooks",
+      "Decentralized Training Sync",
+      "Offline Attendance Tracking",
+      "Multi-Site Faculty Console"
+    ],
+    googleAdDescriptions: [
+      "Monitor student presence across remote clinics, field sites, and satellite campuses in real time.",
+      "Geofenced GPS check-in ensures students are physically on site. Works 100% offline.",
+      "Perfect for Work-Integrated Learning (WIL), medical rotations, and engineering fieldwork.",
+      "Eliminate phantom attendance across distributed teaching networks. Book a 15-min briefing."
+    ]
+  },
+
+  "academic-apis": {
+    slug: "academic-apis",
+    category: "university_wide",
+    badge: "Modern Developer APIs & Model Context Protocol (MCP) Interop",
+    title: "Programmable University APIs & MCP Agent Integration",
+    targetPersona: "University CIOs, Academic IT Directors, EdTech Developers & Tech-Forward Lecturers",
+    targetRole: "Head of Academic Technology / Lead Course Developer",
+    heroHeadline: "The Programmable University Attendance Engine with Open APIs & MCP",
+    heroSubhead:
+      "Connect real-time student attendance and progress directly to your LMS, custom department portals, and autonomous AI agents via modern REST APIs, webhooks, and Model Context Protocol (MCP).",
+    proofStats: [
+      {
+        value: "REST + MCP",
+        label: "Native Interoperability",
+        subtext: "Connect AI agents (Gemini, Claude) and campus LMS systems effortlessly"
+      },
+      {
+        value: "1-Click",
+        label: "LMS Webhook Streaming",
+        subtext: "Real-time sync to Moodle, Canvas, Blackboard, or custom SIS databases"
+      },
+      {
+        value: "<100ms",
+        label: "Real-Time Event Processing",
+        subtext: "Instant check-in notifications and live cohort progress webhooks"
+      }
+    ],
+    painPoints: [
+      {
+        title: "Walled Garden EdTech Lock-In",
+        description:
+          "Legacy university software traps your attendance and student records in closed proprietary databases with zero API access.",
+        icon: "monitor-x"
+      },
+      {
+        title: "Manual Double-Entry Between Systems",
+        description:
+          "Lecturers and IT admins are forced to manually export CSVs and copy-paste records between attendance tools and the main campus LMS.",
+        icon: "edit-3"
+      },
+      {
+        title: "Incompatible with Modern AI Agents",
+        description:
+          "Legacy platforms cannot interface with modern AI assistants or Model Context Protocol (MCP) servers to deliver intelligent insights.",
+        icon: "cpu"
+      }
+    ],
+    solutionFeatures: [
+      {
+        title: "Open REST API & Webhooks",
+        description:
+          "Query attendance rosters, stream check-in events, and programmatically configure courses and thresholds with type-safe APIs.",
+        icon: "layers"
+      },
+      {
+        title: "Native Model Context Protocol (MCP)",
+        description:
+          "Equip your faculty's AI agents with tools to query attendance trends, generate RAG reports, and identify at-risk cohorts via MCP.",
+        icon: "cpu"
+      },
+      {
+        title: "Plug-and-Play LMS Connectors",
+        description:
+          "Pre-built webhooks and endpoints for Moodle, Canvas, and Blackboard ensure gradebooks update the second a student checks in.",
+        icon: "check-circle"
+      }
+    ],
+    primaryCta: {
+      label: "Access Developer API Docs & MCP Server Sandbox",
+      actionType: "interactive_demo",
+      helperText: "Full API documentation • MCP server configuration guide • Postman collection included"
+    },
+    deliverable: {
+      title: "The University EdTech API & MCP Integration Architecture Guide",
+      format: "Technical Whitepaper + OpenAPI Schema + MCP Server Setup Guide",
+      description:
+        "The developer and architectural specification for integrating Heykudu's attendance engine into campus LMS, SIS, and AI agent ecosystems.",
+      filename: "Heykudu_API_and_MCP_Architecture_Guide.pdf"
+    },
+    closingScript: {
+      title: "University CIO & Academic Tech Lead Script",
+      targetRole: "University CIO / Director of Academic IT",
+      discoveryQuestions: [
+        "How difficult is it currently for your team to extract real-time attendance and student progress data out of your legacy campus tools?",
+        "Is your institution exploring Model Context Protocol (MCP) or AI agent integration for academic advising and student tracking?",
+        "If you could offer your lecturers an open API and MCP-enabled attendance engine that syncs cleanly with your existing LMS, would that save IT resources?"
+      ],
+      pilotMemorandumTerms: [
+        "Dedicated developer sandbox API keys provided instantly",
+        "Assistance with Moodle/Canvas webhook configuration",
+        "Pre-built MCP server configuration for Antigravity, Claude, and Gemini"
+      ]
+    },
+    googleAdHeadlines: [
+      "Attendance APIs for Universities",
+      "MCP Server for EdTech",
+      "Sync Attendance to Moodle",
+      "Programmable Student Tracking",
+      "Canvas Attendance Webhooks",
+      "Open APIs for Lecturers",
+      "AI Agent Ready Attendance",
+      "Developer-First EdTech SaaS",
+      "Automate Attendance Sheets",
+      "Modern Academic APIs"
+    ],
+    googleAdDescriptions: [
+      "Programmable attendance infrastructure for universities. REST APIs, Webhooks, and MCP ready.",
+      "Stream live attendance and RAG status directly into Moodle, Canvas, or custom faculty portals.",
+      "Empower your faculty and AI agents with real-time academic compliance data. Read the API docs.",
+      "Build custom departmental attendance workflows in minutes. Get developer sandbox access."
     ]
   }
 };
