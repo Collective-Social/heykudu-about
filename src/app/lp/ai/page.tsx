@@ -3,6 +3,8 @@
 import React, { useState, useEffect, Suspense } from "react";
 import Link from "next/link";
 import { useSearchParams, useRouter } from "next/navigation";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import { AguiVariant } from "@/lib/marketing/aguiGenerator";
 import {
   ShieldAlert,
@@ -120,6 +122,15 @@ function AguiContent() {
   const [generationTimeMs, setGenerationTimeMs] = useState<number | null>(null);
   const [variant, setVariant] = useState<AguiVariant | null>(null);
   const [error, setError] = useState<string | null>(null);
+
+  // Debug & Preview Controller Visibility
+  const isDebugOrPreview =
+    searchParams.get("debug") === "1" ||
+    searchParams.get("debug") === "true" ||
+    searchParams.get("preview") === "1" ||
+    searchParams.get("preview") === "true" ||
+    searchParams.get("admin") === "1";
+  const [showControls, setShowControls] = useState(isDebugOrPreview);
 
   // Form State
   const [fullName, setFullName] = useState("");
@@ -254,82 +265,94 @@ function AguiContent() {
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col selection:bg-emerald-500/20 selection:text-emerald-300">
+      {/* Standard Brand Marketing Header */}
+      <Navbar />
+
       {/* ========================================================================= */}
-      {/* 1. AGUI REAL-TIME CONTROLLER BAR                                          */}
+      {/* 1. AGUI REAL-TIME CONTROLLER BAR (Internal Preview & Diagnostics Only)    */}
       {/* ========================================================================= */}
-      <div className="sticky top-0 z-50 bg-slate-900/95 backdrop-blur-md border-b border-slate-800 shadow-xl px-4 py-3">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3">
-          <div className="flex items-center gap-3 w-full md:w-auto">
-            <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 whitespace-nowrap">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-              AGUI Engine Live
-            </span>
-            <span className="text-xs text-slate-400 hidden lg:inline">
-              AI Generative User Interface synthesizing bespoke copy, stats, & simulator grounded in{" "}
-              <code className="text-slate-300">.agents/strategy.md</code>
-            </span>
+      {showControls && (
+        <div className="sticky top-16 z-40 bg-slate-900/95 backdrop-blur-md border-b border-slate-800 shadow-xl px-4 py-3">
+          <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3">
+            <div className="flex items-center gap-3 w-full md:w-auto">
+              <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 whitespace-nowrap">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+                AGUI Engine Live
+              </span>
+              <span className="text-xs text-slate-400 hidden lg:inline">
+                AI Generative User Interface synthesizing bespoke copy, stats, & simulator grounded in{" "}
+                <code className="text-slate-300">.agents/strategy.md</code>
+              </span>
+            </div>
+
+            <form onSubmit={handleQuerySubmit} className="flex items-center gap-2 w-full md:w-auto flex-1 max-w-xl">
+              <div className="relative flex-1">
+                <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
+                <input
+                  type="text"
+                  value={queryInput}
+                  onChange={(e) => setQueryInput(e.target.value)}
+                  placeholder="Enter any search intent, faculty, or course challenge..."
+                  className="w-full pl-9 pr-3 py-1.5 text-xs bg-slate-950 border border-slate-700 rounded-lg text-slate-200 placeholder-slate-500 focus:outline-none focus:border-emerald-500 transition-colors"
+                />
+              </div>
+              <button
+                type="submit"
+                disabled={loading}
+                className="px-3 py-1.5 text-xs font-medium rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white flex items-center gap-1.5 transition-colors whitespace-nowrap disabled:opacity-50"
+              >
+                {loading ? (
+                  <>
+                    <RefreshCw className="w-3.5 h-3.5 animate-spin" />
+                    Synthesizing...
+                  </>
+                ) : (
+                  <>
+                    <Sparkles className="w-3.5 h-3.5" />
+                    Morph Interface
+                  </>
+                )}
+              </button>
+            </form>
+
+            {generationTimeMs !== null && (
+              <div className="text-[11px] text-slate-400 font-mono hidden xl:flex items-center gap-2">
+                <span className="px-1.5 py-0.5 rounded bg-slate-800 text-slate-300">
+                  {cached ? "⚡ Cache Hit" : "🧠 Gemini Flash Synthesized"}
+                </span>
+                <span>{generationTimeMs}ms</span>
+              </div>
+            )}
           </div>
 
-          <form onSubmit={handleQuerySubmit} className="flex items-center gap-2 w-full md:w-auto flex-1 max-w-xl">
-            <div className="relative flex-1">
-              <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
-              <input
-                type="text"
-                value={queryInput}
-                onChange={(e) => setQueryInput(e.target.value)}
-                placeholder="Enter any search intent, faculty, or course challenge..."
-                className="w-full pl-9 pr-3 py-1.5 text-xs bg-slate-950 border border-slate-700 rounded-lg text-slate-200 placeholder-slate-500 focus:outline-none focus:border-emerald-500 transition-colors"
-              />
-            </div>
+          {/* Quick Scenario Chips */}
+          <div className="max-w-7xl mx-auto mt-2 pt-2 border-t border-slate-800/60 flex items-center gap-2 overflow-x-auto text-xs pb-1">
+            <span className="text-slate-400 font-medium text-[11px] whitespace-nowrap">Instant Scenarios:</span>
+            {SAMPLE_SCENARIOS.map((sc, i) => (
+              <button
+                key={i}
+                type="button"
+                onClick={() => handleScenarioSelect(sc)}
+                className="px-2.5 py-0.5 rounded-full bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-emerald-300 border border-slate-700/60 transition-colors whitespace-nowrap text-[11px]"
+              >
+                {sc.label}
+              </button>
+            ))}
             <button
-              type="submit"
-              disabled={loading}
-              className="px-3 py-1.5 text-xs font-medium rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white flex items-center gap-1.5 transition-colors whitespace-nowrap disabled:opacity-50"
-            >
-              {loading ? (
-                <>
-                  <RefreshCw className="w-3.5 h-3.5 animate-spin" />
-                  Synthesizing...
-                </>
-              ) : (
-                <>
-                  <Sparkles className="w-3.5 h-3.5" />
-                  Morph Interface
-                </>
-              )}
-            </button>
-          </form>
-
-          {generationTimeMs !== null && (
-            <div className="text-[11px] text-slate-400 font-mono hidden xl:flex items-center gap-2">
-              <span className="px-1.5 py-0.5 rounded bg-slate-800 text-slate-300">
-                {cached ? "⚡ Cache Hit" : "🧠 Gemini Flash Synthesized"}
-              </span>
-              <span>{generationTimeMs}ms</span>
-            </div>
-          )}
-        </div>
-
-        {/* Quick Scenario Chips */}
-        <div className="max-w-7xl mx-auto mt-2 pt-2 border-t border-slate-800/60 flex items-center gap-2 overflow-x-auto text-xs pb-1">
-          <span className="text-slate-400 font-medium text-[11px] whitespace-nowrap">Instant Scenarios:</span>
-          {SAMPLE_SCENARIOS.map((sc, i) => (
-            <button
-              key={i}
               type="button"
-              onClick={() => handleScenarioSelect(sc)}
-              className="px-2.5 py-0.5 rounded-full bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-emerald-300 border border-slate-700/60 transition-colors whitespace-nowrap text-[11px]"
+              onClick={() => setShowControls(false)}
+              className="ml-auto text-[11px] text-slate-400 hover:text-white px-2 py-0.5 rounded bg-slate-800/50 hover:bg-slate-800 transition-colors whitespace-nowrap"
             >
-              {sc.label}
+              Hide Bar ✕
             </button>
-          ))}
+          </div>
         </div>
-      </div>
+      )}
 
       {/* Main Container */}
       <div className="flex-1 flex flex-col">
         {loading ? (
-          <div className="max-w-4xl mx-auto py-24 px-6 text-center">
+          <div className={`max-w-4xl mx-auto ${showControls ? "py-24" : "pt-36 pb-28"} px-6 text-center`}>
             <div className="w-16 h-16 border-4 border-emerald-500/20 border-t-emerald-500 rounded-full animate-spin mx-auto mb-6" />
             <h2 className="text-2xl font-bold text-slate-200 mb-2">Synthesizing Bespoke AGUI Interface...</h2>
             <p className="text-slate-400 text-sm max-w-md mx-auto">
@@ -338,7 +361,7 @@ function AguiContent() {
             </p>
           </div>
         ) : error || !variant ? (
-          <div className="max-w-xl mx-auto py-20 px-6 text-center">
+          <div className={`max-w-xl mx-auto ${showControls ? "py-20" : "pt-36 pb-28"} px-6 text-center`}>
             <AlertTriangle className="w-12 h-12 text-rose-500 mx-auto mb-4" />
             <h2 className="text-xl font-bold text-white mb-2">AGUI Generation Error</h2>
             <p className="text-slate-400 text-sm mb-6">{error || "Failed to generate interface."}</p>
@@ -354,7 +377,7 @@ function AguiContent() {
             {/* ========================================================================= */}
             {/* 2. HERO SECTION (DYNAMIC AGUI SYNTHESIS)                                  */}
             {/* ========================================================================= */}
-            <section className="relative pt-12 pb-16 px-6 lg:px-8 border-b border-slate-800/60 overflow-hidden">
+            <section className={`relative ${showControls ? "pt-12" : "pt-28 md:pt-36"} pb-16 px-6 lg:px-8 border-b border-slate-800/60 overflow-hidden bg-gradient-to-b from-[#5B00C7]/20 via-slate-950 to-slate-950`}>
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-emerald-500/10 via-transparent to-transparent pointer-events-none" />
 
               <div className="max-w-5xl mx-auto text-center relative z-10">
@@ -617,14 +640,18 @@ function AguiContent() {
             {/* ========================================================================= */}
             {/* 8. LEAD CAPTURE & DELIVERABLE DOWNLOAD FORM                               */}
             {/* ========================================================================= */}
-            <section id="pilot-form" className="py-16 px-6 lg:px-8 bg-slate-950">
+            <section id="pilot-form" className="py-20 px-6 lg:px-8 bg-slate-950 scroll-mt-24 border-t border-slate-900">
               <div className="max-w-3xl mx-auto">
                 <div className="text-center mb-8">
-                  <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2">
-                    Request Your Turnkey Implementation Blueprint
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 mb-3">
+                    <Check className="w-3.5 h-3.5" />
+                    <span>Free 6-Week Turnkey Pilot</span>
+                  </div>
+                  <h2 className="text-2xl sm:text-4xl font-extrabold text-white mb-3 tracking-tight">
+                    Activate Your Free Cohort &amp; Receive {variant.deliverable.title}
                   </h2>
-                  <p className="text-slate-400 text-sm">
-                    Receive <span className="text-slate-200 font-semibold">{variant.deliverable.title}</span> immediately.
+                  <p className="text-slate-400 text-sm max-w-xl mx-auto">
+                    Zero hardware or complex IT integration. Free forever for up to 35 students. Dispatched instantly to your institutional inbox.
                   </p>
                 </div>
 
@@ -806,7 +833,23 @@ function AguiContent() {
             </section>
           </>
         )}
+
+        {/* Discreet Developer Toggle at Bottom */}
+        {!showControls && (
+          <div className="py-4 text-center bg-slate-950 border-t border-slate-900">
+            <button
+              type="button"
+              onClick={() => setShowControls(true)}
+              className="text-[11px] text-slate-600 hover:text-slate-400 font-mono transition-colors"
+            >
+              ⚙️ Preview Controls / Test AGUI Generator
+            </button>
+          </div>
+        )}
       </div>
+
+      {/* Standard Brand Marketing Footer */}
+      <Footer />
     </div>
   );
 }

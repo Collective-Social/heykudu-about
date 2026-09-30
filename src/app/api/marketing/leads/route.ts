@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { supabase } from "@/lib/supabaseClient";
 import { FUNNEL_MATRIX } from "@/lib/marketing/funnelMatrix";
+import { notifyNewLead } from "@/lib/marketing/leadNotifier";
 
 export async function POST(req: NextRequest) {
   try {
@@ -68,6 +69,27 @@ export async function POST(req: NextRequest) {
         { status: 500 }
       );
     }
+
+    // Trigger notification to no-reply@heykudu.com and team channels
+    notifyNewLead({
+      lead_id: lead?.id,
+      full_name,
+      email,
+      institution,
+      role,
+      phone,
+      funnel_variant,
+      deliverable_requested,
+      utm_source,
+      utm_campaign,
+      utm_medium,
+      utm_content,
+      lecturer_name,
+      lecturer_email,
+      course_name,
+      notes,
+      submitted_at: new Date().toISOString(),
+    }).catch((notifErr) => console.error("Lead notification dispatch error:", notifErr));
 
     const variant = FUNNEL_MATRIX[funnel_variant];
     const deliverable = variant?.deliverable;

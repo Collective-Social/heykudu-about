@@ -86,22 +86,29 @@ All generated AGUI interfaces are strictly grounded in verifiable technical fact
 * **Live URL:** [`https://about.heykudu.com/lp/ai`](https://about.heykudu.com/lp/ai)
 * **Code Implementation:** [`src/app/lp/ai/page.tsx`](./src/app/lp/ai/page.tsx)
 * **Backend Generator:** [`src/lib/marketing/aguiGenerator.ts`](./src/lib/marketing/aguiGenerator.ts)
-* **API Route:** [`src/app/api/marketing/agui/route.ts`](./src/app/api/marketing/agui/route.ts)
+* **Lead Notifier:** [`src/lib/marketing/leadNotifier.ts`](./src/lib/marketing/leadNotifier.ts)
+* **API Routes:** [`src/app/api/marketing/agui/route.ts`](./src/app/api/marketing/agui/route.ts) & [`src/app/api/marketing/leads/route.ts`](./src/app/api/marketing/leads/route.ts)
 
 ### How It Works:
-1. **URL Parameters**: Accepts `?q=<search_intent>&role=<target_role>&institution=<university>`.
-2. **Top Scenario Controller**:
-   - Visitors or internal team members can type any custom query or select preset scenario chips (*Medical Dean*, *Occupational Therapy*, *Nursing Clinical Skills at SMU*, *Student DP Rescue*).
-   - Displays live latency metrics and indicator badges (*Synthesized Live in Xms* vs *Edge Cached <100ms*).
-3. **Adaptive Attendance & DP Simulator**:
-   - Calibrates metric names (`hours`, `practical sessions`, `deliveries`), baseline requirements, and attendance thresholds dynamically based on the query.
+1. **Public Visitor Presentation**:
+   - Prospective university deans, lecturers, and student visitors receive an authentic, high-converting marketing landing page complete with the standard Heykudu `<Navbar />` and `<Footer />`.
+   - Internal generator banners, model latency badges, and scenario-morphing controls are hidden by default to ensure maximum conversion credibility.
+2. **Internal Preview & Debug Mode**:
+   - Internal team members or deans can access the live **Scenario Morphing Controller** by adding `?debug=1`, `?preview=1`, or clicking the discreet **Preview Controls** link in the footer.
+   - Allows instant morphing across scenarios (*Medical Dean*, *Occupational Therapy*, *Nursing Clinical Skills at SMU*, *Student DP Rescue*) with sub-100ms edge cache hits.
+3. **URL Parameter Grounding**:
+   - Dynamic landing pages accept `?q=<search_intent>&role=<target_role>&institution=<university>`.
+   - Generates custom hero copy, localized proof stats, and pedagogical challenge matrices grounded in [`.agents/strategy.md`](./.agents/strategy.md).
+4. **Adaptive Attendance & DP Simulator**:
+   - Calibrates metric names (`hours`, `practical sessions`, `deliveries`), baseline requirements, and attendance thresholds dynamically based on the target faculty.
    - Allows users to drag the slider to witness real-time RAG compliance status changes.
-4. **Fast-Track Self-Service Banner**:
-   - Direct link to [`heykudu.com`](https://heykudu.com) for zero-human-intervention class deployment.
-5. **Inbound Lead Capture & WhatsApp Viral Referral**:
-   - Captures name, institutional email, phone/WhatsApp, and nominated course details.
-   - Automatically generates a pre-filled WhatsApp invitation link (`wa.me/?text=...`) for student reps to forward directly to their class groups or course convenors.
-   - Dispatches a tailored institutional toolkit PDF.
+5. **Inbound Lead Capture & Notification Pipeline**:
+   - Visitors complete the `#pilot-form` to request their tailored deliverable blueprint and activate a 6-week free cohort.
+   - Submissions trigger [`notifyNewLead()`](./src/lib/marketing/leadNotifier.ts), which:
+     1. Dispatches an immediate branded HTML email alert to **`no-reply@heykudu.com`** via MailerSend API with full prospect details.
+     2. Logs structured alert payload to Vercel serverless function logs.
+     3. Syncs lead into core platform CRM `leads` table and Slack webhook (if configured).
+   - The user is presented with immediate confirmation, deliverable access, and a 1-click WhatsApp class/lecturer referral link.
 
 ---
 
