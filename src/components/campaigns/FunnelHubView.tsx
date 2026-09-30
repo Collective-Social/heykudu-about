@@ -13,6 +13,8 @@ import {
   RefreshCw,
   BookOpen,
   Building,
+  Cpu,
+  Sliders,
 } from "lucide-react";
 
 interface Lead {
@@ -31,11 +33,18 @@ interface Lead {
 }
 
 export default function FunnelHubView() {
-  const [activeTab, setActiveTab] = useState<"landing_pages" | "google_ads" | "scripts" | "leads">("landing_pages");
+  const [activeTab, setActiveTab] = useState<"landing_pages" | "google_ads" | "scripts" | "leads" | "agui">("landing_pages");
   const [selectedVariantKey, setSelectedVariantKey] = useState<string>("departmental");
   const [leads, setLeads] = useState<Lead[]>([]);
   const [loadingLeads, setLoadingLeads] = useState(false);
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
+
+  // AGUI Playground State
+  const [aguiQuery, setAguiQuery] = useState("Occupational Therapy clinical hours tracking Stellenbosch");
+  const [aguiRole, setAguiRole] = useState("Clinical Course Convenor");
+  const [generatingAgui, setGeneratingAgui] = useState(false);
+  const [aguiPreview, setAguiPreview] = useState<any>(null);
+  const [aguiError, setAguiError] = useState<string | null>(null);
 
   useEffect(() => {
     fetchLeads();
@@ -62,6 +71,32 @@ export default function FunnelHubView() {
     setTimeout(() => setCopiedKey(null), 2000);
   }
 
+  async function handleGenerateAgui() {
+    if (!aguiQuery.trim()) return;
+    setGeneratingAgui(true);
+    setAguiError(null);
+    try {
+      const res = await fetch("/api/marketing/agui", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          query: aguiQuery.trim(),
+          targetRole: aguiRole.trim() || undefined,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        throw new Error(data.error || "Failed to generate AGUI payload");
+      }
+      setAguiPreview(data);
+    } catch (err: unknown) {
+      console.error("AGUI generation failed:", err);
+      setAguiError(err instanceof Error ? err.message : "Failed to synthesize AGUI page");
+    } finally {
+      setGeneratingAgui(false);
+    }
+  }
+
   const variants = Object.values(FUNNEL_MATRIX);
   const currentVariant = FUNNEL_MATRIX[selectedVariantKey] || variants[0];
 
@@ -69,7 +104,7 @@ export default function FunnelHubView() {
     <div className="flex-1 flex flex-col bg-slate-950 overflow-y-auto">
       {/* Subheader Navigation */}
       <div className="border-b border-slate-800/80 bg-slate-900/40 px-6 py-3 flex items-center justify-between flex-wrap gap-4">
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 flex-wrap">
           <button
             onClick={() => setActiveTab("landing_pages")}
             className={`px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-2 transition-colors ${
@@ -116,6 +151,18 @@ export default function FunnelHubView() {
           >
             <Users className="w-3.5 h-3.5" />
             Captured Leads ({leads.length})
+          </button>
+
+          <button
+            onClick={() => setActiveTab("agui")}
+            className={`px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-2 transition-colors ${
+              activeTab === "agui"
+                ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/30"
+                : "text-slate-400 hover:text-white"
+            }`}
+          >
+            <Cpu className="w-3.5 h-3.5 text-emerald-400" />
+            ✨ AGUI Engine & Playground
           </button>
         </div>
 
@@ -544,6 +591,223 @@ export default function FunnelHubView() {
                     </tbody>
                   </table>
                 </div>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* TAB 5: AGUI GENERATIVE ENGINE & PLAYGROUND */}
+        {activeTab === "agui" && (
+          <div className="space-y-8">
+            <div>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 mb-2">
+                <Cpu className="w-3.5 h-3.5" />
+                <span>Next-Gen Paradigm: AGUI vs GUI</span>
+              </div>
+              <h2 className="text-xl font-bold text-white mb-1">
+                AI Generative User Interface (AGUI) Engine
+              </h2>
+              <p className="text-xs text-slate-400 max-w-3xl leading-relaxed">
+                Rather than static landing pages where visitors must mentally translate generic software features into their faculty's terminology, Heykudu's AGUI engine synthesizes bespoke landing pages and interactive simulators dynamically in real time. It tailors headlines, pain points, proof metrics, and DP thresholds specifically to whatever the user searches for, while strictly grounded in verified Heykudu architectural capabilities.
+              </p>
+            </div>
+
+            {/* Interactive Playground Box */}
+            <div className="p-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-xl space-y-5">
+              <h3 className="text-sm font-semibold text-white flex items-center gap-2">
+                <Sparkles className="w-4 h-4 text-emerald-400" />
+                <span>Synthesize Any Persona / Faculty Query</span>
+              </h3>
+
+              <div className="grid md:grid-cols-3 gap-4">
+                <div className="md:col-span-2">
+                  <label className="block text-xs font-medium text-slate-400 mb-1">
+                    Visitor Search Query / Intent Prompt
+                  </label>
+                  <input
+                    type="text"
+                    value={aguiQuery}
+                    onChange={(e) => setAguiQuery(e.target.value)}
+                    placeholder="e.g. Occupational therapy clinical hours tracking Stellenbosch"
+                    className="w-full px-3.5 py-2 rounded-lg bg-slate-950 border border-slate-700 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-medium text-slate-400 mb-1">
+                    Target Role (Optional)
+                  </label>
+                  <input
+                    type="text"
+                    value={aguiRole}
+                    onChange={(e) => setAguiRole(e.target.value)}
+                    placeholder="e.g. Clinical Course Convenor"
+                    className="w-full px-3.5 py-2 rounded-lg bg-slate-950 border border-slate-700 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500"
+                  />
+                </div>
+              </div>
+
+              {/* Quick Preset Buttons */}
+              <div className="flex items-center gap-2 flex-wrap text-xs">
+                <span className="text-slate-500 text-[11px]">Quick Tests:</span>
+                {[
+                  {
+                    q: "Occupational Therapy clinical hours tracking Stellenbosch",
+                    role: "Clinical Course Convenor",
+                  },
+                  {
+                    q: "400-seat law lecture hall proxy sign-in anti-cheat",
+                    role: "Lead Law Lecturer",
+                  },
+                  {
+                    q: "Nursing clinical practical skills logbook at Sefako Makgatho",
+                    role: "Nursing Clinical Facilitator",
+                  },
+                  {
+                    q: "Lost medical student logbook card in scrubs pocket",
+                    role: "Student / Class Rep",
+                  },
+                ].map((item, idx) => (
+                  <button
+                    key={idx}
+                    type="button"
+                    onClick={() => {
+                      setAguiQuery(item.q);
+                      setAguiRole(item.role);
+                    }}
+                    className="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-emerald-300 text-[11px] border border-slate-700 transition-colors"
+                  >
+                    {item.q.slice(0, 32)}...
+                  </button>
+                ))}
+              </div>
+
+              <div className="flex items-center gap-3 pt-2">
+                <button
+                  type="button"
+                  onClick={handleGenerateAgui}
+                  disabled={generatingAgui || !aguiQuery.trim()}
+                  className="px-5 py-2.5 rounded-lg bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white font-semibold text-xs flex items-center gap-2 shadow-md shadow-emerald-500/20 disabled:opacity-50 transition-all"
+                >
+                  {generatingAgui ? (
+                    <>
+                      <RefreshCw className="w-3.5 h-3.5 animate-spin" />
+                      <span>Synthesizing via Gemini Flash...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Cpu className="w-3.5 h-3.5" />
+                      <span>Synthesize AGUI Page & Warm Cache</span>
+                    </>
+                  )}
+                </button>
+
+                <a
+                  href={`/lp/ai?q=${encodeURIComponent(aguiQuery)}&role=${encodeURIComponent(aguiRole)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium flex items-center gap-1.5 transition-colors border border-slate-700"
+                >
+                  <span>Open Live in /lp/ai</span>
+                  <ExternalLink className="w-3.5 h-3.5 text-emerald-400" />
+                </a>
+              </div>
+
+              {aguiError && (
+                <div className="p-3 rounded-lg bg-rose-950/40 border border-rose-500/30 text-rose-300 text-xs">
+                  {aguiError}
+                </div>
+              )}
+            </div>
+
+            {/* Generated Preview Card */}
+            {aguiPreview?.variant && (
+              <div className="p-6 rounded-2xl bg-slate-900 border border-emerald-500/30 shadow-2xl space-y-6">
+                <div className="flex items-center justify-between flex-wrap gap-3 pb-4 border-b border-slate-800">
+                  <div className="flex items-center gap-2">
+                    <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-xs font-semibold">
+                      {aguiPreview.variant.badge}
+                    </span>
+                    <span className="text-xs text-slate-400 font-mono">
+                      Role: {aguiPreview.variant.targetRole}
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs text-slate-400">
+                      {aguiPreview.cached ? "⚡ Loaded from Supabase Cache" : "🧠 Fresh Gemini Synthesis"}
+                    </span>
+                    <a
+                      href={`/lp/ai?q=${encodeURIComponent(aguiQuery)}&role=${encodeURIComponent(aguiRole)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-3 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-semibold text-xs flex items-center gap-1 transition-colors"
+                    >
+                      <span>Preview Live Page</span>
+                      <ExternalLink className="w-3 h-3" />
+                    </a>
+                  </div>
+                </div>
+
+                <div>
+                  <h3 className="text-lg font-bold text-white mb-1">
+                    {aguiPreview.variant.heroHeadline}
+                  </h3>
+                  <p className="text-xs text-slate-300 leading-relaxed max-w-3xl">
+                    {aguiPreview.variant.heroSubhead}
+                  </p>
+                </div>
+
+                {/* Proof Stats */}
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                  {aguiPreview.variant.proofStats?.map((s: any, idx: number) => (
+                    <div key={idx} className="p-3 rounded-xl bg-slate-950 border border-slate-800 text-center">
+                      <div className="text-xl font-bold text-emerald-400">{s.value}</div>
+                      <div className="text-xs font-medium text-slate-200">{s.label}</div>
+                      <div className="text-[10px] text-slate-500">{s.subtext}</div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Adaptive Simulator Spec */}
+                {aguiPreview.variant.simulatorConfig && (
+                  <div className="p-4 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
+                    <div className="flex items-center justify-between text-xs">
+                      <span className="font-semibold text-white flex items-center gap-1.5">
+                        <Sliders className="w-3.5 h-3.5 text-emerald-400" />
+                        Adaptive DP Simulator Calibrated
+                      </span>
+                      <span className="text-slate-400 font-mono">
+                        Metric: {aguiPreview.variant.simulatorConfig.metricName} (Cutoff:{" "}
+                        {aguiPreview.variant.simulatorConfig.thresholdPct}%)
+                      </span>
+                    </div>
+                    <div className="text-xs text-emerald-300 font-medium">
+                      ✓ Green: {aguiPreview.variant.simulatorConfig.greenStatusText}
+                    </div>
+                    <div className="text-xs text-amber-300">
+                      ⚠ Amber: {aguiPreview.variant.simulatorConfig.amberStatusText}
+                    </div>
+                    <div className="text-xs text-rose-300">
+                      ✕ Red: {aguiPreview.variant.simulatorConfig.redStatusText}
+                    </div>
+                  </div>
+                )}
+
+                {/* Closing Script & HOD Angle */}
+                {aguiPreview.variant.closingScript && (
+                  <div className="p-4 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
+                    <span className="text-xs font-semibold text-slate-300 block">
+                      Target Closing Questions for {aguiPreview.variant.closingScript.targetPersona}:
+                    </span>
+                    <ul className="text-xs text-slate-400 space-y-1 list-disc list-inside">
+                      {aguiPreview.variant.closingScript.keyQuestions?.map((q: string, i: number) => (
+                        <li key={i}>{q}</li>
+                      ))}
+                    </ul>
+                    <div className="text-xs text-emerald-400 pt-1 font-medium">
+                      Closing Angle: {aguiPreview.variant.closingScript.closingAngle}
+                    </div>
+                  </div>
+                )}
               </div>
             )}
           </div>
