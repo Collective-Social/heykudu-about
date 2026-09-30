@@ -17,6 +17,10 @@ export async function POST(req: NextRequest) {
       utm_medium,
       utm_content,
       deliverable_requested,
+      lecturer_name,
+      lecturer_email,
+      course_name,
+      notes,
     } = body;
 
     if (!full_name || !email || !institution || !role) {
@@ -47,6 +51,10 @@ export async function POST(req: NextRequest) {
             referrer: req.headers.get("referer") || null,
             user_agent: req.headers.get("user-agent") || null,
             submitted_at: new Date().toISOString(),
+            ...(lecturer_name ? { lecturer_name } : {}),
+            ...(lecturer_email ? { lecturer_email } : {}),
+            ...(course_name ? { course_name } : {}),
+            ...(notes ? { notes } : {}),
           },
         },
       ])
@@ -64,6 +72,9 @@ export async function POST(req: NextRequest) {
     const variant = FUNNEL_MATRIX[funnel_variant];
     const deliverable = variant?.deliverable;
 
+    const shareUrl = `https://about.heykudu.com/lp/departmental?utm_source=student_referral&utm_campaign=${encodeURIComponent(course_name || "course")}`;
+    const whatsappText = `Hi ${lecturer_name ? `Dr./Prof. ${lecturer_name}` : "Lecturer"}, our class is requesting to use Heykudu for ${course_name || "our course"} to eliminate paper attendance and protect against lost records. You can activate a 100% free pilot for our class in 2 minutes: ${shareUrl}`;
+
     return NextResponse.json({
       success: true,
       lead_id: lead?.id,
@@ -72,6 +83,8 @@ export async function POST(req: NextRequest) {
         filename: "Heykudu_Clinical_Education_Kit.pdf",
       },
       booking_url: "https://about.heykudu.com/contact",
+      whatsapp_share_text: whatsappText,
+      whatsapp_share_url: `https://wa.me/?text=${encodeURIComponent(whatsappText)}`,
     });
   } catch (err: any) {
     console.error("Lead submission exception:", err);

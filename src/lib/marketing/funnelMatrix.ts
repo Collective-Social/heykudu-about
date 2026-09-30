@@ -7,7 +7,7 @@
 
 export interface FunnelVariant {
   slug: string;
-  category: "medical" | "university_wide";
+  category: "medical" | "university_wide" | "student_led";
   badge: string;
   title: string;
   targetPersona: string;
@@ -961,6 +961,141 @@ export const FUNNEL_MATRIX: Record<string, FunnelVariant> = {
       "Stream live attendance and RAG status directly into Moodle, Canvas, or custom faculty portals.",
       "Empower your faculty and AI agents with real-time academic compliance data. Read the API docs.",
       "Build custom departmental attendance workflows in minutes. Get developer sandbox access."
+    ]
+  },
+
+  // ============================================================================
+  // STUDENT-LED BOTTOM-UP VIRAL & REFERRAL SOLUTIONS
+  // ============================================================================
+
+  students: {
+    slug: "students",
+    category: "student_led",
+    badge: "Student-Led Viral Motion & Class Referral",
+    title: "Student Attendance & Logbook Protection",
+    targetPersona:
+      "Medical Students, Clinical Interns, Engineering, Law, Science & Humanities Undergraduates, Class Representatives",
+    targetRole: "Student / Class Representative",
+    heroHeadline: "Tired of Paper Sign-In Sheets and Lost Clinical Cards?",
+    heroSubhead:
+      "Track your personal attendance progress bar, safeguard procedure quotas, and invite your lecturer or course convenor to activate a free digital register for your class in 60 seconds.",
+    proofStats: [
+      {
+        value: "100%",
+        label: "DP Status Protection",
+        subtext: "Never arrive at exams wondering if your register was lost"
+      },
+      {
+        value: "0 Sec",
+        label: "Class Time Lost",
+        subtext: "Dynamic QR scan takes 2 seconds on your own phone"
+      },
+      {
+        value: "100%",
+        label: "Card Loss Immunity",
+        subtext: "Encrypted bedside records permanently stored in cloud"
+      },
+      {
+        value: "Free",
+        label: "For Students & Classes",
+        subtext: "100% free pilot tier for your entire course or rotation"
+      }
+    ],
+    painPoints: [
+      {
+        title: "Lost Cardboard Cards",
+        description:
+          "You spend 6 weeks logging ward procedures or attending 40 lectures, only for a supervisor to misplace the register or your cardboard card to get damaged.",
+        icon: "file-question"
+      },
+      {
+        title: "Fraud & Group Penalties",
+        description:
+          "Absent classmates get others to proxy-sign, prompting lecturers to reject entire sign-in sheets or enforce punitive surprise re-tests for everyone.",
+        icon: "shield-alert"
+      },
+      {
+        title: "The DP Exam Ambush",
+        description:
+          "Finding out in Week 14 that an administrative clerk failed to tally your attendance into the system, barring you from writing your final exams.",
+        icon: "alert-triangle"
+      },
+      {
+        title: "Awkward Supervisor Chasing",
+        description:
+          "Standing outside doctors' tea rooms or professors' offices begging for retroactive signatures on crinkled paper sheets before rotation deadlines.",
+        icon: "clock"
+      }
+    ],
+    solutionFeatures: [
+      {
+        title: "Personal RAG Progress Bar",
+        description:
+          "See your exact attendance percentage and procedure quota progression in real time. Know exactly where you stand for DP at any second.",
+        icon: "trending-up"
+      },
+      {
+        title: "Dynamic Anti-Cheat QR Scanning",
+        description:
+          "Scan your lecturer's screen or tap your tutor's phone in 2 seconds. Completely tamper-proof, verified presence with zero paper hassle.",
+        icon: "qr-code"
+      },
+      {
+        title: "1-Click Lecturer Referral",
+        description:
+          "Send an anonymous or nominated recommendation to your course convenor or lecturer to activate a 100% free digital sheet for your course.",
+        icon: "share-2"
+      },
+      {
+        title: "Permanent Digital Archive",
+        description:
+          "Your verified clinical skills and lecture attendance are backed up forever. Export a certified PDF portfolio whenever requested.",
+        icon: "award"
+      }
+    ],
+    primaryCta: {
+      label: "Nominate Your Course & Send Free Setup to Lecturer",
+      actionType: "deploy_pilot",
+      helperText: "Takes 30 seconds • We notify your lecturer with a 1-click free activation link • 100% free for students"
+    },
+    deliverable: {
+      title: "The Student DP Protection & Attendance Survival Kit",
+      format: "PDF Checklist + 1-Click WhatsApp & Email Lecturer Petition Template",
+      description:
+        "The official toolkit for medical and university students: how to protect your clinical hours, calculate minimum exam attendance, and petition your lecturer to switch to digital sheets.",
+      filename: "Heykudu_Student_Attendance_Survival_Kit.pdf"
+    },
+    closingScript: {
+      title: "Student-to-Lecturer / Class Rep Referral Script",
+      targetRole: "Class Representative / Student Group",
+      discoveryQuestions: [
+        "How many students in our class have experienced lost attendance sheets or disputed clinical hours this year?",
+        "Would our class prefer scanning a dynamic 2-second QR code rather than passing around a paper clipboard during lectures?",
+        "If Heykudu offers a completely free digital attendance sheet with zero IT setup for the lecturer, can our class rep share it with our course convenor?"
+      ],
+      pilotMemorandumTerms: [
+        "1-Click WhatsApp text template ready to send to lecturer or class group",
+        "Pre-drafted professional email to Course Convenor requesting paperless attendance",
+        "Guaranteed 100% free trial for class of any size"
+      ]
+    },
+    googleAdHeadlines: [
+      "Lost Medical Logbook Card?",
+      "Digital Student Attendance",
+      "Track Your Clinical Quotas",
+      "Never Lose Your DP Again",
+      "Stop Passing Paper Registers",
+      "Student Attendance App",
+      "Track Attendance for Class",
+      "No More Paper Clipboards",
+      "1-Tap Attendance Check-In",
+      "Free For Your Entire Class"
+    ],
+    googleAdDescriptions: [
+      "Tired of paper registers getting lost? Track attendance & quotas on your phone. 100% free.",
+      "Protect your DP exam qualification. Real-time attendance progress bars for students.",
+      "No more lost procedure cards. Send a free paperless setup to your lecturer in 60 seconds.",
+      "Digital student attendance and clinical logbooks. Free for your class. Get the toolkit."
     ]
   }
 };

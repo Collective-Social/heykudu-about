@@ -151,7 +151,11 @@ export default function FunnelHubView() {
                           {v.slug.toUpperCase()}
                         </span>
                         <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-slate-800 text-slate-300 border border-slate-700">
-                          {v.category === "medical" ? "Medical Faculty" : "University-Wide"}
+                          {v.category === "medical"
+                            ? "Medical Faculty"
+                            : v.category === "student_led"
+                            ? "Student & Class Referral"
+                            : "University-Wide"}
                         </span>
                       </div>
                       <span className="text-xs text-slate-400 font-medium">
@@ -239,7 +243,11 @@ export default function FunnelHubView() {
                     }`}
                   >
                     <span className="text-[10px] opacity-70">
-                      {v.category === "medical" ? "Med" : "Uni"}
+                      {v.category === "medical"
+                        ? "Med"
+                        : v.category === "student_led"
+                        ? "Student"
+                        : "Uni"}
                     </span>
                     <span>{v.slug}</span>
                   </button>
