@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useParams, useSearchParams } from "next/navigation";
 import { FUNNEL_MATRIX, FunnelVariant } from "@/lib/marketing/funnelMatrix";
 import { trackGoogleLeadConversion } from "@/lib/gtag";
+import { getAttributionData } from "@/lib/attribution";
 import {
   ShieldAlert,
   Clock,
@@ -122,6 +123,7 @@ export default function LandingPage() {
     setErrorMessage("");
 
     try {
+      const attribution = getAttributionData();
       const payload = {
         full_name: fullName,
         email,
@@ -129,15 +131,16 @@ export default function LandingPage() {
         role,
         phone,
         funnel_variant: slug,
-        utm_source: searchParams.get("utm_source") || "direct",
-        utm_campaign: searchParams.get("utm_campaign") || slug,
-        utm_medium: searchParams.get("utm_medium") || "web",
-        utm_content: searchParams.get("utm_content") || "hero_form",
+        utm_source: searchParams.get("utm_source") || attribution.utm_source || "direct",
+        utm_campaign: searchParams.get("utm_campaign") || attribution.utm_campaign || slug,
+        utm_medium: searchParams.get("utm_medium") || attribution.utm_medium || "web",
+        utm_content: searchParams.get("utm_content") || attribution.utm_content || "hero_form",
         deliverable_requested: variant.deliverable.title,
         course_name: courseName,
         lecturer_name: lecturerName,
         lecturer_email: lecturerEmail,
         notes,
+        ...attribution,
       };
 
       const res = await fetch("/api/marketing/leads", {

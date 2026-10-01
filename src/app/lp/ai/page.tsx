@@ -7,6 +7,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { AguiVariant } from "@/lib/marketing/aguiGenerator";
 import { trackGoogleLeadConversion } from "@/lib/gtag";
+import { getAttributionData } from "@/lib/attribution";
 import {
   ShieldAlert,
   Clock,
@@ -229,6 +230,7 @@ function AguiContent() {
 
     setIsSubmitting(true);
     try {
+      const attribution = getAttributionData();
       const payload = {
         full_name: fullName,
         email,
@@ -240,6 +242,7 @@ function AguiContent() {
         lecturer_name: lecturerName || undefined,
         lecturer_email: lecturerEmail || undefined,
         notes: `Generated via AGUI Query: "${activeQuery}"`,
+        ...attribution,
       };
 
       const res = await fetch("/api/marketing/leads", {

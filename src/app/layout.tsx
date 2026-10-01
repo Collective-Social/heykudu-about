@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Inter } from "next/font/google";
 import Script from "next/script";
+import AttributionTracker from "@/components/AttributionTracker";
 import "./globals.css";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
@@ -80,6 +81,7 @@ export default function RootLayout({
         }}
         suppressHydrationWarning
       >
+        <AttributionTracker />
         {children}
       </body>
     </html>

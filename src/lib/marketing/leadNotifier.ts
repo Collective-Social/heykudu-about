@@ -13,6 +13,12 @@ export interface LeadNotificationPayload {
   utm_campaign?: string;
   utm_medium?: string;
   utm_content?: string;
+  utm_term?: string;
+  search_query?: string;
+  gclid?: string;
+  landing_page?: string;
+  current_page?: string;
+  referrer?: string;
   lecturer_name?: string;
   lecturer_email?: string;
   course_name?: string;
@@ -135,10 +141,14 @@ export async function notifyNewLead(payload: LeadNotificationPayload): Promise<{
               ` : ""}
 
               <div class="field-row">
-                <div class="field-label">Marketing Attribution</div>
-                <div class="field-value" style="font-size: 13px; font-weight: 400; color: #475569;">
-                  Variant: <code>${payload.funnel_variant || "direct"}</code><br>
-                  UTM Source: <code>${payload.utm_source || "none"}</code> | Campaign: <code>${payload.utm_campaign || "none"}</code>
+                <div class="field-label">🎯 Lead Attribution & Search Context</div>
+                <div class="field-value" style="font-size: 13px; font-weight: 400; color: #475569; background: #f8fafc; padding: 12px; border-radius: 8px; border: 1px solid #e2e8f0;">
+                  <strong>User Search Query / Keyword:</strong> <code style="color: #6C22D6; font-weight: 700;">${payload.utm_term || payload.search_query || "Direct / None"}</code><br>
+                  <strong>Campaign:</strong> <code>${payload.utm_campaign || "none"}</code> | <strong>Ad / Content:</strong> <code>${payload.utm_content || "none"}</code><br>
+                  <strong>Source & Medium:</strong> <code>${payload.utm_source || "direct"} / ${payload.utm_medium || "none"}</code><br>
+                  <strong>GCLID:</strong> <code>${payload.gclid ? `${payload.gclid.slice(0, 16)}...` : "None"}</code><br>
+                  <strong>Landing Page:</strong> <a href="${payload.landing_page || "https://about.heykudu.com"}" target="_blank" style="color: #6C22D6; word-break: break-all;">${payload.landing_page || "https://about.heykudu.com"}</a><br>
+                  <strong>Form Converted On:</strong> ${payload.current_page || payload.funnel_variant || "landing_page"}
                 </div>
               </div>
 
@@ -165,6 +175,17 @@ Role:        ${payload.role || "N/A"}
 Phone:       ${payload.phone || "N/A"}
 Deliverable: ${payload.deliverable_requested || "N/A"}
 Variant:     ${payload.funnel_variant || "direct"}
+
+--- ATTRIBUTION & SEARCH CONTEXT ---
+Search Query / Keyword: ${payload.utm_term || payload.search_query || "Direct / None"}
+Campaign:               ${payload.utm_campaign || "none"}
+Ad Content:             ${payload.utm_content || "none"}
+Source / Medium:        ${payload.utm_source || "direct"} / ${payload.utm_medium || "none"}
+GCLID:                  ${payload.gclid || "None"}
+Landing Page:           ${payload.landing_page || "None"}
+Converted On:           ${payload.current_page || payload.funnel_variant || "landing_page"}
+Referrer:               ${payload.referrer || "None"}
+
 Course:      ${payload.course_name || "N/A"}
 Lecturer:    ${payload.lecturer_name || "N/A"} (${payload.lecturer_email || "N/A"})
 Submitted:   ${timestamp}
