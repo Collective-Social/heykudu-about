@@ -1,8 +1,11 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { supabase } from "@/lib/supabaseClient";
-import { ArrowLeft, Calendar, Clock } from "lucide-react";
+import { ArrowLeft, Calendar, Clock, ArrowRight } from "lucide-react";
 import type { Metadata } from "next";
+import LogBoxMigrationPage, {
+  metadata as logboxMetadata,
+} from "../how-to-migrate-from-logbox-to-heykudu/page";
 
 export const revalidate = 60;
 
@@ -34,6 +37,10 @@ async function getArticle(slug: string) {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
+  if (slug === "how-to-migrate-from-logbox-to-heykudu") {
+    return logboxMetadata;
+  }
+
   const article = await getArticle(slug);
   if (!article) return { title: "Article Not Found - Heykudu" };
 
@@ -51,6 +58,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function ArticleDetailPage({ params }: PageProps) {
   const { slug } = await params;
+
+  if (slug === "how-to-migrate-from-logbox-to-heykudu") {
+    return <LogBoxMigrationPage />;
+  }
+
   const article = await getArticle(slug);
 
   if (!article) {
@@ -109,7 +121,7 @@ export default async function ArticleDetailPage({ params }: PageProps) {
               </div>
               <div>
                 <div className="text-sm font-semibold text-white">Duncan Luke</div>
-                <div className="text-xs text-slate-400">Founder, Heykudu & Collective Social</div>
+                <div className="text-xs text-slate-400">Founder, Heykudu &amp; Collective Social</div>
               </div>
             </div>
           </div>
@@ -129,17 +141,20 @@ export default async function ArticleDetailPage({ params }: PageProps) {
         {/* CTA Card */}
         <section className="mt-16 p-8 rounded-2xl border border-emerald-500/30 bg-emerald-950/20 text-center">
           <h3 className="text-xl font-bold text-white mb-2">
-            Looking to digitize clinical training at your institution?
+            Ready to upgrade your clinical logging?
           </h3>
           <p className="text-slate-400 text-sm max-w-lg mx-auto mb-6">
-            Heykudu is currently live at Wits University GEMP 2. Request an interactive walkthrough of our NFC presence verification and Socratic AI debriefs.
+            Join hundreds of medical trainees, interns, and registrars tracking procedures with precision and instant QR sign-offs.
           </p>
-          <Link
-            href="/contact"
-            className="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold transition-all shadow-lg shadow-emerald-500/20"
+          <a
+            href="https://heykudu.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold transition-all shadow-lg shadow-emerald-500/20"
           >
-            Schedule a 15-Minute Deanery Walkthrough
-          </Link>
+            Start Logging on Heykudu
+            <ArrowRight className="w-4 h-4" />
+          </a>
         </section>
       </div>
     </div>
