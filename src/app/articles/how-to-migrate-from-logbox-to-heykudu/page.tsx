@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import {
@@ -9,22 +8,22 @@ import {
   FileSpreadsheet,
   Zap,
   Smartphone,
-  ShieldCheck,
   TrendingUp,
   Clock,
   HelpCircle,
   Sparkles,
   Download,
   MousePointerClick,
-  Database,
   WifiOff,
   Flame,
+  UploadCloud,
+  CheckCheck,
 } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Liberate Your Medical Logbook: How to Migrate from LogBox to Heykudu",
   description:
-    "A 90-second, zero-data-loss technical guide for South African medical interns and registrars exporting their clinical procedures from LogBox to Heykudu.",
+    "A 90-second, zero-data-loss technical guide for South African medical interns and registrars exporting clinical procedures from LogBox and importing directly into Heykudu.",
   keywords: [
     "LogBox migration",
     "LogBox to Heykudu",
@@ -35,7 +34,8 @@ export const metadata: Metadata = {
     "CMSA portfolio migration",
     "registrar logbook",
     "medical intern procedures",
-    "Heykudu guide",
+    "Heykudu migration wizard",
+    "heykudu.com/migrate",
   ],
   authors: [{ name: "Heykudu Engineering & Clinical Team" }],
   alternates: {
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Liberate Your Medical Logbook: How to Migrate from LogBox to Heykudu",
     description:
-      "A fast, witty, step-by-step technical guide for medical trainees exporting procedures from LogBox (.xls) to Heykudu.",
+      "A fast, step-by-step technical guide for medical trainees exporting procedures from LogBox (.xls) and importing directly into Heykudu.",
     url: "https://about.heykudu.com/articles/how-to-migrate-from-logbox-to-heykudu",
     siteName: "heykudu",
     images: [
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "How to Migrate Your Medical Logbook from LogBox to Heykudu",
     description:
-      "Export your LogBox procedures in 4 easy clicks and start logging on Heykudu with instant QR sign-offs.",
+      "Export your LogBox procedures in 4 easy clicks and import straight into Heykudu with our automated spreadsheet parser.",
     images: ["https://about.heykudu.com/images/blog/logbox-procedures-view.png"],
   },
 };
@@ -73,7 +73,7 @@ export default function LogBoxMigrationPage() {
     "@type": "Article",
     headline: "Liberate Your Medical Logbook: How to Migrate from LogBox to Heykudu",
     description:
-      "A fast, 4-step technical guide for South African medical interns and registrars exporting procedure logs from LogBox in XLS format to Heykudu.",
+      "A fast, 5-step technical guide for South African medical interns and registrars exporting procedure logs from LogBox in XLS format and importing them into Heykudu.",
     image: "https://about.heykudu.com/images/blog/logbox-procedures-view.png",
     author: {
       "@type": "Organization",
@@ -99,9 +99,9 @@ export default function LogBoxMigrationPage() {
   const jsonLdHowTo = {
     "@context": "https://schema.org",
     "@type": "HowTo",
-    name: "How to Export Your Procedures from LogBox for Heykudu Migration",
+    name: "How to Export Your Procedures from LogBox and Import to Heykudu",
     description:
-      "Step-by-step instructions to export clinical procedures from LogBox in raw Excel (.xls) format.",
+      "Step-by-step instructions to export clinical procedures from LogBox in raw Excel (.xls) format and import them directly into Heykudu.",
     totalTime: "PT2M",
     step: [
       {
@@ -115,7 +115,7 @@ export default function LogBoxMigrationPage() {
         "@type": "HowToStep",
         position: 2,
         name: "Open the LogBook View",
-        text: "Click the LogBook section to display your recorded procedures table.",
+        text: "Click the LogBook section on the left rail to display your recorded procedures table.",
         image: "https://about.heykudu.com/images/blog/logbox-procedures-view.png",
         url: "https://about.heykudu.com/articles/how-to-migrate-from-logbox-to-heykudu#step-2",
       },
@@ -134,6 +134,13 @@ export default function LogBoxMigrationPage() {
         image: "https://about.heykudu.com/images/blog/logbox-export-modal.png",
         url: "https://about.heykudu.com/articles/how-to-migrate-from-logbox-to-heykudu#step-4",
       },
+      {
+        "@type": "HowToStep",
+        position: 5,
+        name: "Import Spreadsheet into Heykudu",
+        text: "Navigate to https://www.heykudu.com/?view=migrate (or https://www.heykudu.com/migrate), select your specialty rotation, enter your email, and upload your exported LogBox file. Heykudu automatically parses and credits all historical cases.",
+        url: "https://about.heykudu.com/articles/how-to-migrate-from-logbox-to-heykudu#step-5",
+      },
     ],
   };
 
@@ -146,7 +153,7 @@ export default function LogBoxMigrationPage() {
         name: "Why must I choose XLS instead of PDF when exporting from LogBox?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "XLS contains raw structured data (columns for timestamps, procedure names, supervision roles, and supervisor names). Heykudu's automated ingestion engine can parse this spreadsheet in milliseconds. A PDF is a static printable layout that machines cannot reliably parse.",
+          text: "XLS contains raw structured data (columns for timestamps, procedure names, supervision roles, and supervisor names). Heykudu's automated ingestion engine parses this spreadsheet in milliseconds. A PDF is a static printable layout that machines cannot reliably parse.",
         },
       },
       {
@@ -155,6 +162,14 @@ export default function LogBoxMigrationPage() {
         acceptedAnswer: {
           "@type": "Answer",
           text: "Yes. When Heykudu ingests your XLS file, all verified past procedures are mapped to your cumulative totals and Entrustable Professional Activities (EPAs).",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Where do I start the import into Heykudu?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "You can start directly at https://www.heykudu.com/?view=migrate or https://www.heykudu.com/migrate.",
         },
       },
       {
@@ -202,13 +217,13 @@ export default function LogBoxMigrationPage() {
           </h1>
 
           <p className="text-base sm:text-lg text-on-surface-variant max-w-2xl mx-auto text-balance leading-relaxed">
-            If you have ever spent 20 minutes coaxing a legacy portal to save an intubation log while your consultant heads to tea, this guide is for you. Here is how to export your entire procedural history from LogBox with zero data loss.
+            If you have ever spent 20 minutes coaxing a legacy portal to save an intubation log while your consultant heads to tea, this guide is for you. Here is how to export your entire procedural history from LogBox and import it into Heykudu with zero data loss.
           </p>
 
           <div className="pt-2 flex flex-wrap items-center justify-center gap-4 text-xs text-on-surface-variant">
             <span className="flex items-center gap-1.5 font-medium">
               <Clock className="w-3.5 h-3.5 text-primary" />
-              90-second export
+              90-second migration
             </span>
             <span>•</span>
             <span className="flex items-center gap-1.5 text-emerald-700 font-semibold">
@@ -223,31 +238,61 @@ export default function LogBoxMigrationPage() {
         </section>
 
         <div className="max-w-3xl mx-auto px-4 sm:px-6 space-y-12">
-          {/* Direct Link Banner */}
-          <div className="bg-surface-container-lowest p-6 rounded-3xl border border-outline-variant/30 shadow-soft flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-            <div className="space-y-1">
-              <div className="text-[11px] uppercase font-extrabold tracking-wider text-primary">
-                Direct Portal Link
+          {/* Quick Migration Shortcuts */}
+          <div className="grid sm:grid-cols-2 gap-4">
+            {/* Direct Link Banner - LogBox */}
+            <div className="bg-surface-container-lowest p-5 rounded-3xl border border-outline-variant/30 shadow-soft flex flex-col justify-between gap-3">
+              <div className="space-y-1">
+                <div className="text-[11px] uppercase font-extrabold tracking-wider text-slate-500">
+                  Step 1: Export Source
+                </div>
+                <div
+                  className="text-base font-bold text-on-surface"
+                  style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
+                >
+                  LogBox Portal
+                </div>
+                <div className="text-xs text-on-surface-variant font-mono break-all select-all">
+                  https://logbook.logbox.co.za/#/logbook/default
+                </div>
               </div>
-              <div
-                className="text-base font-bold text-on-surface"
-                style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
+              <a
+                href="https://logbook.logbox.co.za/#/logbook/default"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-surface-container-high text-on-surface font-bold text-xs hover:bg-surface-container-highest transition-all shadow-sm shrink-0 active:scale-95"
               >
-                LogBox Default LogBook View
-              </div>
-              <div className="text-xs text-on-surface-variant font-mono break-all select-all">
-                https://logbook.logbox.co.za/#/logbook/default
-              </div>
+                Open LogBox Portal
+                <ExternalLink className="w-3.5 h-3.5" />
+              </a>
             </div>
-            <a
-              href="https://logbook.logbox.co.za/#/logbook/default"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-primary text-on-primary font-bold text-xs hover:opacity-90 transition-all shadow-sm shrink-0 active:scale-95"
-            >
-              Open LogBox Portal
-              <ExternalLink className="w-3.5 h-3.5" />
-            </a>
+
+            {/* Direct Link Banner - Heykudu */}
+            <div className="bg-primary/5 p-5 rounded-3xl border border-primary/30 shadow-soft flex flex-col justify-between gap-3">
+              <div className="space-y-1">
+                <div className="text-[11px] uppercase font-extrabold tracking-wider text-primary">
+                  Step 2: Destination
+                </div>
+                <div
+                  className="text-base font-bold text-on-surface"
+                  style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
+                >
+                  Heykudu Migration Portal
+                </div>
+                <div className="text-xs text-primary font-mono break-all select-all">
+                  https://www.heykudu.com/?view=migrate
+                </div>
+              </div>
+              <a
+                href="https://www.heykudu.com/?view=migrate"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-primary text-on-primary font-bold text-xs hover:opacity-90 transition-all shadow-sm shrink-0 active:scale-95"
+              >
+                Open Heykudu Migration
+                <ArrowRight className="w-3.5 h-3.5" />
+              </a>
+            </div>
           </div>
 
           {/* Step 1 */}
@@ -383,44 +428,109 @@ export default function LogBoxMigrationPage() {
             </div>
           </section>
 
-          {/* Section: Spacer for Heykudu Steps */}
-          <section className="bg-gradient-to-br from-primary/10 via-surface-container-low to-surface-container-lowest p-6 sm:p-10 rounded-[32px] border-2 border-dashed border-primary/40 text-center space-y-5 shadow-soft">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/15 text-primary text-xs font-bold uppercase tracking-wider">
-              <Database className="w-3.5 h-3.5" />
-              Heykudu Automated Import Pipeline
+          {/* Step 5: Import into Heykudu */}
+          <section id="step-5" className="space-y-6">
+            <div className="flex items-center gap-3">
+              <div className="w-9 h-9 rounded-2xl bg-primary text-on-primary flex items-center justify-center font-extrabold text-sm shrink-0 shadow-sm">
+                5
+              </div>
+              <h2
+                className="text-xl sm:text-2xl font-black text-on-surface"
+                style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
+              >
+                Import Spreadsheet into Heykudu
+              </h2>
             </div>
 
-            <h2
-              className="text-2xl sm:text-3xl font-extrabold text-on-surface max-w-lg mx-auto"
-              style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
-            >
-              What Happens Next in Heykudu?
-            </h2>
+            <div className="pl-12 space-y-6">
+              <p className="text-sm text-on-surface-variant leading-relaxed">
+                Now open the automated Heykudu Migration Wizard. You can access it directly via{" "}
+                <a
+                  href="https://www.heykudu.com/?view=migrate"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary font-bold underline underline-offset-2 hover:opacity-80"
+                >
+                  https://www.heykudu.com/?view=migrate
+                </a>{" "}
+                (or{" "}
+                <a
+                  href="https://www.heykudu.com/migrate"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary font-bold underline underline-offset-2 hover:opacity-80"
+                >
+                  https://www.heykudu.com/migrate
+                </a>
+                ).
+              </p>
 
-            <p className="text-xs sm:text-sm text-on-surface-variant max-w-lg mx-auto leading-relaxed">
-              We are finalizing our 1-click spreadsheet ingestion wizard. Soon, you will simply drag and drop your exported <code className="text-primary font-mono font-bold bg-primary/10 px-1 py-0.5 rounded">.xls</code> file into Heykudu, and our parser will automatically map every historical procedure to your HPCSA/CMSA Entrustable Professional Activities (EPAs).
-            </p>
+              {/* Heykudu Migration Wizard Interactive Card */}
+              <div className="bg-gradient-to-br from-primary/10 via-surface-container-low to-surface-container-lowest p-6 sm:p-8 rounded-[28px] border border-primary/30 shadow-soft space-y-6">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-outline-variant/20 pb-5">
+                  <div className="space-y-1">
+                    <div className="inline-flex items-center gap-1.5 text-[11px] uppercase font-extrabold tracking-wider text-primary">
+                      <UploadCloud className="w-4 h-4" />
+                      Heykudu 1-Click Ingestion
+                    </div>
+                    <h3
+                      className="text-lg sm:text-xl font-bold text-on-surface"
+                      style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
+                    >
+                      Start Your Instant Import
+                    </h3>
+                  </div>
 
-            <div className="p-3.5 bg-surface-container-lowest rounded-2xl border border-outline-variant/20 max-w-md mx-auto text-xs text-on-surface-variant leading-relaxed">
-              🔒 <strong>In the meantime:</strong> Keep your exported <code className="font-mono">.xls</code> file safe. You can already start logging all your live daily cases directly on Heykudu right now!
-            </div>
+                  <a
+                    href="https://www.heykudu.com/?view=migrate"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full bg-primary text-on-primary font-bold text-xs sm:text-sm hover:opacity-90 transition-all shadow-md active:scale-95 shrink-0"
+                  >
+                    Open Migration Wizard
+                    <ArrowRight className="w-4 h-4" />
+                  </a>
+                </div>
 
-            <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
-              <a
-                href="https://heykudu.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3 rounded-full bg-primary text-on-primary font-bold text-xs sm:text-sm hover:opacity-90 transition-all shadow-md active:scale-95"
-              >
-                Open Heykudu App
-                <ArrowRight className="w-4 h-4" />
-              </a>
-              <Link
-                href="/guide"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-surface-container text-on-surface font-semibold text-xs sm:text-sm hover:bg-surface-container-high transition-colors"
-              >
-                Read Trainee Guide
-              </Link>
+                <div className="grid sm:grid-cols-3 gap-4">
+                  <div className="bg-surface-container-lowest p-4 rounded-2xl border border-outline-variant/20 space-y-1.5">
+                    <div className="text-xs font-bold text-primary flex items-center gap-1.5">
+                      <span className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center text-[11px]">1</span>
+                      Identify Yourself
+                    </div>
+                    <p className="text-xs text-on-surface-variant leading-relaxed">
+                      Enter your full name and medical trainee email (e.g., <code className="font-mono text-[11px]">dr.name@uct.ac.za</code>).
+                    </p>
+                  </div>
+
+                  <div className="bg-surface-container-lowest p-4 rounded-2xl border border-outline-variant/20 space-y-1.5">
+                    <div className="text-xs font-bold text-primary flex items-center gap-1.5">
+                      <span className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center text-[11px]">2</span>
+                      Select Rotation
+                    </div>
+                    <p className="text-xs text-on-surface-variant leading-relaxed">
+                      Choose your specialty block (e.g. FCOG / O&amp;G, Surgery, Internal Medicine, Pediatrics).
+                    </p>
+                  </div>
+
+                  <div className="bg-surface-container-lowest p-4 rounded-2xl border border-outline-variant/20 space-y-1.5">
+                    <div className="text-xs font-bold text-primary flex items-center gap-1.5">
+                      <span className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center text-[11px]">3</span>
+                      Drop File &amp; Finish
+                    </div>
+                    <p className="text-xs text-on-surface-variant leading-relaxed">
+                      Upload your LogBox <code className="font-mono text-[11px]">.xls</code> file and click <strong>Migrate Logbook</strong>. Done!
+                    </p>
+                  </div>
+                </div>
+
+                <div className="p-3.5 bg-surface-container-lowest rounded-xl border border-outline-variant/20 flex items-start gap-2.5 text-xs text-on-surface-variant leading-relaxed">
+                  <CheckCheck className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                  <span>
+                    <strong>Already using Heykudu?</strong> You can also access the migration wizard anytime directly from your profile page footer by clicking <em>&ldquo;Moving from Logbox? Import your existing logbook &rarr;&rdquo;</em>.
+                  </span>
+                </div>
+              </div>
             </div>
           </section>
 
@@ -543,20 +653,28 @@ export default function LogBoxMigrationPage() {
               className="text-2xl sm:text-3xl font-black text-white max-w-md mx-auto"
               style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
             >
-              Start Logging on Heykudu
+              Start Your LogBox Migration
             </h2>
             <p className="text-white/90 text-xs sm:text-sm max-w-sm mx-auto leading-relaxed">
-              Create your free trainee account in under 30 seconds.
+              Upload your LogBox export to Heykudu in under 60 seconds.
             </p>
-            <div className="pt-2">
+            <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
+              <a
+                href="https://www.heykudu.com/?view=migrate"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3 rounded-full bg-white text-primary font-extrabold text-sm hover:bg-white/95 transition-all shadow-md active:scale-95"
+              >
+                Migrate My Logbook Now
+                <ArrowRight className="w-4 h-4" />
+              </a>
               <a
                 href="https://heykudu.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-8 py-3 rounded-full bg-white text-primary font-extrabold text-sm hover:bg-white/95 transition-all shadow-md active:scale-95"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-white/15 text-white font-bold text-sm hover:bg-white/25 transition-all border border-white/20"
               >
-                Go to Heykudu App
-                <ArrowRight className="w-4 h-4" />
+                Explore Heykudu App
               </a>
             </div>
           </section>
