@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useState } from "react";
@@ -97,6 +98,29 @@ export default function ClinicalGuide() {
                   </div>
                 </button>
               ))}
+
+              {/* LogBox Migration Callout Card */}
+              <div className="pt-4">
+                <Link
+                  href="/articles/how-to-migrate-from-logbox-to-heykudu"
+                  className="block p-5 rounded-2xl bg-gradient-to-br from-primary/10 via-surface-container-low to-surface-container-lowest border border-primary/30 hover:border-primary transition-all group"
+                >
+                  <div className="flex items-center gap-2 text-primary text-xs font-bold uppercase tracking-wider mb-2">
+                    <span className="material-symbols-outlined text-[16px]">swap_horiz</span>
+                    Migration Guide
+                  </div>
+                  <div className="font-bold text-sm text-on-surface group-hover:text-primary transition-colors">
+                    Migrating from LogBox to Heykudu?
+                  </div>
+                  <p className="text-xs text-on-surface-variant mt-1.5 leading-relaxed">
+                    Learn how to export your clinical procedures in Excel (.xls) and keep your case history.
+                  </p>
+                  <div className="mt-3 flex items-center text-xs font-bold text-primary gap-1 group-hover:translate-x-0.5 transition-transform">
+                    Read Step-by-Step Guide
+                    <span className="material-symbols-outlined text-[14px]">arrow_forward</span>
+                  </div>
+                </Link>
+              </div>
             </div>
 
             {/* Help Module Detail Content */}

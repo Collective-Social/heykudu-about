@@ -47,6 +47,16 @@ export default function Footer() {
           <h4 className="font-label-md text-label-md text-on-surface font-bold uppercase tracking-wider">Resources</h4>
           <ul className="space-y-4">
             <li>
+              <Link className="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="/articles/how-to-migrate-from-logbox-to-heykudu">
+                Migrate from LogBox
+              </Link>
+            </li>
+            <li>
+              <Link className="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="/articles">
+                Articles &amp; Field Notes
+              </Link>
+            </li>
+            <li>
               <Link className="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="/guide">
                 Clinical Training Guide
               </Link>
