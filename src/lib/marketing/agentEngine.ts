@@ -99,7 +99,7 @@ function loadAgentSpecs(): { strategy: string; editorial: string; agents: Record
 }
 
 /**
- * Executes a structured call to Google Gemini 2.5 Flash
+ * Executes a structured call to Google Gemini 4 Hydrogen
  */
 async function callGemini(prompt: string, inlineAudio?: { mimeType: string; data: string }): Promise<string> {
   const apiKey = process.env.GEMINI_API_KEY;
@@ -107,7 +107,7 @@ async function callGemini(prompt: string, inlineAudio?: { mimeType: string; data
     throw new Error("GEMINI_API_KEY is not configured.");
   }
 
-  const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=${apiKey}`;
+  const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-4-hydrogen:generateContent?key=${apiKey}`;
 
   const parts: Record<string, unknown>[] = [];
   if (inlineAudio) {
@@ -128,7 +128,10 @@ async function callGemini(prompt: string, inlineAudio?: { mimeType: string; data
       generationConfig: {
         temperature: 0.3,
         responseMimeType: "application/json",
-        maxOutputTokens: 8192
+        maxOutputTokens: 16384,
+        thinkingConfig: {
+          thinkingLevel: "low"
+        }
       }
     })
   });
@@ -139,7 +142,9 @@ async function callGemini(prompt: string, inlineAudio?: { mimeType: string; data
   }
 
   const data = await response.json();
-  const textResponse = data.candidates?.[0]?.content?.parts?.[0]?.text;
+  const responseParts = data.candidates?.[0]?.content?.parts || [];
+  const textPart = responseParts.find((p: { text?: string; thought?: boolean }) => typeof p?.text === "string" && !p?.thought) || responseParts[0];
+  const textResponse = textPart?.text;
   if (!textResponse) {
     throw new Error("Empty response returned from Gemini.");
   }

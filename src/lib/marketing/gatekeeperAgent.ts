@@ -101,7 +101,7 @@ Return strictly valid JSON in this format:
 `;
 
   try {
-    const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=${apiKey}`;
+    const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-4-hydrogen:generateContent?key=${apiKey}`;
     const response = await fetch(endpoint, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -109,7 +109,10 @@ Return strictly valid JSON in this format:
         contents: [{ parts: [{ text: prompt }] }],
         generationConfig: {
           temperature: 0.1,
-          responseMimeType: "application/json"
+          responseMimeType: "application/json",
+          thinkingConfig: {
+            thinkingLevel: "low"
+          }
         }
       })
     });
@@ -119,7 +122,9 @@ Return strictly valid JSON in this format:
     }
 
     const data = await response.json();
-    const rawJson = data.candidates?.[0]?.content?.parts?.[0]?.text;
+    const candidateParts = data.candidates?.[0]?.content?.parts || [];
+    const textPart = candidateParts.find((p: { text?: string; thought?: boolean }) => typeof p?.text === "string" && !p?.thought) || candidateParts[0];
+    const rawJson = textPart?.text;
     const report: GatekeeperAuditReport = JSON.parse(rawJson);
 
     // Merge deterministic flags if any were found
