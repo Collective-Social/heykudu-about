@@ -21,6 +21,11 @@ export default function Footer() {
           <h4 className="font-label-md text-label-md text-on-surface font-bold uppercase tracking-wider">Product</h4>
           <ul className="space-y-4">
             <li>
+              <Link className="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="/sangomed">
+                SANGOMED (Maternal Health)
+              </Link>
+            </li>
+            <li>
               <Link className="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="/features/epa-tracking">
                 Attendance & WBAs
               </Link>
